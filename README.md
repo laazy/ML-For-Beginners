@@ -215,3 +215,8 @@ If you get stuck or have any questions about building AI apps. Join fellow learn
 If you have product feedback or errors while building visit:
 
 [![Microsoft Foundry Developer Forum](https://img.shields.io/badge/GitHub-Microsoft_Foundry_Developer_Forum-blue?style=for-the-badge&logo=github&color=000000&logoColor=fff)](https://aka.ms/foundry/forum)
+## Additional Learning Tips
+
+- Review notebooks after each lesson for better understanding.
+- Practice implementing algorithms on your own.
+- Explore real-world datasets using learned concepts.
