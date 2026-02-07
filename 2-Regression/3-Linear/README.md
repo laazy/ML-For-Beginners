@@ -47,9 +47,9 @@ It is typical of **Least-Squares Regression** to draw this type of line. The ter
 
 We square these distances for two main reasons:  
 
-    1.**Magnitude over Direction:** We want to treat an error of -5 the same as an error of +5. Squaring turns all values positive.  
+1. **Magnitude over Direction:** We want to treat an error of -5 the same as an error of +5. Squaring turns all values positive.  
 
-    2.**Penalizing Outliers:** Squaring gives more weight to larger errors, forcing the line to stay closer to points that are far away.  
+2. **Penalizing Outliers:** Squaring gives more weight to larger errors, forcing the line to stay closer to points that are far away.  
 
 We then add all these squared values together. Our goal is to find the specific line where this final sum is at its least (the smallest possible value)—hence the name "Least-Squares".  
 
