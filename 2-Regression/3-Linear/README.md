@@ -1,3 +1,10 @@
+### Beginner Note
+
+Linear regression is used when we want to predict a **numerical value** (for example, house price, temperature, or sales).
+It works by finding a straight line that best represents the relationship between input features and the output.
+
+In this lesson, we focus on understanding the concept before exploring more advanced regression techniques.
+
 # Build a regression model using Scikit-learn: regression four ways
 
 ![Linear vs polynomial regression infographic](./images/linear-polynomial.png)
