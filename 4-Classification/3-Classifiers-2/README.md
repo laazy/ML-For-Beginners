@@ -53,7 +53,7 @@ Following this path, we should start by importing some libraries to use.
 1. Split your training and test data:
 
     ```python
-    X_train, X_test, y_train, y_test = train_test_split(cuisines_feature_df, cuisines_label_df, test_size=0.3)
+    X_train, X_test, y_train, y_test = train_test_split(cuisines_features_df, cuisines_label_df, test_size=0.3)
     ```
 
 ## Linear SVC classifier
