@@ -1,44 +1,44 @@
-# Klasifikátory kuchyní 2
+# Classifikátory kuchyní 2
 
-V této druhé lekci o klasifikaci se podíváte na další způsoby klasifikace číselných dat. Také se dozvíte o důsledcích volby jednoho klasifikátoru oproti jinému.
+V této druhé lekci klasifikace prozkoumáte více způsobů, jak klasifikovat číselná data. Také se dozvíte o důsledcích výběru jednoho klasifikátoru před druhým.
 
-## [Kvíz před přednáškou](https://ff-quizzes.netlify.app/en/ml/)
+## [Přednáškový kvíz](https://ff-quizzes.netlify.app/en/ml/)
 
 ### Předpoklady
 
-Předpokládáme, že jste dokončili předchozí lekce a máte vyčištěný dataset ve složce `data` s názvem _cleaned_cuisines.csv_ v kořenovém adresáři této čtyřlekční složky.
+Předpokládáme, že jste dokončili předchozí lekce a máte vyčištěný dataset ve složce `data` pojmenovaný _cleaned_cuisines.csv_ v kořenové složce této sady čtyř lekcí.
 
 ### Příprava
 
-Načtený soubor _notebook.ipynb_ obsahuje vyčištěný dataset, který jsme rozdělili na datové rámce X a y, připravené pro proces tvorby modelu.
+Do vašeho souboru _notebook.ipynb_ jsme vložili vyčištěný dataset a rozdělili jej na datové rámce X a y, připravené pro tvorbu modelu.
 
 ## Mapa klasifikace
 
-Dříve jste se naučili o různých možnostech klasifikace dat pomocí cheat sheetu od Microsoftu. Scikit-learn nabízí podobný, ale podrobnější cheat sheet, který vám může pomoci ještě více zúžit výběr odhadovačů (další termín pro klasifikátory):
+Dříve jste se seznámili s různými možnostmi při klasifikaci dat podle Microsoftova přehledu. Scikit-learn nabízí podobný, ale detailnější přehled, který vám může dále pomoci zúžit výběr odhadovačů (jiný termín pro klasifikátory):
 
-![ML Map from Scikit-learn](../../../../4-Classification/3-Classifiers-2/images/map.png)
-> Tip: [navštivte tuto mapu online](https://scikit-learn.org/stable/tutorial/machine_learning_map/) a klikněte na cestu, abyste si přečetli dokumentaci.
+![ML Map from Scikit-learn](../../../../translated_images/cs/map.e963a6a51349425a.webp)
+> Tip: [navštivte tuto mapu online](https://scikit-learn.org/stable/tutorial/machine_learning_map/) a klikáním postupujte po cestě k dokumentaci.
 
 ### Plán
 
-Tato mapa je velmi užitečná, jakmile máte jasnou představu o svých datech, protože se můžete „procházet“ jejími cestami k rozhodnutí:
+Tato mapa je velmi užitečná, pokud máte jasný přehled o svých datech, protože můžete „jít“ po jejích cestách k rozhodnutí:
 
-- Máme >50 vzorků
+- Máme více než 50 vzorků
 - Chceme předpovědět kategorii
 - Máme označená data
-- Máme méně než 100K vzorků
+- Máme méně než 100 tisíc vzorků
 - ✨ Můžeme zvolit Linear SVC
 - Pokud to nefunguje, protože máme číselná data
-    - Můžeme zkusit ✨ KNeighbors Classifier 
-      - Pokud to nefunguje, zkusíme ✨ SVC a ✨ Ensemble Classifiers
+    - Můžeme zkusit ✨ KNeighbors Classifier
+      - Pokud to nepomůže, zkusit ✨ SVC a ✨ Ensemble Classifiers
 
-Toto je velmi užitečná cesta, kterou se můžeme řídit.
+Toto je velmi užitečná cesta, kterou lze následovat.
 
-## Cvičení - rozdělení dat
+## Cvičení – rozdělení dat
 
-Podle této cesty bychom měli začít importem některých knihoven, které budeme používat.
+Podle této cesty bychom měli začít importem některých knihoven, které použijeme.
 
-1. Importujte potřebné knihovny:
+1. Naimportujte potřebné knihovny:
 
     ```python
     from sklearn.neighbors import KNeighborsClassifier
@@ -50,31 +50,31 @@ Podle této cesty bychom měli začít importem některých knihoven, které bud
     import numpy as np
     ```
 
-1. Rozdělte svá tréninková a testovací data:
+1. Rozdělte vaše trénovací a testovací data:
 
     ```python
-    X_train, X_test, y_train, y_test = train_test_split(cuisines_feature_df, cuisines_label_df, test_size=0.3)
+    X_train, X_test, y_train, y_test = train_test_split(cuisines_features_df, cuisines_label_df, test_size=0.3)
     ```
 
-## Linear SVC klasifikátor
+## Klasifikátor Linear SVC
 
-Support-Vector clustering (SVC) je součástí rodiny technik strojového učení Support-Vector Machines (více o nich níže). V této metodě můžete zvolit „kernel“, který určuje, jak se budou štítky seskupovat. Parametr 'C' se týká 'regularizace', která reguluje vliv parametrů. Kernel může být jeden z [několika](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC); zde jej nastavíme na 'linear', abychom využili lineární SVC. Pravděpodobnost je ve výchozím nastavení 'false'; zde ji nastavíme na 'true', abychom získali odhady pravděpodobnosti. Náhodný stav nastavíme na '0', abychom data zamíchali a získali pravděpodobnosti.
+Support-Vector clustering (SVC) je metodou z rodiny Support-Vector machine ML technik (o těchto se dozvíte dále). V této metodě můžete zvolit „kernel“, který rozhoduje, jak seskupit štítky. Parametr „C“ odkazuje na „regularizaci“, která reguluje vliv parametrů. Kernel může být jeden z [několika](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC); zde jej nastavujeme na ‚linear‘, abychom využili lineární SVC. Pravděpodobnost (probability) je standardně „false“; zde nastavujeme na „true“, aby bylo možné získat odhady pravděpodobností. Náhodný stav je nastaven na „0“ pro promíchání dat a získání pravděpodobností.
 
-### Cvičení - aplikace lineárního SVC
+### Cvičení – aplikujte lineární SVC
 
-Začněte vytvořením pole klasifikátorů. Do tohoto pole budete postupně přidávat, jak budeme testovat.
+Začněte vytvořením pole klasifikátorů. Postupně do něj budete přidávat další při testování.
 
 1. Začněte s Linear SVC:
 
     ```python
     C = 10
-    # Create different classifiers.
+    # Vytvořte různé klasifikátory.
     classifiers = {
         'Linear SVC': SVC(kernel='linear', C=C, probability=True,random_state=0)
     }
     ```
 
-2. Natrénujte svůj model pomocí Linear SVC a vytiskněte zprávu:
+2. Natrénujte svůj model pomocí Linear SVC a zobrazte report:
 
     ```python
     n_classifiers = len(classifiers)
@@ -88,7 +88,7 @@ Začněte vytvořením pole klasifikátorů. Do tohoto pole budete postupně př
         print(classification_report(y_test,y_pred))
     ```
 
-    Výsledek je docela dobrý:
+    Výsledek je poměrně dobrý:
 
     ```output
     Accuracy (train) for Linear SVC: 78.6% 
@@ -105,21 +105,21 @@ Začněte vytvořením pole klasifikátorů. Do tohoto pole budete postupně př
     weighted avg       0.79      0.79      0.79      1199
     ```
 
-## K-Neighbors klasifikátor
+## Klasifikátor K-Neighbors
 
-K-Neighbors je součástí rodiny metod strojového učení „neighbors“, které lze použít pro řízené i neřízené učení. V této metodě je vytvořen předem definovaný počet bodů a data se shromažďují kolem těchto bodů tak, aby bylo možné předpovědět obecné štítky pro data.
+K-Neighbors je součástí rodiny ML metod „neighbors“, které lze použít pro jak učení s učitelem, tak bez učitele. V této metodě je vytvořen předem definovaný počet bodů a data jsou shromažďována kolem těchto bodů, aby bylo možné pro data předpovídat obecné štítky.
 
-### Cvičení - aplikace K-Neighbors klasifikátoru
+### Cvičení – aplikujte klasifikátor K-Neighbors
 
-Předchozí klasifikátor byl dobrý a fungoval dobře s daty, ale možná můžeme dosáhnout lepší přesnosti. Zkuste K-Neighbors klasifikátor.
+Předchozí klasifikátor byl dobrý a dobře fungoval s daty, ale možná můžeme dosáhnout lepší přesnosti. Vyzkoušejte klasifikátor K-Neighbors.
 
-1. Přidejte řádek do svého pole klasifikátorů (přidejte čárku za položku Linear SVC):
+1. Přidejte řádek do pole klasifikátorů (přidejte čárku za položku Linear SVC):
 
     ```python
     'KNN classifier': KNeighborsClassifier(C),
     ```
 
-    Výsledek je o něco horší:
+    Výsledek je trochu horší:
 
     ```output
     Accuracy (train) for KNN classifier: 73.8% 
@@ -136,23 +136,23 @@ Předchozí klasifikátor byl dobrý a fungoval dobře s daty, ale možná můž
     weighted avg       0.76      0.74      0.74      1199
     ```
 
-    ✅ Naučte se více o [K-Neighbors](https://scikit-learn.org/stable/modules/neighbors.html#neighbors)
+    ✅ Naučte se o [K-Neighbors](https://scikit-learn.org/stable/modules/neighbors.html#neighbors)
 
 ## Support Vector Classifier
 
-Support-Vector klasifikátory jsou součástí rodiny metod strojového učení [Support-Vector Machine](https://wikipedia.org/wiki/Support-vector_machine), které se používají pro klasifikační a regresní úlohy. SVM „mapují tréninkové příklady na body v prostoru“, aby maximalizovaly vzdálenost mezi dvěma kategoriemi. Následná data jsou mapována do tohoto prostoru, aby bylo možné předpovědět jejich kategorii.
+Support-Vector klasifikátory jsou součástí rodiny [Support-Vector Machine](https://wikipedia.org/wiki/Support-vector_machine) ML metod, které se používají pro klasifikaci a regresní úlohy. SVM mapují tréninkové příklady do bodů ve vesmíru za účelem maximalizace vzdálenosti mezi dvěma kategoriemi. Následná data jsou pak do tohoto prostoru namapována tak, aby bylo možné předpovědět jejich kategorii.
 
-### Cvičení - aplikace Support Vector Classifier
+### Cvičení – aplikujte Support Vector Classifier
 
-Zkusme dosáhnout o něco lepší přesnosti pomocí Support Vector Classifier.
+Zkuste dosáhnout trochu lepší přesnosti pomocí Support Vector Classifier.
 
-1. Přidejte čárku za položku K-Neighbors a poté přidejte tento řádek:
+1. Přidejte čárku za položku K-Neighbors a potom přidejte tento řádek:
 
     ```python
     'SVC': SVC(),
     ```
 
-    Výsledek je velmi dobrý!
+    Výsledek je docela dobrý!
 
     ```output
     Accuracy (train) for SVC: 83.2% 
@@ -169,18 +169,18 @@ Zkusme dosáhnout o něco lepší přesnosti pomocí Support Vector Classifier.
     weighted avg       0.84      0.83      0.83      1199
     ```
 
-    ✅ Naučte se více o [Support-Vectors](https://scikit-learn.org/stable/modules/svm.html#svm)
+    ✅ Naučte se o [Support-Vectors](https://scikit-learn.org/stable/modules/svm.html#svm)
 
 ## Ensemble Classifiers
 
-Pojďme se vydat cestou až na konec, i když předchozí test byl velmi dobrý. Zkusme některé „Ensemble Classifiers“, konkrétně Random Forest a AdaBoost:
+Pojďme jít cestou až do konce, i když předchozí test byl poměrně dobrý. Vyzkoušejme některé 'Ensemble Classifiers', konkrétně Random Forest a AdaBoost:
 
 ```python
   'RFST': RandomForestClassifier(n_estimators=100),
   'ADA': AdaBoostClassifier(n_estimators=100)
 ```
 
-Výsledek je velmi dobrý, zejména u Random Forest:
+Výsledek je velmi dobrý, zvláště u Random Forest:
 
 ```output
 Accuracy (train) for RFST: 84.5% 
@@ -210,31 +210,33 @@ Accuracy (train) for ADA: 72.4%
 weighted avg       0.73      0.72      0.72      1199
 ```
 
-✅ Naučte se více o [Ensemble Classifiers](https://scikit-learn.org/stable/modules/ensemble.html)
+✅ Naučte se o [Ensemble Classifiers](https://scikit-learn.org/stable/modules/ensemble.html)
 
-Tato metoda strojového učení „kombinuje předpovědi několika základních odhadovačů“, aby zlepšila kvalitu modelu. V našem příkladu jsme použili Random Trees a AdaBoost. 
+Tato metoda strojového učení „kombinuje předpovědi několika základních odhadovačů“ ke zlepšení kvality modelu. V našem příkladu jsme použili Random Trees a AdaBoost.
 
-- [Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#forest), metoda průměrování, vytváří „les“ „rozhodovacích stromů“ naplněných náhodností, aby se zabránilo přeučení. Parametr n_estimators je nastaven na počet stromů.
+- [Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#forest), metoda průměrování, vytváří „les“ rozhodovacích stromů obohacených náhodností, aby se předešlo přetrénování. Parametr n_estimators je nastaven na počet stromů.
 
-- [AdaBoost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) přizpůsobí klasifikátor datasetu a poté přizpůsobí kopie tohoto klasifikátoru stejnému datasetu. Zaměřuje se na váhy nesprávně klasifikovaných položek a upravuje fit pro další klasifikátor, aby provedl opravu.
+- [AdaBoost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) učí klasifikátor na datové sadě a potom učí jeho kopie na téže datové sadě. Zaměřuje se na váhy nesprávně klasifikovaných položek a upravuje přizpůsobení pro další klasifikátor, aby chyby korigoval.
 
 ---
 
-## 🚀Výzva
+## 🚀 Výzva
 
-Každá z těchto technik má velké množství parametrů, které můžete upravit. Prozkoumejte výchozí parametry každé z nich a přemýšlejte o tom, co by znamenalo upravení těchto parametrů pro kvalitu modelu.
+Každá z těchto technik má mnoho parametrů, které můžete ladit. Prozkoumejte výchozí parametry každé a zamyslete se, co by změna těchto parametrů znamenala pro kvalitu modelu.
 
-## [Kvíz po přednášce](https://ff-quizzes.netlify.app/en/ml/)
+## [Po přednáškový kvíz](https://ff-quizzes.netlify.app/en/ml/)
 
-## Přehled & Samostudium
+## Přehled a samostudium
 
-V těchto lekcích je hodně odborných termínů, takže si udělejte chvíli na přehled [tohoto seznamu](https://docs.microsoft.com/dotnet/machine-learning/resources/glossary?WT.mc_id=academic-77952-leestott) užitečné terminologie!
+V těchto lekcích je hodně odborných výrazů, takže si udělejte chvíli na zopakování [tohoto seznamu](https://docs.microsoft.com/dotnet/machine-learning/resources/glossary?WT.mc_id=academic-77952-leestott) užitečné terminologie!
 
-## Zadání 
+## Zadání
 
 [Hra s parametry](assignment.md)
 
 ---
 
-**Prohlášení**:  
-Tento dokument byl přeložen pomocí služby pro automatický překlad [Co-op Translator](https://github.com/Azure/co-op-translator). Ačkoli se snažíme o přesnost, mějte prosím na paměti, že automatické překlady mohou obsahovat chyby nebo nepřesnosti. Původní dokument v jeho původním jazyce by měl být považován za autoritativní zdroj. Pro důležité informace se doporučuje profesionální lidský překlad. Neodpovídáme za žádná nedorozumění nebo nesprávné interpretace vyplývající z použití tohoto překladu.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Upozornění**:  
+Tento dokument byl přeložen pomocí služby automatického překladu [Co-op Translator](https://github.com/Azure/co-op-translator). Přestože usilujeme o přesnost, mějte prosím na paměti, že automatické překlady mohou obsahovat chyby nebo nepřesnosti. Originální dokument v původním jazyce by měl být považován za závazný zdroj. Pro zásadní informace se doporučuje profesionální lidský překlad. Nejsme odpovědni za jakékoliv nedorozumění nebo mylné výklady vzniklé používáním tohoto překladu.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->
