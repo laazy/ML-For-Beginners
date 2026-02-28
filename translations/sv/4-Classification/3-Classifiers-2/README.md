@@ -1,42 +1,42 @@
-# Klassificerare för matlagning 2
+# Kökklassificerare 2
 
-I den här andra lektionen om klassificering kommer du att utforska fler sätt att klassificera numerisk data. Du kommer också att lära dig om konsekvenserna av att välja en klassificerare framför en annan.
+I denna andra klassificeringslektion kommer du att utforska fler sätt att klassificera numeriska data. Du kommer också att lära dig om konsekvenserna av att välja en klassificerare över en annan.
 
-## [Förtest-quiz](https://ff-quizzes.netlify.app/en/ml/)
+## [Förföreläsningsquiz](https://ff-quizzes.netlify.app/en/ml/)
 
 ### Förkunskaper
 
-Vi antar att du har slutfört de tidigare lektionerna och har en städad dataset i din `data`-mapp som heter _cleaned_cuisines.csv_ i roten av denna 4-lektionsmapp.
+Vi antar att du har slutfört de tidigare lektionerna och har en rensad dataset i din `data`-mapp som heter _cleaned_cuisines.csv_ i roten av denna 4-lektionsmapp.
 
 ### Förberedelse
 
-Vi har laddat din _notebook.ipynb_-fil med den städade datasetet och har delat upp den i X- och y-dataframes, redo för modellbyggnadsprocessen.
+Vi har laddat din _notebook.ipynb_-fil med den rensade datasetet och har delat upp den i X- och y-dataframes, redo för modellbyggnadsprocessen.
 
 ## En klassificeringskarta
 
-Tidigare lärde du dig om de olika alternativen du har när du klassificerar data med hjälp av Microsofts fusklapp. Scikit-learn erbjuder en liknande, men mer detaljerad fusklapp som kan hjälpa dig att ytterligare begränsa dina estimatorer (en annan term för klassificerare):
+Tidigare lärde du dig om de olika alternativen du har när du klassificerar data med hjälp av Microsofts fusklapp. Scikit-learn erbjuder en liknande, men mer detaljerad fusklapp som kan hjälpa dig att ytterligare begränsa dina estimatorer (ett annat ord för klassificerare):
 
-![ML-karta från Scikit-learn](../../../../4-Classification/3-Classifiers-2/images/map.png)
-> Tips: [besök denna karta online](https://scikit-learn.org/stable/tutorial/machine_learning_map/) och klicka längs vägen för att läsa dokumentationen.
+![ML Map from Scikit-learn](../../../../translated_images/sv/map.e963a6a51349425a.webp)
+> Tips: [besök denna karta online](https://scikit-learn.org/stable/tutorial/machine_learning_map/) och klicka längs vägen för att läsa dokumentation.
 
 ### Planen
 
-Den här kartan är mycket användbar när du har en tydlig förståelse för din data, eftersom du kan "vandra" längs dess vägar till ett beslut:
+Denna karta är mycket hjälpsam när du har en klar förståelse för dina data, då du kan 'gå' längs dess vägar till ett beslut:
 
 - Vi har >50 prover
 - Vi vill förutsäga en kategori
-- Vi har märkt data
+- Vi har märkta data
 - Vi har färre än 100K prover
 - ✨ Vi kan välja en Linear SVC
-- Om det inte fungerar, eftersom vi har numerisk data
+- Om det inte fungerar, eftersom vi har numeriska data
     - Kan vi prova en ✨ KNeighbors Classifier 
       - Om det inte fungerar, prova ✨ SVC och ✨ Ensemble Classifiers
 
-Detta är en mycket användbar väg att följa.
+Detta är en mycket hjälpsam väg att följa.
 
 ## Övning - dela upp datan
 
-Följande denna väg bör vi börja med att importera några bibliotek att använda.
+Följande väg bör vi börja med att importera några bibliotek att använda.
 
 1. Importera de nödvändiga biblioteken:
 
@@ -53,22 +53,22 @@ Följande denna väg bör vi börja med att importera några bibliotek att anvä
 1. Dela upp din tränings- och testdata:
 
     ```python
-    X_train, X_test, y_train, y_test = train_test_split(cuisines_feature_df, cuisines_label_df, test_size=0.3)
+    X_train, X_test, y_train, y_test = train_test_split(cuisines_features_df, cuisines_label_df, test_size=0.3)
     ```
 
 ## Linear SVC-klassificerare
 
-Support-Vector Clustering (SVC) är en del av Support-Vector Machines-familjen av ML-tekniker (lär dig mer om dessa nedan). I denna metod kan du välja en 'kernel' för att bestämma hur etiketterna ska klustras. Parametern 'C' hänvisar till 'regularisering' som reglerar påverkan av parametrar. Kerneln kan vara en av [flera](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC); här ställer vi in den på 'linear' för att säkerställa att vi använder Linear SVC. Sannolikhet är som standard inställd på 'false'; här ställer vi in den på 'true' för att samla sannolikhetsuppskattningar. Vi ställer in random state på '0' för att blanda datan och få sannolikheter.
+Support-Vector clustering (SVC) är ett barn till Support-Vector machines-familjen av ML-tekniker (läs mer om dessa nedan). I denna metod kan du välja en 'kernel' för att bestämma hur etiketterna ska grupperas. Parametern 'C' avser 'reguljärisering' som reglerar parametrarnas inflytande. Kerneln kan vara en av [flera](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC); här sätter vi den till 'linear' för att säkerställa att vi utnyttjar linear SVC. Probability är standard satt till 'false'; här sätter vi den till 'true' för att samla sannolikhetsuppskattningar. Vi sätter random state till '0' för att slumpa om datan för att få sannolikheter.
 
-### Övning - tillämpa en Linear SVC
+### Övning - applicera en linear SVC
 
-Börja med att skapa en array av klassificerare. Du kommer att lägga till successivt i denna array när vi testar. 
+Börja med att skapa en array med klassificerare. Du kommer att lägga till successivt till denna array när vi testar.
 
 1. Börja med en Linear SVC:
 
     ```python
     C = 10
-    # Create different classifiers.
+    # Skapa olika klassificerare.
     classifiers = {
         'Linear SVC': SVC(kernel='linear', C=C, probability=True,random_state=0)
     }
@@ -109,11 +109,11 @@ Börja med att skapa en array av klassificerare. Du kommer att lägga till succe
 
 K-Neighbors är en del av "neighbors"-familjen av ML-metoder, som kan användas för både övervakad och oövervakad inlärning. I denna metod skapas ett fördefinierat antal punkter och data samlas runt dessa punkter så att generaliserade etiketter kan förutsägas för datan.
 
-### Övning - tillämpa K-Neighbors-klassificeraren
+### Övning - applicera K-Neighbors-klassificeraren
 
 Den tidigare klassificeraren var bra och fungerade väl med datan, men kanske kan vi få bättre noggrannhet. Prova en K-Neighbors-klassificerare.
 
-1. Lägg till en rad i din klassificerar-array (lägg till ett kommatecken efter Linear SVC-posten):
+1. Lägg till en rad i din klassificerar-array (lägg till ett kommatecken efter Linear SVC-elementet):
 
     ```python
     'KNN classifier': KNeighborsClassifier(C),
@@ -136,23 +136,23 @@ Den tidigare klassificeraren var bra och fungerade väl med datan, men kanske ka
     weighted avg       0.76      0.74      0.74      1199
     ```
 
-    ✅ Läs mer om [K-Neighbors](https://scikit-learn.org/stable/modules/neighbors.html#neighbors)
+    ✅ Läs om [K-Neighbors](https://scikit-learn.org/stable/modules/neighbors.html#neighbors)
 
 ## Support Vector Classifier
 
-Support-Vector-klassificerare är en del av [Support-Vector Machine](https://wikipedia.org/wiki/Support-vector_machine)-familjen av ML-metoder som används för klassificerings- och regressionsuppgifter. SVMs "kartlägger träningsprover till punkter i rymden" för att maximera avståndet mellan två kategorier. Efterföljande data kartläggs in i detta utrymme så att deras kategori kan förutsägas.
+Support-Vector-klassificerare är en del av [Support-Vector Machine](https://wikipedia.org/wiki/Support-vector_machine)-familjen av ML-metoder som används för klassificerings- och regressionsuppgifter. SVM "kartlägger träningsdata till punkter i rymden" för att maximera avståndet mellan två kategorier. Efterföljande data kartläggs in i denna rymd så att deras kategori kan förutsägas.
 
-### Övning - tillämpa en Support Vector Classifier
+### Övning - applicera en Support Vector Classifier
 
 Låt oss försöka få lite bättre noggrannhet med en Support Vector Classifier.
 
-1. Lägg till ett kommatecken efter K-Neighbors-posten och lägg sedan till denna rad:
+1. Lägg till ett kommatecken efter K-Neighbors-elementet, och sedan lägg till denna rad:
 
     ```python
     'SVC': SVC(),
     ```
 
-    Resultatet är riktigt bra!
+    Resultatet är ganska bra!
 
     ```output
     Accuracy (train) for SVC: 83.2% 
@@ -169,11 +169,11 @@ Låt oss försöka få lite bättre noggrannhet med en Support Vector Classifier
     weighted avg       0.84      0.83      0.83      1199
     ```
 
-    ✅ Läs mer om [Support-Vectors](https://scikit-learn.org/stable/modules/svm.html#svm)
+    ✅ Läs om [Support-Vectors](https://scikit-learn.org/stable/modules/svm.html#svm)
 
 ## Ensemble-klassificerare
 
-Låt oss följa vägen till slutet, även om det föregående testet var riktigt bra. Låt oss prova några 'Ensemble Classifiers', specifikt Random Forest och AdaBoost:
+Låt oss följa vägen hela vägen till slutet, även om det tidigare testet var ganska bra. Låt oss prova några 'Ensemble Classifiers', specifikt Random Forest och AdaBoost:
 
 ```python
   'RFST': RandomForestClassifier(n_estimators=100),
@@ -210,11 +210,11 @@ Accuracy (train) for ADA: 72.4%
 weighted avg       0.73      0.72      0.72      1199
 ```
 
-✅ Läs mer om [Ensemble Classifiers](https://scikit-learn.org/stable/modules/ensemble.html)
+✅ Läs om [Ensemble Classifiers](https://scikit-learn.org/stable/modules/ensemble.html)
 
-Denna metod för maskininlärning "kombinerar förutsägelser från flera basestimatorer" för att förbättra modellens kvalitet. I vårt exempel använde vi Random Trees och AdaBoost. 
+Denna metod inom Maskininlärning "kombinerar förutsägelser från flera basestimatorer" för att förbättra modellens kvalitet. I vårt exempel använde vi Random Trees och AdaBoost. 
 
-- [Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#forest), en genomsnittsmetod, bygger en 'skog' av 'beslutsträd' med inslag av slumpmässighet för att undvika överanpassning. Parametern n_estimators är inställd på antalet träd.
+- [Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#forest), en genomsnittlig metod, bygger en 'skog' av 'besluts-träd' infunderade med slumpmässighet för att undvika överanpassning. Parametern n_estimators är satt till antalet träd.
 
 - [AdaBoost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) anpassar en klassificerare till en dataset och anpassar sedan kopior av den klassificeraren till samma dataset. Den fokuserar på vikterna av felklassificerade objekt och justerar anpassningen för nästa klassificerare för att korrigera.
 
@@ -224,11 +224,11 @@ Denna metod för maskininlärning "kombinerar förutsägelser från flera basest
 
 Var och en av dessa tekniker har ett stort antal parametrar som du kan justera. Undersök standardparametrarna för var och en och fundera på vad justering av dessa parametrar skulle innebära för modellens kvalitet.
 
-## [Eftertest-quiz](https://ff-quizzes.netlify.app/en/ml/)
+## [Post-lecture quiz](https://ff-quizzes.netlify.app/en/ml/)
 
 ## Granskning & Självstudier
 
-Det finns mycket fackspråk i dessa lektioner, så ta en minut att granska [denna lista](https://docs.microsoft.com/dotnet/machine-learning/resources/glossary?WT.mc_id=academic-77952-leestott) med användbar terminologi!
+Det finns mycket fackspråk i dessa lektioner, så ta en minut att gå igenom [denna lista](https://docs.microsoft.com/dotnet/machine-learning/resources/glossary?WT.mc_id=academic-77952-leestott) med användbar terminologi!
 
 ## Uppgift 
 
@@ -236,5 +236,7 @@ Det finns mycket fackspråk i dessa lektioner, så ta en minut att granska [denn
 
 ---
 
-**Ansvarsfriskrivning**:  
-Detta dokument har översatts med hjälp av AI-översättningstjänsten [Co-op Translator](https://github.com/Azure/co-op-translator). Även om vi strävar efter noggrannhet, bör det noteras att automatiserade översättningar kan innehålla fel eller brister. Det ursprungliga dokumentet på dess originalspråk bör betraktas som den auktoritativa källan. För kritisk information rekommenderas professionell mänsklig översättning. Vi ansvarar inte för eventuella missförstånd eller feltolkningar som uppstår vid användning av denna översättning.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Ansvarsfriskrivning**:
+Detta dokument har översatts med hjälp av AI-översättningstjänsten [Co-op Translator](https://github.com/Azure/co-op-translator). Även om vi strävar efter noggrannhet, vänligen var medveten om att automatiska översättningar kan innehålla fel eller brister. Det ursprungliga dokumentet på dess modersmål bör betraktas som den auktoritativa källan. För kritisk information rekommenderas professionell mänsklig översättning. Vi ansvarar inte för några missförstånd eller feltolkningar som uppstår från användningen av denna översättning.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->
