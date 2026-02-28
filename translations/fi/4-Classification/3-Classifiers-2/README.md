@@ -1,42 +1,42 @@
-# Ruokakulttuuriluokittelijat 2
+# Cuisine classifiers 2
 
-Tässä toisessa luokittelutunnissa tutustut tarkemmin tapoihin luokitella numeerista dataa. Opit myös, mitä seurauksia on sillä, että valitset yhden luokittelijan toisen sijaan.
+Tässä toisessa luokittelutunnissa tutustut lisää tapoihin luokitella numeerista dataa. Opit myös, mitä seurauksia yhden luokittimen valinnalla on toisen sijaan.
 
-## [Esiluennon kysely](https://ff-quizzes.netlify.app/en/ml/)
+## [Esiluentokoe](https://ff-quizzes.netlify.app/en/ml/)
 
-### Esitiedot
+### Ennakkoedellytys
 
-Oletamme, että olet suorittanut aiemmat oppitunnit ja sinulla on puhdistettu datasetti `data`-kansiossasi nimeltä _cleaned_cuisines.csv_, joka sijaitsee tämän neljän oppitunnin kansion juurihakemistossa.
+Oletetaan, että olet suorittanut edelliset oppitunnit ja sinulla on siivottu aineisto kansiossasi nimeltä _cleaned_cuisines.csv_ tämän neljän oppitunnin kansion juurikansiossa.
 
 ### Valmistelut
 
-Olemme ladanneet _notebook.ipynb_-tiedostosi puhdistetulla datasetillä ja jakaneet sen X- ja y-datafreimeihin, jotka ovat valmiita mallin rakennusprosessia varten.
+Olemme ladanneet _notebook.ipynb_-tiedostosi siivotun aineiston kanssa ja jakaneet sen X- ja y-datafreimeiksi, valmiina mallin rakentamisprosessiin.
 
 ## Luokittelukartta
 
-Aiemmin opit eri vaihtoehdoista datan luokitteluun Microsoftin huijauslistan avulla. Scikit-learn tarjoaa vastaavan, mutta tarkemman huijauslistan, joka voi auttaa kaventamaan valintaa luokittelijoiden (toinen termi estimointimenetelmille) välillä:
+Aiemmin opit Microsoftin kikan avulla eri vaihtoehdoista datan luokittelussa. Scikit-learn tarjoaa samanlaisen mutta tarkemman kikan, joka voi auttaa kaventamaan arvioijiasi (toinen nimi luokittimille):
 
-![ML-kartta Scikit-learnista](../../../../4-Classification/3-Classifiers-2/images/map.png)
-> Vinkki: [vieraile kartassa verkossa](https://scikit-learn.org/stable/tutorial/machine_learning_map/) ja klikkaa polkuja lukeaksesi dokumentaatiota.
+![ML Map from Scikit-learn](../../../../translated_images/fi/map.e963a6a51349425a.webp)
+> Vinkki: [vieraile tällä kartalla verkossa](https://scikit-learn.org/stable/tutorial/machine_learning_map/) ja klikkaa polkua lukeaksesi dokumentaatiota.
 
 ### Suunnitelma
 
-Tämä kartta on erittäin hyödyllinen, kun ymmärrät datasi hyvin, sillä voit "kulkea" sen polkuja pitkin päätökseen:
+Tämä kartta on hyvin hyödyllinen, kun ymmärrät datasi selkeästi, sillä voit ’kävellä’ sen polkuja päätökseen:
 
-- Meillä on >50 näytettä
+- Meillä on yli 50 näytettä
 - Haluamme ennustaa kategorian
-- Meillä on merkitty data
-- Meillä on alle 100K näytettä
+- Meillä on merkittyä dataa
+- Näytteitä on alle 100 000
 - ✨ Voimme valita Linear SVC:n
 - Jos se ei toimi, koska meillä on numeerista dataa
-    - Voimme kokeilla ✨ KNeighbors-luokittelijaa 
-      - Jos se ei toimi, kokeile ✨ SVC:tä ja ✨ Ensemble-luokittelijoita
+    - Voimme kokeilla ✨ KNeighbors-luokitinta
+      - Jos sekään ei toimi, kokeile ✨ SVC:tä ja ✨ yhdistelmäluokittimia
 
-Tämä on erittäin hyödyllinen polku seurattavaksi.
+Tämä on hyvin hyödyllinen polku seurata.
 
 ## Harjoitus - jaa data
 
-Seuraamalla tätä polkua meidän tulisi aloittaa tarvittavien kirjastojen tuonnilla.
+Seuraamalla tätä polkua, aloitamme tuomalla käyttöön tarvittavat kirjastot.
 
 1. Tuo tarvittavat kirjastot:
 
@@ -50,31 +50,31 @@ Seuraamalla tätä polkua meidän tulisi aloittaa tarvittavien kirjastojen tuonn
     import numpy as np
     ```
 
-1. Jaa koulutus- ja testidatasi:
+1. Jaa harjoitus- ja testidata:
 
     ```python
-    X_train, X_test, y_train, y_test = train_test_split(cuisines_feature_df, cuisines_label_df, test_size=0.3)
+    X_train, X_test, y_train, y_test = train_test_split(cuisines_features_df, cuisines_label_df, test_size=0.3)
     ```
 
-## Linear SVC -luokittelija
+## Linear SVC luokitin
 
-Support-Vector Clustering (SVC) kuuluu Support-Vector Machines -perheeseen ML-tekniikoissa (lisätietoja alla). Tässä menetelmässä voit valita "kernelin" päättääksesi, miten etiketit ryhmitellään. 'C'-parametri viittaa 'regularisointiin', joka säätelee parametrien vaikutusta. Kernel voi olla yksi [useista](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC); tässä asetamme sen 'lineaariseksi' varmistaaksemme, että hyödynnämme lineaarista SVC:tä. Todennäköisyys oletuksena on 'false'; tässä asetamme sen 'true' saadaksemme todennäköisyysarvioita. Asetamme satunnaistilan '0':ksi sekoittaaksemme datan todennäköisyyksien saamiseksi.
+Support-Vector clustering (SVC) kuuluu Support-Vector machines -menetelmien perheeseen (lue lisää niistä alla). Tässä menetelmässä voit valita ’ytimen’, joka päättää, miten tunnisteet ryhmitellään. ’C’-parametri viittaa ’regulointiin’, joka säätelee parametrien vaikutusta. Ydin voi olla yksi [useista](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC); tässä asetamme sen ’lineaariseksi’ varmistaaksemme lineaarisen SVC:n käytön. Todennäköisyysasetuksena on oletuksena ’false’; tässä asetamme sen ’true’ saadaksemme todennäköisyyksiä. Asetamme satunnaistilan ’0’:ksi, jotta data sekoittuu todennäköisyyksien saadessa.
 
 ### Harjoitus - käytä lineaarista SVC:tä
 
-Aloita luomalla luokittelijoiden taulukko. Lisäät tähän taulukkoon asteittain, kun testaamme.
+Aloita luomalla taulukko luokittimista. Lisäät taulukkoon vähitellen testatessasi.
 
-1. Aloita lineaarisella SVC:llä:
+1. Aloita Linear SVC:llä:
 
     ```python
     C = 10
-    # Create different classifiers.
+    # Luo erilaisia luokittelijoita.
     classifiers = {
         'Linear SVC': SVC(kernel='linear', C=C, probability=True,random_state=0)
     }
     ```
 
-2. Kouluta mallisi käyttäen lineaarista SVC:tä ja tulosta raportti:
+2. Kouluta mallisi käyttäen Linear SVC:tä ja tulosta raportti:
 
     ```python
     n_classifiers = len(classifiers)
@@ -88,7 +88,7 @@ Aloita luomalla luokittelijoiden taulukko. Lisäät tähän taulukkoon asteittai
         print(classification_report(y_test,y_pred))
     ```
 
-    Tulokset ovat melko hyviä:
+    Tulokset ovat varsin hyvät:
 
     ```output
     Accuracy (train) for Linear SVC: 78.6% 
@@ -105,21 +105,21 @@ Aloita luomalla luokittelijoiden taulukko. Lisäät tähän taulukkoon asteittai
     weighted avg       0.79      0.79      0.79      1199
     ```
 
-## K-Neighbors -luokittelija
+## K-Neighbors luokitin
 
-K-Neighbors kuuluu ML-menetelmien "naapurit"-perheeseen, jota voidaan käyttää sekä valvottuun että valvomattomaan oppimiseen. Tässä menetelmässä määritellään ennalta määrätty määrä pisteitä, ja data kerätään näiden pisteiden ympärille siten, että yleistetyt etiketit voidaan ennustaa datalle.
+K-Neighbors kuuluu ”naapuri”-menetelmien koneoppimisperheeseen, jota voidaan käyttää valvottuun ja valvomattomaan oppimiseen. Tässä menetelmässä luodaan ennalta määritelty määrä pisteitä, joihin data kerätään niin, että datan yleistäminen ja tunnisteiden ennustaminen onnistuu.
 
-### Harjoitus - käytä K-Neighbors -luokittelijaa
+### Harjoitus - käytä K-Neighbors luokitinta
 
-Edellinen luokittelija oli hyvä ja toimi hyvin datan kanssa, mutta ehkä voimme saada paremman tarkkuuden. Kokeile K-Neighbors -luokittelijaa.
+Edellinen luokitin toimi hyvin aineistolla, mutta ehkä voimme saada paremman tarkkuuden. Kokeile K-Neighbors-luokitinta.
 
-1. Lisää rivi luokittelijataulukkoon (lisää pilkku Linear SVC -kohdan jälkeen):
+1. Lisää rivi luokittimien taulukkoon (lisää pilkku Linear SVC:n jälkeen):
 
     ```python
     'KNN classifier': KNeighborsClassifier(C),
     ```
 
-    Tulokset ovat hieman huonommat:
+    Tulokset ovat hieman heikommat:
 
     ```output
     Accuracy (train) for KNN classifier: 73.8% 
@@ -138,21 +138,21 @@ Edellinen luokittelija oli hyvä ja toimi hyvin datan kanssa, mutta ehkä voimme
 
     ✅ Lue lisää [K-Neighborsista](https://scikit-learn.org/stable/modules/neighbors.html#neighbors)
 
-## Support Vector -luokittelija
+## Support Vector Classifier
 
-Support-Vector -luokittelijat kuuluvat [Support-Vector Machine](https://wikipedia.org/wiki/Support-vector_machine) -perheeseen ML-menetelmissä, joita käytetään luokittelu- ja regressiotehtäviin. SVM:t "karttavat koulutusesimerkit pisteiksi avaruudessa" maksimoidakseen etäisyyden kahden kategorian välillä. Seuraava data kartataan tähän avaruuteen, jotta sen kategoria voidaan ennustaa.
+Support-Vector -luokittimet kuuluvat [Support-Vector Machine](https://wikipedia.org/wiki/Support-vector_machine) -menetelmien koneoppimisperheeseen, joita käytetään luokittelu- ja regressiotehtävissä. SVM:t ”karttavat harjoitusesimerkit pisteiksi avaruuteen” maksimoidakseen kahden kategorian eron. Seuraavat datat kartoitetaan tähän avaruuteen, jotta niiden kategoria voidaan ennustaa.
 
-### Harjoitus - käytä Support Vector -luokittelijaa
+### Harjoitus - käytä Support Vector Classifieria
 
-Kokeillaan hieman parempaa tarkkuutta Support Vector -luokittelijalla.
+Yritetään hieman parempaa tarkkuutta Support Vector Classifierilla.
 
-1. Lisää pilkku K-Neighbors -kohdan jälkeen ja lisää tämä rivi:
+1. Lisää pilkku K-Neighborsin jälkeen ja lisää sitten tämä rivi:
 
     ```python
     'SVC': SVC(),
     ```
 
-    Tulokset ovat erittäin hyviä!
+    Tulokset ovat varsin hyvät!
 
     ```output
     Accuracy (train) for SVC: 83.2% 
@@ -169,18 +169,18 @@ Kokeillaan hieman parempaa tarkkuutta Support Vector -luokittelijalla.
     weighted avg       0.84      0.83      0.83      1199
     ```
 
-    ✅ Lue lisää [Support-Vectorsista](https://scikit-learn.org/stable/modules/svm.html#svm)
+    ✅ Lue lisää [Support-Vektoreista](https://scikit-learn.org/stable/modules/svm.html#svm)
 
-## Ensemble-luokittelijat
+## Yhdistelmäluokittimet
 
-Seurataan polkua aivan loppuun asti, vaikka edellinen testi oli erittäin hyvä. Kokeillaan joitakin 'Ensemble-luokittelijoita', erityisesti Random Forestia ja AdaBoostia:
+Seurataan polkua aivan loppuun asti, vaikka edellinen testi oli varsin hyvä. Kokeillaan ’Yhdistelmäluokittimia’, erityisesti Random Forestia ja AdaBoostia:
 
 ```python
   'RFST': RandomForestClassifier(n_estimators=100),
   'ADA': AdaBoostClassifier(n_estimators=100)
 ```
 
-Tulokset ovat erittäin hyviä, erityisesti Random Forestin osalta:
+Tulokset ovat erittäin hyvät, erityisesti Random Forestilla:
 
 ```output
 Accuracy (train) for RFST: 84.5% 
@@ -210,31 +210,33 @@ Accuracy (train) for ADA: 72.4%
 weighted avg       0.73      0.72      0.72      1199
 ```
 
-✅ Lue lisää [Ensemble-luokittelijoista](https://scikit-learn.org/stable/modules/ensemble.html)
+✅ Lue lisää [Yhdistelmäluokittimista](https://scikit-learn.org/stable/modules/ensemble.html)
 
-Tämä koneoppimismenetelmä "yhdistää useiden perusestimointimenetelmien ennusteet" parantaakseen mallin laatua. Esimerkissämme käytimme Random Trees -menetelmää ja AdaBoostia. 
+Tämä koneoppimismenetelmä ”yhdistää usean perusarvioijan ennusteet” parantaakseen mallin laatua. Esimerkissämme käytimme satunnaisia puita ja AdaBoostia. 
 
-- [Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#forest), keskiarvomenetelmä, rakentaa "metsän" "päätöspuista", joihin lisätään satunnaisuutta ylisovituksen välttämiseksi. n_estimators-parametri asetetaan puiden määräksi.
+- [Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#forest), keskiarvomenetelmä, rakentaa ’metsän’ ’päätöspuita’, joita satunnaistetaan ylisovittamisen välttämiseksi. n_estimators-parametri on puiden lukumäärä.
 
-- [AdaBoost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) sovittaa luokittelijan datasettiin ja sovittaa kopioita tästä luokittelijasta samaan datasettiin. Se keskittyy väärin luokiteltujen kohteiden painoihin ja säätää seuraavan luokittelijan sovitusta korjatakseen.
+- [AdaBoost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) sovittaa luokittimen aineistoon ja sovittaa sitten kopioita tästä luokittimesta samaan aineistoon. Se keskittyy virheellisesti luokiteltujen kohteiden painoihin ja säätää seuraavan luokittimen sovitusta korjatakseen ne.
 
 ---
 
 ## 🚀Haaste
 
-Jokaisella näistä tekniikoista on suuri määrä parametreja, joita voit säätää. Tutki kunkin oletusparametreja ja mieti, mitä näiden parametrien säätäminen tarkoittaisi mallin laadulle.
+Jokaisella näistä menetelmistä on suuri määrä parametreja, joita voit säätää. Tutki kunkin oletusparametreja ja mieti, mitä niiden muuttaminen merkitsisi mallin laadulle.
 
-## [Jälkiluennon kysely](https://ff-quizzes.netlify.app/en/ml/)
+## [Jälkiluennon koe](https://ff-quizzes.netlify.app/en/ml/)
 
-## Kertaus ja itseopiskelu
+## Kertaus & Itsenäinen opiskelu
 
-Näissä oppitunneissa on paljon ammattikieltä, joten ota hetki aikaa tarkastellaksesi [tätä listaa](https://docs.microsoft.com/dotnet/machine-learning/resources/glossary?WT.mc_id=academic-77952-leestott) hyödyllisistä termeistä!
+Näissä oppitunneissa on paljon ammattisanastoa, joten ota hetki ja kertaile [tätä listaa](https://docs.microsoft.com/dotnet/machine-learning/resources/glossary?WT.mc_id=academic-77952-leestott) hyödyllisistä termeistä!
 
 ## Tehtävä 
 
-[Parametrien säätö](assignment.md)
+[Parametrileikki](assignment.md)
 
 ---
 
-**Vastuuvapauslauseke**:  
-Tämä asiakirja on käännetty käyttämällä tekoälypohjaista käännöspalvelua [Co-op Translator](https://github.com/Azure/co-op-translator). Vaikka pyrimme tarkkuuteen, huomioithan, että automaattiset käännökset voivat sisältää virheitä tai epätarkkuuksia. Alkuperäinen asiakirja sen alkuperäisellä kielellä tulisi pitää ensisijaisena lähteenä. Kriittisen tiedon osalta suositellaan ammattimaista ihmiskäännöstä. Emme ole vastuussa väärinkäsityksistä tai virhetulkinnoista, jotka johtuvat tämän käännöksen käytöstä.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Vastuuvapauslauseke**:
+Tämä asiakirja on käännetty käyttämällä tekoälypohjaista käännöspalvelua [Co-op Translator](https://github.com/Azure/co-op-translator). Vaikka pyrimme tarkkuuteen, automaattiset käännökset saattavat sisältää virheitä tai epätarkkuuksia. Alkuperäinen asiakirja sen alkuperäiskielellä tulee pitää virallisena lähteenä. Tärkeissä asioissa suositellaan ammattimaista ihmiskäännöstä. Emme ole vastuussa tämän käännöksen käytöstä johtuvista väärinymmärryksistä tai virhetulkinnoista.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

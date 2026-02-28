@@ -1,23 +1,23 @@
-# Klassifikatorer for køkken 2
+# Cuisine classifiers 2
 
-I denne anden lektion om klassifikation vil du udforske flere måder at klassificere numeriske data på. Du vil også lære om konsekvenserne ved at vælge én klassifikator frem for en anden.
+I denne anden klassificeringslektion vil du udforske flere måder at klassificere numeriske data på. Du vil også lære om konsekvenserne ved at vælge den ene klassifikator frem for den anden.
 
-## [Quiz før lektionen](https://ff-quizzes.netlify.app/en/ml/)
+## [For-forelæsning quiz](https://ff-quizzes.netlify.app/en/ml/)
 
-### Forudsætninger
+### Forudsætning
 
-Vi antager, at du har gennemført de tidligere lektioner og har et renset datasæt i din `data`-mappe kaldet _cleaned_cuisines.csv_ i roden af denne 4-lektionsmappe.
+Vi antager, at du har gennemført de tidligere lektioner og har et renset datasæt i din `data`-mappe kaldet _cleaned_cuisines.csv_ i roden af denne 4-lektions mappe.
 
 ### Forberedelse
 
-Vi har indlæst din _notebook.ipynb_-fil med det rensede datasæt og har opdelt det i X- og y-dataframes, klar til modelbygning.
+Vi har indlæst din _notebook.ipynb_-fil med det rensede datasæt og delt det op i X og y dataframes, klar til modelbyggerprocessen.
 
-## Et klassifikationskort
+## Et klassificeringskort
 
-Tidligere lærte du om de forskellige muligheder, du har, når du klassificerer data ved hjælp af Microsofts snydeark. Scikit-learn tilbyder et lignende, men mere detaljeret snydeark, der kan hjælpe dig med yderligere at indsnævre dine estimators (et andet ord for klassifikatorer):
+Tidligere lærte du om de forskellige muligheder, du har ved klassificering af data ved hjælp af Microsofts snydeark. Scikit-learn tilbyder et lignende, men mere detaljeret snydeark, der yderligere kan hjælpe med at indsnævre dine estimeringsmetoder (et andet ord for klassifikatorer):
 
-![ML Map fra Scikit-learn](../../../../4-Classification/3-Classifiers-2/images/map.png)
-> Tip: [besøg dette kort online](https://scikit-learn.org/stable/tutorial/machine_learning_map/) og klik dig igennem for at læse dokumentationen.
+![ML Map from Scikit-learn](../../../../translated_images/da/map.e963a6a51349425a.webp)
+> Tip: [besøg dette kort online](https://scikit-learn.org/stable/tutorial/machine_learning_map/) og klik dig igennem stien for at læse dokumentationen.
 
 ### Planen
 
@@ -25,18 +25,18 @@ Dette kort er meget nyttigt, når du har et klart overblik over dine data, da du
 
 - Vi har >50 prøver
 - Vi ønsker at forudsige en kategori
-- Vi har mærkede data
+- Vi har mærket data
 - Vi har færre end 100K prøver
 - ✨ Vi kan vælge en Linear SVC
 - Hvis det ikke virker, da vi har numeriske data
-    - Vi kan prøve en ✨ KNeighbors Classifier 
-      - Hvis det ikke virker, prøv ✨ SVC og ✨ Ensemble Classifiers
+    - Kan vi prøve en ✨ KNeighbors Classifier 
+      - Hvis det stadig ikke virker, prøv ✨ SVC og ✨ Ensemble Classifiers
 
-Dette er en meget nyttig vej at følge.
+Dette er en meget nyttig rute at følge.
 
-## Øvelse - opdel dataene
+## Øvelse - del dataene
 
-Følg denne vej, og start med at importere nogle biblioteker, der skal bruges.
+Følgende denne sti bør vi starte med at importere nogle biblioteker til brug.
 
 1. Importér de nødvendige biblioteker:
 
@@ -50,17 +50,17 @@ Følg denne vej, og start med at importere nogle biblioteker, der skal bruges.
     import numpy as np
     ```
 
-1. Opdel dine trænings- og testdata:
+1. Del dine trænings- og testdata:
 
     ```python
-    X_train, X_test, y_train, y_test = train_test_split(cuisines_feature_df, cuisines_label_df, test_size=0.3)
+    X_train, X_test, y_train, y_test = train_test_split(cuisines_features_df, cuisines_label_df, test_size=0.3)
     ```
 
-## Linear SVC klassifikator
+## Linear SVC-klassifikator
 
-Support-Vector clustering (SVC) er en del af Support-Vector-maskinerne inden for ML-teknikker (læs mere om disse nedenfor). I denne metode kan du vælge en 'kernel' for at beslutte, hvordan mærkerne skal grupperes. Parameteren 'C' refererer til 'regularization', som regulerer parametrenes indflydelse. Kernelen kan være en af [flere](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC); her sætter vi den til 'linear' for at sikre, at vi udnytter Linear SVC. Sandsynlighed er som standard 'false'; her sætter vi den til 'true' for at indsamle sandsynlighedsvurderinger. Vi sætter den tilfældige tilstand til '0' for at blande dataene og få sandsynligheder.
+Support-Vector clustering (SVC) er en del af Support-Vector maskiner-familien af ML-teknikker (lær mere om disse nedenfor). Med denne metode kan du vælge en ‘kernel’ for at bestemme, hvordan etiketterne skal grupperes. Parameteren ‘C’ refererer til ‘regularisering’, som regulerer parametrenes indflydelse. Kernelen kan være en af [flere](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC); her sætter vi den til ‘linear’ for at sikre, at vi udnytter linear SVC. Probability er som standard sat til ‘false’; her sætter vi den til ‘true’ for at indsamle sandsynlighedsskøn. Vi sætter random state til ‘0’ for at blande dataene og få sandsynligheder.
 
-### Øvelse - anvend en Linear SVC
+### Øvelse - anvend en linear SVC
 
 Start med at oprette et array af klassifikatorer. Du vil gradvist tilføje til dette array, mens vi tester.
 
@@ -68,13 +68,13 @@ Start med at oprette et array af klassifikatorer. Du vil gradvist tilføje til d
 
     ```python
     C = 10
-    # Create different classifiers.
+    # Opret forskellige klassifikatorer.
     classifiers = {
         'Linear SVC': SVC(kernel='linear', C=C, probability=True,random_state=0)
     }
     ```
 
-2. Træn din model ved hjælp af Linear SVC og udskriv en rapport:
+2. Træn din model med Linear SVC og udskriv en rapport:
 
     ```python
     n_classifiers = len(classifiers)
@@ -107,19 +107,19 @@ Start med at oprette et array af klassifikatorer. Du vil gradvist tilføje til d
 
 ## K-Neighbors klassifikator
 
-K-Neighbors er en del af "neighbors"-familien af ML-metoder, som kan bruges til både superviseret og usuperviseret læring. I denne metode oprettes et foruddefineret antal punkter, og data samles omkring disse punkter, så generaliserede mærker kan forudsiges for dataene.
+K-Neighbors hører til i "neighbors"-familien af ML-metoder, som kan bruges til både overvåget og ikke-overvåget læring. I denne metode oprettes et foruddefineret antal punkter, og data samles omkring disse punkter, så generaliserede etiketter kan forudsiges for dataene.
 
 ### Øvelse - anvend K-Neighbors klassifikatoren
 
-Den tidligere klassifikator var god og fungerede godt med dataene, men måske kan vi opnå bedre nøjagtighed. Prøv en K-Neighbors klassifikator.
+Den forrige klassifikator var god og fungerede godt med dataene, men måske kan vi få bedre nøjagtighed. Prøv en K-Neighbors klassifikator.
 
-1. Tilføj en linje til dit klassifikator-array (tilføj et komma efter Linear SVC-elementet):
+1. Tilføj en linje til dit klassifikator-array (tilføj et komma efter Linear SVC-objektet):
 
     ```python
     'KNN classifier': KNeighborsClassifier(C),
     ```
 
-    Resultatet er lidt dårligere:
+    Resultatet er en smule dårligere:
 
     ```output
     Accuracy (train) for KNN classifier: 73.8% 
@@ -136,15 +136,15 @@ Den tidligere klassifikator var god og fungerede godt med dataene, men måske ka
     weighted avg       0.76      0.74      0.74      1199
     ```
 
-    ✅ Lær om [K-Neighbors](https://scikit-learn.org/stable/modules/neighbors.html#neighbors)
+    ✅ Læs om [K-Neighbors](https://scikit-learn.org/stable/modules/neighbors.html#neighbors)
 
 ## Support Vector Classifier
 
-Support-Vector klassifikatorer er en del af [Support-Vector Machine](https://wikipedia.org/wiki/Support-vector_machine)-familien af ML-metoder, der bruges til klassifikations- og regressionopgaver. SVM'er "kortlægger træningseksempler til punkter i rummet" for at maksimere afstanden mellem to kategorier. Efterfølgende data kortlægges ind i dette rum, så deres kategori kan forudsiges.
+Support-Vector klassifikatorer er en del af [Support-Vector Machine](https://wikipedia.org/wiki/Support-vector_machine) familien af ML-metoder, der bruges til klassificering og regressionsopgaver. SVM'er "afbilder træningseksempler til punkter i rummet" for at maksimere afstanden mellem to kategorier. Efterfølgende data afbildes i dette rum, så deres kategori kan forudsiges.
 
 ### Øvelse - anvend en Support Vector Classifier
 
-Lad os prøve at opnå lidt bedre nøjagtighed med en Support Vector Classifier.
+Lad os prøve på en lidt bedre nøjagtighed med en Support Vector Classifier.
 
 1. Tilføj et komma efter K-Neighbors-elementet, og tilføj derefter denne linje:
 
@@ -169,11 +169,11 @@ Lad os prøve at opnå lidt bedre nøjagtighed med en Support Vector Classifier.
     weighted avg       0.84      0.83      0.83      1199
     ```
 
-    ✅ Lær om [Support-Vectors](https://scikit-learn.org/stable/modules/svm.html#svm)
+    ✅ Læs om [Support-Vectors](https://scikit-learn.org/stable/modules/svm.html#svm)
 
-## Ensemble Classifiers
+## Ensemble klassifikatorer
 
-Lad os følge stien helt til slutningen, selvom den tidligere test var ret god. Lad os prøve nogle 'Ensemble Classifiers', specifikt Random Forest og AdaBoost:
+Lad os følge stien helt til enden, selvom den tidligere test var ganske god. Lad os prøve nogle 'Ensemble Classifiers', specifikt Random Forest og AdaBoost:
 
 ```python
   'RFST': RandomForestClassifier(n_estimators=100),
@@ -210,31 +210,33 @@ Accuracy (train) for ADA: 72.4%
 weighted avg       0.73      0.72      0.72      1199
 ```
 
-✅ Lær om [Ensemble Classifiers](https://scikit-learn.org/stable/modules/ensemble.html)
+✅ Læs om [Ensemble Classifiers](https://scikit-learn.org/stable/modules/ensemble.html)
 
-Denne metode inden for Machine Learning "kombinerer forudsigelserne fra flere basismodeller" for at forbedre modellens kvalitet. I vores eksempel brugte vi Random Trees og AdaBoost. 
+Denne metode inden for Maskinlæring "kombinerer forudsigelserne fra flere basismetoder" for at forbedre modellens kvalitet. I vores eksempel brugte vi Random Trees og AdaBoost.
 
-- [Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#forest), en gennemsnitsmetode, bygger en 'skov' af 'beslutningstræer' med tilfældighed for at undgå overtilpasning. Parameteren n_estimators er sat til antallet af træer.
+- [Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#forest), en gennemsnitsmetode, bygger en 'skov' af 'beslutningstræer' fyldt med tilfældighed for at undgå overtilpasning. Parameteren n_estimators sættes til antallet af træer.
 
-- [AdaBoost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) tilpasser en klassifikator til et datasæt og tilpasser derefter kopier af den klassifikator til det samme datasæt. Den fokuserer på vægten af forkert klassificerede elementer og justerer tilpasningen for den næste klassifikator for at rette op.
+- [AdaBoost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) tilpasser en klassifikator til et datasæt og tilpasser derefter kopier af den klassifikator til det samme datasæt. Den fokuserer på vægtene af forkert klassificerede elementer og justerer tilpasningen for den næste klassifikator for at rette op.
 
 ---
 
 ## 🚀Udfordring
 
-Hver af disse teknikker har et stort antal parametre, som du kan justere. Undersøg hver enkelt tekniks standardparametre, og overvej, hvad justering af disse parametre ville betyde for modellens kvalitet.
+Hver af disse teknikker har et stort antal parametre, som du kan justere. Undersøg standardparametrene for hver enkelt, og overvej, hvad justering af disse parametre ville betyde for modellens kvalitet.
 
-## [Quiz efter lektionen](https://ff-quizzes.netlify.app/en/ml/)
+## [Efter-forelæsning quiz](https://ff-quizzes.netlify.app/en/ml/)
 
 ## Gennemgang & Selvstudie
 
-Der er mange fagudtryk i disse lektioner, så tag et øjeblik til at gennemgå [denne liste](https://docs.microsoft.com/dotnet/machine-learning/resources/glossary?WT.mc_id=academic-77952-leestott) med nyttig terminologi!
+Der er meget jargon i disse lektioner, så tag et øjeblik til at gennemgå [denne liste](https://docs.microsoft.com/dotnet/machine-learning/resources/glossary?WT.mc_id=academic-77952-leestott) med nyttige termer!
 
-## Opgave 
+## Opgave
 
-[Parameterleg](assignment.md)
+[Parameter leg](assignment.md)
 
 ---
 
-**Ansvarsfraskrivelse**:  
-Dette dokument er blevet oversat ved hjælp af AI-oversættelsestjenesten [Co-op Translator](https://github.com/Azure/co-op-translator). Selvom vi bestræber os på at sikre nøjagtighed, skal det bemærkes, at automatiserede oversættelser kan indeholde fejl eller unøjagtigheder. Det originale dokument på dets oprindelige sprog bør betragtes som den autoritative kilde. For kritisk information anbefales professionel menneskelig oversættelse. Vi påtager os ikke ansvar for eventuelle misforståelser eller fejltolkninger, der opstår som følge af brugen af denne oversættelse.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Ansvarsfraskrivelse**:
+Dette dokument er blevet oversat ved hjælp af AI-oversættelsestjenesten [Co-op Translator](https://github.com/Azure/co-op-translator). Selvom vi bestræber os på nøjagtighed, skal du være opmærksom på, at automatiserede oversættelser kan indeholde fejl eller unøjagtigheder. Det oprindelige dokument på dets oprindelige sprog bør betragtes som den autoritative kilde. For kritisk information anbefales professionel menneskelig oversættelse. Vi påtager os ikke ansvar for misforståelser eller fejltolkninger, der opstår som følge af brugen af denne oversættelse.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->
