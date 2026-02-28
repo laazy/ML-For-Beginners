@@ -1,16 +1,18 @@
-# 探索負責任人工智慧工具箱
+# 探索負責任的 AI 工具箱
 
-## 說明
+## 指示
 
-在本課程中，您學習了負責任人工智慧工具箱，一個「開源、社群驅動的專案，旨在幫助資料科學家分析和改進人工智慧系統」。在這次作業中，請探索 RAI 工具箱的其中一個[筆記本](https://github.com/microsoft/responsible-ai-toolbox/blob/main/notebooks/responsibleaidashboard/getting-started.ipynb)，並在報告或簡報中分享您的發現。
+在本課程中，您學習了負責任的 AI 工具箱，一個「開源且社群驅動的專案，旨在幫助資料科學家分析並改進 AI 系統」。這次作業請您探索 RAI Toolbox 的一個[筆記本](https://github.com/microsoft/responsible-ai-toolbox/blob/main/notebooks/responsibleaidashboard/tabular/getting-started.ipynb)，並在報告或簡報中呈現您的發現。
 
 ## 評分標準
 
-| 評分標準 | 卓越 | 合格 | 需要改進 |
+| 標準 | 優秀 | 足夠 | 需改進 |
 | -------- | --------- | -------- | ----------------- |
-|          | 提交一份報告或簡報，討論 Fairlearn 的系統、執行的筆記本，以及從中得出的結論 | 提交一份報告但未包含結論 | 未提交報告 |
+|          |  提交一份討論 Fairlearn 系統、所執行筆記本及運行結果結論的報告或簡報 |   提交一份沒有結論的報告       |  未提交報告                 |
 
 ---
 
-**免責聲明**：  
-本文件已使用 AI 翻譯服務 [Co-op Translator](https://github.com/Azure/co-op-translator) 進行翻譯。儘管我們致力於提供準確的翻譯，請注意自動翻譯可能包含錯誤或不準確之處。原始文件的母語版本應被視為權威來源。對於關鍵資訊，建議使用專業人工翻譯。我們對因使用此翻譯而引起的任何誤解或錯誤解釋不承擔責任。
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**免責聲明**：
+本文件係使用 AI 翻譯服務 [Co-op Translator](https://github.com/Azure/co-op-translator) 進行翻譯。雖然我們力求準確，但請注意自動翻譯結果可能包含錯誤或不準確之處。原始語言文件應視為權威來源。對於重要資訊，建議聘請專業人工翻譯。我們不對使用本翻譯所產生的任何誤解或誤釋負責。
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

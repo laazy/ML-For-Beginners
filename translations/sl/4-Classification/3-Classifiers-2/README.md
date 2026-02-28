@@ -1,44 +1,44 @@
-# Razvrščevalniki kuhinj 2
+# Razvrščevalci kuhinj 2
 
-V tej drugi lekciji o razvrščanju boste raziskali več načinov za razvrščanje numeričnih podatkov. Prav tako boste spoznali posledice izbire enega razvrščevalnika namesto drugega.
+V tej drugi lekciji o razvrščanju boste raziskali več načinov razvrščanja številskih podatkov. Naučili se boste tudi posledic izbire enega razvrščevalca namesto drugega.
 
-## [Predhodni kviz](https://ff-quizzes.netlify.app/en/ml/)
+## [Kviz pred predavanjem](https://ff-quizzes.netlify.app/en/ml/)
 
-### Predpogoji
+### Predpogoj
 
-Predvidevamo, da ste zaključili prejšnje lekcije in imate očiščen nabor podatkov v svoji mapi `data`, imenovan _cleaned_cuisines.csv_, ki se nahaja v korenski mapi tega 4-lekcijskega sklopa.
+Predvidevamo, da ste opravili prejšnje lekcije in imate v vaši mapi `data` očiščeno podatkovno zbirko imenovano _cleaned_cuisines.csv_ v korenu te 4-lekcijske mape.
 
 ### Priprava
 
-Vaša datoteka _notebook.ipynb_ je bila naložena z očiščenim naborom podatkov, ki je razdeljen na podatkovna okvira X in y, pripravljena za proces gradnje modela.
+Naložili smo vašo datoteko _notebook.ipynb_ z očiščeno podatkovno zbirko in jo razdelili v podatkovni okvir X in y, pripravljena za proces gradnje modela.
 
 ## Zemljevid razvrščanja
 
-Prej ste se naučili o različnih možnostih razvrščanja podatkov z uporabo Microsoftovega priročnika. Scikit-learn ponuja podoben, vendar bolj podroben priročnik, ki vam lahko dodatno pomaga zožiti izbiro ocenjevalnikov (drugi izraz za razvrščevalnike):
+Prej ste spoznali različne možnosti, ki jih imate pri razvrščanju podatkov z uporabo Microsoftovega prevarantskega lista. Scikit-learn ponuja podoben, a bolj podroben prevarantski list, ki lahko še dodatno pomaga zožiti vaše ocenovalce (drug izraz za razvrščevalce):
 
-![ML Zemljevid iz Scikit-learn](../../../../4-Classification/3-Classifiers-2/images/map.png)
-> Nasvet: [obiskujte ta zemljevid na spletu](https://scikit-learn.org/stable/tutorial/machine_learning_map/) in kliknite po poti za branje dokumentacije.
+![ML Map from Scikit-learn](../../../../translated_images/sl/map.e963a6a51349425a.webp)
+> Namig: [obiščite ta zemljevid na spletu](https://scikit-learn.org/stable/tutorial/machine_learning_map/) in klikajte po poti, da preberete dokumentacijo.
 
 ### Načrt
 
-Ta zemljevid je zelo koristen, ko imate jasno predstavo o svojih podatkih, saj lahko 'hodite' po njegovih poteh do odločitve:
+Ta zemljevid je zelo koristen, ko imate jasen vpogled v svoje podatke, saj lahko ‘hodite’ po njegovih poteh do odločitve:
 
 - Imamo >50 vzorcev
 - Želimo napovedati kategorijo
 - Imamo označene podatke
-- Imamo manj kot 100K vzorcev
+- Imamo manj kot 100.000 vzorcev
 - ✨ Lahko izberemo Linear SVC
-- Če to ne deluje, ker imamo numerične podatke
-    - Lahko poskusimo ✨ KNeighbors Classifier 
-      - Če to ne deluje, poskusimo ✨ SVC in ✨ Ensemble Classifiers
+- Če to ne deluje, ker imamo številske podatke
+    - Lahko poskusimo s ✨ KNeighbors Classifier
+      - Če tudi to ne deluje, poskusimo ✨ SVC in ✨ Ensemble Classifiers
 
-To je zelo koristna pot za sledenje.
+To je zelo uporabna slediti.
 
-## Naloga - razdelite podatke
+## Vaja - razdelite podatke
 
-Sledimo tej poti in začnemo z uvozom nekaterih knjižnic za uporabo.
+Sledi tej poti, začnemo z uvozom nekaterih knjižnic, ki jih bomo uporabili.
 
-1. Uvozite potrebne knjižnice:
+1. Uvoz potrebnih knjižnic:
 
     ```python
     from sklearn.neighbors import KNeighborsClassifier
@@ -50,31 +50,31 @@ Sledimo tej poti in začnemo z uvozom nekaterih knjižnic za uporabo.
     import numpy as np
     ```
 
-1. Razdelite svoje podatke na trening in test:
+1. Razdelite svoje trening in testne podatke:
 
     ```python
-    X_train, X_test, y_train, y_test = train_test_split(cuisines_feature_df, cuisines_label_df, test_size=0.3)
+    X_train, X_test, y_train, y_test = train_test_split(cuisines_features_df, cuisines_label_df, test_size=0.3)
     ```
 
-## Linearni SVC razvrščevalnik
+## Linearni SVC razvrščevalec
 
-Support-Vector clustering (SVC) je del družine tehnik strojnega učenja Support-Vector Machines (več o tem spodaj). Pri tej metodi lahko izberete 'jedro' za odločanje, kako razvrstiti oznake. Parameter 'C' se nanaša na 'regularizacijo', ki uravnava vpliv parametrov. Jedro je lahko eno izmed [več možnosti](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC); tukaj ga nastavimo na 'linearno', da zagotovimo uporabo linearnega SVC. Privzeta vrednost za verjetnost je 'false'; tukaj jo nastavimo na 'true', da pridobimo ocene verjetnosti. Naključno stanje nastavimo na '0', da premešamo podatke za pridobitev verjetnosti.
+Support-Vector clustering (SVC) je del družine metod strojnega učenja Support-Vector machines (SVM) (o njih več spodaj). Pri tej metodi lahko izberete 'jedro' (kernel), da določite, kako zgrupirate oznake. Parameter 'C' se nanaša na 'regularizacijo', ki uravnava vpliv parametrov. Jedro je lahko eno izmed [več](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC); tukaj ga nastavimo na 'linear', da zagotovimo uporabo linearnega SVC. Privzeto je Probability nastavljeno na 'false'; tukaj smo ga nastavili na 'true', da zberemo ocene verjetnosti. Za naključno stanje smo nastavili '0', da premešamo podatke za verjetnosti.
 
-### Naloga - uporabite linearni SVC
+### Vaja - uporabite linearen SVC
 
-Začnite z ustvarjanjem matrike razvrščevalnikov. Postopoma boste dodajali tej matriki, ko bomo testirali.
+Začnite z ustvarjanjem tabele razvrščevalcev. Postopoma boste dodajali elemente v to tabelo, ko boste testirali.
 
-1. Začnite z Linearnim SVC:
+1. Začnite z Linear SVC:
 
     ```python
     C = 10
-    # Create different classifiers.
+    # Ustvari različne klasifikatorje.
     classifiers = {
         'Linear SVC': SVC(kernel='linear', C=C, probability=True,random_state=0)
     }
     ```
 
-2. Natrenirajte svoj model z Linearnim SVC in natisnite poročilo:
+2. Naučite svoj model z uporabo Linear SVC in izpišite poročilo:
 
     ```python
     n_classifiers = len(classifiers)
@@ -105,21 +105,21 @@ Začnite z ustvarjanjem matrike razvrščevalnikov. Postopoma boste dodajali tej
     weighted avg       0.79      0.79      0.79      1199
     ```
 
-## K-Neighbors razvrščevalnik
+## K-najbližjih sosedov razvrščevalec
 
-K-Neighbors je del družine metod strojnega učenja "neighbors", ki se lahko uporablja za nadzorovano in nenadzorovano učenje. Pri tej metodi se ustvari vnaprej določeno število točk, okoli katerih se zbirajo podatki, da se lahko za podatke napovejo posplošene oznake.
+K-najbližjih sosedov spada v družino metod strojnega učenja "neighbors", ki se lahko uporabljajo tako za nadzorovano kot nenadzorovano učenje. Pri tej metodi se ustvari preddefinirano število točk in podatki se zbirajo okoli teh točk, tako da je mogoče napovedati posplošene oznake za podatke.
 
-### Naloga - uporabite K-Neighbors razvrščevalnik
+### Vaja - uporabite K-najbližjih sosedov
 
-Prejšnji razvrščevalnik je bil dober in je dobro deloval s podatki, vendar morda lahko dosežemo boljšo natančnost. Poskusite K-Neighbors razvrščevalnik.
+Prejšnji razvrščevalec je bil dober in je deloval dobro s podatki, vendar morda lahko dosežemo boljšo natančnost. Poskusite s K-najbližjih sosedov.
 
-1. Dodajte vrstico v svojo matriko razvrščevalnikov (dodajte vejico za element Linear SVC):
+1. Dodajte vrstico v svojo tabelo razvrščevalcev (dodajte vejico za Linear SVC elementom):
 
     ```python
     'KNN classifier': KNeighborsClassifier(C),
     ```
 
-    Rezultat je nekoliko slabši:
+    Rezultat je malo slabši:
 
     ```output
     Accuracy (train) for KNN classifier: 73.8% 
@@ -136,23 +136,23 @@ Prejšnji razvrščevalnik je bil dober in je dobro deloval s podatki, vendar mo
     weighted avg       0.76      0.74      0.74      1199
     ```
 
-    ✅ Preberite več o [K-Neighbors](https://scikit-learn.org/stable/modules/neighbors.html#neighbors)
+    ✅ Spoznajte [K-najbližjih sosedov](https://scikit-learn.org/stable/modules/neighbors.html#neighbors)
 
-## Support Vector razvrščevalnik
+## Support Vector razvrščevalec
 
-Support-Vector razvrščevalniki so del družine metod strojnega učenja [Support-Vector Machine](https://wikipedia.org/wiki/Support-vector_machine), ki se uporabljajo za naloge razvrščanja in regresije. SVM "preslika primere treninga v točke v prostoru", da maksimizira razdaljo med dvema kategorijama. Naknadni podatki so preslikani v ta prostor, da se lahko napove njihova kategorija.
+Support-Vector razvrščevalci so del družine [Support-Vector Machines](https://wikipedia.org/wiki/Support-vector_machine) metod strojnega učenja, ki se uporabljajo za razvrščanje in regresijo. SVM “preslika trening primere v točke v prostoru”, da maksimira razdaljo med dvema kategorijama. Kasnejši podatki so preslikani v ta prostor, da je mogoče napovedati njihovo kategorijo.
 
-### Naloga - uporabite Support Vector razvrščevalnik
+### Vaja - uporabite Support Vector razvrščevalec
 
-Poskusimo doseči nekoliko boljšo natančnost s Support Vector razvrščevalnikom.
+Poskusimo doseči malo boljšo natančnost s Support Vector razvrščevalcem.
 
-1. Dodajte vejico za element K-Neighbors in nato dodajte to vrstico:
+1. Dodajte vejico za K-najbližjih sosedov elementom in nato dodajte to vrstico:
 
     ```python
     'SVC': SVC(),
     ```
 
-    Rezultat je zelo dober!
+    Rezultat je precej dober!
 
     ```output
     Accuracy (train) for SVC: 83.2% 
@@ -169,11 +169,11 @@ Poskusimo doseči nekoliko boljšo natančnost s Support Vector razvrščevalnik
     weighted avg       0.84      0.83      0.83      1199
     ```
 
-    ✅ Preberite več o [Support-Vectors](https://scikit-learn.org/stable/modules/svm.html#svm)
+    ✅ Spoznajte [Support-Vectors](https://scikit-learn.org/stable/modules/svm.html#svm)
 
-## Ensemble razvrščevalniki
+## Ensemble razvrščevalci
 
-Sledimo poti do samega konca, čeprav je bil prejšnji test zelo dober. Poskusimo nekaj 'Ensemble razvrščevalnikov', natančneje Random Forest in AdaBoost:
+Pojdimo do konca poti, čeprav je bil prejšnji test precej dober. Poskusimo nekaj 'Ensemble razvrščevalcev', natančneje Random Forest in AdaBoost:
 
 ```python
   'RFST': RandomForestClassifier(n_estimators=100),
@@ -210,31 +210,33 @@ Accuracy (train) for ADA: 72.4%
 weighted avg       0.73      0.72      0.72      1199
 ```
 
-✅ Preberite več o [Ensemble razvrščevalnikih](https://scikit-learn.org/stable/modules/ensemble.html)
+✅ Spoznajte [Ensemble razvrščevalce](https://scikit-learn.org/stable/modules/ensemble.html)
 
-Ta metoda strojnega učenja "združuje napovedi več osnovnih ocenjevalnikov", da izboljša kakovost modela. V našem primeru smo uporabili Random Trees in AdaBoost. 
+Ta metoda strojnega učenja "združuje napovedi več osnovnih ocenjevalcev", da izboljša kakovost modela. V našem primeru smo uporabili Random Trees in AdaBoost.
 
-- [Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#forest), metoda povprečenja, gradi 'gozd' 'odločilnih dreves', ki so prežeta z naključnostjo, da se izogne prekomernemu prileganju. Parameter n_estimators je nastavljen na število dreves.
+- [Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#forest), metoda povprečenja, gradi 'gosto' drevo 'odločilnih dreves' vpeto z naključnostjo, da prepreči prekomerno prileganje (overfitting). Parameter n_estimators je nastavljen na število dreves.
 
-- [AdaBoost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) prilagodi razvrščevalnik naboru podatkov in nato prilagodi kopije tega razvrščevalnika istemu naboru podatkov. Osredotoča se na uteži nepravilno razvrščenih elementov in prilagodi prileganje za naslednji razvrščevalnik, da jih popravi.
+- [AdaBoost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) prilagodi razvrščevalec na podatkovno množico in nato prilagodi kopije tega razvrščevalca na isti podatkovni množici. Osredotoča se na uteži nepravilno razvrščenih elementov in prilagaja prileganje za naslednjega razvrščevalca, da to popravi.
 
 ---
 
 ## 🚀Izziv
 
-Vsaka od teh tehnik ima veliko število parametrov, ki jih lahko prilagodite. Raziskujte privzete parametre vsake metode in razmislite, kaj bi pomenilo prilagajanje teh parametrov za kakovost modela.
+Vsaka od teh tehnik ima veliko parametrov, ki jih lahko spreminjate. Raziskujte privzete nastavitve vsakega in razmislite, kaj bi pomenilo prilagajanje teh parametrov za kakovost modela.
 
-## [Zaključni kviz](https://ff-quizzes.netlify.app/en/ml/)
+## [Kviz po predavanju](https://ff-quizzes.netlify.app/en/ml/)
 
 ## Pregled in samostojno učenje
 
-V teh lekcijah je veliko žargona, zato si vzemite trenutek za pregled [tega seznama](https://docs.microsoft.com/dotnet/machine-learning/resources/glossary?WT.mc_id=academic-77952-leestott) uporabne terminologije!
+V teh lekcijah je veliko strokovnega besedišča, zato si vzemite trenutek za pregled [tega seznama](https://docs.microsoft.com/dotnet/machine-learning/resources/glossary?WT.mc_id=academic-77952-leestott) uporabne terminologije!
 
-## Naloga 
+## Domača naloga
 
-[Parameter play](assignment.md)
+[Igra s parametri](assignment.md)
 
 ---
 
-**Omejitev odgovornosti**:  
-Ta dokument je bil preveden z uporabo storitve za prevajanje z umetno inteligenco [Co-op Translator](https://github.com/Azure/co-op-translator). Čeprav si prizadevamo za natančnost, vas prosimo, da upoštevate, da lahko avtomatizirani prevodi vsebujejo napake ali netočnosti. Izvirni dokument v njegovem izvirnem jeziku je treba obravnavati kot avtoritativni vir. Za ključne informacije priporočamo profesionalni prevod s strani človeka. Ne prevzemamo odgovornosti za morebitna napačna razumevanja ali napačne interpretacije, ki bi nastale zaradi uporabe tega prevoda.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Zavrnitev odgovornosti**:
+Ta dokument je bil preveden z uporabo AI prevajalske storitve [Co-op Translator](https://github.com/Azure/co-op-translator). Čeprav si prizadevamo za natančnost, vas prosimo, da upoštevate, da lahko avtomatski prevodi vsebujejo napake ali netočnosti. Izvirni dokument v njegovem izvirnem jeziku velja za avtoritativni vir. Za pomembne informacije priporočamo strokovni prevod s strani človeka. Za morebitna nesporazume ali napačne razlage, ki izhajajo iz uporabe tega prevoda, ne prevzemamo odgovornosti.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

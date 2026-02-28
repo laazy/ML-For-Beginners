@@ -1,42 +1,42 @@
-# 美食分类器 2
+# Cuisine classifiers 2
 
-在第二节分类课程中，您将探索更多分类数值数据的方法。同时，您还将了解选择不同分类器的影响。
+在第二节分类课程中，您将探索更多对数值数据进行分类的方法。您还将了解选择不同分类器的影响。
 
 ## [课前测验](https://ff-quizzes.netlify.app/en/ml/)
 
-### 前提条件
+### 先决条件
 
-我们假设您已经完成了之前的课程，并在本四节课程的根目录中的 `data` 文件夹中准备了一个名为 _cleaned_cuisines.csv_ 的清理过的数据集。
+假设您已经完成了之前的课程，并且在该 4 节课程文件夹根目录的 `data` 文件夹中有一个清洗好的数据集文件 _cleaned_cuisines.csv_。
 
 ### 准备工作
 
-我们已经将清理过的数据集加载到您的 _notebook.ipynb_ 文件中，并将其分为 X 和 y 数据框，准备进行模型构建。
+我们已经加载了包含清洗后数据集的 _notebook.ipynb_ 文件，并将其分拆成 X 和 y 两个数据框，准备好进行模型构建。
 
-## 分类地图
+## 分类图谱
 
-之前，您已经了解了使用微软的速查表对数据进行分类的各种选项。Scikit-learn 提供了一个类似但更详细的速查表，可以进一步帮助您缩小选择范围（分类器的另一种说法是估计器）：
+之前，您通过微软的分类小抄了解了分类数据时的各种选择。Scikit-learn 提供了一个类似但更细致的分类小抄，可以进一步帮助收窄你的估计器（分类器）选择：
 
-![Scikit-learn 的机器学习地图](../../../../4-Classification/3-Classifiers-2/images/map.png)
-> 提示：[在线访问此地图](https://scikit-learn.org/stable/tutorial/machine_learning_map/)，点击路径以阅读相关文档。
+![ML Map from Scikit-learn](../../../../translated_images/zh-CN/map.e963a6a51349425a.webp)
+> 提示: [在线查看该图谱](https://scikit-learn.org/stable/tutorial/machine_learning_map/) 并点击路径查看文档。
 
 ### 计划
 
-一旦您对数据有了清晰的理解，这张地图就非常有用，您可以沿着它的路径做出决策：
+一旦您对数据有了清晰的理解，这张图谱非常有帮助，您可以沿着路径做决策：
 
-- 我们有 >50 个样本
-- 我们希望预测一个类别
-- 我们有标记数据
-- 我们的样本少于 100K
-- ✨ 我们可以选择一个线性 SVC
-- 如果这不起作用，因为我们有数值数据
-    - 我们可以尝试 ✨ KNeighbors 分类器
-      - 如果这不起作用，可以尝试 ✨ SVC 和 ✨ 集成分类器
+- 我们有超过 50 个样本
+- 我们想预测一个类别
+- 我们有标签数据
+- 我们有少于 10 万个样本
+- ✨ 我们可以选择线性 SVC
+- 如果不行，因为我们有数值数据
+    - 可以尝试 ✨ KNeighbors 分类器
+      - 如果不行，再尝试 ✨ SVC 和 ✨ 集成分类器
 
-这是一条非常有帮助的路径。
+这是一个很有帮助的思路路径。
 
-## 练习 - 划分数据
+## 练习 - 拆分数据
 
-按照这条路径，我们应该先导入一些需要使用的库。
+沿着这个路径，先导入一些需要使用的库。
 
 1. 导入所需的库：
 
@@ -50,31 +50,31 @@
     import numpy as np
     ```
 
-1. 划分训练数据和测试数据：
+1. 拆分训练集和测试集：
 
     ```python
-    X_train, X_test, y_train, y_test = train_test_split(cuisines_feature_df, cuisines_label_df, test_size=0.3)
+    X_train, X_test, y_train, y_test = train_test_split(cuisines_features_df, cuisines_label_df, test_size=0.3)
     ```
 
 ## 线性 SVC 分类器
 
-支持向量聚类（SVC）是支持向量机（SVM）机器学习技术家族的一部分（下面可以了解更多）。在这种方法中，您可以选择一个“核函数”来决定如何聚类标签。“C”参数指的是“正则化”，用于调节参数的影响。核函数可以是[多种选项](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC)之一；这里我们将其设置为“线性”，以确保我们使用线性 SVC。概率默认值为“false”；这里我们将其设置为“true”，以获取概率估计。我们将随机状态设置为“0”，以打乱数据以获取概率。
+支持向量机（SVC）是支持向量机家族的机器学习技术之一（后文将深入了解）。此方法中，您可以选用“核函数”来决定如何聚类标签。“C”参数指正则化，控制参数对模型的影响。核函数可以是 [多种](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC)之一；这里我们将其设为 'linear' 以使用线性 SVC。概率默认是 'false'；这里设置为 'true' 以收集概率估计。为了打乱数据并得到概率，我们将随机状态设为 '0'。
 
 ### 练习 - 应用线性 SVC
 
-首先创建一个分类器数组。随着测试的进行，您将逐步向该数组添加内容。
+先创建一个分类器数组，后续测试将逐步添加。
 
-1. 从线性 SVC 开始：
+1. 先创建一个线性 SVC:
 
     ```python
     C = 10
-    # Create different classifiers.
+    # 创建不同的分类器。
     classifiers = {
         'Linear SVC': SVC(kernel='linear', C=C, probability=True,random_state=0)
     }
     ```
 
-2. 使用线性 SVC 训练您的模型并打印报告：
+2. 用线性 SVC 训练模型并打印报告：
 
     ```python
     n_classifiers = len(classifiers)
@@ -105,21 +105,21 @@
     weighted avg       0.79      0.79      0.79      1199
     ```
 
-## K-Neighbors 分类器
+## K-邻近分类器
 
-K-Neighbors 是机器学习方法中“邻居”家族的一部分，可用于监督学习和非监督学习。在这种方法中，创建了预定义数量的点，并围绕这些点收集数据，以便预测数据的通用标签。
+K-邻近属于邻居类机器学习方法，可用于有监督和无监督学习。此方法定义预设点数，数据聚集于这些点周围，从而预测数据的一般化标签。
 
-### 练习 - 应用 K-Neighbors 分类器
+### 练习 - 应用 K-邻近分类器
 
-之前的分类器表现不错，适合数据，但也许我们可以获得更好的准确性。尝试使用 K-Neighbors 分类器。
+先前的分类器效果不错，并且适配数据，但我们可能能得到更好的准确率。试试 K-邻近分类器。
 
-1. 在分类器数组中添加一行（在线性 SVC 项目后添加逗号）：
+1. 在分类器数组中添加一行（在线性 SVC 项后添加逗号）：
 
     ```python
     'KNN classifier': KNeighborsClassifier(C),
     ```
 
-    结果稍差一些：
+    结果稍差一点：
 
     ```output
     Accuracy (train) for KNN classifier: 73.8% 
@@ -136,23 +136,23 @@ K-Neighbors 是机器学习方法中“邻居”家族的一部分，可用于�
     weighted avg       0.76      0.74      0.74      1199
     ```
 
-    ✅ 了解 [K-Neighbors](https://scikit-learn.org/stable/modules/neighbors.html#neighbors)
+    ✅ 学习关于 [K-邻近](https://scikit-learn.org/stable/modules/neighbors.html#neighbors)
 
 ## 支持向量分类器
 
-支持向量分类器是[支持向量机](https://wikipedia.org/wiki/Support-vector_machine)机器学习方法家族的一部分，可用于分类和回归任务。SVM 将“训练样本映射到空间中的点”，以最大化两个类别之间的距离。后续数据被映射到该空间，以预测其类别。
+支持向量分类器是 [支持向量机](https://wikipedia.org/wiki/Support-vector_machine) 家族的机器学习方法，用于分类与回归任务。支持向量机“将训练样本映射为空间中的点”，以最大化两类别之间的距离。之后的数据映射进空间以预测类别。
 
 ### 练习 - 应用支持向量分类器
 
-让我们尝试使用支持向量分类器获得更好的准确性。
+尝试用支持向量分类器提升准确率。
 
-1. 在 K-Neighbors 项目后添加逗号，然后添加以下行：
+1. 在 K-邻近项后加逗号，然后添加此行：
 
     ```python
     'SVC': SVC(),
     ```
 
-    结果非常好！
+    结果很不错！
 
     ```output
     Accuracy (train) for SVC: 83.2% 
@@ -169,18 +169,18 @@ K-Neighbors 是机器学习方法中“邻居”家族的一部分，可用于�
     weighted avg       0.84      0.83      0.83      1199
     ```
 
-    ✅ 了解 [支持向量](https://scikit-learn.org/stable/modules/svm.html#svm)
+    ✅ 学习关于 [支持向量](https://scikit-learn.org/stable/modules/svm.html#svm)
 
 ## 集成分类器
 
-让我们沿着路径走到最后，尽管之前的测试结果已经非常好。尝试一些“集成分类器”，特别是随机森林和 AdaBoost：
+我们沿路径尝试到最终，尽管之前测试效果不错，还是试试“集成分类器”，具体是随机森林和 AdaBoost：
 
 ```python
   'RFST': RandomForestClassifier(n_estimators=100),
   'ADA': AdaBoostClassifier(n_estimators=100)
 ```
 
-结果非常好，尤其是随机森林：
+结果非常好，特别是随机森林：
 
 ```output
 Accuracy (train) for RFST: 84.5% 
@@ -210,31 +210,33 @@ Accuracy (train) for ADA: 72.4%
 weighted avg       0.73      0.72      0.72      1199
 ```
 
-✅ 了解 [集成分类器](https://scikit-learn.org/stable/modules/ensemble.html)
+✅ 学习关于 [集成分类器](https://scikit-learn.org/stable/modules/ensemble.html)
 
-这种机器学习方法“结合多个基础估计器的预测”，以提高模型质量。在我们的示例中，我们使用了随机森林和 AdaBoost。
+这种机器学习方法“结合多个基估计器的预测”来提升模型质量。在我们的示例中，使用了随机树和 AdaBoost。
 
-- [随机森林](https://scikit-learn.org/stable/modules/ensemble.html#forest)，一种平均方法，构建了一个随机性注入的“决策树森林”，以避免过拟合。n_estimators 参数设置为树的数量。
+- [随机森林](https://scikit-learn.org/stable/modules/ensemble.html#forest)，一种平均方法，构建大量注入随机性的“决策树”的森林以避免过拟合。n_estimators 参数设为树的数量。
 
-- [AdaBoost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) 将分类器拟合到数据集，然后将该分类器的副本拟合到同一数据集。它关注错误分类项的权重，并调整下一分类器的拟合以进行纠正。
+- [AdaBoost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) 拟合一个分类器到数据集，然后拟合该分类器的副本到同一数据集。它关注分类错误样本的权重，并调整后续分类器的拟合以纠正错误。
 
 ---
 
 ## 🚀挑战
 
-每种技术都有大量参数可以调整。研究每种技术的默认参数，并思考调整这些参数对模型质量的影响。
+每种技术都有大量参数可调。研究它们各自的默认参数，思考调整这些参数对模型质量意味着什么。
 
 ## [课后测验](https://ff-quizzes.netlify.app/en/ml/)
 
 ## 复习与自学
 
-这些课程中有很多术语，因此花点时间复习[这个术语表](https://docs.microsoft.com/dotnet/machine-learning/resources/glossary?WT.mc_id=academic-77952-leestott)，非常有用！
+这些课程中有大量术语，花点时间复习 [这份术语表](https://docs.microsoft.com/dotnet/machine-learning/resources/glossary?WT.mc_id=academic-77952-leestott) 吧！
 
-## 作业 
+## 作业
 
-[参数调整](assignment.md)
+[参数练习](assignment.md)
 
 ---
 
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
 **免责声明**：  
-本文档使用AI翻译服务[Co-op Translator](https://github.com/Azure/co-op-translator)进行翻译。尽管我们努力确保准确性，但请注意，自动翻译可能包含错误或不准确之处。应以原始语言的文档作为权威来源。对于关键信息，建议使用专业人工翻译。对于因使用本翻译而引起的任何误解或误读，我们概不负责。
+本文档使用AI翻译服务[Co-op Translator](https://github.com/Azure/co-op-translator)进行翻译。虽然我们努力确保准确性，但请注意自动翻译可能包含错误或不准确之处。原始语言的文档应被视为权威来源。对于关键信息，建议使用专业人工翻译。我们不对因使用本翻译而产生的任何误解或误释承担责任。
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

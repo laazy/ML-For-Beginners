@@ -1,125 +1,136 @@
-# 使用 Scikit-learn 建立回歸模型：四種回歸方法
+# 使用 Scikit-learn 建立回歸模型：回歸的四種方法
 
-![線性回歸與多項式回歸資訊圖表](../../../../2-Regression/3-Linear/images/linear-polynomial.png)
-> 資訊圖表由 [Dasani Madipalli](https://twitter.com/dasani_decoded) 製作
-## [課前測驗](https://ff-quizzes.netlify.app/en/ml/)
+## 初學者筆記
 
-> ### [本課程也提供 R 版本！](../../../../2-Regression/3-Linear/solution/R/lesson_3.html)
-### 簡介
+線性回歸用於當我們想要預測一個**數值**（例如，房價、溫度或銷售額）時。  
+它通過尋找一條最好地代表輸入特徵與輸出之間關係的直線來工作。
 
-到目前為止，您已經透過南瓜價格數據集的樣本數據了解了什麼是回歸分析，並使用 Matplotlib 進行了可視化。
+在這堂課中，我們專注於理解概念，然後再探索更高級的回歸技術。
+![線性與多項式回歸資訊圖](../../../../translated_images/zh-MO/linear-polynomial.5523c7cb6576ccab.webp)
+> 資訊圖由 [Dasani Madipalli](https://twitter.com/dasani_decoded) 製作
+## [課前小測驗](https://ff-quizzes.netlify.app/en/ml/)
 
-現在，您準備深入了解機器學習中的回歸分析。雖然可視化可以幫助您理解數據，但機器學習的真正力量來自於 _訓練模型_。模型基於歷史數據進行訓練，能夠自動捕捉數據之間的依賴關係，並幫助您預測模型未曾見過的新數據的結果。
+> ### [這堂課另有 R 語言版本！](../../../../2-Regression/3-Linear/solution/R/lesson_3.html)
+### 介紹
 
-在本課程中，您將學習更多關於兩種回歸方法：_基本線性回歸_ 和 _多項式回歸_，以及這些技術背後的一些數學原理。這些模型將幫助我們根據不同的輸入數據預測南瓜的價格。
+迄今為止，你已經透過我們將在此課程中使用的南瓜價格資料集瞭解了什麼是回歸。你也使用 Matplotlib 做了視覺化。
 
-[![初學者的機器學習 - 理解線性回歸](https://img.youtube.com/vi/CRxFT8oTDMg/0.jpg)](https://youtu.be/CRxFT8oTDMg "初學者的機器學習 - 理解線性回歸")
+現在你已準備好深入了解機器學習中的回歸。雖然視覺化讓你能理解資料，但機器學習的真正威力來自於_訓練模型_。模型在歷史資料上訓練以自動捕捉資料依賴關係，並能預測新資料的結果，這些新資料是模型之前未見過的。
 
-> 🎥 點擊上方圖片觀看線性回歸的簡短視頻概述。
+在這個課程中，你將學習兩種類型的回歸：_基礎線性回歸_和_多項式回歸_，以及這些技術背後的一些數學。這些模型將允許我們根據不同的輸入資料來預測南瓜價格。
 
-> 在整個課程中，我們假設學生的數學知識有限，並努力使內容對來自其他領域的學生更易理解，因此請留意筆記、🧮 數學提示、圖表以及其他學習工具以幫助理解。
+[![機器學習初學者 - 了解線性回歸](https://img.youtube.com/vi/CRxFT8oTDMg/0.jpg)](https://youtu.be/CRxFT8oTDMg "機器學習初學者 - 了解線性回歸")
 
-### 先決條件
+> 🎥 點擊上述圖片觀看線性回歸的短片概述。
 
-到目前為止，您應該已熟悉我們正在分析的南瓜數據的結構。您可以在本課程的 _notebook.ipynb_ 文件中找到預加載和預清理的數據。在該文件中，南瓜的價格以每蒲式耳的形式顯示在新的數據框中。請確保您可以在 Visual Studio Code 的內核中運行這些筆記本。
+> 在整個課程中，我們假設數學知識最低限度，並力求讓來自其他領域的學生易於理解，因此請留意筆記、🧮 提示、圖示及其他學習工具以輔助理解。
+
+### 先備知識
+
+你現在應該熟悉我們正在檢視的南瓜資料結構。課程中的 _notebook.ipynb_ 檔案已預先載入且清理過該資料。該檔案中，南瓜的價格以每蒲式耳計算並展示在新的資料框中。確保你能在 Visual Studio Code 的 kernel 中執行這些 notebook。
 
 ### 準備工作
 
-提醒一下，您正在加載這些數據以便提出問題。
+提醒你，載入資料是為了提出問題。
 
-- 什麼時候是購買南瓜的最佳時機？
-- 我可以預期一箱迷你南瓜的價格是多少？
-- 我應該選擇半蒲式耳籃子還是 1 1/9 蒲式耳箱來購買？
+- 什麼時間買南瓜最好？
+- 一箱迷你南瓜的價格大概要多少？
+- 我該以半蒲式耳的籃子買還是用 1 1/9 蒲式耳的箱子買？
+讓我們繼續深挖這些資料。
 
-讓我們繼續深入挖掘這些數據。
+在上一堂課中，你建立了一個 Pandas 資料框，並填入來自原始資料集的一部分數據，統一以蒲式耳為單位計價。這樣做，只能取得約 400 筆資料，且只針對秋季幾個月。
 
-在上一課中，您創建了一個 Pandas 數據框，並用原始數據集的一部分填充它，將價格標準化為每蒲式耳。然而，通過這樣做，您只能收集到大約 400 個數據點，而且僅限於秋季月份。
+請看看這堂課隨附 notebook 中預先載入的資料。我們載入資料後，繪製了月份的初始散點圖。或許透過更多清理，我們能更細緻地了解資料的特性。
 
-查看本課程附帶的筆記本中預加載的數據。數據已預加載，並繪製了初始散點圖以顯示月份數據。也許通過進一步清理數據，我們可以更詳細地了解數據的性質。
+## 一條線性回歸線
 
-## 線性回歸線
+如你在第一課中所學，線性回歸的目標是能夠繪製一條線：
 
-正如您在第一課中所學，線性回歸的目標是能夠繪製一條線以：
+- **顯示變數關係**。展示變數間的關係
+- **做出預測**。準確預測新數據點相對於該線會落在哪裡
 
-- **顯示變數關係**。展示變數之間的關係
-- **進行預測**。準確預測新數據點在該線上的位置
+典型的**最小平方法回歸（Least-Squares Regression）**會畫出這類線。"最小平方法"一詞指的是最小化模型中總誤差的過程。對每個數據點，我們測量該點和回歸線之間的垂直距離（稱為殘差）。
 
-通常使用 **最小平方回歸** 來繪製這種類型的線。'最小平方' 的意思是回歸線周圍的所有數據點的距離平方後相加。理想情況下，最終的總和應該盡可能小，因為我們希望誤差數量低，也就是 `最小平方`。
+我們平方這些距離有兩個主要原因：
 
-我們這樣做是因為我們希望建模一條距離所有數據點累積距離最小的線。我們在相加之前對項進行平方，因為我們關注的是其大小而不是方向。
+1. **大小超過方向**：我們要將錯誤 -5 和 +5 同等看待，平方可以令所有值變為正數。
 
-> **🧮 數學展示**
+2. **懲罰異常值**：平方會給較大誤差更高的權重，迫使回歸線更貼近遠離的點。
+
+接著，我們將所有平方後的值相加。目標是找到使該和最小的那條具體直線，這也是「最小平方法」的名稱由來。
+
+> **🧮 給我看數學！**  
 > 
-> 這條線，稱為 _最佳擬合線_，可以用 [一個方程](https://en.wikipedia.org/wiki/Simple_linear_regression) 表示：
+> 這條稱為_最佳擬合線_的線可用[方程式](https://en.wikipedia.org/wiki/Simple_linear_regression)表示：
 > 
 > ```
 > Y = a + bX
 > ```
 >
-> `X` 是 '解釋變數'，`Y` 是 '依賴變數'。線的斜率是 `b`，而 `a` 是 y 截距，指的是當 `X = 0` 時 `Y` 的值。
+> `X`是「解釋變數」，`Y`是「應變數」。線的斜率為`b`，`a`是 y 截距，指的是當`X=0`時，`Y`的值。  
 >
->![計算斜率](../../../../2-Regression/3-Linear/images/slope.png)
+>![計算斜率](../../../../translated_images/zh-MO/slope.f3c9d5910ddbfcf9.webp)
 >
-> 首先，計算斜率 `b`。資訊圖表由 [Jen Looper](https://twitter.com/jenlooper) 製作
+> 首先計算斜率 `b`。資訊圖由 [Jen Looper](https://twitter.com/jenlooper) 製作
 >
-> 換句話說，參考我們南瓜數據的原始問題："根據月份預測每蒲式耳南瓜的價格"，`X` 代表價格，`Y` 代表銷售月份。
+> 換句話說，並回到我們南瓜資料的原始問題：「預測每蒲式耳南瓜價格與月份的關係」，`X` 代表價格，`Y` 代表銷售月份。
 >
->![完成方程](../../../../2-Regression/3-Linear/images/calculation.png)
+>![完成方程式](../../../../translated_images/zh-MO/calculation.a209813050a1ddb1.webp)
 >
-> 計算 Y 的值。如果您支付大約 $4，那一定是四月！資訊圖表由 [Jen Looper](https://twitter.com/jenlooper) 製作
+> 計算 Y 的值。如果你付約 4 美元，那一定是 4 月！資訊圖由 [Jen Looper](https://twitter.com/jenlooper) 製作
 >
-> 計算這條線的數學必須展示線的斜率，這也取決於截距，即當 `X = 0` 時 `Y` 的位置。
+> 計算該線的數學方法必須展現線的斜率，同時受截距影響，即`X=0`時的`Y`位置。
 >
-> 您可以在 [Math is Fun](https://www.mathsisfun.com/data/least-squares-regression.html) 網站上觀察這些值的計算方法。也可以訪問 [最小平方計算器](https://www.mathsisfun.com/data/least-squares-calculator.html) 來查看數字值如何影響線。
+> 你可以參考 [Math is Fun](https://www.mathsisfun.com/data/least-squares-regression.html) 網站來觀察這些計算方法。也可訪問[此最小平方法計算器](https://www.mathsisfun.com/data/least-squares-calculator.html)來看數值如何影響線。
 
 ## 相關性
 
-另一個需要理解的術語是 **相關係數**，即給定 X 和 Y 變數之間的相關性。使用散點圖，您可以快速可視化該係數。數據點整齊排列成一條線的圖表具有高相關性，而數據點在 X 和 Y 之間隨意分佈的圖表則具有低相關性。
+還有一個必須了解的詞是給定 X 和 Y 變數間的**相關係數**。利用散點圖，你可以快速視覺化此係數。點散佈成很整齊一條線的圖有高相關，但點散佈在 X 和 Y 間各處的圖則低相關。
 
-一個好的線性回歸模型應該是使用最小平方回歸方法和回歸線，並且具有高（接近 1 而非 0）的相關係數。
+良好線性回歸模型會有高（靠近 1 而非 0）的相關係數，使用最小平方回歸法畫出回歸線。
 
-✅ 運行本課程附帶的筆記本，查看月份與價格的散點圖。根據您的視覺解讀，南瓜銷售的月份與價格之間的數據是否具有高或低相關性？如果您使用更精細的測量方式（例如 *一年中的天數*，即自年初以來的天數），結果是否會有所改變？
+✅ 執行本課程附帶的 notebook，查看「月份對價格」的散點圖。根據你對散點圖的視覺判斷，南瓜銷售中「月份對價格」的數據似乎是高相關還是低相關？換用更細微的度量，比如 *一年的第幾天*（即從年初開始算的天數）情況會改變嗎？
 
-在下面的代碼中，我們假設已清理數據，並獲得了一個名為 `new_pumpkins` 的數據框，類似於以下內容：
+以下程式碼中，我們假設已經清理過資料，得到名為 `new_pumpkins` 的資料框，類似如下：
 
-ID | Month | DayOfYear | Variety | City | Package | Low Price | High Price | Price
+ID | 月份 | 一年中的第幾天 | 品種 | 城市 | 包裝 | 最低價 | 最高價 | 價格
 ---|-------|-----------|---------|------|---------|-----------|------------|-------
-70 | 9 | 267 | PIE TYPE | BALTIMORE | 1 1/9 bushel cartons | 15.0 | 15.0 | 13.636364
-71 | 9 | 267 | PIE TYPE | BALTIMORE | 1 1/9 bushel cartons | 18.0 | 18.0 | 16.363636
-72 | 10 | 274 | PIE TYPE | BALTIMORE | 1 1/9 bushel cartons | 18.0 | 18.0 | 16.363636
-73 | 10 | 274 | PIE TYPE | BALTIMORE | 1 1/9 bushel cartons | 17.0 | 17.0 | 15.454545
-74 | 10 | 281 | PIE TYPE | BALTIMORE | 1 1/9 bushel cartons | 15.0 | 15.0 | 13.636364
+70 | 9 | 267 | 派型 | BALTIMORE | 1 1/9 蒲式耳紙箱 | 15.0 | 15.0 | 13.636364
+71 | 9 | 267 | 派型 | BALTIMORE | 1 1/9 蒲式耳紙箱 | 18.0 | 18.0 | 16.363636
+72 | 10 | 274 | 派型 | BALTIMORE | 1 1/9 蒲式耳紙箱 | 18.0 | 18.0 | 16.363636
+73 | 10 | 274 | 派型 | BALTIMORE | 1 1/9 蒲式耳紙箱 | 17.0 | 17.0 | 15.454545
+74 | 10 | 281 | 派型 | BALTIMORE | 1 1/9 蒲式耳紙箱 | 15.0 | 15.0 | 13.636364
 
-> 清理數據的代碼可在 [`notebook.ipynb`](../../../../2-Regression/3-Linear/notebook.ipynb) 中找到。我們執行了與上一課相同的清理步驟，並使用以下表達式計算了 `DayOfYear` 列：
+> 清理資料的程式碼可在 [`notebook.ipynb`](notebook.ipynb) 中看到。我們已經執行與先前課程相同的清理步驟，並透過以下表達式計算了 `DayOfYear` 欄：
 
 ```python
 day_of_year = pd.to_datetime(pumpkins['Date']).apply(lambda dt: (dt-datetime(dt.year,1,1)).days)
 ```
 
-現在您已了解線性回歸背後的數學原理，讓我們建立一個回歸模型，看看是否可以預測哪種南瓜包裝的價格最划算。想要為節日南瓜園購買南瓜的人可能需要這些信息來優化南瓜包裝的購買。
+現在你已了解線性回歸背後的數學，讓我們建立回歸模型，看看是否能預測哪種南瓜包裝的價格最優惠。想要開設假日南瓜園的人可能會需要這個資訊，來優化他們南瓜包裝的採購。
 
 ## 尋找相關性
 
-[![初學者的機器學習 - 尋找相關性：線性回歸的關鍵](https://img.youtube.com/vi/uoRq-lW2eQo/0.jpg)](https://youtu.be/uoRq-lW2eQo "初學者的機器學習 - 尋找相關性：線性回歸的關鍵")
+[![機器學習初學者 - 尋找相關性：線性回歸的關鍵](https://img.youtube.com/vi/uoRq-lW2eQo/0.jpg)](https://youtu.be/uoRq-lW2eQo "機器學習初學者 - 尋找相關性：線性回歸的關鍵")
 
-> 🎥 點擊上方圖片觀看相關性的簡短視頻概述。
+> 🎥 點擊圖片觀看相關性的短片概述。
 
-從上一課中，您可能已經看到不同月份的平均價格如下所示：
+從上一堂課，你可能已看到不同月份的平均價格大致如下：
 
-<img alt="按月份的平均價格" src="../../../../translated_images/zh-MO/barchart.a833ea9194346d76.webp" width="50%"/>
+<img alt="各月平均價格" src="../../../../translated_images/zh-MO/barchart.a833ea9194346d76.webp" width="50%"/>
 
-這表明應該存在某種相關性，我們可以嘗試訓練線性回歸模型來預測 `Month` 與 `Price` 或 `DayOfYear` 與 `Price` 之間的關係。以下是顯示後者關係的散點圖：
+這表明應該存在某些相關性，我們可以嘗試訓練線性回歸模型來預測`月份`與`價格`之間的關聯，或者`一年中的第幾天`與`價格`的關係。以下散點圖顯示後者的關係：
 
-<img alt="價格與一年中的天數的散點圖" src="../../../../translated_images/zh-MO/scatter-dayofyear.bc171c189c9fd553.webp" width="50%" /> 
+<img alt="價格與一年中天數的散點圖" src="../../../../translated_images/zh-MO/scatter-dayofyear.bc171c189c9fd553.webp" width="50%" /> 
 
-讓我們使用 `corr` 函數檢查是否存在相關性：
+我們用 `corr` 函數來看是否存在相關性：
 
 ```python
 print(new_pumpkins['Month'].corr(new_pumpkins['Price']))
 print(new_pumpkins['DayOfYear'].corr(new_pumpkins['Price']))
 ```
 
-看起來相關性很小，`Month` 為 -0.15，`DayOfYear` 為 -0.17，但可能存在另一個重要的關係。看起來不同的南瓜品種對價格的影響更大。為了確認這一假設，讓我們用不同的顏色繪製每個南瓜品種。通過向 `scatter` 繪圖函數傳遞 `ax` 參數，我們可以將所有點繪製在同一圖上：
+看起來以 `月份` 計算的相關性約為 -0.15，`DayOfMonth` 大約是 -0.17，但另有可能存在另一個重要關係。價格似乎依南瓜品種分成不同群集。要確認此假設，我們用不同顏色繪製每個南瓜品種。透過傳遞 `ax` 參數給 `scatter` 繪圖函數，我們可以將所有點畫在同一張圖上：
 
 ```python
 ax=None
@@ -129,42 +140,42 @@ for i,var in enumerate(new_pumpkins['Variety'].unique()):
     ax = df.plot.scatter('DayOfYear','Price',ax=ax,c=colors[i],label=var)
 ```
 
-<img alt="價格與一年中的天數的散點圖" src="../../../../translated_images/zh-MO/scatter-dayofyear-color.65790faefbb9d54f.webp" width="50%" /> 
+<img alt="價格與一年中天數的散點圖（按品種著色）" src="../../../../translated_images/zh-MO/scatter-dayofyear-color.65790faefbb9d54f.webp" width="50%" /> 
 
-我們的調查表明，品種對整體價格的影響比實際銷售日期更大。我們可以通過柱狀圖看到這一點：
+調查結果顯示品種對整體價格比實際銷售日期影響較大。我們用長條圖也可觀察到：
 
 ```python
 new_pumpkins.groupby('Variety')['Price'].mean().plot(kind='bar')
 ```
 
-<img alt="價格與品種的柱狀圖" src="../../../../translated_images/zh-MO/price-by-variety.744a2f9925d9bcb4.webp" width="50%" /> 
+<img alt="不同品種價格長條圖" src="../../../../translated_images/zh-MO/price-by-variety.744a2f9925d9bcb4.webp" width="50%" /> 
 
-讓我們暫時只關注一種南瓜品種——'pie type'，看看日期對價格的影響：
+暫時只聚焦單一品種——「派型」，看看日期對價格的影響：
 
 ```python
 pie_pumpkins = new_pumpkins[new_pumpkins['Variety']=='PIE TYPE']
 pie_pumpkins.plot.scatter('DayOfYear','Price') 
 ```
-<img alt="價格與一年中的天數的散點圖" src="../../../../translated_images/zh-MO/pie-pumpkins-scatter.d14f9804a53f927e.webp" width="50%" /> 
+<img alt="價格與一年中天數的散點圖" src="../../../../translated_images/zh-MO/pie-pumpkins-scatter.d14f9804a53f927e.webp" width="50%" /> 
 
-如果我們現在使用 `corr` 函數計算 `Price` 與 `DayOfYear` 之間的相關性，我們會得到類似 `-0.27` 的結果——這意味著訓練一個預測模型是有意義的。
+現在如果用 `corr` 函數計算 `價格` 與 `DayOfYear` 的相關性，大約會是 `-0.27`——這意味著訓練預測模型是合理的。
 
-> 在訓練線性回歸模型之前，確保數據清理是很重要的。線性回歸對缺失值的處理效果不佳，因此清理掉所有空單元格是有意義的：
+> 在訓練線性回歸模型前，重要的是確保資料是乾淨的。線性回歸不適用於存在缺值的情況，因此刪除所有空白欄位是合理做法：
 
 ```python
 pie_pumpkins.dropna(inplace=True)
 pie_pumpkins.info()
 ```
 
-另一種方法是用相應列的平均值填充這些空值。
+另一種方法是將空值以該欄的平均值填補。
 
 ## 簡單線性回歸
 
-[![初學者的機器學習 - 使用 Scikit-learn 進行線性和多項式回歸](https://img.youtube.com/vi/e4c_UP2fSjg/0.jpg)](https://youtu.be/e4c_UP2fSjg "初學者的機器學習 - 使用 Scikit-learn 進行線性和多項式回歸")
+[![機器學習初學者 - 使用 Scikit-learn 的線性與多項式回歸](https://img.youtube.com/vi/e4c_UP2fSjg/0.jpg)](https://youtu.be/e4c_UP2fSjg "機器學習初學者 - 使用 Scikit-learn 的線性與多項式回歸")
 
-> 🎥 點擊上方圖片觀看線性和多項式回歸的簡短視頻概述。
+> 🎥 點擊上面圖片觀看線性與多項式回歸短片介紹。
 
-為了訓練我們的線性回歸模型，我們將使用 **Scikit-learn** 庫。
+為了訓練線性回歸模型，我們將使用 **Scikit-learn** 函式庫。
 
 ```python
 from sklearn.linear_model import LinearRegression
@@ -172,31 +183,31 @@ from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 ```
 
-首先，我們將輸入值（特徵）和預期輸出（標籤）分離到不同的 numpy 陣列中：
+我們先將輸入數值（特徵）與期望輸出（標籤）分別放入不同的 numpy 陣列：
 
 ```python
 X = pie_pumpkins['DayOfYear'].to_numpy().reshape(-1,1)
 y = pie_pumpkins['Price']
 ```
 
-> 請注意，我們需要對輸入數據進行 `reshape`，以便線性回歸包正確理解它。線性回歸需要一個 2D 陣列作為輸入，其中陣列的每一行對應於輸入特徵的向量。在我們的情況下，由於我們只有一個輸入——我們需要一個形狀為 N×1 的陣列，其中 N 是數據集的大小。
+> 注意，我們必須將輸入資料做 `reshape`，讓線性回歸套件正確理解它。線性回歸預期輸入是一個二維陣列，每行對應一組輸入特徵的向量。由於我們只有一個輸入，因此需要的是形狀為 N×1 的陣列，其中 N 是資料集大小。
 
-接著，我們需要將數據分為訓練集和測試集，以便在訓練後驗證模型：
+接著，我們需要將資料拆分成訓練集及測試集，以便訓練後驗證模型：
 
 ```python
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 ```
 
-最後，訓練實際的線性回歸模型只需要兩行代碼。我們定義 `LinearRegression` 對象，並使用 `fit` 方法將其擬合到數據中：
+最後，訓練真正的線性回歸模型只需要兩行程式。先定義 `LinearRegression` 物件，然後利用 `fit` 方法將它擬合至資料：
 
 ```python
 lin_reg = LinearRegression()
 lin_reg.fit(X_train,y_train)
 ```
 
-`LinearRegression` 對象在 `fit` 後包含所有回歸係數，可以通過 `.coef_` 屬性訪問。在我們的情況下，只有一個係數，應該大約是 `-0.017`。這意味著價格似乎隨時間略有下降，但幅度不大，每天大約下降 2 美分。我們還可以通過 `lin_reg.intercept_` 訪問回歸線與 Y 軸的交點——在我們的情況下，大約是 `21`，表示年初的價格。
+`fit` 後的 `LinearRegression` 物件包含所有回歸係數，可以使用 `.coef_` 屬性存取。在我們的例子中，只有一個係數，大約是 `-0.017`。這代表價格似乎隨時間略為下降，但幅度不大，大約每天降2仙。我們也可以使用 `lin_reg.intercept_` 取得回歸與 Y 軸的交點，這在我們的例子中大約是 `21`，表示年初的價格。
 
-為了查看模型的準確性，我們可以在測試數據集上預測價格，然後測量預測值與預期值的接近程度。這可以通過均方誤差（MSE）指標來完成，MSE 是所有預期值與預測值之間平方差的平均值。
+為了檢查模型的準確度，我們可以在測試資料集上預測價格，然後測量預測結果與期望值的接近程度。這可以使用均方誤差（MSE）指標完成，即期望值與預測值之間所有平方差的平均值。
 
 ```python
 pred = lin_reg.predict(X_test)
@@ -204,36 +215,37 @@ pred = lin_reg.predict(X_test)
 mse = np.sqrt(mean_squared_error(y_test,pred))
 print(f'Mean error: {mse:3.3} ({mse/np.mean(pred)*100:3.3}%)')
 ```
-我們的錯誤似乎集中在兩個點上，大約是 17%。表現不太理想。另一個衡量模型品質的指標是 **決定係數**，可以通過以下方式獲得：
+
+我們的誤差似乎約為 2 點，約 17%。不算太好。模型品質的另一個指標是**決定係數**，可以這樣取得：
 
 ```python
 score = lin_reg.score(X_train,y_train)
 print('Model determination: ', score)
-```  
-如果值為 0，表示模型未考慮輸入數據，並且表現為*最差的線性預測器*，即僅僅是結果的平均值。值為 1 則表示我們可以完美地預測所有期望的輸出。在我們的情況下，決定係數約為 0.06，這相當低。
+```
+若值為 0，表示模型完全不考慮輸入資料，並且充當*最差線性預測器*，即預測為結果的平均值。值為 1 表示我們能完全完美地預測所有期望輸出。在我們的例子中，決定係數約為 0.06，相當低。
 
-我們還可以繪製測試數據與回歸線的圖表，以更好地了解回歸在我們的案例中的表現：
+我們也可以將測試資料與回歸線同時繪圖，更直觀地看回歸的表現：
 
 ```python
 plt.scatter(X_test,y_test)
 plt.plot(X_test,pred)
-```  
+```
 
-<img alt="線性回歸" src="../../../../translated_images/zh-MO/linear-results.f7c3552c85b0ed1c.webp" width="50%" />
+<img alt="Linear regression" src="../../../../translated_images/zh-MO/linear-results.f7c3552c85b0ed1c.webp" width="50%" />
 
 ## 多項式回歸
 
-另一種線性回歸是多項式回歸。有時候，變量之間存在線性關係，例如南瓜的體積越大，價格越高；但有時候這些關係無法用平面或直線來表示。
+另一種線性回歸是多項式回歸。有時，變數間存在線性關係—體積較大的南瓜價格較高—但有時這些關係無法用平面或直線描述。
 
-✅ 這裡有一些[更多例子](https://online.stat.psu.edu/stat501/lesson/9/9.8)，展示了可以使用多項式回歸的數據。
+✅ 這裡有 [更多範例](https://online.stat.psu.edu/stat501/lesson/9/9.8) 適合用多項式回歸的資料
 
-再看看日期與價格之間的關係。這個散點圖看起來是否一定要用直線來分析？價格難道不會波動嗎？在這種情況下，你可以嘗試使用多項式回歸。
+再看看日期與價格的關係。這散點圖似乎一定要用直線分析嗎？價格不會波動嗎？在這種情況下，可以嘗試多項式回歸。
 
-✅ 多項式是可能包含一個或多個變量和係數的數學表達式。
+✅ 多項式是包含一個或多個變量與係數的數學表達式
 
-多項式回歸會創建一條曲線，以更好地擬合非線性數據。在我們的案例中，如果我們在輸入數據中加入平方的 `DayOfYear` 變量，我們應該能用一條拋物線來擬合數據，該拋物線在一年中的某個點會有一個最低值。
+多項式回歸會建立曲線以更好擬合非線性資料。在我們的例子中，若將平方的 `DayOfYear` 變項加入輸入資料，我們應能用拋物線擬合資料，曲線會在年內某一點有極小值。
 
-Scikit-learn 提供了一個方便的 [pipeline API](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html?highlight=pipeline#sklearn.pipeline.make_pipeline)，可以將不同的數據處理步驟結合在一起。**Pipeline** 是一個由**估算器**組成的鏈。在我們的案例中，我們將創建一個 pipeline，首先向模型添加多項式特徵，然後訓練回歸：
+Scikit-learn 包含便利的 [pipeline API](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html?highlight=pipeline#sklearn.pipeline.make_pipeline)，用來串接資料處理步驟。**pipeline** 是一連串的**估計器**。在我們例子中，我們將建立一條 pipeline，先加入多項式特徵，再訓練回歸：
 
 ```python
 from sklearn.preprocessing import PolynomialFeatures
@@ -242,62 +254,62 @@ from sklearn.pipeline import make_pipeline
 pipeline = make_pipeline(PolynomialFeatures(2), LinearRegression())
 
 pipeline.fit(X_train,y_train)
-```  
+```
 
-使用 `PolynomialFeatures(2)` 表示我們將包含所有二次多項式特徵。在我們的案例中，這僅意味著 `DayOfYear`<sup>2</sup>，但如果有兩個輸入變量 X 和 Y，這將添加 X<sup>2</sup>、XY 和 Y<sup>2</sup>。如果需要，我們也可以使用更高次的多項式。
+使用 `PolynomialFeatures(2)` 意味著我們將包含輸入資料的所有二階多項式。在我們這裡，只有 `DayOfYear`<sup>2</sup>，但若輸入有兩變量 X 及 Y，則會加上 X<sup>2</sup>、XY 及 Y<sup>2</sup>。當然，我們也可以使用更高階的多項式。
 
-Pipeline 的使用方式與原始的 `LinearRegression` 對象相同，例如我們可以 `fit` pipeline，然後使用 `predict` 獲得預測結果。以下是顯示測試數據和近似曲線的圖表：
+Pipeline 可以像原本的 `LinearRegression` 物件一樣使用，例如我們可以 `fit` pipeline，再用 `predict` 取得預測結果。下圖顯示測試資料與擬合曲線：
 
-<img alt="多項式回歸" src="../../../../translated_images/zh-MO/poly-results.ee587348f0f1f60b.webp" width="50%" />
+<img alt="Polynomial regression" src="../../../../translated_images/zh-MO/poly-results.ee587348f0f1f60b.webp" width="50%" />
 
-使用多項式回歸，我們可以獲得稍低的 MSE 和稍高的決定係數，但提升並不顯著。我們需要考慮其他特徵！
+使用多項式回歸，我們可以獲得略低的 MSE 與較高的決定係數，但差異不大。我們還需要考慮其他特徵！
 
-> 你可以看到南瓜價格的最低點大約出現在萬聖節附近。你能解釋這個現象嗎？
+> 你可以看到最低的南瓜價格似乎出現在萬聖節前後。你怎麼解釋這現象？
 
-🎃 恭喜！你剛剛創建了一個可以幫助預測南瓜派價格的模型。你可能可以對所有南瓜類型重複相同的過程，但這樣會很繁瑣。接下來，我們將學習如何在模型中考慮南瓜品種！
+🎃 恭喜，剛剛你建立了一個能幫助預測派南瓜價格的模型。或許你可以對其他所有南瓜類型重複此程序，但那會很繁瑣。現在讓我們了解如何將南瓜品種納入模型！
 
 ## 類別特徵
 
-在理想情況下，我們希望能夠使用同一個模型來預測不同南瓜品種的價格。然而，`Variety` 列與 `Month` 等列有所不同，因為它包含非數值型的值。這類列被稱為**類別型**。
+在理想狀況下，我們希望使用同一模型預測不同南瓜品種的價格。不過，`Variety` 欄與 `Month` 等欄不同，因它包含非數字值。這類欄稱為**類別特徵**。
 
-[![初學者的機器學習 - 使用線性回歸進行類別特徵預測](https://img.youtube.com/vi/DYGliioIAE0/0.jpg)](https://youtu.be/DYGliioIAE0 "初學者的機器學習 - 使用線性回歸進行類別特徵預測")
+[![ML for beginners - Categorical Feature Predictions with Linear Regression](https://img.youtube.com/vi/DYGliioIAE0/0.jpg)](https://youtu.be/DYGliioIAE0 "ML for beginners - Categorical Feature Predictions with Linear Regression")
 
-> 🎥 點擊上方圖片觀看有關使用類別特徵的簡短視頻概述。
+> 🎥 點擊上圖觀看使用類別特徵的短片介紹。
 
-以下是品種與平均價格的關係：
+這裡展示了平均價格與品種的關係：
 
-<img alt="按品種劃分的平均價格" src="../../../../translated_images/zh-MO/price-by-variety.744a2f9925d9bcb4.webp" width="50%" />
+<img alt="Average price by variety" src="../../../../translated_images/zh-MO/price-by-variety.744a2f9925d9bcb4.webp" width="50%" />
 
-為了考慮品種，我們首先需要將其轉換為數值形式，或者**編碼**。有幾種方法可以做到：
+要考慮品種，我們首先需要將它轉成數值型態，或稱**編碼**。我們可以用幾種方式做到這點：
 
-* 簡單的**數值編碼**會建立一個不同品種的表，然後用表中的索引替換品種名稱。這對線性回歸來說不是最好的方法，因為線性回歸會將索引的實際數值加到結果中，並乘以某個係數。在我們的案例中，索引號與價格之間的關係顯然是非線性的，即使我們確保索引按某種特定方式排序。
-* **獨熱編碼**會用 4 個不同的列替換 `Variety` 列，每個列對應一個品種。如果某行屬於某品種，該列的值為 `1`，否則為 `0`。這意味著線性回歸中會有四個係數，每個南瓜品種都有一個，負責該品種的“起始價格”（或“附加價格”）。
+* 簡單的**數字編碼**會建立一個品種清單，然後以該清單中索引取代品種名稱。這對線性回歸不太適合，因為線性回歸會使用索引的數值，乘以某係數加入結果之中。在我們的例子，索引與價格的關係明顯非線性，即使我們保證索引有特定排序。
+* **一熱編碼**會將 `Variety` 欄拆成四個欄，每個品種一欄。每欄對應列若屬於該品種則為 `1`，否則為 `0`。這代表線性回歸會有四個係數，分別對應四個南瓜品種的「起始價格」（或更準確說是「額外價格」）。
 
-以下代碼展示了如何對品種進行獨熱編碼：
+以下程式碼示範如何對品種進行一熱編碼：
 
 ```python
 pd.get_dummies(new_pumpkins['Variety'])
-```  
+```
 
- ID | FAIRYTALE | MINIATURE | MIXED HEIRLOOM VARIETIES | PIE TYPE  
-----|-----------|-----------|--------------------------|----------  
-70 | 0 | 0 | 0 | 1  
-71 | 0 | 0 | 0 | 1  
-... | ... | ... | ... | ...  
-1738 | 0 | 1 | 0 | 0  
-1739 | 0 | 1 | 0 | 0  
-1740 | 0 | 1 | 0 | 0  
-1741 | 0 | 1 | 0 | 0  
-1742 | 0 | 1 | 0 | 0  
+ ID | FAIRYTALE | MINIATURE | MIXED HEIRLOOM VARIETIES | PIE TYPE
+----|-----------|-----------|--------------------------|----------
+70 | 0 | 0 | 0 | 1
+71 | 0 | 0 | 0 | 1
+... | ... | ... | ... | ...
+1738 | 0 | 1 | 0 | 0
+1739 | 0 | 1 | 0 | 0
+1740 | 0 | 1 | 0 | 0
+1741 | 0 | 1 | 0 | 0
+1742 | 0 | 1 | 0 | 0
 
-要使用獨熱編碼的品種作為輸入訓練線性回歸，我們只需要正確初始化 `X` 和 `y` 數據：
+要用一熱編碼品種作為輸入訓練線性回歸，只要正確初始化 `X` 與 `y`:
 
 ```python
 X = pd.get_dummies(new_pumpkins['Variety'])
 y = new_pumpkins['Price']
-```  
+```
 
-其餘代碼與我們之前用於訓練線性回歸的代碼相同。如果你嘗試一下，你會發現均方誤差差不多，但我們的決定係數大幅提高（約 77%）。為了獲得更準確的預測，我們可以考慮更多的類別特徵，以及數值特徵，例如 `Month` 或 `DayOfYear`。要獲得一個大的特徵數組，我們可以使用 `join`：
+其餘程式碼與之前用來訓練線性回歸的相同。實驗結果會顯示均方誤差約相當，但決定係數大幅提升（約 77%）。若想更精確預測，可加入更多類別特徵，或數值特徵，如 `Month` 和 `DayOfYear`。可以用 `join` 合併成一個特徵陣列：
 
 ```python
 X = pd.get_dummies(new_pumpkins['Variety']) \
@@ -305,69 +317,70 @@ X = pd.get_dummies(new_pumpkins['Variety']) \
         .join(pd.get_dummies(new_pumpkins['City'])) \
         .join(pd.get_dummies(new_pumpkins['Package']))
 y = new_pumpkins['Price']
-```  
+```
 
-在這裡，我們還考慮了 `City` 和 `Package` 類型，這使得 MSE 降至 2.84（10%），決定係數提高到 0.94！
+這裡我們還考慮了 `City` 和 `Package` 類型，使 MSE 降為 2.84（10%），決定係數升至 0.94！
 
-## 整合所有內容
+## 綜合應用
 
-為了創建最佳模型，我們可以使用上述示例中的結合數據（獨熱編碼的類別特徵 + 數值特徵）以及多項式回歸。以下是完整代碼供你參考：
+為了打造最佳模型，我們可以使用上述範例中合併的（類別一熱編碼 + 數值）資料，搭配多項式回歸。以下為完整程式碼方便使用：
 
 ```python
-# set up training data
+# 設置訓練數據
 X = pd.get_dummies(new_pumpkins['Variety']) \
         .join(new_pumpkins['Month']) \
         .join(pd.get_dummies(new_pumpkins['City'])) \
         .join(pd.get_dummies(new_pumpkins['Package']))
 y = new_pumpkins['Price']
 
-# make train-test split
+# 進行訓練-測試拆分
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 
-# setup and train the pipeline
+# 設置並訓練流程
 pipeline = make_pipeline(PolynomialFeatures(2), LinearRegression())
 pipeline.fit(X_train,y_train)
 
-# predict results for test data
+# 預測測試數據結果
 pred = pipeline.predict(X_test)
 
-# calculate MSE and determination
+# 計算均方誤差及決定係數
 mse = np.sqrt(mean_squared_error(y_test,pred))
 print(f'Mean error: {mse:3.3} ({mse/np.mean(pred)*100:3.3}%)')
 
 score = pipeline.score(X_train,y_train)
 print('Model determination: ', score)
-```  
+```
 
-這應該能讓我們的決定係數達到接近 97%，MSE=2.23（約 8% 的預測誤差）。
+預期將得到近 97% 的最佳決定係數，以及 MSE=2.23（約8%預測誤差）。
 
-| 模型 | MSE | 決定係數 |  
-|-------|-----|---------------|  
-| `DayOfYear` 線性 | 2.77 (17.2%) | 0.07 |  
-| `DayOfYear` 多項式 | 2.73 (17.0%) | 0.08 |  
-| `Variety` 線性 | 5.24 (19.7%) | 0.77 |  
-| 所有特徵線性 | 2.84 (10.5%) | 0.94 |  
-| 所有特徵多項式 | 2.23 (8.25%) | 0.97 |  
+| 模型 | MSE | 決定係數 |
+|-------|-----|---------|
+| `DayOfYear` 線性 | 2.77 (17.2%) | 0.07 |
+| `DayOfYear` 多項式 | 2.73 (17.0%) | 0.08 |
+| `Variety` 線性 | 5.24 (19.7%) | 0.77 |
+| 所有特徵 線性 | 2.84 (10.5%) | 0.94 |
+| 所有特徵 多項式 | 2.23 (8.25%) | 0.97 |
 
-🏆 做得好！你在一節課中創建了四個回歸模型，並將模型品質提升到 97%。在回歸的最後一部分中，你將學習如何使用邏輯回歸來確定類別。
+🏆 做得好！你在一課中建立了四個回歸模型，將模型品質提升至 97%。回歸章節最後會介紹用於分類的邏輯回歸。
 
 ---
-
 ## 🚀挑戰
 
-在此筆記本中測試幾個不同的變量，看看相關性如何影響模型準確性。
+在這個筆記本中測試不同變數，以觀察相關程度如何影響模型準確度。
 
-## [課後測驗](https://ff-quizzes.netlify.app/en/ml/)
+## [課後小測驗](https://ff-quizzes.netlify.app/en/ml/)
 
-## 回顧與自學
+## 複習與自學
 
-在本課中，我們學習了線性回歸。還有其他重要的回歸類型。閱讀有關逐步回歸、嶺回歸、套索回歸和彈性網技術的資料。一門很好的課程是 [斯坦福統計學習課程](https://online.stanford.edu/courses/sohs-ystatslearning-statistical-learning)。
+本課介紹線性回歸。還有其他重要的回歸類型，請閱讀逐步回歸、Ridge、Lasso 與 Elasticnet 技術。推薦的深入課程是 [史丹佛統計學習課程](https://online.stanford.edu/courses/sohs-ystatslearning-statistical-learning)。
 
 ## 作業
 
-[建立模型](assignment.md)  
+[建構模型](assignment.md)
 
 ---
 
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
 **免責聲明**：  
-本文件使用 AI 翻譯服務 [Co-op Translator](https://github.com/Azure/co-op-translator) 進行翻譯。我們致力於提供準確的翻譯，但請注意，自動翻譯可能包含錯誤或不準確之處。應以原始語言的文件作為權威來源。對於關鍵資訊，建議尋求專業人工翻譯。我們對於因使用此翻譯而產生的任何誤解或錯誤解讀概不負責。
+本文件由 AI 翻譯服務 [Co-op Translator](https://github.com/Azure/co-op-translator) 進行翻譯。雖然我們致力於確保準確性，但請注意，自動翻譯可能包含錯誤或不準確之處。原文文件以其母語版本為權威來源。對於重要資訊，建議採用專業人工翻譯。我們不對因使用本翻譯而引起的任何誤解或誤釋負責。
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

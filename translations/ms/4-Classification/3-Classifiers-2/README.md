@@ -1,42 +1,42 @@
-# Pengelas Masakan 2
+# Pengelas masakan 2
 
-Dalam pelajaran klasifikasi kedua ini, anda akan meneroka lebih banyak cara untuk mengklasifikasikan data berangka. Anda juga akan mempelajari implikasi memilih satu pengelas berbanding yang lain.
+Dalam pelajaran pengelasan kedua ini, anda akan meneroka lebih banyak cara untuk mengelas data berangka. Anda juga akan mempelajari kesan pemilihan satu pengelas berbanding yang lain.
 
-## [Kuiz pra-kuliah](https://ff-quizzes.netlify.app/en/ml/)
+## [Kuiz pra-ceramah](https://ff-quizzes.netlify.app/en/ml/)
 
 ### Prasyarat
 
-Kami mengandaikan bahawa anda telah menyelesaikan pelajaran sebelumnya dan mempunyai dataset yang telah dibersihkan dalam folder `data` anda yang dinamakan _cleaned_cuisines.csv_ di akar folder 4-pelajaran ini.
+Kami menganggap anda telah menyelesaikan pelajaran sebelum ini dan mempunyai set data yang telah dibersihkan dalam folder `data` anda yang dipanggil _cleaned_cuisines.csv_ di akar folder 4 pelajaran ini.
 
 ### Persediaan
 
-Kami telah memuatkan fail _notebook.ipynb_ anda dengan dataset yang telah dibersihkan dan telah membahagikannya kepada dataframe X dan y, sedia untuk proses pembinaan model.
+Kami telah memuatkan fail _notebook.ipynb_ anda dengan set data yang dibersihkan dan telah membahagikannya kepada dataframe X dan y, sedia untuk proses pembinaan model.
 
-## Peta klasifikasi
+## Peta pengelasan
 
-Sebelumnya, anda telah mempelajari pelbagai pilihan yang anda ada ketika mengklasifikasikan data menggunakan helaian rujukan Microsoft. Scikit-learn menawarkan helaian rujukan yang serupa tetapi lebih terperinci yang dapat membantu mempersempit pilihan penganggar anda (istilah lain untuk pengelas):
+Sebelum ini, anda telah belajar tentang pelbagai pilihan yang anda ada apabila mengelaskan data menggunakan helaian cheat Microsoft. Scikit-learn menawarkan helaian cheat yang serupa, tetapi lebih terperinci yang boleh membantu mempersempitkan lagi estimator anda (istilah lain untuk pengelas):
 
-![Peta ML dari Scikit-learn](../../../../4-Classification/3-Classifiers-2/images/map.png)
+![Peta ML dari Scikit-learn](../../../../translated_images/ms/map.e963a6a51349425a.webp)
 > Tip: [lawati peta ini secara dalam talian](https://scikit-learn.org/stable/tutorial/machine_learning_map/) dan klik sepanjang laluan untuk membaca dokumentasi.
 
-### Rancangan
+### Pelan
 
-Peta ini sangat berguna apabila anda mempunyai pemahaman yang jelas tentang data anda, kerana anda boleh 'berjalan' di sepanjang laluannya untuk membuat keputusan:
+Peta ini sangat berguna setelah anda memahami data anda dengan jelas, kerana anda boleh ‘berjalan’ sepanjang laluan untuk membuat keputusan:
 
 - Kami mempunyai >50 sampel
 - Kami ingin meramalkan kategori
-- Kami mempunyai data berlabel
+- Kami mempunyai data yang dilabel
 - Kami mempunyai kurang daripada 100K sampel
 - ✨ Kami boleh memilih Linear SVC
 - Jika itu tidak berfungsi, kerana kami mempunyai data berangka
-    - Kami boleh mencuba ✨ KNeighbors Classifier 
+    - Kami boleh cuba ✨ KNeighbors Classifier
       - Jika itu tidak berfungsi, cuba ✨ SVC dan ✨ Ensemble Classifiers
 
 Ini adalah laluan yang sangat berguna untuk diikuti.
 
 ## Latihan - bahagikan data
 
-Mengikuti laluan ini, kita harus bermula dengan mengimport beberapa perpustakaan yang diperlukan.
+Mengikuti laluan ini, kita harus mulakan dengan mengimport beberapa perpustakaan yang diperlukan.
 
 1. Import perpustakaan yang diperlukan:
 
@@ -53,22 +53,22 @@ Mengikuti laluan ini, kita harus bermula dengan mengimport beberapa perpustakaan
 1. Bahagikan data latihan dan ujian anda:
 
     ```python
-    X_train, X_test, y_train, y_test = train_test_split(cuisines_feature_df, cuisines_label_df, test_size=0.3)
+    X_train, X_test, y_train, y_test = train_test_split(cuisines_features_df, cuisines_label_df, test_size=0.3)
     ```
 
 ## Pengelas Linear SVC
 
-Support-Vector clustering (SVC) adalah sebahagian daripada keluarga teknik ML Support-Vector Machines (pelajari lebih lanjut tentang ini di bawah). Dalam kaedah ini, anda boleh memilih 'kernel' untuk menentukan cara mengelompokkan label. Parameter 'C' merujuk kepada 'regularisasi' yang mengawal pengaruh parameter. Kernel boleh menjadi salah satu daripada [beberapa](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC); di sini kami menetapkannya kepada 'linear' untuk memastikan kami menggunakan Linear SVC. Kebarangkalian secara lalai adalah 'false'; di sini kami menetapkannya kepada 'true' untuk mendapatkan anggaran kebarangkalian. Kami menetapkan keadaan rawak kepada '0' untuk mengacak data bagi mendapatkan kebarangkalian.
+Support-Vector clustering (SVC) adalah salah satu jenis dalam keluarga mesin Support-Vector teknik ML (ketahui lebih lanjut tentang ini di bawah). Dalam kaedah ini, anda boleh memilih ‘kernel’ untuk menentukan bagaimana mengelompokkan label. Parameter ‘C’ merujuk kepada ‘regularisasi’ yang mengawal pengaruh parameter. Kernel boleh menjadi salah satu daripada [beberapa](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC); di sini kami menetapkannya kepada ‘linear’ untuk memastikan kami memanfaatkan Linear SVC. Kebarangkalian lalai adalah ‘false’; di sini kami tetapkan kepada ‘true’ untuk mengumpul anggaran kebarangkalian. Kami tetapkan random state kepada ‘0’ untuk mengocak data supaya mendapat kebarangkalian.
 
 ### Latihan - gunakan Linear SVC
 
-Mulakan dengan mencipta array pengelas. Anda akan menambah secara progresif ke array ini semasa kami menguji.
+Mula dengan mencipta satu senarai pengelas. Anda akan menambah secara berperingkat kepada senarai ini semasa kita menguji.
 
-1. Mulakan dengan Linear SVC:
+1. Mula dengan Linear SVC:
 
     ```python
     C = 10
-    # Create different classifiers.
+    # Buat penyaing yang berbeza.
     classifiers = {
         'Linear SVC': SVC(kernel='linear', C=C, probability=True,random_state=0)
     }
@@ -88,7 +88,7 @@ Mulakan dengan mencipta array pengelas. Anda akan menambah secara progresif ke a
         print(classification_report(y_test,y_pred))
     ```
 
-    Hasilnya agak baik:
+    Keputusannya agak baik:
 
     ```output
     Accuracy (train) for Linear SVC: 78.6% 
@@ -107,19 +107,19 @@ Mulakan dengan mencipta array pengelas. Anda akan menambah secara progresif ke a
 
 ## Pengelas K-Neighbors
 
-K-Neighbors adalah sebahagian daripada keluarga kaedah ML "neighbors", yang boleh digunakan untuk pembelajaran yang diawasi dan tidak diawasi. Dalam kaedah ini, sejumlah titik yang telah ditentukan dibuat dan data dikumpulkan di sekitar titik-titik ini supaya label umum dapat diramalkan untuk data tersebut.
+K-Neighbors adalah sebahagian daripada keluarga ‘neighbors’ dalam kaedah ML, yang boleh digunakan untuk pembelajaran terkawal dan tidak terkawal. Dalam kaedah ini, bilangan titik telah ditetapkan dan data dikumpulkan di sekitar titik-titik ini supaya label yang digeneralisasi boleh diramalkan untuk data tersebut.
 
 ### Latihan - gunakan pengelas K-Neighbors
 
-Pengelas sebelumnya adalah baik dan berfungsi dengan baik dengan data, tetapi mungkin kita boleh mendapatkan ketepatan yang lebih baik. Cuba pengelas K-Neighbors.
+Pengelas sebelum ini baik dan berfungsi dengan baik dengan data, tetapi mungkin kita boleh dapat ketepatan yang lebih baik. Cuba pengelas K-Neighbors.
 
-1. Tambahkan satu baris ke array pengelas anda (tambahkan koma selepas item Linear SVC):
+1. Tambah satu baris ke senarai pengelas anda (tambah koma selepas item Linear SVC):
 
     ```python
     'KNN classifier': KNeighborsClassifier(C),
     ```
 
-    Hasilnya sedikit lebih buruk:
+    Keputusannya sedikit lebih buruk:
 
     ```output
     Accuracy (train) for KNN classifier: 73.8% 
@@ -140,19 +140,19 @@ Pengelas sebelumnya adalah baik dan berfungsi dengan baik dengan data, tetapi mu
 
 ## Pengelas Support Vector
 
-Pengelas Support-Vector adalah sebahagian daripada keluarga [Support-Vector Machine](https://wikipedia.org/wiki/Support-vector_machine) kaedah ML yang digunakan untuk tugas klasifikasi dan regresi. SVM "memetakan contoh latihan ke titik dalam ruang" untuk memaksimumkan jarak antara dua kategori. Data berikutnya dipetakan ke dalam ruang ini supaya kategorinya dapat diramalkan.
+Pengelas Support-Vector adalah sebahagian daripada keluarga [Support-Vector Machine](https://wikipedia.org/wiki/Support-vector_machine) kaedah ML yang digunakan untuk tugasan pengelasan dan regresi. SVM "memetakan contoh latihan ke titik dalam ruang" untuk memaksimumkan jarak antara dua kategori. Data seterusnya dipetakan ke dalam ruang ini supaya kategori mereka boleh diramalkan.
 
-### Latihan - gunakan pengelas Support Vector
+### Latihan - gunakan Pengelas Support Vector
 
-Mari cuba mendapatkan ketepatan yang lebih baik dengan pengelas Support Vector.
+Mari cuba untuk ketepatan yang sedikit lebih baik dengan Pengelas Support Vector.
 
-1. Tambahkan koma selepas item K-Neighbors, dan kemudian tambahkan baris ini:
+1. Tambah koma selepas item K-Neighbors, dan kemudian tambah baris ini:
 
     ```python
     'SVC': SVC(),
     ```
 
-    Hasilnya sangat baik!
+    Keputusannya sangat baik!
 
     ```output
     Accuracy (train) for SVC: 83.2% 
@@ -171,16 +171,16 @@ Mari cuba mendapatkan ketepatan yang lebih baik dengan pengelas Support Vector.
 
     ✅ Pelajari tentang [Support-Vectors](https://scikit-learn.org/stable/modules/svm.html#svm)
 
-## Pengelas Ensemble
+## Pengelas Ensembel
 
-Mari ikuti laluan hingga ke penghujungnya, walaupun ujian sebelumnya sudah cukup baik. Mari cuba beberapa 'Pengelas Ensemble', khususnya Random Forest dan AdaBoost:
+Mari ikuti laluan hingga ke penghujung, walaupun ujian sebelum ini sudah cukup baik. Mari cuba beberapa ‘Pengelas Ensembel’, khususnya Random Forest dan AdaBoost:
 
 ```python
   'RFST': RandomForestClassifier(n_estimators=100),
   'ADA': AdaBoostClassifier(n_estimators=100)
 ```
 
-Hasilnya sangat baik, terutamanya untuk Random Forest:
+Keputusannya sangat baik, terutamanya untuk Random Forest:
 
 ```output
 Accuracy (train) for RFST: 84.5% 
@@ -210,31 +210,33 @@ Accuracy (train) for ADA: 72.4%
 weighted avg       0.73      0.72      0.72      1199
 ```
 
-✅ Pelajari tentang [Pengelas Ensemble](https://scikit-learn.org/stable/modules/ensemble.html)
+✅ Pelajari tentang [Pengelas Ensembel](https://scikit-learn.org/stable/modules/ensemble.html)
 
-Kaedah Pembelajaran Mesin ini "menggabungkan ramalan beberapa penganggar asas" untuk meningkatkan kualiti model. Dalam contoh kami, kami menggunakan Random Trees dan AdaBoost. 
+Kaedah Pembelajaran Mesin ini "menggabungkan ramalan beberapa estimator asas" untuk meningkatkan kualiti model. Dalam contoh kami, kami menggunakan Random Trees dan AdaBoost.
 
-- [Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#forest), kaedah purata, membina 'hutan' daripada 'pokok keputusan' yang diselitkan dengan keacakan untuk mengelakkan overfitting. Parameter n_estimators ditetapkan kepada bilangan pokok.
+- [Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#forest), kaedah purata, membina ‘hutan’ ‘pokok keputusan’ yang dipenuhi dengan rawak untuk mengelakkan overfitting. Parameter n_estimators ditetapkan kepada bilangan pokok.
 
-- [AdaBoost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) menyesuaikan pengelas kepada dataset dan kemudian menyesuaikan salinan pengelas tersebut kepada dataset yang sama. Ia memberi tumpuan kepada berat item yang diklasifikasikan secara salah dan menyesuaikan fit untuk pengelas seterusnya untuk membetulkan.
+- [AdaBoost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) menyesuaikan satu pengelas kepada set data dan kemudian menyesuaikan salinan pengelas itu kepada set data yang sama. Ia menumpukan pada berat bagi item yang salah diklasifikasikan dan melaraskan keserasian untuk pengelas seterusnya untuk membetulkan.
 
 ---
 
 ## 🚀Cabaran
 
-Setiap teknik ini mempunyai sejumlah besar parameter yang boleh anda ubah. Kajilah parameter lalai setiap satu dan fikirkan apa yang akan berlaku jika anda mengubah parameter ini terhadap kualiti model.
+Setiap teknik ini mempunyai banyak parameter yang boleh anda laraskan. Selidiki parameter lalai setiap satu dan fikirkan apa maksud melaraskan parameter ini untuk kualiti model.
 
-## [Kuiz pasca-kuliah](https://ff-quizzes.netlify.app/en/ml/)
+## [Kuiz pasca-ceramah](https://ff-quizzes.netlify.app/en/ml/)
 
-## Ulasan & Kajian Kendiri
+## Semakan & Pembelajaran Sendiri
 
-Terdapat banyak istilah dalam pelajaran ini, jadi luangkan masa untuk mengkaji [senarai ini](https://docs.microsoft.com/dotnet/machine-learning/resources/glossary?WT.mc_id=academic-77952-leestott) istilah berguna!
+Terdapat banyak jargon dalam pelajaran ini, jadi ambil masa untuk menyemak [senarai ini](https://docs.microsoft.com/dotnet/machine-learning/resources/glossary?WT.mc_id=academic-77952-leestott) istilah berguna!
 
-## Tugasan 
+## Tugasan
 
 [Parameter play](assignment.md)
 
 ---
 
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
 **Penafian**:  
-Dokumen ini telah diterjemahkan menggunakan perkhidmatan terjemahan AI [Co-op Translator](https://github.com/Azure/co-op-translator). Walaupun kami berusaha untuk memastikan ketepatan, sila ambil perhatian bahawa terjemahan automatik mungkin mengandungi kesilapan atau ketidaktepatan. Dokumen asal dalam bahasa asalnya harus dianggap sebagai sumber yang berwibawa. Untuk maklumat yang kritikal, terjemahan manusia profesional adalah disyorkan. Kami tidak bertanggungjawab atas sebarang salah faham atau salah tafsir yang timbul daripada penggunaan terjemahan ini.
+Dokumen ini telah diterjemahkan menggunakan perkhidmatan terjemahan AI [Co-op Translator](https://github.com/Azure/co-op-translator). Walaupun kami berusaha untuk memastikan ketepatan, sila maklum bahawa terjemahan automatik mungkin mengandungi kesilapan atau ketidaktepatan. Dokumen asal dalam bahasa asalnya harus dianggap sebagai sumber utama yang sahih. Untuk maklumat penting, terjemahan profesional oleh manusia adalah disyorkan. Kami tidak bertanggungjawab atas sebarang salah faham atau salah tafsir yang timbul daripada penggunaan terjemahan ini.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

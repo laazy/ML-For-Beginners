@@ -1,16 +1,18 @@
-# Prozkoumejte nástroj Responsible AI Toolbox
+# Prozkoumejte toolbox Responsible AI
 
 ## Pokyny
 
-V této lekci jste se seznámili s nástrojem Responsible AI Toolbox, „open-source projektem řízeným komunitou, který pomáhá datovým vědcům analyzovat a zlepšovat AI systémy.“ Pro tento úkol prozkoumejte jeden z [notebooků](https://github.com/microsoft/responsible-ai-toolbox/blob/main/notebooks/responsibleaidashboard/getting-started.ipynb) nástroje RAI Toolbox a své poznatky shrňte v písemné práci nebo prezentaci.
+V této lekci jste se dozvěděli o toolboxu Responsible AI, "otevřeném, komunitou řízeném projektu, jehož cílem je pomoci datovým vědcům analyzovat a zlepšovat AI systémy." Pro tento úkol prozkoumejte jeden z RAI Toolbox [notebooků](https://github.com/microsoft/responsible-ai-toolbox/blob/main/notebooks/responsibleaidashboard/tabular/getting-started.ipynb) a své zjištění prezentujte v závěrečné práci nebo prezentaci.
 
-## Hodnoticí kritéria
+## Hodnotící kritéria
 
-| Kritéria | Vynikající | Dostatečné | Vyžaduje zlepšení |
-| -------- | ---------- | ---------- | ----------------- |
-|          | Je předložena písemná práce nebo powerpointová prezentace, která diskutuje systémy Fairlearn, spuštěný notebook a závěry vyvozené z jeho spuštění | Je předložena písemná práce bez závěrů | Není předložena žádná písemná práce |
+| Kritéria | Výborně | Dostatečně | Potřebuje zlepšení |
+| -------- | --------- | -------- | ----------------- |
+|          |  Je předložena práce nebo powerpointová prezentace, která diskutuje systémy Fairlearn, spuštěný notebook a závěry vyvozené ze spuštění        |   Je předložena práce bez závěrů       |  Není předložena žádná práce                 |
 
 ---
 
-**Prohlášení**:  
-Tento dokument byl přeložen pomocí služby pro automatický překlad [Co-op Translator](https://github.com/Azure/co-op-translator). I když se snažíme o přesnost, mějte prosím na paměti, že automatické překlady mohou obsahovat chyby nebo nepřesnosti. Původní dokument v jeho původním jazyce by měl být považován za autoritativní zdroj. Pro důležité informace doporučujeme profesionální lidský překlad. Neodpovídáme za žádné nedorozumění nebo nesprávné interpretace vyplývající z použití tohoto překladu.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Prohlášení o vyloučení odpovědnosti**:
+Tento dokument byl přeložen pomocí služeb automatického překladu AI [Co-op Translator](https://github.com/Azure/co-op-translator). Přestože usilujeme o přesnost, mějte prosím na paměti, že automatické překlady mohou obsahovat chyby nebo nepřesnosti. Originální dokument v jeho původním jazyce by měl být považován za závazný zdroj. Pro důležité informace se doporučuje využít profesionální lidský překlad. Nejsme odpovědní za jakékoli nedorozumění či chybné výklady vyplývající z použití tohoto překladu.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

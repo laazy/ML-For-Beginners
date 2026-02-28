@@ -1,124 +1,137 @@
-# Készítsünk regressziós modellt Scikit-learn segítségével: négyféle regresszió
+# Regressziós modell építése Scikit-learn használatával: regresszió négyféleképpen
 
-![Lineáris vs polinomiális regresszió infografika](../../../../2-Regression/3-Linear/images/linear-polynomial.png)
-> Infografika: [Dasani Madipalli](https://twitter.com/dasani_decoded)
+## Kezdő megjegyzés
+
+Lineáris regressziót akkor használunk, amikor egy **numerikus értéket** akarunk megjósolni (például ház árát, hőmérsékletet vagy értékesítést).
+Ez úgy működik, hogy megkeresi azt a legjobb egyenest, amely legjobban reprezentálja a bemeneti jellemzők és a kimenet közötti kapcsolatot.
+
+Ebben a leckében a fogalom megértésére koncentrálunk, mielőtt további, fejlettebb regressziós technikákat vizsgálnánk.
+![Lineáris vs polinomiális regresszió infografika](../../../../translated_images/hu/linear-polynomial.5523c7cb6576ccab.webp)
+> Infografika készítője: [Dasani Madipalli](https://twitter.com/dasani_decoded)
 ## [Előadás előtti kvíz](https://ff-quizzes.netlify.app/en/ml/)
 
-> ### [Ez a lecke elérhető R-ben is!](../../../../2-Regression/3-Linear/solution/R/lesson_3.html)
-### Bevezetés 
+> ### [Ez a lecke elérhető R nyelven is!](../../../../2-Regression/3-Linear/solution/R/lesson_3.html)
+### Bevezetés
 
-Eddig megismerkedtél azzal, hogy mi is az a regresszió, például a tökárak adatain keresztül, amelyeket ebben a leckében fogunk használni. A Matplotlib segítségével vizualizáltad is az adatokat.
+Eddig megvizsgáltad, mi az a regresszió, és mintákat néztél meg a sütőtök árképzési adatbázisból, amelyet az egész lecke során fogunk használni. Meg is jelenítetted azt a Matplotlib segítségével.
 
-Most készen állsz arra, hogy mélyebben belemerülj a gépi tanulás regressziós technikáiba. Bár a vizualizáció segít az adatok megértésében, a gépi tanulás valódi ereje a _modellek tanításában_ rejlik. A modelleket történelmi adatokon tanítjuk, hogy automatikusan felismerjék az adatok közötti összefüggéseket, és lehetővé tegyék az előrejelzést olyan új adatokra, amelyeket a modell korábban nem látott.
+Most készen állsz arra, hogy mélyebben beleásd magad a regresszió témájába a gépi tanuláshoz. Míg a megjelenítés lehetővé teszi az adatok megértését, a gépi tanulás valódi ereje a _modellek betanításában_ rejlik. A modelleket történeti adatokon tanítjuk meg, hogy automatikusan megragadják az adatok közötti összefüggéseket, és lehetővé tegyék, hogy új adatokra előrejelzéseket készítsünk, melyekkel a modell még nem találkozott.
 
-Ebben a leckében többet fogsz megtudni kétféle regresszióról: _egyszerű lineáris regresszióról_ és _polinomiális regresszióról_, valamint az ezek mögött álló matematikáról. Ezek a modellek lehetővé teszik számunkra, hogy különböző bemeneti adatok alapján előre jelezzük a tökárakat.
+Ebben a leckében két regressziótípust fogsz megismerni: az _alapvető lineáris regressziót_ és a _polinomiális regressziót_, néhány matematikai háttérrel együtt. Ezek a modellek lehetővé teszik, hogy előre jelezzük a sütőtök árakat különböző bemeneti adatok alapján.
 
-[![Gépi tanulás kezdőknek - A lineáris regresszió megértése](https://img.youtube.com/vi/CRxFT8oTDMg/0.jpg)](https://youtu.be/CRxFT8oTDMg "Gépi tanulás kezdőknek - A lineáris regresszió megértése")
+[![Gépi tanulás kezdőknek – A lineáris regresszió megértése](https://img.youtube.com/vi/CRxFT8oTDMg/0.jpg)](https://youtu.be/CRxFT8oTDMg "Gépi tanulás kezdőknek – A lineáris regresszió megértése")
 
-> 🎥 Kattints a fenti képre egy rövid videós összefoglalóért a lineáris regresszióról.
+> 🎥 Kattints a fenti képre egy rövid videós áttekintésért a lineáris regresszióról.
 
-> Ebben a tananyagban minimális matematikai ismereteket feltételezünk, és igyekszünk hozzáférhetővé tenni a különböző területekről érkező diákok számára. Figyelj a jegyzetekre, 🧮 matematikai hívásokra, diagramokra és más tanulási eszközökre, amelyek segítik a megértést.
+> A tananyag során minimális matematikai ismerettel számolunk, és arra törekszünk, hogy a más területekről érkező diákok számára is érthető legyen, ezért figyelj a megjegyzésekre, 🧮 kiemelésekre, ábrákra és egyéb tanulási segédeszközökre, amelyek segítik a megértést.
 
 ### Előfeltétel
 
-Mostanra már ismerned kell a tökadatok szerkezetét, amelyeket vizsgálunk. Ezek az adatok előre betöltve és megtisztítva találhatók meg ennek a leckének a _notebook.ipynb_ fájljában. A fájlban a tökárak bushelre vetítve jelennek meg egy új adatkeretben. Győződj meg róla, hogy ezeket a notebookokat futtatni tudod a Visual Studio Code kerneljeiben.
+Már meg kell ismerned a sütőtök adatok szerkezetét, amelyeket megvizsgálunk. Ezek előre betöltve és megtisztítva szerepelnek ennél a leckénél az _notebook.ipynb_ fájlban. Ebben a fájlban a sütőtök ár bushelenként jelenik meg egy új adatkeretben. Győződj meg róla, hogy futtatni tudod ezeket a jegyzetfüzeteket a Visual Studio Code kerneljeiben.
 
-### Felkészülés
+### Előkészület
 
-Emlékeztetőül: ezeket az adatokat azért töltöd be, hogy kérdéseket tegyél fel velük kapcsolatban.
+Emlékeztetőül: ezt az adatot azért töltöd be, hogy kérdéseket tehess fel vele kapcsolatban.
 
-- Mikor érdemes tököt vásárolni?
-- Milyen árat várhatok egy doboz miniatűr tök esetében?
-- Érdemes fél bushel kosárban vagy 1 1/9 bushel dobozban vásárolni őket?
-Folytassuk az adatok vizsgálatát.
+- Mikor a legjobb idő sütőtököt vásárolni?
+- Milyen árat várhatok mini sütőtökök egy csomagjára?
+- Érdemes-e fél bushel kosárban vagy inkább 1 1/9 bushel dobozban venni?
 
-Az előző leckében létrehoztál egy Pandas adatkeretet, és feltöltötted az eredeti adatkészlet egy részével, standardizálva az árakat bushelre vetítve. Ezzel azonban csak körülbelül 400 adatpontot tudtál összegyűjteni, és csak az őszi hónapokra vonatkozóan.
+Nézzük tovább ezt az adatot.
 
-Nézd meg az adatokat, amelyeket előre betöltöttünk ennek a leckének a notebookjában. Az adatok előre betöltve vannak, és egy kezdeti szórásdiagramot is készítettünk, amely hónap adatokat mutat. Talán egy kicsit részletesebb képet kaphatunk az adatok természetéről, ha tovább tisztítjuk őket.
+Az előző leckében létrehoztál egy Pandas adatkeretet, amelybe betöltötted az eredeti adatállomány egy részét és egységesítetted az árakat bushelenként. Így azonban csak kb. 400 adatpontot nyertél, és csak a őszi hónapokra vonatkozóan.
 
-## Egy lineáris regressziós vonal
+Nézd meg az ebben a leckében előre betöltött adatot a jegyzetfüzet mellékleteként. Az adat már be van töltve, és egy kezdeti pontdiagram is készült a hónap adatainak megjelenítésére. Talán sikerül a tisztítással árnyaltabb képet kapni az adat természetéről.
 
-Ahogy az 1. leckében megtanultad, a lineáris regresszió célja, hogy egy vonalat rajzoljunk, amely:
+## Egy lineáris regressziós egyenes
 
-- **Megmutatja a változók közötti kapcsolatot**. Megmutatja a változók közötti összefüggést.
-- **Előrejelzéseket készít**. Pontos előrejelzéseket készít arról, hogy egy új adatpont hol helyezkedne el a vonalhoz képest.
+Ahogy az 1. leckében tanultad, a lineáris regressziós feladat célja egy olyan egyenes ábrázolása, amely:
 
-A **Legkisebb négyzetek regressziója** általában ezt a fajta vonalat rajzolja. A "legkisebb négyzetek" kifejezés azt jelenti, hogy a regressziós vonal körüli összes adatpontot négyzetre emeljük, majd összeadjuk. Ideális esetben ez az összeg a lehető legkisebb, mivel alacsony hibaszámot, vagyis `legkisebb négyzeteket` szeretnénk.
+- **Variable kapcsolatok bemutatása**. Megmutatja a változók közötti kapcsolatot
+- **Előrejelzés készítése**. Pontosan megjósolja, hogy az új adatpont hol fog elhelyezkedni az egyeneshez képest.
 
-Ezt azért tesszük, mert olyan vonalat szeretnénk modellezni, amelynek a legkisebb kumulatív távolsága van az összes adatponttól. Az értékeket négyzetre emeljük, mielőtt összeadnánk őket, mivel az irány helyett a nagyságuk érdekel minket.
+Tipikusan a **legkisebb négyzetek regresszió** alkalmazása révén rajzolunk ilyen egyenest. A "legkisebb négyzetek" kifejezés arra a folyamatra utal, amely során minimalizáljuk a modell összes hibáját. Minden adatpontra megmérjük a függőleges távolságot (reziduális), mely az adott pont és a regressziós egyenes közötti távolság.
 
-> **🧮 Mutasd a matematikát** 
+Ezeket a távolságokat négyzetre emeljük két fő okból:
+
+1. **Iránynál fontosabb a nagyság:** Az a hibát, ha -5 vagy +5, egyformán kezeljük. A négyzetre emeléssel az összes érték pozitívvá válik.
+
+2. **Eltérő értékek büntetése:** A négyzetre emelés nagyobb súlyt ad a nagyobb hibáknak, így az egyenes közelebb kerül az eltérő pontokhoz.
+
+Mindezek után összeadjuk az összes négyzetre emelt értéket. A cél az, hogy megtaláljuk azt az egyenest, amelynél ez az összeg a legkisebb (legkisebb lehetséges érték) – innen ered a "Legkisebb négyzetek" név.
+
+> **🧮 Mutasd a képletet**
 > 
-> Ez a vonal, amelyet _legjobb illeszkedés vonalának_ nevezünk, [egy egyenlettel](https://en.wikipedia.org/wiki/Simple_linear_regression) fejezhető ki: 
+> Ezt az egyenest, az úgynevezett _legjobb illeszkedésű egyenest_, a [következő képlettel](https://en.wikipedia.org/wiki/Simple_linear_regression) lehet leírni:
 > 
 > ```
 > Y = a + bX
 > ```
 >
-> `X` az 'magyarázó változó'. `Y` a 'függő változó'. A vonal meredeksége `b`, és `a` az y-metszet, amely arra utal, hogy `Y` értéke mennyi, amikor `X = 0`. 
+> `X` a ’magyarázó változó’. `Y` a ’függő változó’. Az egyenes meredeksége `b`, az `a` pedig az y-tengely metszete, vagyis az `Y` értéke, amikor `X = 0`.
 >
->![a meredekség kiszámítása](../../../../2-Regression/3-Linear/images/slope.png)
+>![a meredekség kiszámítása](../../../../translated_images/hu/slope.f3c9d5910ddbfcf9.webp)
 >
-> Először számítsd ki a meredekséget `b`. Infografika: [Jen Looper](https://twitter.com/jenlooper)
+> Először számítsuk ki a `b` meredekséget. Infografika készítője: [Jen Looper](https://twitter.com/jenlooper)
 >
-> Más szavakkal, és utalva a tökadatok eredeti kérdésére: "jósoljuk meg a tök árát bushelre vetítve hónap szerint", `X` az árra, `Y` pedig az eladási hónapra utalna. 
+> Más szóval, és utalva a sütőtök adataink eredeti kérdésére: "jósoljuk meg a sütőtök bushelenkénti árát hónapra lebontva", az `X` az árra, az `Y` pedig az értékesítés hónapjára utalna.
 >
->![az egyenlet kiegészítése](../../../../2-Regression/3-Linear/images/calculation.png)
+>![egyenlet kitöltése](../../../../translated_images/hu/calculation.a209813050a1ddb1.webp)
 >
-> Számítsd ki `Y` értékét. Ha körülbelül 4 dollárt fizetsz, akkor április van! Infografika: [Jen Looper](https://twitter.com/jenlooper)
+> Számítsuk ki az `Y` értékét. Ha körülbelül 4 dollárt fizetsz, bizonyára április van! Infografika készítője: [Jen Looper](https://twitter.com/jenlooper)
 >
-> Az egyenlet kiszámításához szükséges matematika megmutatja a vonal meredekségét, amely az y-metszettől is függ, vagyis attól, hogy `Y` hol helyezkedik el, amikor `X = 0`.
+> A képletnek ki kell számolnia az egyenes meredekségét, amely az y-metszettől, azaz attól függ, hol helyezkedik el az `Y`, amikor `X = 0`.
 >
-> Megfigyelheted az értékek kiszámításának módszerét a [Math is Fun](https://www.mathsisfun.com/data/least-squares-regression.html) weboldalon. Látogasd meg a [Legkisebb négyzetek kalkulátort](https://www.mathsisfun.com/data/least-squares-calculator.html), hogy láthasd, hogyan befolyásolják a számok értékei a vonalat.
+> Megfigyelheted a számítási módot a [Math is Fun](https://www.mathsisfun.com/data/least-squares-regression.html) weboldalon. Látogass el erre [a legkisebb négyzetek számológépre](https://www.mathsisfun.com/data/least-squares-calculator.html), hogy lásd, miként befolyásolják az értékek az egyenest.
 
 ## Korreláció
 
-Egy másik fontos fogalom a **Korrelációs együttható** az adott X és Y változók között. Egy szórásdiagram segítségével gyorsan vizualizálhatod ezt az együtthatót. Ha az adatpontok szépen egy vonalban helyezkednek el, akkor magas korrelációról beszélünk, de ha az adatpontok szétszórtan helyezkednek el X és Y között, akkor alacsony korrelációról van szó.
+Van még egy fogalom, amit meg kell érteni, ez pedig a **korrelációs együttható** az adott X és Y változók között. Egy pontdiagram segítségével könnyen meg lehet jeleníteni ezt az együtthatót. Ha az adatpontok szépen egy egyenes mentén helyezkednek el, akkor magas a korreláció, ha pedig mindenfelé szóródnak az X és Y között, akkor alacsony.
 
-Egy jó lineáris regressziós modell olyan, amelynek magas (1-hez közelebb álló, mint 0-hoz) Korrelációs együtthatója van a Legkisebb négyzetek regressziós módszerével és egy regressziós vonallal.
+Egy jó lineáris regressziós modell lesz olyan, amely szoros (inkább 1-hez, semmint 0-hoz közeli) korrelációs együtthatóval rendelkezik a legkisebb négyzetek regressziós módszerével egy regressziós vonal mellett.
 
-✅ Futtasd a leckéhez tartozó notebookot, és nézd meg a Hónap és Ár szórásdiagramot. Az adatok, amelyek a Hónap és Ár közötti kapcsolatot mutatják a tökeladások esetében, vizuális értelmezésed szerint magas vagy alacsony korrelációval rendelkeznek? Változik ez, ha finomabb mértéket használsz a `Hónap` helyett, például *az év napját* (azaz az év eleje óta eltelt napok száma)?
+✅ Futtasd az ehhez a leckéhez mellékelt jegyzetfüzetet, és nézd meg a Hónap-Arány pontdiagramot. A hónap és ára közötti kapcsolat a sütőtök értékesítésében szerinted magas vagy alacsony korrelációjú a pontdiagram vizuális értelmezése alapján? Változik-e, ha finomabb mértéket használunk a `Month` helyett, például az *év napja* (az év első napja óta eltelt napok száma) alapján?
 
-Az alábbi kódban feltételezzük, hogy megtisztítottuk az adatokat, és egy `new_pumpkins` nevű adatkeretet kaptunk, amely hasonló az alábbihoz:
+A lentebbi kódban azt feltételezzük, hogy megtisztítottuk az adatot, és létrejött egy `new_pumpkins` nevű adatkeret az alábbi módon:
 
-ID | Hónap | ÉvNapja | Fajta | Város | Csomagolás | Alacsony ár | Magas ár | Ár
----|-------|---------|-------|-------|------------|-------------|----------|-----
-70 | 9 | 267 | PIE TYPE | BALTIMORE | 1 1/9 bushel kartonok | 15.0 | 15.0 | 13.636364
-71 | 9 | 267 | PIE TYPE | BALTIMORE | 1 1/9 bushel kartonok | 18.0 | 18.0 | 16.363636
-72 | 10 | 274 | PIE TYPE | BALTIMORE | 1 1/9 bushel kartonok | 18.0 | 18.0 | 16.363636
-73 | 10 | 274 | PIE TYPE | BALTIMORE | 1 1/9 bushel kartonok | 17.0 | 17.0 | 15.454545
-74 | 10 | 281 | PIE TYPE | BALTIMORE | 1 1/9 bushel kartonok | 15.0 | 15.0 | 13.636364
+ID | Month | DayOfYear | Variety | City | Package | Low Price | High Price | Price
+---|-------|-----------|---------|------|---------|-----------|------------|-------
+70 | 9 | 267 | PIE TYPE | BALTIMORE | 1 1/9 bushel cartons | 15.0 | 15.0 | 13.636364
+71 | 9 | 267 | PIE TYPE | BALTIMORE | 1 1/9 bushel cartons | 18.0 | 18.0 | 16.363636
+72 | 10 | 274 | PIE TYPE | BALTIMORE | 1 1/9 bushel cartons | 18.0 | 18.0 | 16.363636
+73 | 10 | 274 | PIE TYPE | BALTIMORE | 1 1/9 bushel cartons | 17.0 | 17.0 | 15.454545
+74 | 10 | 281 | PIE TYPE | BALTIMORE | 1 1/9 bushel cartons | 15.0 | 15.0 | 13.636364
 
-> Az adatok tisztításához szükséges kód megtalálható a [`notebook.ipynb`](../../../../2-Regression/3-Linear/notebook.ipynb) fájlban. Ugyanazokat a tisztítási lépéseket hajtottuk végre, mint az előző leckében, és kiszámítottuk az `ÉvNapja` oszlopot az alábbi kifejezés segítségével:
+> Az adatok tisztítására szolgáló kód elérhető a [`notebook.ipynb`](notebook.ipynb) fájlban. Ugyanazokat a tisztítási lépéseket hajtottuk végre, mint az előző leckében, és kiszámoltuk a `DayOfYear` oszlopot a következő kifejezés használatával:
 
 ```python
 day_of_year = pd.to_datetime(pumpkins['Date']).apply(lambda dt: (dt-datetime(dt.year,1,1)).days)
 ```
 
-Most, hogy megértetted a lineáris regresszió mögötti matematikát, hozzunk létre egy regressziós modellt, hogy megnézzük, meg tudjuk-e jósolni, melyik tökcsomagolás kínálja a legjobb árakat. Valaki, aki tököt vásárol egy ünnepi tökfolt számára, szeretné optimalizálni a tökcsomagok vásárlását.
+Most, hogy érted a lineáris regresszió mögötti matematikát, hozzunk létre egy regressziós modellt, hogy megnézzük, meg tudjuk-e jósolni, melyik sütőtök csomag árazása lesz a legjobb. Valaki, aki ünnepi sütőtök díszhez vásárol, ezt az információt használhatja vásárlási döntések optimalizálására.
 
 ## Korreláció keresése
 
-[![Gépi tanulás kezdőknek - Korreláció keresése: A lineáris regresszió kulcsa](https://img.youtube.com/vi/uoRq-lW2eQo/0.jpg)](https://youtu.be/uoRq-lW2eQo "Gépi tanulás kezdőknek - Korreláció keresése: A lineáris regresszió kulcsa")
+[![Gépi tanulás kezdőknek - Korreláció keresése: Az összefüggés a lineáris regresszió kulcsa](https://img.youtube.com/vi/uoRq-lW2eQo/0.jpg)](https://youtu.be/uoRq-lW2eQo "Gépi tanulás kezdőknek - Korreláció keresése: Az összefüggés a lineáris regresszió kulcsa")
 
-> 🎥 Kattints a fenti képre egy rövid videós összefoglalóért a korrelációról.
+> 🎥 Kattints a fenti képre egy rövid videós áttekintésért a korrelációról.
 
-Az előző leckéből valószínűleg láttad, hogy az átlagár különböző hónapokra így néz ki:
+Az előző leckéből valószínűleg láttad, hogy különböző hónapok átlagára így néz ki:
 
-<img alt="Átlagár hónaponként" src="../../../../translated_images/hu/barchart.a833ea9194346d76.webp" width="50%"/>
+<img alt="Átlagár hónapokra bontva" src="../../../../translated_images/hu/barchart.a833ea9194346d76.webp" width="50%"/>
 
-Ez arra utal, hogy lehet némi korreláció, és megpróbálhatunk egy lineáris regressziós modellt tanítani, hogy megjósoljuk a `Hónap` és `Ár`, vagy az `ÉvNapja` és `Ár` közötti kapcsolatot. Íme egy szórásdiagram, amely az utóbbi kapcsolatot mutatja:
+Ez arra utal, hogy van összefüggés, és megpróbálhatjuk a lineáris regresszió modellt betanítani a `Month` és az ár, vagy a `DayOfYear` és az ár kapcsolatára. Az alábbi szórásterület ábrán ennek az utóbbinak a viszonya látható:
 
-<img alt="Szórásdiagram az Ár és az ÉvNapja között" src="../../../../translated_images/hu/scatter-dayofyear.bc171c189c9fd553.webp" width="50%" /> 
+<img alt="Szórásdiagram az ár és az év napja szerint" src="../../../../translated_images/hu/scatter-dayofyear.bc171c189c9fd553.webp" width="50%" /> 
 
-Nézzük meg, van-e korreláció a `corr` függvény segítségével:
+Nézzük meg, milyen korreláció van az `corr` függvénnyel:
 
 ```python
 print(new_pumpkins['Month'].corr(new_pumpkins['Price']))
 print(new_pumpkins['DayOfYear'].corr(new_pumpkins['Price']))
 ```
 
-Úgy tűnik, hogy a korreláció elég kicsi, -0.15 a `Hónap` és -0.17 az `ÉvNapja` esetében, de lehet, hogy van egy másik fontos kapcsolat. Úgy tűnik, hogy az árak különböző csoportjai a tökfajtákhoz kapcsolódnak. Ennek a hipotézisnek a megerősítéséhez ábrázoljuk minden tökkategóriát különböző színnel. Az `ax` paraméter átadásával a `scatter` ábrázolási függvénynek az összes pontot ugyanazon a grafikonon ábrázolhatjuk:
+Úgy tűnik, a korreláció meglehetősen kicsi, -0,15 a hónap szerint és -0,17 az év napja szerint, de lehet, hogy egy másik fontos összefüggés is létezik. Úgy tűnik, különböző árkategóriák léteznek a sütőtök fajták szerint. Ennek megerősítésére próbáljuk meg az egyes sütőtök kategóriákat különböző színnel megjeleníteni. Az `ax` paraméter átadásával a `scatter` függvénynek az összes pont ugyanazon a grafikonon ábrázolható:
 
 ```python
 ax=None
@@ -128,42 +141,42 @@ for i,var in enumerate(new_pumpkins['Variety'].unique()):
     ax = df.plot.scatter('DayOfYear','Price',ax=ax,c=colors[i],label=var)
 ```
 
-<img alt="Szórásdiagram az Ár és az ÉvNapja között" src="../../../../translated_images/hu/scatter-dayofyear-color.65790faefbb9d54f.webp" width="50%" /> 
+<img alt="Szórásdiagram az ár és az év napja színkódolt" src="../../../../translated_images/hu/scatter-dayofyear-color.65790faefbb9d54f.webp" width="50%" /> 
 
-Vizsgálatunk azt sugallja, hogy a fajta nagyobb hatással van az árakra, mint az eladási dátum. Ezt egy oszlopdiagramon is láthatjuk:
+Vizsgálatunk arra utal, hogy a fajta hatása nagyobb az ár összértékére, mint az eladási időponté. Ezt egy oszlopdiagramon is megláthatjuk:
 
 ```python
 new_pumpkins.groupby('Variety')['Price'].mean().plot(kind='bar')
 ```
 
-<img alt="Oszlopdiagram az ár és a fajta között" src="../../../../translated_images/hu/price-by-variety.744a2f9925d9bcb4.webp" width="50%" /> 
+<img alt="Oszlopdiagram az ár és a fajta szerint" src="../../../../translated_images/hu/price-by-variety.744a2f9925d9bcb4.webp" width="50%" /> 
 
-Most koncentráljunk egyetlen tökfajtára, a 'pie type'-ra, és nézzük meg, milyen hatással van a dátum az árra:
+Most egyelőre csak az egyik sütőtök fajtára, a ’pie type’-ra koncentráljunk, és nézzük meg, milyen hatása van az értékesítési dátumnak az árra:
 
 ```python
 pie_pumpkins = new_pumpkins[new_pumpkins['Variety']=='PIE TYPE']
 pie_pumpkins.plot.scatter('DayOfYear','Price') 
 ```
-<img alt="Szórásdiagram az Ár és az ÉvNapja között" src="../../../../translated_images/hu/pie-pumpkins-scatter.d14f9804a53f927e.webp" width="50%" /> 
+<img alt="Szórásdiagram az ár és az év napja a pie típusú sütőtöknél" src="../../../../translated_images/hu/pie-pumpkins-scatter.d14f9804a53f927e.webp" width="50%" /> 
 
-Ha most kiszámítjuk az `Ár` és az `ÉvNapja` közötti korrelációt a `corr` függvény segítségével, körülbelül `-0.27` értéket kapunk - ami azt jelenti, hogy érdemes egy prediktív modellt tanítani.
+Ha most kiszámoljuk a korrelációt a `Price` és a `DayOfYear` között az `corr` függvénnyel, az kb. `-0.27` lesz – ami azt jelenti, hogy érdemes prediktív modellt tanítani.
 
-> Mielőtt lineáris regressziós modellt tanítanánk, fontos megbizonyosodni arról, hogy az adataink tiszták. A lineáris regresszió nem működik jól hiányzó értékekkel, ezért érdemes megszabadulni az üres celláktól:
+> A lineáris regressziós modell betanítása előtt fontos, hogy az adatunk tiszta legyen. A lineáris regresszió nem működik jól hiányzó értékekkel, ezért érdemes megszabadulni minden hiányzó adattól:
 
 ```python
 pie_pumpkins.dropna(inplace=True)
 pie_pumpkins.info()
 ```
 
-Egy másik megközelítés az lenne, hogy az üres értékeket az adott oszlop átlagértékeivel töltjük ki.
+Másik megközelítés lehet a hiányzó értékek kitöltése az adott oszlop átlagával.
 
 ## Egyszerű lineáris regresszió
 
-[![Gépi tanulás kezdőknek - Lineáris és polinomiális regresszió Scikit-learn segítségével](https://img.youtube.com/vi/e4c_UP2fSjg/0.jpg)](https://youtu.be/e4c_UP2fSjg "Gépi tanulás kezdőknek - Lineáris és polinomiális regresszió Scikit-learn segítségével")
+[![Gépi tanulás kezdőknek – Lineáris és polinomiális regresszió Scikit-learn segítségével](https://img.youtube.com/vi/e4c_UP2fSjg/0.jpg)](https://youtu.be/e4c_UP2fSjg "Gépi tanulás kezdőknek – Lineáris és polinomiális regresszió Scikit-learn segítségével")
 
-> 🎥 Kattints a fenti képre egy rövid videós összefoglalóért a lineáris és polinomiális regresszióról.
+> 🎥 Kattints a fenti képre egy rövid videós áttekintésért a lineáris és polinomiális regresszióról.
 
-A lineáris regressziós modellünk tanításához a **Scikit-learn** könyvtárat fogjuk használni.
+Lineáris regressziós modellünk betanításához a **Scikit-learn** könyvtárat fogjuk használni.
 
 ```python
 from sklearn.linear_model import LinearRegression
@@ -171,36 +184,46 @@ from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 ```
 
-Először szétválasztjuk a bemeneti értékeket (jellemzők) és a várt kimenetet (címke) külön numpy tömbökbe:
+Kezdjük azzal, hogy a bemeneti értékeket (jellemzők) és a várt kimenetet (címkét) külön numpy tömbökbe rendezzük:
 
 ```python
 X = pie_pumpkins['DayOfYear'].to_numpy().reshape(-1,1)
 y = pie_pumpkins['Price']
 ```
 
-> Figyeld meg, hogy a bemeneti adatokat `reshape`-el kellett átalakítanunk, hogy a Lineáris Regresszió csomag helyesen értelmezze. A Lineáris Regresszió 2D-tömböt vár bemenetként, ahol a tömb minden sora a bemeneti jellemzők vektorának felel meg. Ebben az esetben, mivel csak egy bemenetünk van, egy N×1 alakú tömbre van szükségünk, ahol N az adatkészlet mérete.
+> Figyeld meg, hogy a bemeneti adatokat át kellett formáznunk (`reshape`), hogy a Lineáris Regresszió csomag helyesen értelmezze őket. A Lineáris Regresszió 2D tömböt vár bemenetként, ahol a tömb minden sora egy vektor a bemeneti jellemzőkről. Mivel nekünk csak egy bemenetünk van, egy N×1 alakú tömböt kell adnunk, ahol N az adatkészlet mérete.
 
-Ezután az adatokat szét kell osztanunk tanító és teszt adatkészletekre, hogy a modellünket validálni tudjuk a tanítás után:
+Ezután az adatot szét kell osztanunk tanító és teszt halmazokra, hogy a modell betanítása után tesztelni tudjuk azt:
 
 ```python
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 ```
 
-Végül a tényleges Lineáris Regressziós modell tanítása mindössze két kódsort igényel. Meghatározzuk a `LinearRegression` objektumot, és az adatainkra illesztjük a `fit` metódus segítségével:
+Végül a lineáris regressziós modell tényleges betanítása csak két kód sorból áll. Létrehozzuk a `LinearRegression` objektumot, és betanítjuk az adatainkra a `fit` metódussal:
 
 ```python
 lin_reg = LinearRegression()
 lin_reg.fit(X_train,y_train)
 ```
 
-A `LinearRegression` objektum a `fit`-elés után tartalmazza a regresszió összes együtthatóját, amelyeket a `.coef_` tulajdonságon keresztül érhetünk el. Ebben az esetben csak egy együttható van, amelynek értéke
-Hibánk körülbelül 2 pontnál van, ami ~17%. Nem túl jó. Egy másik mutató a modell minőségére a **determinizációs együttható**, amelyet így lehet kiszámítani:
+A `LinearRegression` objektum a `fit`-elés után tartalmazza a regresszió összes együtthatóját, amelyekhez a `.coef_` tulajdonságon keresztül férhetünk hozzá. Esetünkben csak egy együttható van, amely körülbelül `-0.017` körül várható. Ez azt jelenti, hogy az árak idővel kissé csökkennek, de nem sokat, körülbelül 2 centet naponta. A regresszió Y tengellyel való metszéspontját is elérhetjük a `lin_reg.intercept_` segítségével – ami nálunk körülbelül `21` lesz, jelezve az év eleji árat.
+
+Hogy lássuk, mennyire pontos a modellünk, először árakat jósolhatunk egy tesztadatállományra, majd mérhetjük, mennyire közel vannak a jóslataink a várt értékekhez. Ezt elvégezhetjük a négyzetes hibák átlagával, azaz a mean square error (MSE) metrikával, amely a várt és a jósolt értékek közötti négyzetes különbségek átlaga.
+
+```python
+pred = lin_reg.predict(X_test)
+
+mse = np.sqrt(mean_squared_error(y_test,pred))
+print(f'Mean error: {mse:3.3} ({mse/np.mean(pred)*100:3.3}%)')
+```
+
+A hibánk úgy tűnik, körülbelül 2 pont körül van, ami kb. 17%. Nem túl jó. A modell minőségének másik mutatója az **elszámolási együttható (coefficient of determination)**, amely így határozható meg:
 
 ```python
 score = lin_reg.score(X_train,y_train)
 print('Model determination: ', score)
 ```
-Ha az érték 0, az azt jelenti, hogy a modell nem veszi figyelembe a bemeneti adatokat, és úgy működik, mint a *legrosszabb lineáris előrejelző*, amely egyszerűen az eredmény átlagértéke. Az 1-es érték azt jelenti, hogy tökéletesen meg tudjuk jósolni az összes várt kimenetet. Esetünkben az együttható körülbelül 0.06, ami elég alacsony.
+Ha az érték 0, az azt jelenti, hogy a modell nem veszi figyelembe a bemeneti adatokat, és a *legrosszabb lineáris prediktorként* működik, ami egyszerűen az eredmény átlagértéke. Ha az érték 1, az azt jelenti, hogy tökéletesen tudjuk előre jelezni az összes várt kimenetet. Nálunk az együttható körülbelül 0.06, ami elég alacsony.
 
 A tesztadatokat a regressziós vonallal együtt is ábrázolhatjuk, hogy jobban lássuk, hogyan működik a regresszió a mi esetünkben:
 
@@ -209,21 +232,21 @@ plt.scatter(X_test,y_test)
 plt.plot(X_test,pred)
 ```
 
-<img alt="Lineáris regresszió" src="../../../../translated_images/hu/linear-results.f7c3552c85b0ed1c.webp" width="50%" />
+<img alt="Linear regression" src="../../../../translated_images/hu/linear-results.f7c3552c85b0ed1c.webp" width="50%" />
 
 ## Polinomiális regresszió
 
-A lineáris regresszió egy másik típusa a polinomiális regresszió. Bár néha van lineáris kapcsolat a változók között – például minél nagyobb a tök térfogata, annál magasabb az ára –, néha ezek a kapcsolatok nem ábrázolhatók síkként vagy egyenes vonalként.
+A lineáris regressziónak egy másik típusa a polinomiális regresszió. Bár néha a változók közt lineáris kapcsolat van – például minél nagyobb a tök térfogata, annál magasabb az ára –, előfordul, hogy ezek a kapcsolatok nem ábrázolhatók egy síkkal vagy egyenes vonallal.
 
-✅ Itt van [néhány példa](https://online.stat.psu.edu/stat501/lesson/9/9.8) olyan adatokra, amelyekhez polinomiális regressziót lehet használni.
+✅ Itt vannak [további példák](https://online.stat.psu.edu/stat501/lesson/9/9.8) olyan adatokra, amelyek esetében polinomiális regresszió alkalmazható.
 
-Nézd meg újra a dátum és az ár közötti kapcsolatot. Úgy tűnik, hogy ezt a szórásdiagramot feltétlenül egy egyenes vonallal kellene elemezni? Nem ingadozhatnak az árak? Ebben az esetben megpróbálhatod a polinomiális regressziót.
+Nézzük újra az összefüggést a Dátum és az Ár között. Ez a pontfelhő úgy tűnik, hogy feltétlenül egyenes vonallal kellene elemezni? Nem ingadozhatnak az árak? Ilyen esetben polinomiális regressziót próbálhatunk ki.
 
-✅ A polinomok olyan matematikai kifejezések, amelyek egy vagy több változót és együtthatót tartalmazhatnak.
+✅ A polinomok matematikai kifejezések, amelyek egy vagy több változóból és együtthatóból állhatnak.
 
-A polinomiális regresszió egy görbe vonalat hoz létre, amely jobban illeszkedik a nemlineáris adatokhoz. Esetünkben, ha egy négyzetes `DayOfYear` változót is hozzáadunk a bemeneti adatokhoz, akkor egy parabola görbével tudjuk illeszteni az adatainkat, amelynek minimuma az év egy bizonyos pontján lesz.
+A polinomiális regresszió egy görbe vonalat hoz létre, hogy jobban illeszkedjen a nemlineáris adatokra. Nálunk, ha a bemeneti adathoz hozzáadjuk a `DayOfYear` négyzetét, akkor képesek leszünk egy parabolikus görbével illeszteni az adatokat, amelynek a minimuma az év egy bizonyos pontján lesz.
 
-A Scikit-learn tartalmaz egy hasznos [pipeline API-t](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html?highlight=pipeline#sklearn.pipeline.make_pipeline), amely lehetővé teszi az adatfeldolgozás különböző lépéseinek összekapcsolását. A **pipeline** egy **becslők** láncolata. Esetünkben egy olyan pipeline-t hozunk létre, amely először polinomiális jellemzőket ad a modellhez, majd elvégzi a regressziót:
+A Scikit-learn tartalmaz egy hasznos [pipeline API-t](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html?highlight=pipeline#sklearn.pipeline.make_pipeline), amellyel több adatfeldolgozási lépést is összekapcsolhatunk. Egy **pipeline** egy **becslők** láncolata. Nálunk egy olyan pipeline-t hozunk létre, amely először polinomiális jellemzőket ad a modellhez, majd megtanítja a regressziót:
 
 ```python
 from sklearn.preprocessing import PolynomialFeatures
@@ -234,34 +257,34 @@ pipeline = make_pipeline(PolynomialFeatures(2), LinearRegression())
 pipeline.fit(X_train,y_train)
 ```
 
-A `PolynomialFeatures(2)` használata azt jelenti, hogy a bemeneti adatokból minden másodfokú polinomot beillesztünk. Esetünkben ez csak a `DayOfYear`<sup>2</sup>-t jelenti, de ha két bemeneti változónk van, X és Y, akkor ez hozzáadja X<sup>2</sup>-t, XY-t és Y<sup>2</sup>-t. Magasabb fokú polinomokat is használhatunk, ha szeretnénk.
+A `PolynomialFeatures(2)` azt jelenti, hogy az összes másodfokú polinomot belefoglaljuk a bemeneti adatból. Nálunk ez csak a `DayOfYear`<sup>2</sup>-t jelenti, de ha két bemeneti változónk, X és Y van, akkor hozzáadódik az X<sup>2</sup>, XY és Y<sup>2</sup> is. Természetesen magasabb fokú polinomokat is használhatunk.
 
-A pipeline-t ugyanúgy használhatjuk, mint az eredeti `LinearRegression` objektumot, azaz `fit`-elhetjük a pipeline-t, majd a `predict` segítségével megkaphatjuk az előrejelzési eredményeket. Íme a grafikon, amely a tesztadatokat és az approximációs görbét mutatja:
+A pipeline-okat ugyanúgy használhatjuk, mint az eredeti `LinearRegression` objektumot, azaz illeszthetjük (`fit`), majd jósolhatunk (`predict`). Itt látható egy grafikon a tesztadatokról és az illesztett görbéről:
 
-<img alt="Polinomiális regresszió" src="../../../../translated_images/hu/poly-results.ee587348f0f1f60b.webp" width="50%" />
+<img alt="Polynomial regression" src="../../../../translated_images/hu/poly-results.ee587348f0f1f60b.webp" width="50%" />
 
-A polinomiális regresszió használatával kissé alacsonyabb MSE-t és magasabb determinizációs együtthatót érhetünk el, de nem jelentősen. Figyelembe kell vennünk más jellemzőket is!
+A polinomiális regresszióval kissé alacsonyabb MSE-t és magasabb determinációt érhetünk el, de nem jelentősen. Más jellemzőket is figyelembe kell vennünk!
 
-> Láthatod, hogy a tökök legalacsonyabb árai valahol Halloween környékén figyelhetők meg. Hogyan magyaráznád ezt?
+> Látható, hogy a legkisebb tökárak nagyjából Halloween környékén vannak. Hogyan magyaráznád ezt?
 
-🎃 Gratulálok, most létrehoztál egy modellt, amely segíthet a pite tökök árának előrejelzésében. Valószínűleg ugyanezt az eljárást megismételheted az összes tökfajtára, de ez elég fárasztó lenne. Most tanuljuk meg, hogyan vegyük figyelembe a tökfajtákat a modellünkben!
+🎃 Gratulálok, most egy olyan modellt hoztál létre, amely segít előre jelezni a sütőtök árát. Valószínűleg ugyanígy eljárhatsz az összes tökfajtával, de ez fárasztó lenne. Tanuljuk meg inkább, hogyan vegyük figyelembe a tökfajtát a modellünkben!
 
-## Kategorikus jellemzők
+## Kategorizált jellemzők
 
-Az ideális világban szeretnénk képesek lenni előre jelezni az árakat különböző tökfajtákra ugyanazzal a modellel. Azonban a `Variety` oszlop kissé eltér az olyan oszlopoktól, mint a `Month`, mert nem numerikus értékeket tartalmaz. Az ilyen oszlopokat **kategorikus** oszlopoknak nevezzük.
+Az ideális világban ugyanazzal a modellel szeretnénk különböző tökfajták árát előrejelezni. Azonban a `Variety` oszlop eltér a `Month`-hoz hasonló oszlopoktól, mert nem numerikus értékeket tartalmaz. Az ilyen oszlopokat **kategóriális** oszlopoknak nevezzük.
 
-[![ML kezdőknek - Kategorikus jellemzők előrejelzése lineáris regresszióval](https://img.youtube.com/vi/DYGliioIAE0/0.jpg)](https://youtu.be/DYGliioIAE0 "ML kezdőknek - Kategorikus jellemzők előrejelzése lineáris regresszióval")
+[![ML kezdőknek - Kategóriás jellemzők előrejelzése lineáris regresszióval](https://img.youtube.com/vi/DYGliioIAE0/0.jpg)](https://youtu.be/DYGliioIAE0 "ML kezdőknek - Kategóriás jellemzők előrejelzése lineáris regresszióval")
 
-> 🎥 Kattints a fenti képre egy rövid videós áttekintésért a kategorikus jellemzők használatáról.
+> 🎥 Kattints a fenti képre a kategóriás jellemzők használatát bemutató rövid videóért.
 
-Itt láthatod, hogyan függ az átlagár a fajtától:
+Itt látható, hogyan függ az átlagár a fajtától:
 
-<img alt="Átlagár fajtánként" src="../../../../translated_images/hu/price-by-variety.744a2f9925d9bcb4.webp" width="50%" />
+<img alt="Average price by variety" src="../../../../translated_images/hu/price-by-variety.744a2f9925d9bcb4.webp" width="50%" />
 
-Ahhoz, hogy figyelembe vegyük a fajtát, először numerikus formára kell átalakítanunk, vagyis **kódolnunk** kell. Többféle módon tehetjük ezt meg:
+Ahhoz, hogy figyelembe vegyük a fajtát, először numerikus formába kell konvertálnunk, vagyis **kódolnunk** kell. Többféleképpen tehetjük ezt meg:
 
-* Az egyszerű **numerikus kódolás** egy táblázatot készít a különböző fajtákról, majd a fajta nevét egy indexszel helyettesíti a táblázatban. Ez nem a legjobb ötlet a lineáris regresszióhoz, mert a lineáris regresszió az index tényleges numerikus értékét veszi figyelembe, és hozzáadja az eredményhez, megszorozva egy együtthatóval. Esetünkben az indexszám és az ár közötti kapcsolat egyértelműen nem lineáris, még akkor sem, ha biztosítjuk, hogy az indexek valamilyen specifikus sorrendben legyenek.
-* A **one-hot kódolás** a `Variety` oszlopot 4 különböző oszlopra cseréli, egyet minden fajtához. Minden oszlop `1`-et tartalmaz, ha az adott sor egy adott fajtához tartozik, és `0`-t, ha nem. Ez azt jelenti, hogy a lineáris regresszióban négy együttható lesz, egy-egy minden tökfajtához, amely felelős az adott fajta "kezdő árának" (vagy inkább "további árának").
+* Az egyszerű **numerikus kódolás** egy táblázatot épít a különböző fajtákról, majd a fajta nevét a táblázatbeli indexére cseréli. Ez nem a legjobb módszer a lineáris regresszióhoz, mert a regresszió a kód numerikus értékét veszi figyelembe és szorozza együtthatóval. Nálunk az indexszám és az ár közötti kapcsolat egyértelműen nem lineáris, még akkor sem, ha az indexeket valamilyen sorrendbe rendezzük.
+* A **one-hot kódolás** a `Variety` oszlop helyett 4 külön oszlopot készít, egyet-egyet minden fajtára. Minden oszlop 1-et tartalmaz, ha az adott sor az adott fajta, különben 0-t. Ez azt jelenti, hogy a lineáris regresszióban négy együttható lesz, egy-egy minden tökfajtára, amelyek az adott fajta "kiinduló ára" (vagy inkább "további ára") felelős.
 
 Az alábbi kód megmutatja, hogyan kódolhatjuk one-hot módszerrel a fajtát:
 
@@ -280,14 +303,14 @@ pd.get_dummies(new_pumpkins['Variety'])
 1741 | 0 | 1 | 0 | 0
 1742 | 0 | 1 | 0 | 0
 
-Ahhoz, hogy lineáris regressziót tanítsunk one-hot kódolt fajta bemeneti adatokkal, csak helyesen kell inicializálnunk az `X` és `y` adatokat:
+A lineáris regresszió tanításához one-hot kódolt fajtával csak helyesen kell inicializálni az `X` és `y` adatokat:
 
 ```python
 X = pd.get_dummies(new_pumpkins['Variety'])
 y = new_pumpkins['Price']
 ```
 
-A többi kód ugyanaz, mint amit korábban használtunk a lineáris regresszió tanításához. Ha kipróbálod, látni fogod, hogy az átlagos négyzetes hiba körülbelül ugyanaz, de sokkal magasabb determinizációs együtthatót kapunk (~77%). Ahhoz, hogy még pontosabb előrejelzéseket kapjunk, több kategorikus jellemzőt is figyelembe vehetünk, valamint numerikus jellemzőket, mint például a `Month` vagy a `DayOfYear`. Egy nagy jellemzőtömb létrehozásához használhatjuk a `join`-t:
+A további kód ugyanaz, mint amit fent használtunk a lineáris regresszió tanításához. Ha kipróbálod, azt látod, hogy a négyzetes hiba nagyjából ugyanaz marad, viszont jóval magasabb lesz az elszámolási együttható (~77%). Még pontosabb jóslatokhoz több kategóriás jellemzőt is bevonhatunk, illetve numerikus jellemzőket, például `Month` vagy `DayOfYear`. Az adatok egyetlen nagy tömbbé egyesítéséhez a `join` használható:
 
 ```python
 X = pd.get_dummies(new_pumpkins['Variety']) \
@@ -297,31 +320,31 @@ X = pd.get_dummies(new_pumpkins['Variety']) \
 y = new_pumpkins['Price']
 ```
 
-Itt figyelembe vesszük a `City` és a `Package` típusát is, ami 2.84-es MSE-t (10%) és 0.94-es determinizációs együtthatót eredményez!
+Itt a `City`-t és a `Package` típust is figyelembe vesszük, ami MSE=2.84 (10%) és determináció=0.94 eredményt ad!
 
-## Mindent összefoglalva
+## Összeillesztés
 
-A legjobb modell létrehozásához használhatjuk a fenti példából származó kombinált (one-hot kódolt kategorikus + numerikus) adatokat polinomiális regresszióval együtt. Íme a teljes kód a kényelmed érdekében:
+A legjobb modell elkészítéséhez egyesíthetjük a fent említett (one-hot kódolt kategóriás + numerikus) adatokat a polinomiális regresszióval. Alább a teljes kód a könnyebb használathoz:
 
 ```python
-# set up training data
+# tréning adatok előkészítése
 X = pd.get_dummies(new_pumpkins['Variety']) \
         .join(new_pumpkins['Month']) \
         .join(pd.get_dummies(new_pumpkins['City'])) \
         .join(pd.get_dummies(new_pumpkins['Package']))
 y = new_pumpkins['Price']
 
-# make train-test split
+# tanuló-teszt adatfelosztás végrehajtása
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 
-# setup and train the pipeline
+# pipeline beállítása és betanítása
 pipeline = make_pipeline(PolynomialFeatures(2), LinearRegression())
 pipeline.fit(X_train,y_train)
 
-# predict results for test data
+# tesztadatokra történő eredményjóslás
 pred = pipeline.predict(X_test)
 
-# calculate MSE and determination
+# MSE és determináció kiszámítása
 mse = np.sqrt(mean_squared_error(y_test,pred))
 print(f'Mean error: {mse:3.3} ({mse/np.mean(pred)*100:3.3}%)')
 
@@ -329,34 +352,36 @@ score = pipeline.score(X_train,y_train)
 print('Model determination: ', score)
 ```
 
-Ez közel 97%-os determinizációs együtthatót és MSE=2.23 (~8%-os előrejelzési hiba) eredményez.
+Ez megközelítőleg 97% determinációs együtthatót és MSE=2.23 (~8% előrejelzési hibát) eredményez.
 
-| Modell | MSE | Determinizáció |
+| Modell | MSE | Determináció |
 |-------|-----|---------------|
-| `DayOfYear` Lineáris | 2.77 (17.2%) | 0.07 |
-| `DayOfYear` Polinomiális | 2.73 (17.0%) | 0.08 |
-| `Variety` Lineáris | 5.24 (19.7%) | 0.77 |
-| Minden jellemző Lineáris | 2.84 (10.5%) | 0.94 |
-| Minden jellemző Polinomiális | 2.23 (8.25%) | 0.97 |
+| `DayOfYear` lineáris | 2.77 (17.2%) | 0.07 |
+| `DayOfYear` polinomiális | 2.73 (17.0%) | 0.08 |
+| `Variety` lineáris | 5.24 (19.7%) | 0.77 |
+| Minden jellemző lineáris | 2.84 (10.5%) | 0.94 |
+| Minden jellemző polinomiális | 2.23 (8.25%) | 0.97 |
 
-🏆 Szép munka! Egyetlen leckében négy regressziós modellt hoztál létre, és a modell minőségét 97%-ra javítottad. A regresszióról szóló utolsó részben a logisztikus regresszióval fogsz megismerkedni, amely kategóriák meghatározására szolgál.
+🏆 Szép munka! Ebben a leckében négy regressziós modellt hoztál létre, és a modellminőséget 97%-ra javítottad. Az utolsó fejezetben a logisztikus regresszióról tanulsz majd a kategóriák meghatározásához.
 
 ---
 ## 🚀Kihívás
 
-Tesztelj több különböző változót ebben a notebookban, hogy lásd, hogyan függ össze a korreláció a modell pontosságával.
+Tesztelj különböző változókat ebben a jegyzetfüzetben, és figyeld meg, hogyan tükröződik a korreláció a modell pontosságában.
 
-## [Utólagos kvíz](https://ff-quizzes.netlify.app/en/ml/)
+## [Előadás utáni kvíz](https://ff-quizzes.netlify.app/en/ml/)
 
-## Áttekintés és önálló tanulás
+## Összefoglalás és önálló tanulás
 
-Ebben a leckében a lineáris regresszióról tanultunk. Vannak más fontos regressziós technikák is. Olvass a Stepwise, Ridge, Lasso és Elasticnet technikákról. Egy jó kurzus, amelyet érdemes tanulmányozni, a [Stanford Statistical Learning kurzus](https://online.stanford.edu/courses/sohs-ystatslearning-statistical-learning).
+Ebben a leckében a lineáris regresszióval ismerkedtünk meg. Más fontos regressziótípusok is vannak. Olvass a Stepwise, Ridge, Lasso és Elasticnet technikákról. Egy ajánlott tanfolyam további ismeretekért a [Stanford Statisztikai Tanulás kurzusa](https://online.stanford.edu/courses/sohs-ystatslearning-statistical-learning)
 
-## Feladat 
+## Feladat
 
-[Építs egy modellt](assignment.md)
+[Modell készítése](assignment.md)
 
 ---
 
-**Felelősség kizárása**:  
-Ez a dokumentum az AI fordítási szolgáltatás [Co-op Translator](https://github.com/Azure/co-op-translator) segítségével lett lefordítva. Bár törekszünk a pontosságra, kérjük, vegye figyelembe, hogy az automatikus fordítások hibákat vagy pontatlanságokat tartalmazhatnak. Az eredeti dokumentum az eredeti nyelvén tekintendő hiteles forrásnak. Kritikus információk esetén javasolt professzionális emberi fordítást igénybe venni. Nem vállalunk felelősséget semmilyen félreértésért vagy téves értelmezésért, amely a fordítás használatából eredhet.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Nyilatkozat**:
+Jelen dokumentumot az AI fordító szolgáltatás, a [Co-op Translator](https://github.com/Azure/co-op-translator) segítségével fordítottuk. Bár igyekszünk a pontosságra, kérjük, vegye figyelembe, hogy az automatikus fordítások hibákat vagy pontatlanságokat tartalmazhatnak. Az eredeti dokumentum az anyanyelvén tekintendő hivatalos forrásnak. Kritikus információk esetén professzionális, emberi fordítást javaslunk. Nem vállalunk felelősséget a fordítás használatából eredő félreértésekért vagy félreértelmezésekért.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

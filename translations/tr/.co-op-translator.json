@@ -30,8 +30,8 @@
     "language_code": "tr"
   },
   "1-Introduction/3-fairness/assignment.md": {
-    "original_hash": "dbda60e7b1fe5f18974e7858eff0004e",
-    "translation_date": "2025-09-06T07:55:28+00:00",
+    "original_hash": "c81d9affadb89d017d610eadeb6c84f9",
+    "translation_date": "2026-02-28T08:54:27+00:00",
     "source_file": "1-Introduction/3-fairness/assignment.md",
     "language_code": "tr"
   },
@@ -90,8 +90,8 @@
     "language_code": "tr"
   },
   "2-Regression/3-Linear/README.md": {
-    "original_hash": "40e64f004f3cb50aa1d8661672d3cd92",
-    "translation_date": "2025-09-06T07:44:07+00:00",
+    "original_hash": "9a8359f1945bd3beccccb2b46592580e",
+    "translation_date": "2026-02-28T08:55:36+00:00",
     "source_file": "2-Regression/3-Linear/README.md",
     "language_code": "tr"
   },
@@ -186,8 +186,8 @@
     "language_code": "tr"
   },
   "4-Classification/3-Classifiers-2/README.md": {
-    "original_hash": "49047911108adc49d605cddfb455749c",
-    "translation_date": "2025-09-06T08:00:12+00:00",
+    "original_hash": "d94438d71164b0ff68002812aed1a8b4",
+    "translation_date": "2026-02-28T08:56:00+00:00",
     "source_file": "4-Classification/3-Classifiers-2/README.md",
     "language_code": "tr"
   },
@@ -197,10 +197,22 @@
     "source_file": "4-Classification/3-Classifiers-2/assignment.md",
     "language_code": "tr"
   },
+  "4-Classification/3-Classifiers-2/notebook.ipynb": {
+    "original_hash": "624ca6cf73d3548ff1b3059e413fa4cd",
+    "translation_date": "2026-02-28T08:46:25+00:00",
+    "source_file": "4-Classification/3-Classifiers-2/notebook.ipynb",
+    "language_code": "tr"
+  },
   "4-Classification/3-Classifiers-2/solution/Julia/README.md": {
     "original_hash": "a39c15d63f3b2795ee2284a82b986b93",
     "translation_date": "2025-09-06T08:00:38+00:00",
     "source_file": "4-Classification/3-Classifiers-2/solution/Julia/README.md",
+    "language_code": "tr"
+  },
+  "4-Classification/3-Classifiers-2/solution/notebook.ipynb": {
+    "original_hash": "70f41fe4fd4253adb44cd9d291406e4f",
+    "translation_date": "2026-02-28T08:46:31+00:00",
+    "source_file": "4-Classification/3-Classifiers-2/solution/notebook.ipynb",
     "language_code": "tr"
   },
   "4-Classification/4-Applied/README.md": {
@@ -540,8 +552,8 @@
     "language_code": "tr"
   },
   "README.md": {
-    "original_hash": "2f594ee136e3127a47f56d80055227bc",
-    "translation_date": "2026-02-06T08:15:50+00:00",
+    "original_hash": "3a0286e1c4858e79ff54f080dadc1426",
+    "translation_date": "2026-02-28T08:54:21+00:00",
     "source_file": "README.md",
     "language_code": "tr"
   },

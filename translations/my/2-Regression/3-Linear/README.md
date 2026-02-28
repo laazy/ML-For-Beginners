@@ -1,85 +1,97 @@
-# Scikit-learn ကို အသုံးပြု၍ Regression မော်ဒယ်တစ်ခု တည်ဆောက်ခြင်း: Regression လုပ်နည်း ၄ မျိုး
+# Scikit-learn အသုံးပြု၍ regression မော်ဒယ် တည်ဆောက်ခြင်း - regression လေးနည်းလမ်း
 
-![Linear vs polynomial regression infographic](../../../../2-Regression/3-Linear/images/linear-polynomial.png)
-> Infographic by [Dasani Madipalli](https://twitter.com/dasani_decoded)
+## စတားသူမှတ်ချက်
+
+Linear regression ကို **ဂဏန်းတန်ဖိုး** (ဥပမာ- အိမ်ဈေးနှုန်း၊ အပူချိန်၊ သို့မဟုတ် ရောင်းအား) ခန့်မှန်းလိုသည့်အခါ အသုံးပြုသည်။
+ဒါဟာ input အင်အားများနဲ့ output အကြား ဆက်နွယ်မှုကို အကောင်းဆုံး ကိုယ်စားပြုသော တတ်တရာဟောင်းတစ်ခုကို ရှာဖွေခြင်းဖြင့် အလုပ်လုပ်သည်။
+
+ဒီသင်ခန်းစာမှာတော့ အဆင့်မြင့် regression နည်းများကို ရှာဖွေမတတ်ခင် แนวคิดကို နားလည်ခြင်းကို အာရုံစိုက်သွားမှာဖြစ်ပါတယ်။
+![Linear vs polynomial regression infographic](../../../../translated_images/my/linear-polynomial.5523c7cb6576ccab.webp)
+> infographic ကို [Dasani Madipalli](https://twitter.com/dasani_decoded) ဖန်တီးသည်။
 ## [Pre-lecture quiz](https://ff-quizzes.netlify.app/en/ml/)
 
-> ### [ဒီသင်ခန်းစာကို R မှာလည်းရနိုင်ပါတယ်!](../../../../2-Regression/3-Linear/solution/R/lesson_3.html)
-### အကျဉ်းချုပ်
+> ### [ဒီသင်ခန်းစာကို R မှာလည်း ရနိုင်ပါတယ်!](../../../../2-Regression/3-Linear/solution/R/lesson_3.html)
+### နိဒါန်း
 
-ယခင်အခန်းများတွင် Regression ဆိုတာဘာလဲဆိုတာကို သင် Pumpkin စျေးနှုန်း dataset ကို အသုံးပြု၍ လေ့လာခဲ့ပြီး Matplotlib ကို အသုံးပြု၍ visualization လုပ်ခဲ့ပါသည်။
+အခုထိ pumpkin ဈေးနှုန်းဒေတာအရေအတွက်နဲ့ regression ဆိုတာ ဘာလဲဆိုတာကို လေ့လာခဲ့ပြီး Matplotlib ဖြင့် ဓာတ်ပုံဆွဲပြီးဖြစ်ပြီဖြစ်ပါသည်။
 
-အခုတော့ ML အတွက် Regression ကို ပိုမိုနက်နက်ရှိုင်းရှိုင်း လေ့လာရန် အဆင်သင့်ဖြစ်ပါပြီ။ Visualization က ဒေတာကို နားလည်စေသလို Machine Learning ရဲ့ အဓိကအားသာချက်ကတော့ _မော်ဒယ်များကို လေ့ကျင့်ခြင်း_ ဖြစ်ပါတယ်။ မော်ဒယ်များကို သမိုင်းကြောင်းဒေတာပေါ်မှာ လေ့ကျင့်ပြီး ဒေတာအချင်းချင်း ဆက်နွယ်မှုများကို အလိုအလျောက် ဖမ်းဆီးနိုင်စေပြီး မော်ဒယ်မမြင်ဖူးသေးတဲ့ ဒေတာအသစ်များအတွက် အကျိုးအမြတ်ကို ခန့်မှန်းနိုင်စေပါတယ်။
+ယခုအခါ ML အတွက် regression ကို နက်နဲစွာ လေ့လာရန် အသင့်ဖြစ်ပါပြီ။ Visualization က ဒေတာကို နားလည်ဖို့ အကူအညီဖြစ်ပေမယ့် Machine Learning ရဲ့ အဓိကအားသာချက်က _မော်ဒယ်များကို လေ့ကျင့်ခြင်း_ မှာ ဖြစ်သည်။ မော်ဒယ်များကို ရှေးဟောင်းဒေတာပေါ် မူတည်၍ အလိုအလျောက် ဒေတာအချိုးအစားတွေကို အတိအကျဖမ်းယူသည်၊ ထို့ကြောင့် မူလမမြင်ဖူးသော ဒေတာအတွက် ခန့်မှန်းချက်များ ဖန်တီးနိုင်သည်။
 
-ဒီသင်ခန်းစာမှာ Regression အမျိုးအစား ၂ မျိုးကို ပိုမိုနက်နက်ရှိုင်းရှိုင်း လေ့လာပါမည်။ _အခြေခံ Linear Regression_ နှင့် _Polynomial Regression_ တို့ဖြစ်ပြီး ဒီနည်းလမ်းများရဲ့ သင်္ချာဆိုင်ရာ အခြေခံကိုလည်း လေ့လာပါမည်။ ဒီမော်ဒယ်များက Pumpkin စျေးနှုန်းကို input data အမျိုးမျိုးပေါ်မူတည်ပြီး ခန့်မှန်းနိုင်စေပါမည်။
+ဒီသင်ခန်းစာမှာ၊ _မူလ linear regression_ နဲ့ _polynomial regression_ ဆိုတဲ့ regression နှစ်မျိုးနဲ့ အခြေခံသင်္ချာနည်းများကို တက်တူးလေ့လာပြီး၊ ဤမော်ဒယ်များဖြင့် pumpkin အမျိုးအစားအလိုက် ဈေးနှုန်းခန့်မှန်းမှု ပြုလုပ်နိုင်မှာ ဖြစ်ပါတယ်။
 
 [![ML for beginners - Understanding Linear Regression](https://img.youtube.com/vi/CRxFT8oTDMg/0.jpg)](https://youtu.be/CRxFT8oTDMg "ML for beginners - Understanding Linear Regression")
 
-> 🎥 Linear Regression ရဲ့ အကျဉ်းချုပ်ကို ကြည့်ရန် အထက်ပါပုံကို နှိပ်ပါ။
+> 🎥 ဒေါက်ဗိုင်းလင်ကို နှိပ်၍ linear regression အကြောင်း နိဒါန်းဗီဒီယို ကြည့်ရှုနိုင်ပါသည်။
 
-> ဒီသင်ရိုးတစ်ခုလုံးမှာ သင်္ချာအပေါ် အနည်းငယ်သာ သိရှိမှုရှိသည်ဟု သတ်မှတ်ပြီး သင်္ချာကို အခြားနယ်ပယ်မှ ကျောင်းသားများလည်း နားလည်နိုင်စေရန် ရည်ရွယ်ထားပါသည်။ 🧮 မှတ်ချက်များ၊ အကြောင်းပြ callouts၊ ရှင်းလင်းပုံများနှင့် အခြားသင်ယူမှုကိရိယာများကို အသုံးပြုထားသည်။
+> ဒီ သင်ရိုးအတန်းများအတွက် သင်္ချာနည်းပညာဆိုင်ရာ အသိပညာနည်းပါးမှသာ ယူဆောင်ထားပြီး၊ အခြားကဏ္ဍမှလာသော ကျောင်းသားများအတွက် လွယ်ကူစေရန် မှတ်စု၊ 🧮 ဟောပြောချက်များ၊ ပုံများနှင့် အခြားသင်ယူရေးကိရိယာများ ထည့်သွင်းထားသည်။
 
-### ကြိုတင်လိုအပ်ချက်
+### ဆော့ရွတ်
 
-Pumpkin data ရဲ့ ဖွဲ့စည်းပုံကို ယခုအချိန်မှာ သင်နားလည်ပြီးဖြစ်ရမည်။ ဒီသင်ခန်းစာရဲ့ _notebook.ipynb_ ဖိုင်မှာ preloaded နှင့် pre-cleaned ဖြစ်ပြီး bushel တစ်ခုအတွက် Pumpkin စျေးနှုန်းကို အသစ်သော data frame မှာ ပြထားသည်။ Visual Studio Code ရဲ့ kernels တွင် ဒီ notebooks များကို run လုပ်နိုင်ရမည်။
+ယခုအခါ စိမ်းလန်းသစ်ဆန်းသော pumpkin data ဖွဲ့စည်းမှုနဲ့ ရင်းနှီးပြီး ဖြစ်နေသည်။ သင်တို့အတွက် ဒီသင်ခန်းစာ _notebook.ipynb_ ဖိုင်ထဲတွင် ကြိုတင်တင်ထားပြီး သန့်ရှင်းထားပါသည်။ ဖိုင်အတွင်းမှာ pumpkin ဈေးနှုန်းကို bushel အလိုက် ပြသထားပါသည်။ Visual Studio Code ၏ kernel တွင် ဒီ notebook များကို တည်ဆောက်၍ စမ်းသပ်နိုင် ဖို့ သေချာစေပါ။
 
 ### ပြင်ဆင်မှု
 
-ဒီဒေတာကို load လုပ်ပြီး အမေးအဖြေများကို ရှာဖွေဖို့ သတိပြုပါ။
+သတိပေးချက်အဖြစ်, ဒီဒေတာကို လာယူတယ်ဆိုတာ ဒေတာအပေါ် မေးခွန်းတွေ ထုတ်ဖို့ပါပဲ။
 
-- Pumpkin ဝယ်ဖို့ အချိန်ကောင်းဆုံးက ဘယ်အချိန်လဲ?
-- Miniature pumpkins တစ် case ရဲ့ စျေးနှုန်းကို ဘယ်လောက်ခန့်မှန်းနိုင်မလဲ?
-- Half-bushel baskets နဲ့ 1 1/9 bushel box တစ်ခုကို ဘယ်ဟာကို ဝယ်သင့်လဲ?
-ဒီဒေတာကို ဆက်လက် လေ့လာကြည့်ရအောင်။
+- Pumpkin များ ဝယ်ဖို့ အချိန်ကောင်းဆုံး ဘယ်လိုဆိုတာ?
+- Miniature pumpkin များ case တစ်ခုမှာ ဘယ်နှစ်နှုန်းထိ အရောင်းရှိမလဲ?
+- Pumpkin half-bushel အိတ်လား ဒါမှမဟုတ် 1 1/9 bushel ပုံးလား ဝယ်သင့်မလား?
+ဒီဒေတာကို ဆက်လက် ရှာဖွေကြမယ်။
 
-ယခင်သင်ခန်းစာမှာ Pandas data frame တစ်ခုကို ဖန်တီးပြီး မူရင်း dataset ရဲ့ အစိတ်အပိုင်းတစ်ခုကို ထည့်သွင်းခဲ့သည်။ Pricing ကို bushel အတိုင်းအတာဖြင့် စံပြုခဲ့သည်။ ဒါပေမယ့် ၄၀၀ ခန့်သော datapoints ကိုသာ ရရှိခဲ့ပြီး ဆောင်းရာသီလများအတွက်သာ ရရှိခဲ့သည်။
+ယခင်သင်ခန်းစာတွင် pandas data frame တစ်ခု တည်ဆောက်ပြီး မူလ dataset မှအချိုးအစားကို bushel အလိုက် တူညီအောင် ပြင်ဆင်ထားသည်။ သို့သော် အဲ့ဒီနည်းဖြင့် datapoint ၄ ရာခိုင်နှုန်းတိုင်သာ ရခဲ့ပြီး ရာသီဆောင်းလများအတွက်သာ ရှိခဲ့သည်။
 
-ဒီသင်ခန်းစာရဲ့ notebook တွင် preloaded data ကို ကြည့်ပါ။ ဒေတာကို preloaded လုပ်ပြီး month data ကို scatterplot တစ်ခုအဖြစ် chart လုပ်ထားသည်။ ဒေတာရဲ့ nature ကို ပိုမိုသေချာစေရန် ပိုမိုသန့်စင်နိုင်မလားဆိုတာ ကြည့်ပါ။
+ဒီသင်ခန်းစာအတွက် အသစ်တင်ထားသော notebook ထဲရှိ ဒေတာကို ကြည့်ပါ။ ဒေတာကို ကြိုတင်တင်ထားပြီး အစပိုင်း scatterplot တစ်ခုကို month data ပြရန် ဖော်ပြထားသည်။ ဒေတာအတွက် ပိုမိုအသေးစိတ် ရယူဖို့ သန့်ရှင်းမှုပိုပြီး လုပ်သင့်သလို ဖြစ်နိုင်သည်။
 
-## Linear Regression Line တစ်ခု
+## Linear regression လိုင်းတစ်ခု
 
-Lesson 1 မှာ သင်လေ့လာခဲ့သလို Linear Regression ရဲ့ ရည်ရွယ်ချက်ကတော့ လိုင်းတစ်ခုကို plot လုပ်နိုင်ရန် ဖြစ်သည်။
+သင် သင်ခန်းစာ ၁ တွင် သင်တန်းရဲ့ ရည်ရွယ်ချက်မှာ ပြောင်းလဲမှု များကိုတစ်ခုချင်းစီ ဘယ်လို ဆက်နွယ်ကြောင်း ပြရန် တိုက်ရိုက်လမ်းကြောင်းဖော်လိုသည်ဆိုတာ ဖြစ်ကြောင်း သိရသည်။
 
-- **Variable ဆက်နွယ်မှုများကို ပြသရန်**။ Variable များအကြား ဆက်နွယ်မှုကို ပြသရန်
-- **ခန့်မှန်းချက်များ ပြုလုပ်ရန်**။ Datapoint အသစ်တစ်ခုကို လိုင်းနှင့် ဆက်နွယ်မှုအပေါ် အတိအကျ ခန့်မှန်းရန်
+- **ဇာတ်ကောင်များ ဆက်နွယ်မှု ပြသခြင်း**။ မတူညီသော ဇာတ်ကောင်များအကြား ဆက်နွယ်မှု ပြသခြင်း။
+- **ခန့်မှန်းခြေပြုလုပ်ခြင်း**။ ပြီးခဲ့တဲ့ ဒေတာဇယားအပေါ် ခန့်မှန်းမှုပြုလုပ်၍ ဒေတာအသစ်အပေါ် ရသရွယ်မှု ပြုခြင်း။
 
-**Least-Squares Regression** သုံးပြီး ဒီလိုင်းကို ရေးဆွဲသည်။ 'Least-squares' ဆိုတာက Regression လိုင်းကို ဝန်းရံထားသော datapoints များကို square လုပ်ပြီး ထည့်ပေါင်းခြင်းဖြစ်သည်။ အဆုံးသတ်ပေါင်းစုက အနည်းဆုံးဖြစ်ရမည်။ အမှားများနည်းသော `least-squares` ကို ရရှိရန် ဖြစ်သည်။
+**Least-Squares Regression** သေချာမှုအတွက် ဒီလိုလိုင်းကို ဆွဲတယ်။ "Least-Squares" ဆိုတာ သက်ဆိုင်ရာ မော်ဒယ်အတွင်း ဒေတာမှားယွင်းမှုတစ်ခုချင်းစီအတွက် မူလိုင်ရာမှားယွင်းမှုကို လျှော့ချဖို့ လုပ်ငန်းစဉ်တစ်ခု ဖြစ်ပါသည်။ ဒေတာအချက်လေးတစ်ခုချင်းစီအတွက် စစ်မှန်တဲ့အချက်နဲ့ regression လိုင်းအကြား လျှောက်လွှာဖြင့်ခွဲခြမ်းဖြတ်တောက်မှု (residual) ကိုတိုင်းတာပါသည်။
 
-ဒါကို လုပ်ရတဲ့အကြောင်းကတော့ ဒေတာပွိုင့်များအားလုံးမှ cumulative distance အနည်းဆုံးဖြစ်သော လိုင်းတစ်ခုကို မော်ဒယ်ဖန်တီးလိုခြင်း ဖြစ်သည်။ ထို့အပြင် direction ကိုမဟုတ်ဘဲ magnitude ကိုသာ စိုးရိမ်သောကြောင့် term များကို square လုပ်ပြီး ထည့်ပေါင်းသည်။
+ဒီအကွာအဝေးကို အောက်ပါ အကြောင်းညီညွတ်မှု နှစ်မျိုးကြောင့် ရေတွက်ပါသည်-
 
-> **🧮 သင်္ချာကို ပြပါ**
+1. **အချက်အလက် ဒေသအလိုက် မျှတခြင်း**: -5 မှာ အမှားတစ်ခုနဲ့ +5 မှာ အမှားတစ်ခုကို တူညီသဘောထားစေဖို့ ရည်ရွယ်သည်။ ကွေးသွားခြင်းအားဖြင့် တန်ဖိုးများအားလုံး မရှိမဖြစ် အပေါင်းလိုက် ဖြစ်စေသည်။
+
+2. **အပြင်မှာရှိနေသောမှားယွင်းမှုများကို ဒဏ်ရာပေးခြင်း**: အကြီးမားဆုံးအမှားများကို ပိုပြီး အာရုံစိုက်စေပြီး၊ လိုင်းသည် အဲ့ဒီဒေတာများနီးပါးမှာ ပိုနီးစပ်အောင် ဖိအားပေးသည်။
+
+ခုနောက်ဆုံး အခြေခံထားတဲ့ squared error သုံးပြီး ပြီးဆုံးရာ တန်ဖိုး၏ စုစုပေါင်းကို တွက်ချက်သည်။ အဲ့ဒီစုစုပေါင်းတန်ဖိုး အနည်းဆုံး ရှိတဲ့ လိုင်းကို ရှာဖွေပါတယ်။ဒါ့ကြောင့် "Least-Squares" လို့ခေါ်ကြတာဖြစ်ပါတယ်။
+
+> **🧮 သင်္ချာအပိုင်း ပြပါ** 
 > 
-> ဒီလိုင်းကို _line of best fit_ ဟုခေါ်ပြီး [equation](https://en.wikipedia.org/wiki/Simple_linear_regression) ဖြင့် ဖော်ပြနိုင်သည်။
+> ဒီလိုင်းကို _line of best fit_ လို့ခေါ်ပြီး [တစ်ခုတည်းသောဆွဲဆန့် regression ဆိပ်ကမ်း](https://en.wikipedia.org/wiki/Simple_linear_regression) ဖြင့်ဖော်ပြနိုင်ပါတယ်။
 > 
 > ```
 > Y = a + bX
 > ```
 >
-> `X` က 'explanatory variable' ဖြစ်သည်။ `Y` က 'dependent variable' ဖြစ်သည်။ လိုင်းရဲ့ slope ကို `b` ဟုခေါ်ပြီး y-intercept ကို `a` ဟုခေါ်သည်။ `X = 0` ဖြစ်သောအခါ `Y` ရဲ့တန်ဖိုးကို ရည်ညွှန်းသည်။
+> `X` သည် 'အကြောင်းပြချက် ပြောင်းလဲမှု' ကို ဆိုလိုသည်။ `Y` သည် 'ဘယ်လိုပြောင်းလဲမှု ထိခိုက်သည်' ကို ဆိုလိုသည်။ လိုင်း၏ အလျားညီသည် `b` ဖြစ်ပြီး `a` သည် y-intercept ဖြစ်ပြီး `X = 0` ဖြစ်သောအခါ `Y` တန်ဖိုးဖြစ်သည်။
 >
->![calculate the slope](../../../../2-Regression/3-Linear/images/slope.png)
+>![calculate the slope](../../../../translated_images/my/slope.f3c9d5910ddbfcf9.webp)
 >
-> ပထမဆုံး slope `b` ကိုတွက်ပါ။ Infographic by [Jen Looper](https://twitter.com/jenlooper)
+> ပထမဦးဆုံး slope `b` ကိုတွက်ချက်ပါ။ infographic ကို [Jen Looper](https://twitter.com/jenlooper) ဖန်တီးသည်။
 >
-> Pumpkin data ရဲ့ မူရင်းမေးခွန်းကို ရည်ညွှန်းပါက "month အပေါ်မူတည်ပြီး bushel တစ်ခုအတွက် Pumpkin စျေးနှုန်းကို ခန့်မှန်းပါ" ဆိုသည်မှာ `X` က စျေးနှုန်းကို ရည်ညွှန်းပြီး `Y` က ရောင်းချသောလကို ရည်ညွှန်းသည်။
+> နောက်ထပ် ရှင်းလင်းရန်၊ pumpkin data အရ "လစဉ် တစ် bushel အတွက် pumpkin ဈေးဖော်ပြချက် ခန့်မှန်းပါ" ဆိုသည်မှာ `X` သည် ဈေးနှုန်းကို ဆိုလိုပြီး `Y` သည် အရောင်းလကို ဆိုလိုသည်။
 >
->![complete the equation](../../../../2-Regression/3-Linear/images/calculation.png)
+>![complete the equation](../../../../translated_images/my/calculation.a209813050a1ddb1.webp)
 >
-> `Y` ရဲ့တန်ဖိုးကိုတွက်ပါ။ $4 ဝန်းကျင်ပေးရမယ်ဆိုရင် April ဖြစ်နေလိမ့်မယ်! Infographic by [Jen Looper](https://twitter.com/jenlooper)
+> Y တန်ဖိုးကိုတွက်ချက်ပါ။ သင် $4 လောက်ပေးထားရင် April လဖြစ်မယ်! infographic ကို [Jen Looper](https://twitter.com/jenlooper) ဖန်တီးသည်။
 >
-> လိုင်းရဲ့ slope ကိုတွက်ရန် သင်္ချာက intercept ကိုလည်း အခြေခံထားသည်။ `X = 0` ဖြစ်သောအခါ `Y` ရဲ့တည်နေရာကိုလည်း ထည့်သွင်းတွက်ချက်ထားသည်။
+> ဒီလိုင်းကိုတွက်ချက်ရာတွင် slope ကို ဖော်ထုတ်ပြီး၊ intercept (သို့) `X = 0` ဖြစ်စဉ် Y တန်ဖိုးရှိရာနေရာတိုက်ရိုက် ကိုဖော်ပြရပါမယ်။
 >
-> ဒီတန်ဖိုးများရဲ့ လိုင်းကို ဘယ်လိုသတ်မှတ်ရမလဲဆိုတာကို [Math is Fun](https://www.mathsisfun.com/data/least-squares-regression.html) ဝဘ်ဆိုဒ်မှာ ကြည့်နိုင်သည်။ [Least-squares calculator](https://www.mathsisfun.com/data/least-squares-calculator.html) ကိုလည်း သုံးပြီး တန်ဖိုးများက လိုင်းကို ဘယ်လိုသက်ရောက်မှုရှိသလဲဆိုတာ ကြည့်နိုင်သည်။
+> ဤတန်ဖိုးများထုတ်ယူနည်းကို [Math is Fun](https://www.mathsisfun.com/data/least-squares-regression.html) ဆိုက်မှာ တွေ့နိုင်ပြီး၊ [Least-squares ကိရိယာ](https://www.mathsisfun.com/data/least-squares-calculator.html) မှာလည်း နံပါတ်များ၏ သက်ရောက်မှုကို ကြည့်ရှုနိုင်သည်။
 
-## Correlation
+## ဆက်စပ်မှု
 
-နောက်ထပ်နားလည်ရမည့် term တစ်ခုကတော့ **Correlation Coefficient** ဖြစ်သည်။ X နှင့် Y variable များအကြား scatterplot ကို အသုံးပြု၍ Coefficient ကို မြန်မြန်ဆန်ဆန် visualization လုပ်နိုင်သည်။ Datapoints များကို တိကျသောလိုင်းတစ်ခုအတိုင်း scatter လုပ်ထားသော plot တွင် correlation မြင့်မားသည်။ X နှင့် Y အကြား scatter လုပ်ထားသော plot တွင် correlation နည်းပါမည်။
+နားလည်ရန် လိုအပ်သော အခြား အသုံးအနှုန်းမှာ given X နဲ့ Y အကြားရှိ **Correlation Coefficient** ဖြစ်သည်။ Scatterplot တစ်ခုဖြင့် ဒီ coefficient ကို မြန်ဆန်စွာ ဓာတ်ပုံဆွဲကြည့်နိုင်သည်။ တိကျသွားသော အချက်များ စီစဉ်ရိုက်ထားသော plot တွင် Correlation အမြင့်ရှိပြီး၊ အချက်များကြားကွဲဝေးနေသော scatterplot တွင် Correlation နည်းပါးသည်။
 
-Linear Regression မော်ဒယ်က correlation coefficient မြင့်မားသော (၁ နီးစပ်ပြီး ၀ မနီးစပ်သော) Least-Squares Regression method နှင့် regression line ရှိရမည်။
+Linear regression မော်ဒယ်က Correlation Coefficient မြင့်မား (0 ထက် 1 နီးစပ်သော) ဖြစ်စေရန် Least-Squares Regression နည်းပြုလုပ်ခြင်းဖြင့် တည်ဆောက်သည်။
 
-✅ ဒီသင်ခန်းစာရဲ့ notebook ကို run လုပ်ပြီး Month နှင့် Price scatterplot ကိုကြည့်ပါ။ Pumpkin ရောင်းချမှုအတွက် Month နှင့် Price data တွေဟာ scatterplot အရ correlation မြင့်မားသလား၊ နိမ့်နားသလားဆိုတာ သင့် visual interpretation အရ သတ်မှတ်ပါ။ `Month` အစား *day of the year* (နှစ်အစမှစ၍ ရက်ပေါင်း) ကို အသုံးပြုပါက အဲဒီ correlation က ပြောင်းလဲသလား?
+✅ ဒီသင်ခန်းစာ ပါ Notebook ကို Run လိုက်ပြီး Month နဲ့ Price ရဲ့ scatterplot ကို ကြည့်ပါ။ Pumpkin ရောင်းအားတွင် Month နဲ့ Price ဆက်နွယ်မှုမြင့်မား/နည်းပါးသလား? ဒါမှမဟုတ် `Month` ကျော်ပြီး *နှစ်အတွင်းရက်* နဲ့ ခန့်မှန်းပါက ဘယ်လို ပြောင်းလဲသလဲ?
 
-အောက်ပါ code မှာ သန့်စင်ပြီး data frame `new_pumpkins` ကို ရရှိထားသည်ဟု သတ်မှတ်ပါမည်။ အဲဒီ data frame က အောက်ပါအတိုင်းဖြစ်သည်။
+အောက်ပါ code မှာ `new_pumpkins` data frame ကို ရယူထားပြီး ဆက်သွယ်မှု ရှိတယ်လိုထင်ရတယ်။
 
 ID | Month | DayOfYear | Variety | City | Package | Low Price | High Price | Price
 ---|-------|-----------|---------|------|---------|-----------|------------|-------
@@ -89,36 +101,36 @@ ID | Month | DayOfYear | Variety | City | Package | Low Price | High Price | Pri
 73 | 10 | 274 | PIE TYPE | BALTIMORE | 1 1/9 bushel cartons | 17.0 | 17.0 | 15.454545
 74 | 10 | 281 | PIE TYPE | BALTIMORE | 1 1/9 bushel cartons | 15.0 | 15.0 | 13.636364
 
-> ဒီ data ကို သန့်စင်ရန် code ကို [`notebook.ipynb`](../../../../2-Regression/3-Linear/notebook.ipynb) တွင် ရရှိနိုင်သည်။ ယခင်သင်ခန်းစာတွင် လုပ်ခဲ့သည့် သန့်စင်ခြင်းအဆင့်များကို ပြုလုပ်ပြီး `DayOfYear` column ကို အောက်ပါ expression ကို အသုံးပြု၍ တွက်ချက်ထားသည်။
+> ဒေတာသန့်ရှင်းမှု ကိစ္စအတွက် code ကို [`notebook.ipynb`](notebook.ipynb) တွင် ရနိုင်သည်။ ယခင်သင်ခန်းစာကဲ့သို့ သန့်ရှင်းမှု လုပ်ဆောင်ပြီး `DayOfYear` column ကို အောက်ပါ အထူးဖော်ပြချက်ဖြင့် တွက်ချက်ထားသည်။
 
 ```python
 day_of_year = pd.to_datetime(pumpkins['Date']).apply(lambda dt: (dt-datetime(dt.year,1,1)).days)
 ```
 
-Linear Regression ရဲ့ သင်္ချာကို နားလည်ပြီးပြီဆိုရင် Pumpkin စျေးနှုန်းများကို ခန့်မှန်းနိုင်ရန် Regression မော်ဒယ်တစ်ခုကို ဖန်တီးကြည့်ရအောင်။ Holiday Pumpkin Patch အတွက် Pumpkin packages များကို optimize လုပ်ရန် ဝယ်ယူသူတစ်ဦးအတွက် ဒီအချက်အလက်များ အသုံးဝင်နိုင်ပါမည်။
+Linear regression တွင် သင်္ချာနည်းပညာနောက်ခံကို နားလည်လျှင်၊ pumpkin package များအတွက် အကောင်းဆုံး ဈေးနှုန်း ခန့်မှန်းရန် Regression မော်ဒယ်ကို ဖန်တီးကြမယ်။ အစပျိုး pumpkin patch အတွက် pumpkin ဝယ်သူများအတွက် package ဝယ်ယူမှု တိုးတက်အောင် အကောင်းဆုံး ကိုယ်စားလှယ်ဖြစ်စေခဲ့ပါလိမ့်မယ်။
 
-## Correlation ရှာဖွေခြင်း
+## ဆက်စပ်မှု ရှာခြင်း
 
 [![ML for beginners - Looking for Correlation: The Key to Linear Regression](https://img.youtube.com/vi/uoRq-lW2eQo/0.jpg)](https://youtu.be/uoRq-lW2eQo "ML for beginners - Looking for Correlation: The Key to Linear Regression")
 
-> 🎥 Correlation ရဲ့ အကျဉ်းချုပ်ကို ကြည့်ရန် အထက်ပါပုံကို နှိပ်ပါ။
+> 🎥 correlation ကိုအကျဉ်းသွားသော ဗီဒီယိုအတွက် ဓာတ်ပုံကို နှိပ်ပါ။
 
-ယခင်သင်ခန်းစာမှ သင်မြင်ခဲ့သည်မှာ အမျိုးမျိုးသောလများအတွက် အလယ်ပျဉ်စျေးနှုန်းသည် အောက်ပါအတိုင်းဖြစ်သည်။
+ယခင်သင်ခန်းစာမှ ဖော်ပြသည့်အတိုင်း လစဉ် ပျမ်းမျှဈေးနှုန်းသည် အောက်ပါအတိုင်း ပုံဖော်ထားသည်။
 
 <img alt="Average price by month" src="../../../../translated_images/my/barchart.a833ea9194346d76.webp" width="50%"/>
 
-ဒါက correlation ရှိနိုင်သည်ဟု အကြံပြုသည်။ Linear Regression မော်ဒယ်ကို `Month` နှင့် `Price` အကြား သို့မဟုတ် `DayOfYear` နှင့် `Price` အကြား ဆက်နွယ်မှုကို ခန့်မှန်းရန် လေ့ကျင့်ကြည့်နိုင်သည်။ အောက်ပါ scatter plot က `DayOfYear` နှင့် `Price` အကြား ဆက်နွယ်မှုကို ပြသည်။
+ဒါက ဆက်စပ်မှုရှိစေသင့်ကြောင်း ပြထားပြီး `Month` နဲ့ `Price` အကြား သို့မဟုတ် `DayOfYear` နဲ့ `Price` အကြား ဆက်နွယ်မှု မော်ဒယ်တည်ဆောက်ဖို့ ကြိုးစားကြည့်နိုင်သည်။ အောက်တွင် ယခုဆက်နွယ်မှုကို ပြသသည့် scatterplot ပါ -
 
 <img alt="Scatter plot of Price vs. Day of Year" src="../../../../translated_images/my/scatter-dayofyear.bc171c189c9fd553.webp" width="50%" /> 
 
-`corr` function ကို အသုံးပြု၍ correlation ရှိမရှိ ကြည့်ရအောင်။
+`corr` function သုံး၍ ဆက်စပ်မှုကြည့်ပါ -
 
 ```python
 print(new_pumpkins['Month'].corr(new_pumpkins['Price']))
 print(new_pumpkins['DayOfYear'].corr(new_pumpkins['Price']))
 ```
 
-`Month` အပေါ် correlation က -0.15 ဖြစ်ပြီး `DayOfYear` အပေါ် correlation က -0.17 ဖြစ်သည်။ ဒါပေမယ့် အခြားသော ဆက်နွယ်မှုတစ်ခုရှိနိုင်သည်။ Pumpkin အမျိုးအစားများနှင့် ဆက်နွယ်မှုရှိသည်ဟု ထင်ရသည်။ ဒီ hypothesis ကို အတည်ပြုရန် Pumpkin အမျိုးအစားတစ်ခုစီကို အရောင်ကွဲကွဲဖြင့် plot လုပ်ကြည့်ရအောင်။ `scatter` plotting function မှ `ax` parameter ကို အသုံးပြု၍ point အားလုံးကို graph တစ်ခုအပေါ် plot လုပ်နိုင်သည်။
+အခြေအနေသည် correlation နည်းပါးသည်ကို လေ့လာရသည်၊ `Month` အတွက် -0.15၊ `DayOfMonth` အတွက် -0.17 ဖြစ်သော်လည်း pumpkin အမျိုးအစားအလိုက် group လည်းရှိသည်။ ဒီ hypothesis မှန်ကန်ရန် တစ်ခုချင်းစီကို အခြားစိတ်ကြည့်အရောင်အားဖြင့် scatter ပြကြမည်။ `scatter` function ထဲမှာ `ax` parameter ပေးပြီး နေရာတူမှန်တဲ့ ဂရပ် ဖော်ရန် -
 
 ```python
 ax=None
@@ -130,7 +142,7 @@ for i,var in enumerate(new_pumpkins['Variety'].unique()):
 
 <img alt="Scatter plot of Price vs. Day of Year" src="../../../../translated_images/my/scatter-dayofyear-color.65790faefbb9d54f.webp" width="50%" /> 
 
-ကျွန်ုပ်တို့ရဲ့ စုံစမ်းမှုက variety က စျေးနှုန်းအပေါ် date ထက် ပိုမိုသက်ရောက်မှုရှိသည်ဟု အတည်ပြုသည်။ Bar graph ဖြင့်လည်း မြင်နိုင်သည်။
+စစ်ဆေးမှုချင်းရန် အမျိုးအစားပေါ် မူတည်၍ ဈေးနှုန်းထက် ရောင်းတော့မည့်နေ့ရက် ပိုမိုသက်ရောက်မှုရှိသည်ဟု တွေ့ရှိသည်။ အပြည့်အစုံ ကြည့်ရန် -
 
 ```python
 new_pumpkins.groupby('Variety')['Price'].mean().plot(kind='bar')
@@ -138,7 +150,7 @@ new_pumpkins.groupby('Variety')['Price'].mean().plot(kind='bar')
 
 <img alt="Bar graph of price vs variety" src="../../../../translated_images/my/price-by-variety.744a2f9925d9bcb4.webp" width="50%" /> 
 
-ယခုအချိန်မှာ 'pie type' ဟုခေါ်သော Pumpkin အမျိုးအစားတစ်ခုကိုသာ အာရုံစိုက်ပြီး date ရဲ့ စျေးနှုန်းအပေါ် သက်ရောက်မှုကို ကြည့်ရအောင်။
+နေ့ရက် သက်ရောက်မှုကို တစ်မျိုးတည်း pumpkin အမျိုးအစား 'pie type' အပေါ် ဦးတည်လျှောက်လဲကြည့်ပါ။
 
 ```python
 pie_pumpkins = new_pumpkins[new_pumpkins['Variety']=='PIE TYPE']
@@ -146,24 +158,24 @@ pie_pumpkins.plot.scatter('DayOfYear','Price')
 ```
 <img alt="Scatter plot of Price vs. Day of Year" src="../../../../translated_images/my/pie-pumpkins-scatter.d14f9804a53f927e.webp" width="50%" /> 
 
-`corr` function ကို အသုံးပြု၍ `Price` နှင့် `DayOfYear` အကြား correlation ကို တွက်ချက်ပါက `-0.27` ရရှိမည် - ဒါက predictive model တစ်ခုကို လေ့ကျင့်ခြင်း make sense ဖြစ်သည်ဟု ဆိုလိုသည်။
+`Price` နှင့် `DayOfYear` အကြား correlation ကို `corr` function ဖြင့်တွက်လျှင် `-0.27` သို့မဟုတ် အနီးပါး ဖြစ်ပြီး ဖြစ်လာသည်မှာ သင်တန်းတက်ရန် ပြုလုပ်ယုံကြည်ရပါသည်။
 
-> Linear Regression မော်ဒယ်ကို လေ့ကျင့်မည်ဆိုရင် ဒေတာကို သန့်စင်ထားရန် အရေးကြီးသည်။ Linear Regression က missing values များနှင့် အလုပ်မလုပ်သင့်သောကြောင့် အလွတ်နေသော cell များကို ဖယ်ရှားရန် make sense ဖြစ်သည်။
+> Linear regression မော်ဒယ် လေ့လာဖို့ မတိုင်မီ ဒေတာ သန့်ရှင်းမှုအတိုင်းအတာ ပြုလုပ်ပါ။ Linear regression သည် information ကျန်ရှိမှုများ (missing value) ဖြင့် မကောင်းဘူး၊ ထို့ကြောင့် ခြိမ်းခြောက်မှုရှိသော cell များကို ဖယ်ရှားပါ။
 
 ```python
 pie_pumpkins.dropna(inplace=True)
 pie_pumpkins.info()
 ```
 
-အခြားနည်းလမ်းတစ်ခုကတော့ အလွတ်နေသော value များကို column တစ်ခုစီမှ mean value များဖြင့် ဖြည့်ရန် ဖြစ်သည်။
+တစ်ခြားနည်းဖြင့် အတားအဆီးရှိသော ထောင့်များကို အထူးအတွက် များ၏ ပျမ်းမျှတန်ဖိုးဖြင့် ဖြည့်တင်းနိုင်သည်။
 
-## Simple Linear Regression
+## ရိုးရှင်းသော Linear Regression
 
 [![ML for beginners - Linear and Polynomial Regression using Scikit-learn](https://img.youtube.com/vi/e4c_UP2fSjg/0.jpg)](https://youtu.be/e4c_UP2fSjg "ML for beginners - Linear and Polynomial Regression using Scikit-learn")
 
-> 🎥 Linear Regression နှင့် Polynomial Regression ရဲ့ အကျဉ်းချုပ်ကို ကြည့်ရန် အထက်ပါပုံကို နှိပ်ပါ။
+> 🎥 ဖြစ်ပေါ်သူများအတွက် Linear နဲ့ Polynomial Regression အကြောင်း နိဒါန်းဗီဒီယိုကြည့်ရန်ဓာတ်ပုံကို နှိပ်ပါ။
 
-Linear Regression မော်ဒယ်ကို လေ့ကျင့်ရန် **Scikit-learn** library ကို အသုံးပြုပါမည်။
+Linear Regression မော်ဒယ် သင်တန်းတက်ဖို့ **Scikit-learn** library ကို အသုံးပြုမည်။
 
 ```python
 from sklearn.linear_model import LinearRegression
@@ -171,52 +183,70 @@ from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 ```
 
-ပထမဆုံး input values (features) နှင့် ရလဒ် output (label) ကို numpy arrays သို့ ခွဲခြားပါ:
+input တန်ဖိုးများ (features) နှင့် အလားအလာ output (label) ကို numpy array တွဲ ဘာသာပြန်ထားပါတယ်။
 
 ```python
 X = pie_pumpkins['DayOfYear'].to_numpy().reshape(-1,1)
 y = pie_pumpkins['Price']
 ```
 
-> Linear Regression package ကို မှန်ကန်စွာ နားလည်စေရန် input data ကို `reshape` ပြုလုပ်ရန် လိုအပ်သည်။ Linear Regression က input အဖြစ် 2D-array ကို မျှော်မှန်းသည်။ အဲဒီ array ရဲ့ row တစ်ခုစီက input features ရဲ့ vector ကို ကိုယ်စားပြုသည်။ ကျွန်ုပ်တို့ရဲ့အခြေအနေမှာ input တစ်ခုသာရှိသောကြောင့် N×1 အရွယ်အစားရှိသော array တစ်ခုလိုအပ်သည်။ N က dataset size ဖြစ်သည်။
+> Linear Regression ကို သေချာနားလည်ဖို့ input data ကို `reshape` ပြောင်းတာ ဆိုင်းလိုင်းတစ်ခုသည် 2D-array ဖြစ်ရမည်ဖြစ်သည်။ input feature vector တစ်ခုချင်းစီသည်တန်းတစ်ကြောင်းတွင် ရှိရပါမည်။ ဒါကြောင့်၊ input တွေက တစ်ခုတည်းပါ ကနေ N×1 ရောဂါရှိသော array ဖြစ်အောင် ပြင်ထားရတယ်။
 
-ထို့နောက် train dataset နှင့် test dataset များသို့ data ကို ခွဲခြားရန် လိုအပ်သည်။ ဒါက training ပြီးနောက် မော်ဒယ်ကို validate လုပ်နိုင်ရန် ဖြစ်သည်။
+ထို့နောက် data ကို train နှင့် test dataset များခွဲခြားမယ်၊ သင်တန်းပြီးတဲ့နောက် မော်ဒယ်ကို စစ်ဆေးနိုင်ရန် ဖြစ်ပါတယ်။
 
 ```python
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 ```
 
-နောက်ဆုံးမှာ Linear Regression မော်ဒယ်ကို training လုပ်ရန် code ၂ လိုင်းသာ လိုအပ်သည်။ `Linear
-ကျွန်တော်တို့ရဲ့အမှားဟာ ၂ ခုလောက်မှာရှိပြီး၊ ~17% လောက်ဖြစ်ပါတယ်။ အတော်လေးမကောင်းပါဘူး။ မော်ဒယ်ရဲ့အရည်အသွေးကိုပြသနိုင်တဲ့အခြားအချက်တစ်ခုက **coefficient of determination** ဖြစ်ပြီး၊ ဒီလိုရနိုင်ပါတယ်။
+နောက်ဆုံး Linear Regression မော်ဒယ် အတွက် training ကို နှစ်ကြောင်း ကုတ်ဖြင့် ပြုလုပ်နိုင်ပါသည်။ `LinearRegression` object ကိုသတ်မှတ်ပြီး `fit` method ဖြင့် data ကို လေ့ကျင့်သည်။
+
+```python
+lin_reg = LinearRegression()
+lin_reg.fit(X_train,y_train)
+```
+
+`fit` လုပ်ပြီးနောက် `LinearRegression` အရာဝတ္ထုတွင် regression ၏ coefficient အားလုံးပါရှိပြီး၊ ပြီးတော့ `.coef_` ဆက်တင်မှတဆင့် ဝင်ရောက်မြင်နိုင်သည်။ ကျွန်ုပ်တို့ကိစ္စတွင် coefficient တစ်ခုသာရှိပြီး၊ ယင်းသည် အကြမ်းအားဖြင့် `-0.017` လောက် ဖြစ်ရမည်။ ၎င်းသည် စျေးနှုန်းများသည် အချိန်နှင့်အမျှ သေးငယ်စွာ လျော့နည်းသွားသော ဖြစ်ရပ်ဖြစ်ပြီး၊ တစ်ရက်လျော့တန်ဖိုးဟု ၂ ဆင့်ခန့်သာရှိသည်ဟု ဆိုလိုသည်။ အနည်းငယ် များစွာ လျော့နည်းသော်လည်း များစွာမဟုတ်ပါ။ ဒါ့အပြင် regression ၏ Y-axis နှင့် ဖြတ်သွားသော အချက်ကို `lin_reg.intercept_` မှတဆင့် ဝင်ရောက်ကြည့်ရှုနိုင်ပြီး၊ ကျွန်ုပ်တို့ကိစ္စတွင် ၂၁ အနီးဖြစ်ပြီး၊ ၎င်းသည် နှစ်အစောပိုင်းတွင် စျေးနှုန်းကို ဖော်ပြသည်။
+
+ကျွန်ုပ်တို့၏ မော်ဒယ်တိကျမှု မည်မျှရှိသည်ကို ကြည့်ရန်၊ စမ်းသပ်ဒေတာတွင် စျေးနှုန်းများကို ခန့်မှန်းပြီး၊ ထိုခန့်မှန်းချက်များနှင့် မျှော်မှန်းထားသောတန်ဖိုးများမှာ မည်မျှနီးစပ်သည်ကို တိုင်းတတ်နိုင်သည်။ ၎င်းသည် mean square error (MSE) စဉ်တန်းကို အသုံးပြု၍ ပြုလုပ်နိုင်ပြီး၊ ယင်းသည် မျှော်မှန်းထားသောတန်ဖိုးနှင့် ခန့်မှန်းထားသောတန်ဖိုးကြားရှိ စတုရန်းကွာခြားမှုအားလုံး၏ ပျမ်းမျှတန်ဖိုး ဖြစ်သည်။
+
+```python
+pred = lin_reg.predict(X_test)
+
+mse = np.sqrt(mean_squared_error(y_test,pred))
+print(f'Mean error: {mse:3.3} ({mse/np.mean(pred)*100:3.3}%)')
+```
+  
+ကျွန်ုပ်တို့၏ အမှားသည် ၂ အမှတ်လောက်ဖြစ်ပြီး၊ ၁၇% ဆန်လောက်ဖြစ်သည်။ မမှန်ကန်ပါ။ မော်ဒယ်အရည်အသွေး၏ အခြားညွှန်ပြချက်ကတော့ **coefficient of determination** ဖြစ်ပြီး၊ အောက်ပါအတိုင်း ရယူနိုင်သည် -
 
 ```python
 score = lin_reg.score(X_train,y_train)
 print('Model determination: ', score)
-```  
-တန်ဖိုးက 0 ဖြစ်ရင်၊ မော်ဒယ်က input data ကိုမထည့်သွင်းစဉ်းစားဘဲ၊ *အဆိုးဆုံး linear predictor* ဖြစ်ပြီး၊ ရလဒ်ရဲ့ပျမ်းမျှတန်ဖိုးကိုသာပြသပါတယ်။ တန်ဖိုးက 1 ဖြစ်ရင်၊ မျှော်မှန်းထားတဲ့ output အားလုံးကိုတိကျစွာခန့်မှန်းနိုင်ပါတယ်။ ကျွန်တော်တို့ရဲ့အခြေအနေမှာ coefficient က 0.06 လောက်ရှိပြီး၊ အတော်လေးနိမ့်ပါတယ်။
+```
+  
+တန်ဖိုးသည် ၀ ဖြစ်လျှင်၊ မော်ဒယ်သည် input data ကိုမထည့်သွင်းသောဖြစ်ပြီး၊ *အဆိုးဆုံး လျင်မြန်စွာ ခန့်မှန်းသူ* အဖြစ် လုပ်ဆောင်နေသည်။ ၎င်းသည် ရလဒ်၏ ပျမ်းမျှတန်ဖိုးတစ်ခုသာဖြစ်သည်။ တန်ဖိုး ၁ ဖြစ်လျှင်၊ မျှော်မှန်းထားသော output အားလုံးကို တိကျမှန်ကန်စွာ ခန့်မှန်းနိုင်ခြင်းကို ဆိုလိုသည်။ ကျွန်ုပ်တို့ကိစ္စတွင် coefficient သည် ၀.၀၆ အနီးဖြစ်ပြီး၊ သက်သက်မနည်းပါ။
 
-ကျွန်တော်တို့ test data ကို regression line နဲ့အတူ plot လုပ်ပြီး၊ regression ကကျွန်တော်တို့အခြေအနေမှာဘယ်လိုအလုပ်လုပ်သလဲဆိုတာပိုမိုမြင်နိုင်ပါတယ်။
+ကျွန်ုပ်တို့သည် စမ်းသပ်ဒေတာကို regression လိုင်းနှင့်ပေါင်းပြီး ဖြတ်ပေါ်ပုံကို ကြည့်ရှုနိုင်သည် -
 
 ```python
 plt.scatter(X_test,y_test)
 plt.plot(X_test,pred)
-```  
-
+```
+  
 <img alt="Linear regression" src="../../../../translated_images/my/linear-results.f7c3552c85b0ed1c.webp" width="50%" />
 
-## Polynomial Regression  
+## Polynomial Regression
 
-Linear Regression ရဲ့အခြားအမျိုးအစားတစ်ခုက Polynomial Regression ဖြစ်ပါတယ်။ တစ်ခါတစ်လေ variable တွေကြား linear relationship ရှိနိုင်ပေမယ့် - ဥပမာ၊ ဖရဲသီးရဲ့အရွယ်အစားကြီးလာတာနဲ့အမျှ၊ စျေးနှုန်းမြင့်လာတာ - တစ်ခါတစ်လေ relationship တွေကို plane သို့မဟုတ်တည့်တည့်လိုင်းအဖြစ် plot လုပ်လို့မရနိုင်ပါဘူး။
+Linear Regression ၏ အမျိုးအစားတစ်ခုမှာ Polynomial Regression ဖြစ်သည်။ အချို့အခါတွင် 변수များအကြား လျှင်မြန်သော ဆက်စပ်မှုရှိသည် - ပုံမှန်အားဖြင့် pumpkin ၏ အရွယ်အစားပိုကြီးသလောက် စျေးနှုန်းပိုများသွားကြသည်။ သို့သော် အချို့အခါ၌ ယင်းဆက်စပ်မှုများကို စတိတ်တန်းသို့မဟုတ် ရှည်လျားသော လိုင်းအဖြစ် ပုံဖော်၍ မရနိုင်ပါ။
 
-✅ [ဒီမှာ](https://online.stat.psu.edu/stat501/lesson/9/9.8) Polynomial Regression အသုံးပြုနိုင်တဲ့ data အမျိုးအစားအချို့ကိုကြည့်ပါ။
+✅ ဒီထဲမှာ [Polynomial Regression အသုံးပြုနိုင်သော နမူနာများ](https://online.stat.psu.edu/stat501/lesson/9/9.8) တချို့ ရှိပါသည်။
 
-Date နဲ့ Price ကြားက relationship ကိုထပ်ကြည့်ပါ။ ဒီ scatterplot ကိုတည့်တည့်လိုင်းနဲ့ခန့်မှန်းသင့်တယ်လို့ထင်ပါသလား။ စျေးနှုန်းတွေကအတက်အကျဖြစ်နိုင်တာမဟုတ်လား။ ဒီအခြေအနေမှာ Polynomial Regression ကိုစမ်းကြည့်နိုင်ပါတယ်။
+Date နှင့် Price နှင့် ဆက်စပ်မှုကို ထပ်မံကြည့်ပါ။ ၎င်း scatterplot သည် လျှင်မြန်သော လိုင်းဖြင့် လေ့လာသင့်သည်ဟု သင်ထင်ပါသလား? စျေးနှုန်းတွေ အပြောင်းအလဲများ မဖြစ်နိုင်ပါသလား? ဒီကိစ္စတွင် polymer regression ကို စမ်းသုံးနိုင်သည်။
 
-✅ Polynomial တွေက variable တစ်ခုသို့မဟုတ်အများကြီးနဲ့ coefficient တွေပါဝင်နိုင်တဲ့ mathematical expression တွေဖြစ်ပါတယ်။
+✅ Polynomials ဆိုသည်မှာ များစွာသော variables နှင့် coefficient များပါဝင်နိုင်သော ဂဏန်းတွက်ချက်မှုဖော်ပြချက်များ ဖြစ်သည်။
 
-Polynomial regression က nonlinear data ကိုပိုမိုတည့်တည့်အောင် curve လိုင်းတစ်ခုဖန်တီးပါတယ်။ ကျွန်တော်တို့အခြေအနေမှာ `DayOfYear` variable ကို input data ထဲမှာ squared အဖြစ်ထည့်သွင်းရင်၊ parabolic curve တစ်ခုနဲ့ data ကို fit လုပ်နိုင်ပြီး၊ curve ရဲ့အနိမ့်ဆုံးအချက်ကိုနှစ်တစ်နှစ်အတွင်းတစ်နေရာမှာရရှိနိုင်ပါမယ်။
+Polynomial regression သည် nonlinear data များကို ပိုမိုသင့်လျော်စွာသိမ်းဆည်းရန် လိမ္မော်လိုင်းမျဉ်း curvature တစ်ခုကို ဖန်တီးပေးသည်။ ကျွန်ုပ်တို့ကိစ္စတွင် `DayOfYear` variable ကို အချက်အလက်ထဲတွင် ထပ်ထည့်ပါက data ကို parabolic curve ဖြင့် သိုလှောင်နိုင်ပြီး၊ တစ်နှစ်အတွင်း အနည်းဆုံးတန်ဖိုးရှိသောနေရာ တစ်ခုရှိမည်ဖြစ်သည်။
 
-Scikit-learn မှာ data processing ရဲ့အဆင့်အမျိုးမျိုးကိုပေါင်းစည်းဖို့အတွက်အသုံးဝင်တဲ့ [pipeline API](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html?highlight=pipeline#sklearn.pipeline.make_pipeline) ပါဝင်ပါတယ်။ **pipeline** က **estimators** တွေရဲ့ chain ဖြစ်ပါတယ်။ ကျွန်တော်တို့အခြေအနေမှာ၊ မော်ဒယ်ကို polynomial features တွေထည့်သွင်းပြီး၊ regression ကို training လုပ်တဲ့ pipeline တစ်ခုဖန်တီးပါမယ်။
+Scikit-learn သည် အချက်အလက်စီမံခန့်ခွဲမှု အဆင့်များကို ပေါင်းစပ်နိုင်သည့် 유용한 [pipeline API](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html?highlight=pipeline#sklearn.pipeline.make_pipeline) ကို ပါရှိသည်။ **pipeline** ဆိုသည်မှာ **estimators** များ လှိုင်းလိုက်မှု ဖြစ်သည်။ ကျွန်ုပ်တို့ကိစ္စတွင် သင်္ချာစနစ်ကို ပထမဆုံး polynomial features ထပ်ထည့်ပြီး၊ ထို့နောက် regression ကို လေ့ကျင့်သွားမည် -
 
 ```python
 from sklearn.preprocessing import PolynomialFeatures
@@ -225,43 +255,43 @@ from sklearn.pipeline import make_pipeline
 pipeline = make_pipeline(PolynomialFeatures(2), LinearRegression())
 
 pipeline.fit(X_train,y_train)
-```  
+```
+  
+`PolynomialFeatures(2)` အသုံးပြုခြင်းသည် input data ထဲမှ ဒုတိယအဆင့် polynomials အားလုံးကို ထည့်သွင်းသည့် အဓိပ္ပာယ်ဖြစ်သည်။ ကျွန်ုပ်တို့ကိစ္စတွင် `DayOfYear`<sup>2</sup> ဖြစ်မည်၊ ဒါပေမဲ့ variable နှစ်ခုအတွက် X နှင့် Y ရှိပါက X<sup>2</sup>, XY, Y<sup>2</sup> ကို ထည့်သွင်းမည်။ အဆင့်မြင့် polynomials များကိုလည်း အသုံးပြုနိုင်သည်။
 
-`PolynomialFeatures(2)` ကိုအသုံးပြုခြင်းက input data ထဲက second-degree polynomials အားလုံးကိုထည့်သွင်းပါမယ်။ ကျွန်တော်တို့အခြေအနေမှာ `DayOfYear`<sup>2</sup> ဖြစ်ပြီး၊ input variable X နဲ့ Y နှစ်ခုရှိရင်၊ X<sup>2</sup>, XY နဲ့ Y<sup>2</sup> ကိုထည့်သွင်းပါမယ်။ ပိုမြင့်တဲ့ degree polynomials တွေကိုအသုံးပြုချင်ရင်လည်းရပါတယ်။
-
-Pipelines တွေကို original `LinearRegression` object နဲ့တူညီတဲ့နည်းလမ်းနဲ့အသုံးပြုနိုင်ပြီး၊ pipeline ကို `fit` လုပ်ပြီး၊ `predict` ကိုအသုံးပြုပြီး prediction results ရနိုင်ပါတယ်။ ဒီမှာ test data နဲ့ approximation curve ကိုပြသထားပါတယ်။
+Pipeline များကို မူရင်း `LinearRegression` အရာဝတ္ထုပုံစံနဲ့ လိုက်ဖက်၍ သုံးနိုင်ပြီး၊ `fit` လုပ်ပြီးနောက် `predict` ကို သုံး၍ ခန့်မှန်းချက်များရယူနိုင်သည်။ စမ်းသပ်ဒေတာ နှင့် ပြီးရော curve ကို ပြသလိုက်ပါသည် -
 
 <img alt="Polynomial regression" src="../../../../translated_images/my/poly-results.ee587348f0f1f60b.webp" width="50%" />
 
-Polynomial Regression ကိုအသုံးပြုပြီး MSE နည်းပြီး determination မြင့်တက်နိုင်ပေမယ့်၊ အတော်လေးမထူးခြားပါဘူး။ အခြား feature တွေကိုလည်းထည့်သွင်းစဉ်းစားဖို့လိုအပ်ပါတယ်။
+Polynomial Regression အသုံးပြုကာ နည်းနည်း သိပ်သာသော MSE နှင့် determination ကိုရရှိနိုင်သော်လည်း အရေးကြီးထိရောက်မှုမရှိပါ။ အခြား features များကိုပါ ထည့်သွင်းစဉ်းစားရန် လိုအပ်သည်။
 
-> ဖရဲသီးစျေးနှုန်းအနိမ့်ဆုံးက Halloween အနီးမှာတွေ့ရတာကိုဘယ်လိုရှင်းပြနိုင်မလဲ?
+> 🎃 နောက်တစ်ချက် - Halloween လယ်ဝန်းတွင် pumpkin စျေးနည်းနေမှုကို တွေ့ရသည်။ သင်ဘာကြောင့်ထင်သလဲ?
 
-🎃 အားလုံးကိုဂုဏ်ပြုပါတယ်၊ pie ဖရဲသီးရဲ့စျေးနှုန်းကိုခန့်မှန်းနိုင်တဲ့မော်ဒယ်တစ်ခုဖန်တီးနိုင်ခဲ့ပါပြီ။ ဖရဲသီးအမျိုးအစားအားလုံးအတွက်တူညီတဲ့နည်းလမ်းကိုအသုံးပြုနိုင်ပေမယ့်၊ အတော်လေးအလုပ်ရှုပ်ပါတယ်။ အခုတော့ဖရဲသီးအမျိုးအစားကိုမော်ဒယ်ထဲမှာထည့်သွင်းစဉ်းစားနည်းကိုလေ့လာကြပါစို့!
+🎃 သင်သည် အပိုင် pumpkin စျေးထုတ်ခန့်မှန်းနိုင်သော မော်ဒယ်တစ်ခု ဖန်တီးပြီးဖြစ်သည်။ Pumpkin အမျိုးအစားအားလုံးအတွက် ထပ်မံလုပ်ဆောင်နိုင်သော်လည်း ၎င်းသည် ဝေဒနာဖြစ်ပါမည်။ ယခု ကိစ္စအား model တွင် pumpkin အမျိုးအစားကို ထည့်သွင်းရန် သင်ယူကြမည်။
 
-## Categorical Features  
+## Categorical Features
 
-အကောင်းဆုံးအခြေအနေမှာ၊ ဖရဲသီးအမျိုးအစားအမျိုးမျိုးအတွက်တူညီတဲ့မော်ဒယ်ကိုအသုံးပြုပြီးစျေးနှုန်းကိုခန့်မှန်းနိုင်ချင်ပါတယ်။ သို့သော် `Variety` column က `Month` ကဲ့သို့ numeric value မပါဝင်ပါဘူး။ ဒီလို column တွေကို **categorical** လို့ခေါ်ပါတယ်။
+Ideal လူမှုပညာတွင်၊ မတူညီသော pumpkin မျိုးစုံအတွက် တူညီသော မော်ဒယ်ဖြင့် စျေးနှုန်း ခန့်မှန်းနိုင်ရမည်။ သို့သော် `Variety` ကော်လံသည် `Month` ကဲ့သို့ တိုက်ရိုက်ဂဏန်းမဟုတ်ပဲ၊ ကွဲလွဲသည့် တန်ဖိုးများပါဝင်သည်။ ထိုကော်လံများကို **categorical** ဟုခေါ်သည်။
 
 [![ML for beginners - Categorical Feature Predictions with Linear Regression](https://img.youtube.com/vi/DYGliioIAE0/0.jpg)](https://youtu.be/DYGliioIAE0 "ML for beginners - Categorical Feature Predictions with Linear Regression")
 
-> 🎥 အထက်ကပုံကိုနှိပ်ပြီး categorical features အသုံးပြုနည်းအကျဉ်းချုပ်ဗီဒီယိုကိုကြည့်ပါ။
+> 🎥 အထက်ပါ ပုံကို နှိပ်၍ categorical feature များ အသုံးပြုခြင်း၏ ဗီဒီယိုအနှစ်ချုပ်ကို ကြည့်ရှုပါ။
 
-ဒီမှာ variety အပေါ်မူတည်ပြီးပျမ်းမျှစျေးနှုန်းကိုမြင်နိုင်ပါတယ်။
+Variety အလိုက် ပျမ်းမျှစျေးနှုန်းသည် အောက်ပါအတိုင်း ဖြစ်သည် -
 
 <img alt="Average price by variety" src="../../../../translated_images/my/price-by-variety.744a2f9925d9bcb4.webp" width="50%" />
 
-Variety ကိုစဉ်းစားဖို့အတွက်၊ variety ကို numeric form သို့မဟုတ် **encode** လုပ်ဖို့လိုအပ်ပါတယ်။ encode လုပ်နည်းအမျိုးမျိုးရှိပါတယ်-
+Variety ကို တွက်ချက်ရန်၊ ပထမဆုံး ဂဏန်းပုံစံသို့ ပြောင်းလဲသို့မဟုတ် **encode** ရပါမည်။ ၎င်းကို ပြုလုပ်နိုင်သည့် နည်းလမ်းများ အချို့မှာ -
 
-* **Numeric encoding** က variety အမျိုးအစားတွေကို table တစ်ခုထဲမှာတည်ဆောက်ပြီး၊ variety နာမည်ကို table ထဲက index နဲ့အစားထိုးပါမယ်။ ဒါဟာ linear regression အတွက်အကောင်းဆုံးနည်းလမ်းမဟုတ်ပါဘူး၊ အကြောင်းက linear regression က index ရဲ့ actual numeric value ကိုယူပြီး၊ coefficient တစ်ခုနဲ့မြှောက်ပြီးရလဒ်ထဲထည့်သွင်းပါတယ်။ ကျွန်တော်တို့အခြေအနေမှာ index နံပါတ်နဲ့စျေးနှုန်းကြားက relationship က non-linear ဖြစ်ပါတယ်၊ indices တွေကိုအတိအကျစီစဉ်ထားတယ်ဆိုရင်တောင်ပါ။
-* **One-hot encoding** က `Variety` column ကို variety တစ်ခုစီအတွက် column ၄ ခုနဲ့အစားထိုးပါမယ်။ တစ်ခုချင်းစီ column မှာ၊ row တစ်ခုဟာအတိအကျ variety တစ်ခုဖြစ်ရင် `1` ပါမယ်၊ မဟုတ်ရင် `0` ပါမယ်။ ဒါက linear regression မှာ variety တစ်ခုချင်းစီအတွက် coefficient ၄ ခုပါဝင်ပြီး၊ အဲဒီ variety အတွက် "starting price" (သို့မဟုတ် "additional price") ကိုတာဝန်ယူပါမယ်။
+* ရိုးရှင်းသော **numeric encoding** သည် မတူညီသော variety များ စာရင်းဆွဲ၍ အဲ့သည့် စာရင်းအတွင်း အညွှန်းတစ်ခုဖြင့် variety အမည်ကို တပ်ဆင်သည်။ ဤနည်းပညာသည် linear regression အတွက် အကောင်းဆုံး မဟုတ်ပါ၊ တကယ်လျှင် linear regression သည် အညွှန်း၏ တန်ဖိုးကို သုံးပြီး coefficient တစ်ခုထပ်ဖွဲ့သည်။ ကျွန်ုပ်တို့ကိစ္စတွင် အညွှန်းနံပါတ်နှင့် စျေးနှုန်း ဆက်စပ်မှုသည် nonlinear ဖြစ်ပြီး၊ အညွှန်းများ စနစ်တကျ အစီအစဉ်လိုက်ဖြစ်စေသော်လည်း ဖြစ်သည်။
+* **One-hot encoding** သည် `Variety` ကော်လံကို မျိုးစုံ ၄ ကော်လံသို့ အစားထိုးပြီး၊ မျိုးစုံတစ်ခုစီအတွက် ကော်လံတစ်ခုစီ ထားသည်။ ဝေငှားစုရင်းတစ်ကြောင်းသည် ထိုမျိုးစုံဖြစ်လျှင် `1` ဖြစ်မည်၊ မဟုတ်လျှင် `0` ဖြစ်မည်။ ၎င်းဖြင့် linear regression တွင် ကိုယ်စားလှယ် ၄ ယောက်ရှိမည်ဖြစ်ပြီး၊ pumpkin မျိုးစုံ တစ်ခုချင်းစီအတွက် စျေးအစ၊ ဒါမှမဟုတ် "အပေါင်းစုပေးငွေ" အတွက် တစ်ခုစီကို တာဝန်ယူမည်။
 
-Variety ကို one-hot encode လုပ်နည်းကိုအောက်မှာပြထားပါတယ်-
+အောက်ပါ ကုဒ်သည် variety ကို one-hot encode ပြုလုပ်ပုံကို ပြသည် -
 
 ```python
 pd.get_dummies(new_pumpkins['Variety'])
-```  
-
+```
+  
  ID | FAIRYTALE | MINIATURE | MIXED HEIRLOOM VARIETIES | PIE TYPE  
 ----|-----------|-----------|--------------------------|----------  
 70 | 0 | 0 | 0 | 1  
@@ -273,14 +303,14 @@ pd.get_dummies(new_pumpkins['Variety'])
 1741 | 0 | 1 | 0 | 0  
 1742 | 0 | 1 | 0 | 0  
 
-One-hot encoded variety ကို input အဖြစ်အသုံးပြုပြီး linear regression ကို training လုပ်ဖို့အတွက်၊ `X` နဲ့ `y` data ကိုမှန်ကန်စွာ initialize လုပ်ဖို့လိုအပ်ပါတယ်-
+one-hot encode တဲ့ variety ကို input အဖြစ်သုံး၍ linear regression လေ့ကျင့်ရန်၊ `X` နှင့် `y` အချက်အလက်များကို မှန်ကန်စွာ စတင်ရပါမည်။
 
 ```python
 X = pd.get_dummies(new_pumpkins['Variety'])
 y = new_pumpkins['Price']
-```  
-
-အပေါ်မှာ Linear Regression ကို training လုပ်ဖို့အသုံးပြုတဲ့ code နဲ့အတူတူပါပဲ။ စမ်းကြည့်ရင်၊ mean squared error ကအတော်လေးတူတူပါပေမယ့်၊ coefficient of determination (~77%) ကပိုမြင့်တက်ပါတယ်။ ပိုမိုတိကျတဲ့ခန့်မှန်းချက်ရဖို့အတွက်၊ categorical features တွေ၊ နဲ့ numeric features တွေဖြစ်တဲ့ `Month` သို့မဟုတ် `DayOfYear` ကိုထည့်သွင်းစဉ်းစားနိုင်ပါတယ်။ feature တွေကိုတစ်စုတစ်စည်းအဖြစ်ရဖို့ `join` ကိုအသုံးပြုနိုင်ပါတယ်-
+```
+  
+အကြောင်းအရာများသည် အပေါ်က Linear Regression ခေတ်မီပုံစံနှင့် ထပ်တူတူဖြစ်သည်။ စမ်းကြည့်လျှင် mean squared error မျှ ၎င်းနှင့်အတူတူ နီးပါး ဖြစ်ပြီး coefficient of determination ပြင်းထန်စွာ မြင့်သည် ( ~77%) ဟု တွေ့ရမည်။ ပိုမိုတိကျသော ခန့်မှန်းချက်များရရန် categorical features အပြင် numeric features များ (ဥပမာ `Month`၊ `DayOfYear`) ကိုပါ ထည့်သွင်းနိုင်ပြီး၊ feature များ စုစည်းရန် `join` ကို အသုံးပြုနိုင်သည် -
 
 ```python
 X = pd.get_dummies(new_pumpkins['Variety']) \
@@ -288,41 +318,41 @@ X = pd.get_dummies(new_pumpkins['Variety']) \
         .join(pd.get_dummies(new_pumpkins['City'])) \
         .join(pd.get_dummies(new_pumpkins['Package']))
 y = new_pumpkins['Price']
-```  
+```
+  
+ဒီမှာ `City` နှင့် `Package` အမျိုးအစားများကိုပါ ထည့်သွင်းပြီး၊ မည်သည့် MSE 2.84 (10%) နှင့် determination 0.94 ရရှိသည်။
 
-ဒီမှာ `City` နဲ့ `Package` type ကိုလည်းထည့်သွင်းထားပြီး၊ MSE 2.84 (10%) နဲ့ determination 0.94 ရရှိပါတယ်!
+## အားလုံးကို ပေါင်းစပ်ခြင်း
 
-## Putting it all together  
-
-အကောင်းဆုံးမော်ဒယ်ကိုဖန်တီးဖို့အတွက်၊ အပေါ်ကဥပမာထဲက combined (one-hot encoded categorical + numeric) data ကို Polynomial Regression နဲ့အတူအသုံးပြုနိုင်ပါတယ်။ အောက်မှာအပြည့်အစုံ code ကိုပြထားပါတယ်-
+အကောင်းဆုံး မော်ဒယ်ကို မိတ်ဆက်ရန်၊ အပေါ်ပါ ဥပမာ၏ combined (one-hot encoded categorical + numeric) data ကို Polynomial Regression နှင့် တွဲသုံးရပါမည်။ ကျွန်ုပ်တို့၏ တူညီမှုအတွက် အပြည့်အစုံကုဒ် -
 
 ```python
-# set up training data
+# သင်ကြားရေးဒေတာကို စီစဉ်ပါ
 X = pd.get_dummies(new_pumpkins['Variety']) \
         .join(new_pumpkins['Month']) \
         .join(pd.get_dummies(new_pumpkins['City'])) \
         .join(pd.get_dummies(new_pumpkins['Package']))
 y = new_pumpkins['Price']
 
-# make train-test split
+# သင်ကြားမှုနှင့် စမ်းသပ်မှု ခွဲခြားပါ
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 
-# setup and train the pipeline
+# ပိုင်လိုင်းအား စီစဉ်ပြီး သင်ကြားပါ
 pipeline = make_pipeline(PolynomialFeatures(2), LinearRegression())
 pipeline.fit(X_train,y_train)
 
-# predict results for test data
+# စမ်းသပ်ဒေတာအတွက် ခန့်မှန်းရလဒ်များ ထုတ်ပါ
 pred = pipeline.predict(X_test)
 
-# calculate MSE and determination
+# MSE နှင့် ဆုံးဖြတ်ချက်ကို တွက်ချက်ပါ
 mse = np.sqrt(mean_squared_error(y_test,pred))
 print(f'Mean error: {mse:3.3} ({mse/np.mean(pred)*100:3.3}%)')
 
 score = pipeline.score(X_train,y_train)
 print('Model determination: ', score)
-```  
-
-ဒီနည်းလမ်းက determination coefficient 97% နီးပါးနဲ့ MSE=2.23 (~8% prediction error) ရရှိစေပါမယ်။
+```
+  
+ဤသည်မှာ determination coefficient အများဆုံး ၉၇% နီးပါး၊ MSE=2.23 (ခန့်မှန်းချက်အမှား ၈% လောက်) ပေးမည်။
 
 | Model | MSE | Determination |  
 |-------|-----|---------------|  
@@ -330,27 +360,28 @@ print('Model determination: ', score)
 | `DayOfYear` Polynomial | 2.73 (17.0%) | 0.08 |  
 | `Variety` Linear | 5.24 (19.7%) | 0.77 |  
 | All features Linear | 2.84 (10.5%) | 0.94 |  
-| All features Polynomial | 2.23 (8.25%) | 0.97 |  
+| All features Polynomial | 2.23 (8.25%) | 0.97 |
 
-🏆 အားလုံးကိုဂုဏ်ပြုပါတယ်! Regression models ၄ ခုကိုတစ်ခန်းတည်းမှာဖန်တီးပြီး၊ မော်ဒယ်ရဲ့အရည်အသွေးကို 97% အထိတိုးတက်စေခဲ့ပါတယ်။ Regression ရဲ့နောက်ဆုံးအပိုင်းမှာ၊ category တွေကိုသတ်မှတ်ဖို့ Logistic Regression ကိုလေ့လာပါမယ်။
+🏆 ကောင်းမွန်ပါတယ်! သင်သည် Regression မော်ဒယ် ၄ ခုကို သင်ခန်းစာတစ်ခုတွင်တည်း ဖန်တီးပြီး မော်ဒယ်အရည်အသွေးကို ၉၇% ထိ မြှင့်တင်ခဲ့ပါသည်။ Regression နောက်ဆုံးအပိုင်းတွင် မည်သည့် category များဖြစ်သည်ကို သတ်မှတ်ပေးသည့် Logistic Regression ကို သင်ကြားမည် ဖြစ်သည်။
+
+---  
+## 🚀 စိန်ခေါ်မှု
+
+ဒီ notebook တွင် မတူညီသော variables များကို စမ်းသပ်ပါ။ Correlation နှင့် model တိကျမှု ယှဉ်တွဲမှုကို ကြည့်ရှုပါ။
+
+## [Post-lecture quiz](https://ff-quizzes.netlify.app/en/ml/)
+
+## ပြန်လည်သုံးသပ်ခြင်းနှင့် ကိုယ်တိုင်လေ့လာမှု
+
+ဒီသင်ခန်းစာတွင် Linear Regression အကြောင်း သင်ယူခဲ့ပါသည်။ ထိုသို့ အရေးကြီးသော Regression အမျိုးအစားအခြားများလည်း ရှိပါသည်။ Stepwise, Ridge, Lasso နှင့် Elasticnet နည်းစနစ်များကိုလေ့လာပါ။ ပိုမိုလေ့လာရန် Stanford Statistical Learning သင်တန်းရုပ်သံသည် အကောင်းဆုံးဖြစ်သည်။ [Stanford Statistical Learning course](https://online.stanford.edu/courses/sohs-ystatslearning-statistical-learning)
+
+## တာဝန်လက်ခံခြင်း
+
+[Build a Model](assignment.md)
 
 ---
 
-## 🚀Challenge  
-
-ဒီ notebook ထဲမှာ variable အမျိုးမျိုးကိုစမ်းကြည့်ပြီး၊ correlation နဲ့ model accuracy ကြားကဆက်နွယ်မှုကိုကြည့်ပါ။
-
-## [Post-lecture quiz](https://ff-quizzes.netlify.app/en/ml/)  
-
-## Review & Self Study  
-
-ဒီခန်းမှာ Linear Regression ကိုလေ့လာခဲ့ပါတယ်။ Regression ရဲ့အရေးကြီးတဲ့အမျိုးအစားအခြားများလည်းရှိပါတယ်။ Stepwise, Ridge, Lasso နဲ့ Elasticnet techniques တွေကိုဖတ်ရှုပါ။ ပိုမိုလေ့လာချင်ရင် [Stanford Statistical Learning course](https://online.stanford.edu/courses/sohs-ystatslearning-statistical-learning) ကိုလေ့လာပါ။
-
-## Assignment  
-
-[Build a Model](assignment.md)  
-
----
-
-**ဝက်ဘ်ဆိုက်မှတ်ချက်**:  
-ဤစာရွက်စာတမ်းကို AI ဘာသာပြန်ဝန်ဆောင်မှု [Co-op Translator](https://github.com/Azure/co-op-translator) ကို အသုံးပြု၍ ဘာသာပြန်ထားပါသည်။ ကျွန်ုပ်တို့သည် တိကျမှန်ကန်မှုအတွက် ကြိုးစားနေပါသော်လည်း၊ အလိုအလျောက်ဘာသာပြန်ဆိုမှုများတွင် အမှားများ သို့မဟုတ် မတိကျမှုများ ပါဝင်နိုင်သည်ကို ကျေးဇူးပြု၍ သတိပြုပါ။ မူရင်းဘာသာစကားဖြင့် ရေးသားထားသော စာရွက်စာတမ်းကို အာဏာတည်သော ရင်းမြစ်အဖြစ် သတ်မှတ်သင့်ပါသည်။ အရေးကြီးသော အချက်အလက်များအတွက် လူက ဘာသာပြန်ဝန်ဆောင်မှုကို အသုံးပြုရန် အကြံပြုပါသည်။ ဤဘာသာပြန်ကို အသုံးပြုခြင်းမှ ဖြစ်ပေါ်လာသော နားလည်မှုမှားများ သို့မဟုတ် အဓိပ္ပာယ်မှားများအတွက် ကျွန်ုပ်တို့သည် တာဝန်မယူပါ။
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**ချက်ပြောချက်**  
+ဤစာတမ်းကို AI ဘာသာပြန်ဝန်ဆောင်မှု [Co-op Translator](https://github.com/Azure/co-op-translator) များဖြင့် ဘာသာပြန်ထားပါသည်။ တိကျမှန်ကန်မှုအတွက် ကြိုးစားနေသော်လည်း အလိုအလျောက်ဘာသာပြန်မှုများတွင် မှားယွင်းချက်များ သို့မဟုတ် တိကျမှုမရှိနိုင်မှုများ ရှိနိုင်သည်ကို သတိပြုပါရန် မေတ္တာရပ်ခံအပ်ပါသည်။ မူရင်းစာတမ်းကို ၎င်း၏ မူလဘာသာဖြင့်သာ ယုံကြည်စိတ်ချရသော အချက်အလက်အရင်းအမြစ်အဖြစ် ထင်မှတ်သင့်ပါသည်။ အရေးကြီးသောသတင်းအချက်အလက်များအတွက် စစ်မှန်သော လူကြီးမင်းတို့၏ ဘာသာပြန်သူများက ဘာသာပြန်ပေးခြင်းကို အသုံးပြုရန် အကြံပြုပါသည်။ ဤဘာသာပြန်ချက်ကို အသုံးပြုရာမှ ဖြစ်ပေါ်လာနိုင်သည့် ပဋိပက္ခ သို့မဟုတ် အထူးသဖြင့် နားလည်သဘောပေါက်မှု မမှန်ကန်မှုများအတွက် ကျွန်ုပ်တို့တာဝန်မရှိပါ။
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

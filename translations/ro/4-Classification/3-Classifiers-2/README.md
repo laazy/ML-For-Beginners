@@ -1,42 +1,42 @@
-# Clasificatori culinari 2
+# Clasificatoare de bucătării 2
 
-În această a doua lecție despre clasificare, vei explora mai multe modalități de a clasifica date numerice. De asemenea, vei învăța despre implicațiile alegerii unui clasificator în detrimentul altuia.
+În această a doua lecție de clasificare, vei explora mai multe modalități de a clasifica date numerice. De asemenea, vei afla despre consecințele alegerii unui clasificator în defavoarea altuia.
 
-## [Chestionar înainte de lecție](https://ff-quizzes.netlify.app/en/ml/)
+## [Chestionar pre-lectură](https://ff-quizzes.netlify.app/en/ml/)
 
-### Cerințe preliminare
+### Precondiții
 
-Presupunem că ai finalizat lecțiile anterioare și ai un set de date curățat în folderul `data`, numit _cleaned_cuisines.csv_, în rădăcina acestui folder cu 4 lecții.
+Presupunem că ai finalizat lecțiile anterioare și ai un set de date curățat în folderul tău `data` denumit _cleaned_cuisines.csv_ în rădăcina acestui folder cu 4 lecții.
 
 ### Pregătire
 
-Am încărcat fișierul tău _notebook.ipynb_ cu setul de date curățat și l-am împărțit în cadre de date X și y, pregătite pentru procesul de construire a modelului.
+Am încărcat fișierul tău _notebook.ipynb_ cu setul de date curățat și l-am împărțit în dataframuri X și y, gata pentru procesul de construire a modelului.
 
 ## O hartă a clasificării
 
-Anterior, ai învățat despre diversele opțiuni pe care le ai atunci când clasifici date folosind fișa de ajutor de la Microsoft. Scikit-learn oferă o fișă similară, dar mai detaliată, care te poate ajuta să restrângi și mai mult alegerea estimatoarelor (un alt termen pentru clasificatori):
+Anterior, ai învățat despre opțiunile pe care le ai atunci când clasifici date folosind foaia de trucuri Microsoft. Scikit-learn oferă o foaie de trucuri similară, dar mai granulară, care te poate ajuta să restrângi mai mult estimatorii tăi (un alt termen pentru clasificatori):
 
-![Harta ML de la Scikit-learn](../../../../4-Classification/3-Classifiers-2/images/map.png)
-> Sfat: [vizitează această hartă online](https://scikit-learn.org/stable/tutorial/machine_learning_map/) și explorează căile pentru a citi documentația.
+![ML Map from Scikit-learn](../../../../translated_images/ro/map.e963a6a51349425a.webp)
+> Sfat: [vizitează această hartă online](https://scikit-learn.org/stable/tutorial/machine_learning_map/) și fă clic de-a lungul traseului pentru a citi documentația.
 
 ### Planul
 
-Această hartă este foarte utilă odată ce ai o înțelegere clară a datelor tale, deoarece poți „parcurge” căile pentru a lua o decizie:
+Această hartă este foarte utilă odată ce ai o înțelegere clară a datelor tale, deoarece poți „parcurge” traseele sale către o decizie:
 
-- Avem >50 de mostre
+- Avem >50 de eșantioane
 - Vrem să prezicem o categorie
 - Avem date etichetate
-- Avem mai puțin de 100K mostre
+- Avem mai puțin de 100.000 de eșantioane
 - ✨ Putem alege un Linear SVC
-- Dacă acest lucru nu funcționează, deoarece avem date numerice
-    - Putem încerca un ✨ KNeighbors Classifier 
-      - Dacă nici acesta nu funcționează, încercăm ✨ SVC și ✨ Ensemble Classifiers
+- Dacă nu funcționează, deoarece avem date numerice
+    - Putem încerca un ✨ KNeighbors Classifier
+      - Dacă nu funcționează, încearcă ✨ SVC și ✨ Ensemble Classifiers
 
-Aceasta este o cale foarte utilă de urmat.
+Acesta este un traseu foarte util de urmat.
 
 ## Exercițiu - împarte datele
 
-Urmând această cale, ar trebui să începem prin a importa câteva biblioteci necesare.
+Urmând acest traseu, ar trebui să începem prin a importa câteva biblioteci pe care să le folosim.
 
 1. Importă bibliotecile necesare:
 
@@ -50,15 +50,15 @@ Urmând această cale, ar trebui să începem prin a importa câteva biblioteci 
     import numpy as np
     ```
 
-1. Împarte datele de antrenament și test:
+1. Împarte-ți datele de antrenament și testare:
 
     ```python
-    X_train, X_test, y_train, y_test = train_test_split(cuisines_feature_df, cuisines_label_df, test_size=0.3)
+    X_train, X_test, y_train, y_test = train_test_split(cuisines_features_df, cuisines_label_df, test_size=0.3)
     ```
 
 ## Clasificator Linear SVC
 
-Support-Vector Clustering (SVC) face parte din familia tehnicilor ML Support-Vector Machines (află mai multe despre acestea mai jos). În această metodă, poți alege un „kernel” pentru a decide cum să grupezi etichetele. Parametrul 'C' se referă la 'regularizare', care reglează influența parametrilor. Kernel-ul poate fi unul dintre [mai multe](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC); aici îl setăm la 'linear' pentru a ne asigura că folosim Linear SVC. Probabilitatea este implicit 'false'; aici o setăm la 'true' pentru a obține estimări de probabilitate. Setăm starea aleatorie la '0' pentru a amesteca datele și a obține probabilități.
+Support-Vector clustering (SVC) este parte din familia de metode ML Support-Vector machines (afișează mai multe detalii în continuare). În această metodă, poți alege un „kernel” pentru a decide cum să grupezi etichetele. Parametrul „C” se referă la „regularizare” care reglează influența parametrilor. Kernel-ul poate fi unul din [mai multe](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC); aici îl setăm pe 'linear' pentru a asigura folosirea Linear SVC. Probabilitatea este implicit 'false'; aici o setăm pe 'true' pentru a obține estimări ale probabilității. Setăm random state la '0' pentru a amesteca datele și a obține probabilități.
 
 ### Exercițiu - aplică un Linear SVC
 
@@ -68,13 +68,13 @@ Support-Vector Clustering (SVC) face parte din familia tehnicilor ML Support-Vec
 
     ```python
     C = 10
-    # Create different classifiers.
+    # Creează clasificatoare diferite.
     classifiers = {
         'Linear SVC': SVC(kernel='linear', C=C, probability=True,random_state=0)
     }
     ```
 
-2. Antrenează modelul folosind Linear SVC și afișează un raport:
+2. Antrenează-ți modelul folosind Linear SVC și afișează un raport:
 
     ```python
     n_classifiers = len(classifiers)
@@ -107,13 +107,13 @@ Support-Vector Clustering (SVC) face parte din familia tehnicilor ML Support-Vec
 
 ## Clasificator K-Neighbors
 
-K-Neighbors face parte din familia „neighbors” a metodelor ML, care pot fi utilizate atât pentru învățare supravegheată, cât și nesupravegheată. În această metodă, se creează un număr predefinit de puncte, iar datele sunt grupate în jurul acestor puncte astfel încât să se poată prezice etichete generalizate pentru date.
+K-Neighbors face parte din familia metodelor ML „vecini”, care pot fi folosite atât pentru învățare supervizată cât și nesupervizată. În această metodă se creează un număr predefinit de puncte și datele sunt adunate în jurul acestor puncte astfel încât se pot prezice etichete generalizate pentru date.
 
 ### Exercițiu - aplică clasificatorul K-Neighbors
 
 Clasificatorul anterior a fost bun și a funcționat bine cu datele, dar poate putem obține o acuratețe mai bună. Încearcă un clasificator K-Neighbors.
 
-1. Adaugă o linie în array-ul de clasificatori (adaugă o virgulă după elementul Linear SVC):
+1. Adaugă o linie în array-ul tău de clasificatori (adaugă o virgulă după elementul Linear SVC):
 
     ```python
     'KNN classifier': KNeighborsClassifier(C),
@@ -136,17 +136,17 @@ Clasificatorul anterior a fost bun și a funcționat bine cu datele, dar poate p
     weighted avg       0.76      0.74      0.74      1199
     ```
 
-    ✅ Află mai multe despre [K-Neighbors](https://scikit-learn.org/stable/modules/neighbors.html#neighbors)
+    ✅ Află despre [K-Neighbors](https://scikit-learn.org/stable/modules/neighbors.html#neighbors)
 
 ## Clasificator Support Vector
 
-Clasificatorii Support-Vector fac parte din familia [Support-Vector Machine](https://wikipedia.org/wiki/Support-vector_machine) a metodelor ML utilizate pentru sarcini de clasificare și regresie. SVM-urile „mapează exemplele de antrenament în puncte din spațiu” pentru a maximiza distanța dintre două categorii. Datele ulterioare sunt mapate în acest spațiu astfel încât categoria lor să poată fi prezisă.
+Clasificatoarele Support-Vector fac parte din familia de metode ML [Support-Vector Machine](https://wikipedia.org/wiki/Support-vector_machine) folosită pentru sarcini de clasificare și regresie. SVM-urile „mapază exemplele de antrenament către puncte în spațiu” pentru a maximiza distanța între două categorii. Datele ulterioare sunt mapate în acest spațiu pentru a prezice categoria lor.
 
 ### Exercițiu - aplică un Support Vector Classifier
 
-Să încercăm să obținem o acuratețe puțin mai bună cu un Support Vector Classifier.
+Să încercăm o acuratețe puțin mai bună cu un Support Vector Classifier.
 
-1. Adaugă o virgulă după elementul K-Neighbors, apoi adaugă această linie:
+1. Adaugă o virgulă după itemul K-Neighbors, apoi adaugă această linie:
 
     ```python
     'SVC': SVC(),
@@ -169,18 +169,18 @@ Să încercăm să obținem o acuratețe puțin mai bună cu un Support Vector C
     weighted avg       0.84      0.83      0.83      1199
     ```
 
-    ✅ Află mai multe despre [Support-Vectors](https://scikit-learn.org/stable/modules/svm.html#svm)
+    ✅ Află despre [Support-Vectors](https://scikit-learn.org/stable/modules/svm.html#svm)
 
-## Clasificatori Ensemble
+## Clasificatoare Ensemble
 
-Să urmăm calea până la capăt, chiar dacă testul anterior a fost destul de bun. Să încercăm câțiva 'Clasificatori Ensemble', în special Random Forest și AdaBoost:
+Să urmăm traseul până la capăt, chiar dacă testul anterior a fost destul de bun. Să încercăm niște 'Classificatoare Ensemble', în mod specific Random Forest și AdaBoost:
 
 ```python
   'RFST': RandomForestClassifier(n_estimators=100),
   'ADA': AdaBoostClassifier(n_estimators=100)
 ```
 
-Rezultatul este foarte bun, mai ales pentru Random Forest:
+Rezultatul este foarte bun, în special pentru Random Forest:
 
 ```output
 Accuracy (train) for RFST: 84.5% 
@@ -210,31 +210,33 @@ Accuracy (train) for ADA: 72.4%
 weighted avg       0.73      0.72      0.72      1199
 ```
 
-✅ Află mai multe despre [Clasificatori Ensemble](https://scikit-learn.org/stable/modules/ensemble.html)
+✅ Află despre [Clasificatoare Ensemble](https://scikit-learn.org/stable/modules/ensemble.html)
 
-Această metodă de învățare automată „combină predicțiile mai multor estimatori de bază” pentru a îmbunătăți calitatea modelului. În exemplul nostru, am folosit Random Trees și AdaBoost. 
+Această metodă de Învățare Automată „combină predicțiile mai multor estimatori de bază” pentru a îmbunătăți calitatea modelului. În exemplul nostru, am folosit Random Trees și AdaBoost.
 
-- [Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#forest), o metodă de mediere, construiește o „pădure” de „arbori de decizie” infuzați cu aleatoriu pentru a evita supraînvățarea. Parametrul n_estimators este setat la numărul de arbori.
+- [Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#forest), o metodă de mediere, construiește o „pădure” de „arbori de decizie” infuzați cu aleatorietate pentru a evita suprapotrivirea. Parametrul n_estimators este setat la numărul de arbori.
 
-- [AdaBoost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) ajustează un clasificator pe un set de date și apoi ajustează copii ale acelui clasificator pe același set de date. Se concentrează pe greutățile elementelor clasificate incorect și ajustează potrivirea pentru următorul clasificator pentru a corecta.
+- [AdaBoost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) potrivește un clasificator pe un set de date și apoi potrivește copii ale acelui clasificator pe același set de date. Se concentrează pe greutățile elementelor clasificate incorect și ajustează potrivirea pentru următorul clasificator, pentru a corecta.
 
 ---
 
 ## 🚀Provocare
 
-Fiecare dintre aceste tehnici are un număr mare de parametri pe care îi poți ajusta. Cercetează parametrii impliciți ai fiecărei metode și gândește-te ce ar însemna ajustarea acestor parametri pentru calitatea modelului.
+Fiecare dintre aceste tehnici are un număr mare de parametri pe care îi poți modifica. Cercetează parametrii lor impliciți și gândește-te ce ar însemna să modifici acești parametri pentru calitatea modelului.
 
-## [Chestionar după lecție](https://ff-quizzes.netlify.app/en/ml/)
+## [Chestionar post-lectură](https://ff-quizzes.netlify.app/en/ml/)
 
-## Recapitulare și studiu individual
+## Recapitulare & Studiu individual
 
-Există mulți termeni tehnici în aceste lecții, așa că ia-ți un moment pentru a revizui [această listă](https://docs.microsoft.com/dotnet/machine-learning/resources/glossary?WT.mc_id=academic-77952-leestott) de terminologie utilă!
+Există mult jargon în aceste lecții, așa că ia-ți un minut să revizuiești [această listă](https://docs.microsoft.com/dotnet/machine-learning/resources/glossary?WT.mc_id=academic-77952-leestott) de terminologie utilă!
 
-## Temă 
+## Temă
 
-[Joacă-te cu parametrii](assignment.md)
+[Jocul cu parametrii](assignment.md)
 
 ---
 
-**Declinare de responsabilitate**:  
-Acest document a fost tradus folosind serviciul de traducere AI [Co-op Translator](https://github.com/Azure/co-op-translator). Deși ne străduim să asigurăm acuratețea, vă rugăm să fiți conștienți că traducerile automate pot conține erori sau inexactități. Documentul original în limba sa maternă ar trebui considerat sursa autoritară. Pentru informații critice, se recomandă traducerea profesională realizată de un specialist uman. Nu ne asumăm responsabilitatea pentru eventualele neînțelegeri sau interpretări greșite care pot apărea din utilizarea acestei traduceri.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Declinare de responsabilitate**:
+Acest document a fost tradus folosind serviciul de traducere automată AI [Co-op Translator](https://github.com/Azure/co-op-translator). Deși ne străduim pentru acuratețe, vă rugăm să țineți cont că traducerile automate pot conține erori sau inexactități. Documentul original în limba sa nativă trebuie considerat sursa autorizată. Pentru informații critice, se recomandă traducerea profesională realizată de un traducător uman. Nu ne asumăm responsabilitatea pentru eventuale neînțelegeri sau interpretări eronate rezultate din utilizarea acestei traduceri.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->
