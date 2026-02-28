@@ -1,44 +1,44 @@
-# 美食分類器 2
+# Cuisine classifiers 2
 
-在這第二部分的分類課程中，你將探索更多分類數據的方法。同時，你也會了解選擇不同分類器所帶來的影響。
+在第二課分類課程中，你將探索更多分類數值資料的方法。你也會了解選擇不同分類器的影響。
 
-## [課前測驗](https://ff-quizzes.netlify.app/en/ml/)
+## [課前小測驗](https://ff-quizzes.netlify.app/en/ml/)
 
-### 前置條件
+### 先備知識
 
-我們假設你已完成之前的課程，並在這個四課程文件夾的根目錄中的 `data` 資料夾內擁有一個名為 _cleaned_cuisines.csv_ 的清理過的數據集。
+我們假設你已完成先前課程並已在此 4 課資料夾根目錄的 `data` 資料夾中，準備好一份名為 _cleaned_cuisines.csv_ 的清理後資料集。
 
 ### 準備工作
 
-我們已經將清理過的數據集載入到你的 _notebook.ipynb_ 文件中，並將其分割為 X 和 y 數據框，準備進行模型構建。
+我們已在你的 _notebook.ipynb_ 檔案中載入清理後的資料集，並將其分割成 X 和 y 的資料框，準備進行模型建立流程。
 
 ## 分類地圖
 
-之前，你已經學習了使用 Microsoft 的速查表來分類數據的各種選項。Scikit-learn 提供了一個類似但更細緻的速查表，可以進一步幫助你縮小選擇範圍（分類器的另一個術語是估算器）：
+之前，你已透過 Microsoft 的流程圖學習如何分類資料。Scikit-learn 提供了一個類似但更加細緻的流程圖，能協助你縮小估計器（另一種稱呼為分類器）的選擇範圍：
 
-![Scikit-learn 的機器學習地圖](../../../../4-Classification/3-Classifiers-2/images/map.png)
-> 提示：[在線訪問此地圖](https://scikit-learn.org/stable/tutorial/machine_learning_map/)並點擊路徑以閱讀相關文檔。
+![ML Map from Scikit-learn](../../../../translated_images/zh-HK/map.e963a6a51349425a.webp)
+> 提示: [線上造訪此地圖](https://scikit-learn.org/stable/tutorial/machine_learning_map/) 並沿路徑點擊以閱讀文件。
 
-### 計劃
+### 計畫
 
-一旦你對數據有了清晰的理解，這張地圖非常有幫助，因為你可以沿著它的路徑進行決策：
+當你清楚掌握資料時，這張地圖非常有用，你可以沿著路徑“走”到決定點：
 
-- 我們有超過 50 個樣本
-- 我們希望預測一個類別
-- 我們有標籤數據
-- 我們的樣本少於 100K
+- 我們有超過 50 筆樣本
+- 我們想要預測一個類別
+- 我們有標記資料
+- 樣本數少於 10 萬筆
 - ✨ 我們可以選擇 Linear SVC
-- 如果這不起作用，因為我們有數值數據
-    - 我們可以嘗試 ✨ KNeighbors Classifier
-      - 如果這不起作用，嘗試 ✨ SVC 和 ✨ Ensemble Classifiers
+- 若不行，因為我們有數值資料
+    - 我們可以嘗試 ✨ KNeighbors 分類器 
+      - 若還不行，再試 ✨ SVC 和 ✨ 集成分類器
 
-這是一條非常有幫助的路徑。
+這是一條非常實用的路徑可循。
 
-## 練習 - 分割數據
+## 練習 - 分割資料
 
-按照這條路徑，我們應該先導入一些需要使用的庫。
+沿著這條路徑，我們應先匯入一些庫。
 
-1. 導入所需的庫：
+1. 匯入所需的庫：
 
     ```python
     from sklearn.neighbors import KNeighborsClassifier
@@ -50,31 +50,31 @@
     import numpy as np
     ```
 
-1. 分割你的訓練和測試數據：
+1. 分割你的訓練與測試資料：
 
     ```python
-    X_train, X_test, y_train, y_test = train_test_split(cuisines_feature_df, cuisines_label_df, test_size=0.3)
+    X_train, X_test, y_train, y_test = train_test_split(cuisines_features_df, cuisines_label_df, test_size=0.3)
     ```
 
 ## 線性 SVC 分類器
 
-支持向量聚類（SVC）是支持向量機家族中的一員（以下可以了解更多）。在這種方法中，你可以選擇一個「核函數」來決定如何聚類標籤。「C」參數指的是「正則化」，它調節參數的影響。核函數可以是[多種選項](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC)之一；在這裡，我們將其設置為「線性」，以確保我們使用線性 SVC。概率默認為「false」；在這裡，我們將其設置為「true」以獲取概率估算。我們將隨機狀態設置為「0」，以打亂數據以獲取概率。
+支持向量聚類 (SVC) 是支持向量機家族的子集（下方可查看更多關於 SVM 介紹）。此方法中，您可選擇「核函數」決定標籤如何聚類。「C」參數指的是「正則化」，用來調節參數的影響力。核函數可從多種選擇中設定（詳見[多種核函數](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC)）；這裡我們設為 'linear' 確保使用線性 SVC。機率預設為 'false'，這裡設為 'true' 以獲得機率估計。random_state 設為 '0' 用來打亂資料以取得機率。
 
-### 練習 - 應用線性 SVC
+### 練習 - 使用線性 SVC
 
-首先創建一個分類器的陣列。隨著測試的進行，你將逐步添加到這個陣列中。
+首先建立一個分類器陣列，隨著測試會逐漸加入分類器。
 
-1. 從線性 SVC 開始：
+1. 先從 Linear SVC 開始：
 
     ```python
     C = 10
-    # Create different classifiers.
+    # 建立不同的分類器。
     classifiers = {
         'Linear SVC': SVC(kernel='linear', C=C, probability=True,random_state=0)
     }
     ```
 
-2. 使用線性 SVC 訓練你的模型並打印報告：
+2. 使用 Linear SVC 訓練模型，並輸出報告：
 
     ```python
     n_classifiers = len(classifiers)
@@ -107,19 +107,19 @@
 
 ## K-Neighbors 分類器
 
-K-Neighbors 是「鄰居」家族的機器學習方法的一部分，可以用於監督學習和非監督學習。在這種方法中，預定義了一些點，並在這些點周圍收集數據，以便可以為數據預測通用標籤。
+K-Neighbors 屬於「鄰居」系列的機器學習方法，可用於監督式與非監督式學習。此方法會建立預定數量的點，再根據這些點聚集資料，從而對資料做出一般化標籤預測。
 
-### 練習 - 應用 K-Neighbors 分類器
+### 練習 - 套用 K-Neighbors 分類器
 
-之前的分類器表現良好，並且與數據配合得很好，但也許我們可以獲得更好的準確性。嘗試使用 K-Neighbors 分類器。
+前一個分類結果不錯並且與資料相符，但也許還能得到更佳準確度。試試 K-Neighbors 分類器。
 
-1. 在分類器陣列中添加一行（在 Linear SVC 項目後添加逗號）：
+1. 在分類器陣列加入一行（在 Linear SVC 之後加逗號）：
 
     ```python
     'KNN classifier': KNeighborsClassifier(C),
     ```
 
-    結果稍差一些：
+    結果稍微差一點：
 
     ```output
     Accuracy (train) for KNN classifier: 73.8% 
@@ -136,23 +136,23 @@ K-Neighbors 是「鄰居」家族的機器學習方法的一部分，可以用�
     weighted avg       0.76      0.74      0.74      1199
     ```
 
-    ✅ 了解 [K-Neighbors](https://scikit-learn.org/stable/modules/neighbors.html#neighbors)
+    ✅ 了解更多 [K-Neighbors](https://scikit-learn.org/stable/modules/neighbors.html#neighbors)
 
 ## 支持向量分類器
 
-支持向量分類器是[支持向量機](https://wikipedia.org/wiki/Support-vector_machine)家族的一部分，用於分類和回歸任務。SVM 將「訓練樣本映射到空間中的點」，以最大化兩個類別之間的距離。隨後的數據被映射到這個空間中，以便預測它們的類別。
+支持向量分類器屬於[支持向量機](https://wikipedia.org/wiki/Support-vector_machine)家族的機器學習方法，用於分類和回歸任務。SVM 透過「將訓練範例映射到空間點」的方式，最大化兩類別之間的距離。後續資料映射到此空間，以便預測其類別。
 
-### 練習 - 應用支持向量分類器
+### 練習 - 使用支持向量分類器
 
-讓我們嘗試使用支持向量分類器來獲得更好的準確性。
+讓我們試著用支持向量分類器提升準確度。
 
-1. 在 K-Neighbors 項目後添加逗號，然後添加以下行：
+1. 在 K-Neighbors 項目後加逗號，再加入此行：
 
     ```python
     'SVC': SVC(),
     ```
 
-    結果相當不錯！
+    結果相當好！
 
     ```output
     Accuracy (train) for SVC: 83.2% 
@@ -169,11 +169,11 @@ K-Neighbors 是「鄰居」家族的機器學習方法的一部分，可以用�
     weighted avg       0.84      0.83      0.83      1199
     ```
 
-    ✅ 了解 [支持向量](https://scikit-learn.org/stable/modules/svm.html#svm)
+    ✅ 了解更多 [支持向量](https://scikit-learn.org/stable/modules/svm.html#svm)
 
 ## 集成分類器
 
-即使之前的測試結果相當不錯，我們還是沿著路徑走到最後。讓我們嘗試一些「集成分類器」，特別是隨機森林和 AdaBoost：
+即使前面測試結果相當不錯，讓我們一路沿著路徑嘗試集成分類器，特別是隨機森林和 AdaBoost：
 
 ```python
   'RFST': RandomForestClassifier(n_estimators=100),
@@ -210,31 +210,33 @@ Accuracy (train) for ADA: 72.4%
 weighted avg       0.73      0.72      0.72      1199
 ```
 
-✅ 了解 [集成分類器](https://scikit-learn.org/stable/modules/ensemble.html)
+✅ 了解更多 [集成分類器](https://scikit-learn.org/stable/modules/ensemble.html)
 
-這種機器學習方法「結合了多個基估算器的預測」，以提高模型的質量。在我們的例子中，我們使用了隨機樹和 AdaBoost。
+此機器學習方法「結合多個基礎估計器的預測」，以提升模型品質。範例中，我們使用了隨機森林與 AdaBoost。
 
-- [隨機森林](https://scikit-learn.org/stable/modules/ensemble.html#forest)，一種平均方法，構建了一個隨機性注入的「決策樹森林」，以避免過度擬合。n_estimators 參數設置為樹的數量。
+- [隨機森林](https://scikit-learn.org/stable/modules/ensemble.html#forest) 是一種平均法，建立多棵帶有隨機性的「決策樹」森林以避免過擬合。n_estimators 參數設定樹的數量。
 
-- [AdaBoost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) 將分類器擬合到數據集，然後將該分類器的副本擬合到相同的數據集。它專注於錯誤分類項目的權重，並調整下一個分類器的擬合以進行修正。
+- [AdaBoost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) 會先將分類器擬合到資料集，然後複製該分類器並再次擬合同一資料集。它會關注錯誤分類項的權重，並調整下一個分類器以糾正。
 
 ---
 
 ## 🚀挑戰
 
-每種技術都有大量的參數可以調整。研究每種技術的默認參數，並思考調整這些參數對模型質量的影響。
+這些技術都有大量可調整的參數。請研究它們的預設參數，並思考參數微調會如何影響模型品質。
 
-## [課後測驗](https://ff-quizzes.netlify.app/en/ml/)
+## [課後小測驗](https://ff-quizzes.netlify.app/en/ml/)
 
 ## 回顧與自學
 
-這些課程中有很多術語，因此花點時間回顧[這份列表](https://docs.microsoft.com/dotnet/machine-learning/resources/glossary?WT.mc_id=academic-77952-leestott)中的有用術語！
+這些課程中有許多術語，花點時間複習[這份有用的術語列表](https://docs.microsoft.com/dotnet/machine-learning/resources/glossary?WT.mc_id=academic-77952-leestott)！
 
 ## 作業
 
-[參數調整](assignment.md)
+[參數調整遊戲](assignment.md)
 
 ---
 
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
 **免責聲明**：  
-此文件已使用人工智能翻譯服務 [Co-op Translator](https://github.com/Azure/co-op-translator) 翻譯。我們致力於提供準確的翻譯，但請注意，自動翻譯可能包含錯誤或不準確之處。應以原始語言的文件作為權威來源。對於關鍵資訊，建議尋求專業人工翻譯。我們對因使用此翻譯而引起的任何誤解或錯誤解讀概不負責。
+本文件乃透過人工智能翻譯服務 [Co-op Translator](https://github.com/Azure/co-op-translator) 翻譯而成。雖然我們致力於確保準確性，但請注意，自動翻譯可能包含錯誤或不準確之處。原始文件的母語版本應視為權威來源。對於重要資訊，建議使用專業人工翻譯。我們不對因使用本翻譯而引起的任何誤解或曲解承擔責任。
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->
