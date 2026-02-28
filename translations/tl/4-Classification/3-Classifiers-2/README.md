@@ -1,42 +1,42 @@
-# Mga Classifier ng Lutuin 2
+# Mga classifier ng lutuin 2
 
-Sa ikalawang aralin ng klasipikasyon na ito, mas marami kang matutuklasang paraan upang iklasipika ang numerikong datos. Malalaman mo rin ang mga epekto ng pagpili ng isang classifier kumpara sa iba.
+Sa ikalawang aralin sa klasipikasyon na ito, susuriin mo ang higit pang mga paraan upang iklasipika ang numerikong datos. Malalaman mo rin ang mga epekto ng pagpili ng isang classifier kaysa sa iba.
 
 ## [Pre-lecture quiz](https://ff-quizzes.netlify.app/en/ml/)
 
 ### Paunang Kaalaman
 
-Inaakala namin na natapos mo na ang mga nakaraang aralin at mayroon kang malinis na dataset sa iyong `data` folder na tinatawag na _cleaned_cuisines.csv_ sa root ng folder na ito na may 4 na aralin.
+Ipinagpapalagay namin na nakumpleto mo na ang mga nakaraang aralin at mayroon kang malinis na dataset sa iyong `data` folder na tinatawag na _cleaned_cuisines.csv_ sa root ng 4-lesson folder na ito.
 
 ### Paghahanda
 
-Na-load na namin ang iyong _notebook.ipynb_ file gamit ang malinis na dataset at hinati ito sa X at y dataframes, handa na para sa proseso ng paggawa ng modelo.
+Na-load namin sa iyong _notebook.ipynb_ file ang malinis na dataset at hinati ito sa mga dataframe na X at y, na handa na para sa proseso ng paggawa ng modelo.
 
-## Isang Mapa ng Klasipikasyon
+## Isang mapa ng klasipikasyon
 
-Noong nakaraan, natutunan mo ang iba't ibang opsyon na mayroon ka kapag nagkaklasipika ng datos gamit ang cheat sheet ng Microsoft. Ang Scikit-learn ay nag-aalok ng katulad, ngunit mas detalyadong cheat sheet na makakatulong upang mas mapaliit ang iyong mga pagpipilian sa mga estimator (isa pang termino para sa classifiers):
+Dati, natutunan mo ang iba't ibang mga opsyon na mayroon ka sa pagpapangkat ng data gamit ang cheat sheet ng Microsoft. Nag-aalok ang Scikit-learn ng katulad, ngunit mas detalyadong cheat sheet na makakatulong pang paliitin ang iyong mga estimator (ibang tawag sa mga classifier):
 
-![Mapa ng ML mula sa Scikit-learn](../../../../4-Classification/3-Classifiers-2/images/map.png)
-> Tip: [bisitahin ang mapa online](https://scikit-learn.org/stable/tutorial/machine_learning_map/) at mag-click sa mga landas upang basahin ang dokumentasyon.
+![ML Map from Scikit-learn](../../../../translated_images/tl/map.e963a6a51349425a.webp)
+> Tip: [bisitahin ang mapang ito online](https://scikit-learn.org/stable/tutorial/machine_learning_map/) at i-click ang mga landas upang basahin ang dokumentasyon.
 
-### Ang Plano
+### Ang plano
 
-Ang mapa na ito ay napaka-kapaki-pakinabang kapag malinaw na ang iyong pag-unawa sa datos, dahil maaari kang 'maglakad' sa mga landas nito patungo sa isang desisyon:
+Napakabisa ng mapang ito kapag malinaw na ang iyong pagkakaintindi sa data, dahil maaari kang ‘maglakad’ sa mga landas nito upang makagawa ng desisyon:
 
-- Mayroon tayong >50 na sample
+- Mayroon tayong >50 samples
 - Gusto nating hulaan ang isang kategorya
-- Mayroon tayong labeled na datos
-- Mayroon tayong mas kaunti sa 100K na sample
-- ✨ Maaari tayong pumili ng Linear SVC
-- Kung hindi ito gumana, dahil mayroon tayong numerikong datos
-    - Maaari nating subukan ang ✨ KNeighbors Classifier 
-      - Kung hindi ito gumana, subukan ang ✨ SVC at ✨ Ensemble Classifiers
+- Mayroon tayong tinag na data
+- Mas kaunti tayo sa 100K samples
+- ✨ Pwede tayong pumili ng Linear SVC
+- Kung hindi ito gumana, dahil numeriko ang data natin
+    - Pwede nating subukan ang ✨ KNeighbors Classifier 
+      - Kung hindi pa rin ito gumana, subukan ang ✨ SVC at ✨ Ensemble Classifiers
 
-Napaka-kapaki-pakinabang na landas na sundan.
+Napakagandang landas ito na sundan.
 
-## Ehersisyo - hatiin ang datos
+## Ehersisyo - hatiin ang data
 
-Sundin ang landas na ito, dapat tayong magsimula sa pag-import ng ilang mga library na gagamitin.
+Sa pagsunod sa landas na ito, magsisimula tayong mag-import ng ilang mga library na gagamitin.
 
 1. I-import ang mga kinakailangang library:
 
@@ -53,28 +53,28 @@ Sundin ang landas na ito, dapat tayong magsimula sa pag-import ng ilang mga libr
 1. Hatiin ang iyong training at test data:
 
     ```python
-    X_train, X_test, y_train, y_test = train_test_split(cuisines_feature_df, cuisines_label_df, test_size=0.3)
+    X_train, X_test, y_train, y_test = train_test_split(cuisines_features_df, cuisines_label_df, test_size=0.3)
     ```
 
 ## Linear SVC classifier
 
-Ang Support-Vector clustering (SVC) ay bahagi ng pamilya ng Support-Vector machines ng mga teknik sa ML (matuto pa tungkol dito sa ibaba). Sa pamamaraang ito, maaari kang pumili ng 'kernel' upang magpasya kung paano iklasipika ang mga label. Ang 'C' na parameter ay tumutukoy sa 'regularization' na nagre-regulate sa impluwensya ng mga parameter. Ang kernel ay maaaring isa sa [marami](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC); dito itinakda namin ito sa 'linear' upang matiyak na ginagamit namin ang linear SVC. Ang probability ay default na 'false'; dito itinakda namin ito sa 'true' upang makakuha ng mga probability estimates. Itinakda namin ang random state sa '0' upang i-shuffle ang datos para makakuha ng probabilities.
+Ang Support-Vector clustering (SVC) ay bahagi ng pamilya ng Support-Vector machines na mga teknik sa ML (matuto pa tungkol dito sa ibaba). Sa pamamaraang ito, maaari kang pumili ng 'kernel' para tukuyin kung paano i-cluster ang mga label. Ang parameter na 'C' ay tumutukoy sa 'regularization' na nagreregula sa impluwensya ng mga parameter. Ang kernel ay isa sa [marami](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC); dito inilagay natin ito sa 'linear' upang matiyak na magagamit natin ang linear SVC. Ang default ng probability ay 'false'; dito itinakda natin ito sa 'true' upang makuha ang mga pagtatantiya ng posibilidad. Itinakda namin ang random state sa '0' upang i-shuffle ang data para makuha ang mga posibilidad.
 
-### Ehersisyo - gamitin ang linear SVC
+### Ehersisyo - ipatupad ang linear SVC
 
-Magsimula sa pamamagitan ng paglikha ng array ng mga classifier. Magdadagdag ka nang paunti-unti sa array na ito habang sinusubukan natin.
+Magsimula sa paggawa ng array ng mga classifier. Unang idadagdag mo rito habang nagt-test tayo.
 
-1. Magsimula sa Linear SVC:
+1. Magsimula sa isang Linear SVC:
 
     ```python
     C = 10
-    # Create different classifiers.
+    # Gumawa ng iba't ibang mga classifier.
     classifiers = {
         'Linear SVC': SVC(kernel='linear', C=C, probability=True,random_state=0)
     }
     ```
 
-2. I-train ang iyong modelo gamit ang Linear SVC at i-print ang ulat:
+2. I-train ang iyong modelo gamit ang Linear SVC at i-print ang umiulat na ulat:
 
     ```python
     n_classifiers = len(classifiers)
@@ -107,19 +107,19 @@ Magsimula sa pamamagitan ng paglikha ng array ng mga classifier. Magdadagdag ka 
 
 ## K-Neighbors classifier
 
-Ang K-Neighbors ay bahagi ng "neighbors" na pamilya ng mga pamamaraang ML, na maaaring gamitin para sa parehong supervised at unsupervised learning. Sa pamamaraang ito, isang paunang bilang ng mga punto ang nilikha at ang datos ay kinokolekta sa paligid ng mga puntong ito upang ang mga generalized na label ay mahulaan para sa datos.
+Ang K-Neighbors ay bahagi ng "neighbors" na pamilya ng mga ML na pamamaraan, na maaaring gamitin sa parehong supervised at unsupervised na pagkatuto. Sa pamamaraang ito, isang paunang tinukoy na bilang ng mga punto ang nilikha at nakaipon ang data sa paligid ng mga puntong ito upang mahulaan ang mga generalized na label para sa data.
 
-### Ehersisyo - gamitin ang K-Neighbors classifier
+### Ehersisyo - ipatupad ang K-Neighbors classifier
 
-Maganda ang naunang classifier at mahusay itong gumana sa datos, ngunit baka mas mapabuti pa natin ang accuracy. Subukan ang K-Neighbors classifier.
+Maganda ang naunang classifier, at mabisa sa data, pero baka pwede pa nating mapahusay ang katumpakan. Subukan ang K-Neighbors classifier.
 
-1. Magdagdag ng linya sa iyong classifier array (magdagdag ng comma pagkatapos ng Linear SVC item):
+1. Magdagdag ng linya sa iyong classifier array (maglagay ng kuwit pagkatapos ng Linear SVC item):
 
     ```python
     'KNN classifier': KNeighborsClassifier(C),
     ```
 
-    Ang resulta ay medyo mas mababa:
+    Medyo mas mababa ang resulta:
 
     ```output
     Accuracy (train) for KNN classifier: 73.8% 
@@ -140,19 +140,19 @@ Maganda ang naunang classifier at mahusay itong gumana sa datos, ngunit baka mas
 
 ## Support Vector Classifier
 
-Ang Support-Vector classifiers ay bahagi ng [Support-Vector Machine](https://wikipedia.org/wiki/Support-vector_machine) na pamilya ng mga pamamaraang ML na ginagamit para sa mga gawain ng klasipikasyon at regression. Ang SVMs ay "nagmamapa ng mga training example sa mga punto sa espasyo" upang ma-maximize ang distansya sa pagitan ng dalawang kategorya. Ang susunod na datos ay ima-map sa espasyong ito upang mahulaan ang kanilang kategorya.
+Ang Support-Vector classifiers ay bahagi ng pamilya ng [Support-Vector Machine](https://wikipedia.org/wiki/Support-vector_machine) na mga teknik sa ML na ginagamit sa klasipikasyon at regression na mga gawain. Ang SVM ay "nagma-map ng mga halimbawa ng pagsasanay sa mga puntos sa espasyo" upang i-maximize ang distansya sa pagitan ng dalawang kategorya. Ang mga kasunod na data ay pinapasok sa puwang na ito upang mahulaan ang kanilang kategorya.
 
-### Ehersisyo - gamitin ang Support Vector Classifier
+### Ehersisyo - ipatupad ang Support Vector Classifier
 
-Subukan natin ang mas magandang accuracy gamit ang Support Vector Classifier.
+Subukan natin ang medyo mas mataas na katumpakan gamit ang Support Vector Classifier.
 
-1. Magdagdag ng comma pagkatapos ng K-Neighbors item, at pagkatapos ay idagdag ang linyang ito:
+1. Magdagdag ng kuwit pagkatapos ng K-Neighbors item, at idagdag ang linyang ito:
 
     ```python
     'SVC': SVC(),
     ```
 
-    Maganda ang resulta!
+    Medyo maganda ang resulta!
 
     ```output
     Accuracy (train) for SVC: 83.2% 
@@ -173,14 +173,14 @@ Subukan natin ang mas magandang accuracy gamit ang Support Vector Classifier.
 
 ## Ensemble Classifiers
 
-Sundin natin ang landas hanggang sa dulo, kahit na maganda na ang naunang pagsubok. Subukan natin ang ilang 'Ensemble Classifiers', partikular ang Random Forest at AdaBoost:
+Sundan natin ang landas hanggang sa dulo, kahit maganda na ang nauna nating test. Subukan natin ang ilang 'Ensemble Classifiers', partikular ang Random Forest at AdaBoost:
 
 ```python
   'RFST': RandomForestClassifier(n_estimators=100),
   'ADA': AdaBoostClassifier(n_estimators=100)
 ```
 
-Maganda ang resulta, lalo na para sa Random Forest:
+Napakabuti ang resulta, lalo na sa Random Forest:
 
 ```output
 Accuracy (train) for RFST: 84.5% 
@@ -212,29 +212,31 @@ weighted avg       0.73      0.72      0.72      1199
 
 ✅ Matuto tungkol sa [Ensemble Classifiers](https://scikit-learn.org/stable/modules/ensemble.html)
 
-Ang pamamaraang ito ng Machine Learning ay "pinagsasama ang mga prediksyon ng ilang base estimators" upang mapabuti ang kalidad ng modelo. Sa ating halimbawa, ginamit natin ang Random Trees at AdaBoost. 
+Ang pamamaraang ito sa Machine Learning ay "pinaghalong prediksyon ng ilang base estimator" para mapabuti ang kalidad ng modelo. Sa aming halimbawa, gumamit kami ng Random Trees at AdaBoost. 
 
-- [Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#forest), isang averaging method, ay bumubuo ng 'forest' ng 'decision trees' na may kasamang randomness upang maiwasan ang overfitting. Ang n_estimators parameter ay itinakda sa bilang ng mga puno.
+- [Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#forest), isang paraan ng pag-average, ay bumubuo ng 'gubat' ng mga 'puno ng desisyon' na may kasamang randomness upang maiwasan ang overfitting. Ang parameter na n_estimators ay itinakda sa bilang ng mga puno.
 
-- [AdaBoost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) ay nagfi-fit ng classifier sa dataset at pagkatapos ay nagfi-fit ng mga kopya ng classifier na iyon sa parehong dataset. Nakatuon ito sa mga weights ng maling na-klasipikang item at ina-adjust ang fit para sa susunod na classifier upang maitama.
+- [AdaBoost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) ay nagta-takda ng classifier sa isang dataset at pagkatapos ay nagta-takda ng mga kopya ng classifier na iyon sa parehong dataset. Nakatuon ito sa mga timbang ng mga maling naklasipikang item at inaayos ang fit para sa susunod na classifier upang itama ito.
 
 ---
 
-## 🚀Hamunin
+## 🚀Pagsubok
 
-Ang bawat isa sa mga teknik na ito ay may malaking bilang ng mga parameter na maaari mong i-tweak. Mag-research sa default parameters ng bawat isa at pag-isipan kung ano ang magiging epekto ng pag-tweak ng mga parameter na ito sa kalidad ng modelo.
+Bawat isa sa mga teknik na ito ay may maraming parameter na pwede mong i-tweak. Siyasatin ang mga default na parametro ng bawat isa at pag-isipang ano ang ibig sabihin ng pag-aayos ng mga parameter na ito para sa kalidad ng modelo.
 
 ## [Post-lecture quiz](https://ff-quizzes.netlify.app/en/ml/)
 
-## Review at Pag-aaral sa Sarili
+## Review at Pansariling Pag-aaral
 
-Maraming jargon sa mga araling ito, kaya maglaan ng oras upang suriin ang [listahang ito](https://docs.microsoft.com/dotnet/machine-learning/resources/glossary?WT.mc_id=academic-77952-leestott) ng mga kapaki-pakinabang na termino!
+Maraming jargon sa mga araling ito, kaya maglaan ng sandali para suriin ang [listahang ito](https://docs.microsoft.com/dotnet/machine-learning/resources/glossary?WT.mc_id=academic-77952-leestott) ng mga kapaki-pakinabang na termino!
 
-## Takdang Aralin 
+## Takdang-aralin 
 
 [Parameter play](assignment.md)
 
 ---
 
-**Paunawa**:  
-Ang dokumentong ito ay isinalin gamit ang AI translation service na [Co-op Translator](https://github.com/Azure/co-op-translator). Bagama't sinisikap naming maging tumpak, pakitandaan na ang mga awtomatikong pagsasalin ay maaaring maglaman ng mga pagkakamali o hindi pagkakatugma. Ang orihinal na dokumento sa kanyang katutubong wika ang dapat ituring na opisyal na pinagmulan. Para sa mahalagang impormasyon, inirerekomenda ang propesyonal na pagsasalin ng tao. Hindi kami mananagot sa anumang hindi pagkakaunawaan o maling interpretasyon na maaaring magmula sa paggamit ng pagsasaling ito.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Paunawa**:
+Ang dokumentong ito ay isinalin gamit ang serbisyo ng AI na pagsasalin na [Co-op Translator](https://github.com/Azure/co-op-translator). Bagamat nagsusumikap kami para sa katumpakan, mangyaring tandaan na ang mga awtomatikong pagsasalin ay maaaring maglaman ng mga pagkakamali o di-tumpak na impormasyon. Ang orihinal na dokumento sa orihinal nitong wika ang dapat ituring na pangunahing sanggunian. Para sa mahahalagang impormasyon, inirerekomenda ang propesyonal na pagsasaling-tao. Hindi kami mananagot sa anumang hindi pagkakaunawaan o maling interpretasyon na maaaring magmula sa paggamit ng pagsasaling ito.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

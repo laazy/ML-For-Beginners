@@ -2,15 +2,17 @@
 
 ## Mga Tagubilin
 
-Sa araling ito, natutunan mo ang tungkol sa Responsible AI Toolbox, isang "open-source, community-driven na proyekto upang tulungan ang mga data scientist na suriin at pagbutihin ang mga AI system." Para sa gawaing ito, tuklasin ang isa sa mga [notebook](https://github.com/microsoft/responsible-ai-toolbox/blob/main/notebooks/responsibleaidashboard/getting-started.ipynb) ng RAI Toolbox at iulat ang iyong mga natuklasan sa isang papel o presentasyon.
+Sa araling ito, natutunan mo ang tungkol sa Responsible AI Toolbox, isang "open-source, community-driven project upang tulungan ang mga data scientist na suriin at pagbutihin ang mga AI system." Para sa takdang-aralin na ito, tuklasin ang isa sa mga [notebooks](https://github.com/microsoft/responsible-ai-toolbox/blob/main/notebooks/responsibleaidashboard/tabular/getting-started.ipynb) ng RAI Toolbox at iulat ang iyong mga natuklasan sa isang papel o presentasyon.
 
 ## Rubric
 
-| Pamantayan | Natatangi | Katanggap-tanggap | Kailangang Pagbutihin |
-| ---------- | --------- | ----------------- | --------------------- |
-|            | Isang papel o PowerPoint na presentasyon ang iniharap na tinatalakay ang mga sistema ng Fairlearn, ang notebook na ginamit, at ang mga konklusyon mula sa paggamit nito | Isang papel ang iniharap ngunit walang mga konklusyon | Walang iniharap na papel |
+| Criteria | Exemplary | Adequate | Needs Improvement |
+| -------- | --------- | -------- | ----------------- |
+|          |  Isang papel o powerpoint presentation ang ipinakita na tinatalakay ang mga sistema ng Fairlearn, ang notebook na pinatakbo, at ang mga konklusyon mula sa pagpapatakbo nito        |   Isang papel ang ipinakita nang walang mga konklusyon       |  Walang papel na ipinakita                 |
 
 ---
 
-**Paunawa**:  
-Ang dokumentong ito ay isinalin gamit ang AI translation service na [Co-op Translator](https://github.com/Azure/co-op-translator). Bagama't sinisikap naming maging tumpak, pakitandaan na ang mga awtomatikong pagsasalin ay maaaring maglaman ng mga pagkakamali o hindi pagkakatugma. Ang orihinal na dokumento sa orihinal nitong wika ang dapat ituring na opisyal na sanggunian. Para sa mahalagang impormasyon, inirerekomenda ang propesyonal na pagsasalin ng tao. Hindi kami mananagot sa anumang hindi pagkakaunawaan o maling interpretasyon na maaaring magmula sa paggamit ng pagsasaling ito.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Paalala**:
+Ang dokumentong ito ay isinalin gamit ang AI na serbisyo sa pagsasalin na [Co-op Translator](https://github.com/Azure/co-op-translator). Bagamat nagsisikap kami ng katumpakan, pakatandaan na ang awtomatikong pagsasalin ay maaaring maglaman ng mga pagkakamali o kamalian. Ang orihinal na dokumento sa kanyang sariling wika ang dapat ituring na pangunahing sanggunian. Para sa mahahalagang impormasyon, inirerekomenda ang propesyonal na pagsasalin ng tao. Hindi kami mananagot sa anumang hindi pagkakaunawaan o maling interpretasyon na maaaring magmula sa paggamit ng pagsasaling ito.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

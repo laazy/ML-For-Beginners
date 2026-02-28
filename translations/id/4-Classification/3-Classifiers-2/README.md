@@ -1,42 +1,42 @@
 # Pengklasifikasi Masakan 2
 
-Dalam pelajaran klasifikasi kedua ini, Anda akan mengeksplorasi lebih banyak cara untuk mengklasifikasikan data numerik. Anda juga akan mempelajari dampak dari memilih satu pengklasifikasi dibandingkan yang lain.
+Dalam pelajaran klasifikasi kedua ini, Anda akan mengeksplorasi lebih banyak cara untuk mengklasifikasikan data numerik. Anda juga akan mempelajari konsekuensi dari memilih satu pengklasifikasi dibanding yang lain.
 
-## [Kuis sebelum pelajaran](https://ff-quizzes.netlify.app/en/ml/)
+## [Kuis pra-kuliah](https://ff-quizzes.netlify.app/en/ml/)
 
 ### Prasyarat
 
-Kami mengasumsikan bahwa Anda telah menyelesaikan pelajaran sebelumnya dan memiliki dataset yang telah dibersihkan di folder `data` Anda dengan nama _cleaned_cuisines.csv_ di root folder 4 pelajaran ini.
+Kami mengasumsikan bahwa Anda telah menyelesaikan pelajaran sebelumnya dan memiliki dataset yang sudah dibersihkan di folder `data` Anda yang bernama _cleaned_cuisines.csv_ di root folder berisi 4 pelajaran ini.
 
 ### Persiapan
 
-Kami telah memuat file _notebook.ipynb_ Anda dengan dataset yang telah dibersihkan dan telah membaginya menjadi dataframe X dan y, siap untuk proses pembangunan model.
+Kami telah memuat file _notebook.ipynb_ Anda dengan dataset yang sudah dibersihkan dan telah membaginya menjadi dataframe X dan y, siap untuk proses pembangunan model.
 
 ## Peta klasifikasi
 
-Sebelumnya, Anda telah mempelajari berbagai opsi yang tersedia untuk mengklasifikasikan data menggunakan lembar contekan dari Microsoft. Scikit-learn menawarkan lembar contekan serupa, tetapi lebih rinci, yang dapat membantu mempersempit pilihan estimator Anda (istilah lain untuk pengklasifikasi):
+Sebelumnya, Anda telah belajar tentang berbagai pilihan yang Anda miliki saat mengklasifikasikan data menggunakan cheat sheet Microsoft. Scikit-learn menawarkan cheat sheet serupa, tetapi lebih rinci yang dapat membantu mempersempit estimator Anda (istilah lain untuk pengklasifikasi):
 
-![Peta ML dari Scikit-learn](../../../../4-Classification/3-Classifiers-2/images/map.png)
-> Tip: [kunjungi peta ini secara online](https://scikit-learn.org/stable/tutorial/machine_learning_map/) dan klik jalurnya untuk membaca dokumentasi.
+![Peta ML dari Scikit-learn](../../../../translated_images/id/map.e963a6a51349425a.webp)
+> Tip: [kunjungi peta ini secara daring](https://scikit-learn.org/stable/tutorial/machine_learning_map/) dan klik sepanjang jalurnya untuk membaca dokumentasi.
 
 ### Rencana
 
-Peta ini sangat membantu setelah Anda memiliki pemahaman yang jelas tentang data Anda, karena Anda dapat 'berjalan' di sepanjang jalurnya untuk membuat keputusan:
+Peta ini sangat membantu begitu Anda memiliki pemahaman yang jelas tentang data Anda, karena Anda bisa 'menyusuri' jalurnya menuju sebuah keputusan:
 
 - Kami memiliki >50 sampel
 - Kami ingin memprediksi sebuah kategori
-- Kami memiliki data yang diberi label
+- Kami memiliki data berlabel
 - Kami memiliki kurang dari 100K sampel
 - ✨ Kami dapat memilih Linear SVC
 - Jika itu tidak berhasil, karena kami memiliki data numerik
-    - Kami dapat mencoba ✨ KNeighbors Classifier 
+    - Kami bisa mencoba ✨ KNeighbors Classifier 
       - Jika itu tidak berhasil, coba ✨ SVC dan ✨ Ensemble Classifiers
 
 Ini adalah jalur yang sangat membantu untuk diikuti.
 
-## Latihan - membagi data
+## Latihan - bagi data
 
-Mengikuti jalur ini, kita harus mulai dengan mengimpor beberapa pustaka yang diperlukan.
+Mengikuti jalur ini, kita harus mulai dengan mengimpor beberapa pustaka yang akan digunakan.
 
 1. Impor pustaka yang diperlukan:
 
@@ -50,31 +50,31 @@ Mengikuti jalur ini, kita harus mulai dengan mengimpor beberapa pustaka yang dip
     import numpy as np
     ```
 
-1. Bagi data pelatihan dan pengujian Anda:
+1. Bagi data pelatihan dan data uji Anda:
 
     ```python
-    X_train, X_test, y_train, y_test = train_test_split(cuisines_feature_df, cuisines_label_df, test_size=0.3)
+    X_train, X_test, y_train, y_test = train_test_split(cuisines_features_df, cuisines_label_df, test_size=0.3)
     ```
 
 ## Pengklasifikasi Linear SVC
 
-Support-Vector Clustering (SVC) adalah bagian dari keluarga teknik ML Support-Vector Machines (pelajari lebih lanjut tentang ini di bawah). Dalam metode ini, Anda dapat memilih 'kernel' untuk menentukan cara mengelompokkan label. Parameter 'C' mengacu pada 'regularisasi' yang mengatur pengaruh parameter. Kernel dapat berupa [beberapa jenis](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC); di sini kami mengaturnya ke 'linear' untuk memastikan bahwa kami menggunakan Linear SVC. Probabilitas secara default diatur ke 'false'; di sini kami mengaturnya ke 'true' untuk mendapatkan estimasi probabilitas. Kami mengatur random state ke '0' untuk mengacak data agar mendapatkan probabilitas.
+Support-Vector clustering (SVC) adalah bagian dari keluarga Support-Vector machines dalam teknik ML (pelajari lebih lanjut tentang ini di bawah). Dalam metode ini, Anda dapat memilih sebuah 'kernel' untuk memutuskan bagaimana mengelompokkan label. Parameter 'C' merujuk pada 'regularisasi' yang mengatur pengaruh parameter. Kernel bisa salah satu dari [beberapa](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC); di sini kami atur ke 'linear' untuk memastikan kami memanfaatkan linear SVC. Probabilitas defaultnya 'false'; di sini kami atur ke 'true' untuk mengumpulkan estimasi probabilitas. Kami atur random state ke '0' untuk mengacak data agar mendapatkan probabilitas.
 
-### Latihan - menerapkan Linear SVC
+### Latihan - terapkan Linear SVC
 
-Mulailah dengan membuat array pengklasifikasi. Anda akan menambahkan secara bertahap ke array ini saat kami menguji.
+Mulailah dengan membuat array pengklasifikasi. Anda akan menambahkannya secara bertahap saat kita melakukan pengujian.
 
 1. Mulailah dengan Linear SVC:
 
     ```python
     C = 10
-    # Create different classifiers.
+    # Buat classifier yang berbeda.
     classifiers = {
         'Linear SVC': SVC(kernel='linear', C=C, probability=True,random_state=0)
     }
     ```
 
-2. Latih model Anda menggunakan Linear SVC dan cetak laporan:
+2. Latih model Anda menggunakan Linear SVC dan cetak laporannya:
 
     ```python
     n_classifiers = len(classifiers)
@@ -107,13 +107,13 @@ Mulailah dengan membuat array pengklasifikasi. Anda akan menambahkan secara bert
 
 ## Pengklasifikasi K-Neighbors
 
-K-Neighbors adalah bagian dari keluarga metode ML "neighbors", yang dapat digunakan untuk pembelajaran terawasi dan tidak terawasi. Dalam metode ini, sejumlah titik yang telah ditentukan dibuat dan data dikumpulkan di sekitar titik-titik ini sehingga label yang digeneralisasi dapat diprediksi untuk data tersebut.
+K-Neighbors adalah bagian dari keluarga metode ML "neighbors", yang dapat digunakan untuk pembelajaran terawasi maupun tidak terawasi. Dalam metode ini, sejumlah titik yang telah ditentukan dibuat dan data dikumpulkan di sekitar titik-titik tersebut sehingga label umum dapat diprediksi untuk data.
 
-### Latihan - menerapkan pengklasifikasi K-Neighbors
+### Latihan - terapkan pengklasifikasi K-Neighbors
 
-Pengklasifikasi sebelumnya cukup baik dan bekerja dengan baik pada data, tetapi mungkin kita bisa mendapatkan akurasi yang lebih baik. Coba pengklasifikasi K-Neighbors.
+Pengklasifikasi sebelumnya sudah baik dan bekerja dengan baik pada data, tetapi mungkin kita bisa mendapatkan akurasi yang lebih baik. Cobalah pengklasifikasi K-Neighbors.
 
-1. Tambahkan baris ke array pengklasifikasi Anda (tambahkan koma setelah item Linear SVC):
+1. Tambahkan sebuah baris pada array pengklasifikasi Anda (tambahkan koma setelah item Linear SVC):
 
     ```python
     'KNN classifier': KNeighborsClassifier(C),
@@ -138,15 +138,15 @@ Pengklasifikasi sebelumnya cukup baik dan bekerja dengan baik pada data, tetapi 
 
     ✅ Pelajari tentang [K-Neighbors](https://scikit-learn.org/stable/modules/neighbors.html#neighbors)
 
-## Pengklasifikasi Support Vector
+## Support Vector Classifier
 
-Pengklasifikasi Support-Vector adalah bagian dari keluarga [Support-Vector Machine](https://wikipedia.org/wiki/Support-vector_machine) metode ML yang digunakan untuk tugas klasifikasi dan regresi. SVM "memetakan contoh pelatihan ke titik-titik di ruang" untuk memaksimalkan jarak antara dua kategori. Data berikutnya dipetakan ke ruang ini sehingga kategorinya dapat diprediksi.
+Support-Vector classifiers adalah bagian dari keluarga [Support-Vector Machine](https://wikipedia.org/wiki/Support-vector_machine) dalam metode ML yang digunakan untuk tugas klasifikasi dan regresi. SVM “memetakan contoh pelatihan ke titik di ruang” untuk memaksimalkan jarak antara dua kategori. Data berikutnya dipetakan ke ruang ini sehingga kategorinya bisa diprediksi.
 
-### Latihan - menerapkan pengklasifikasi Support Vector
+### Latihan - terapkan Support Vector Classifier
 
-Mari coba mendapatkan akurasi yang sedikit lebih baik dengan pengklasifikasi Support Vector.
+Mari coba untuk mendapatkan akurasi yang sedikit lebih baik dengan Support Vector Classifier.
 
-1. Tambahkan koma setelah item K-Neighbors, lalu tambahkan baris ini:
+1. Tambahkan koma setelah item K-Neighbors, kemudian tambahkan baris ini:
 
     ```python
     'SVC': SVC(),
@@ -173,14 +173,14 @@ Mari coba mendapatkan akurasi yang sedikit lebih baik dengan pengklasifikasi Sup
 
 ## Pengklasifikasi Ensemble
 
-Mari ikuti jalur hingga akhir, meskipun pengujian sebelumnya cukup baik. Mari coba beberapa 'Pengklasifikasi Ensemble', khususnya Random Forest dan AdaBoost:
+Mari kita ikuti jalur sampai benar-benar akhir, meskipun uji sebelumnya sudah cukup bagus. Mari coba beberapa 'Pengklasifikasi Ensemble', khususnya Random Forest dan AdaBoost:
 
 ```python
   'RFST': RandomForestClassifier(n_estimators=100),
   'ADA': AdaBoostClassifier(n_estimators=100)
 ```
 
-Hasilnya sangat baik, terutama untuk Random Forest:
+Hasilnya sangat bagus, terutama untuk Random Forest:
 
 ```output
 Accuracy (train) for RFST: 84.5% 
@@ -212,23 +212,23 @@ weighted avg       0.73      0.72      0.72      1199
 
 ✅ Pelajari tentang [Pengklasifikasi Ensemble](https://scikit-learn.org/stable/modules/ensemble.html)
 
-Metode Machine Learning ini "menggabungkan prediksi dari beberapa estimator dasar" untuk meningkatkan kualitas model. Dalam contoh kami, kami menggunakan Random Trees dan AdaBoost. 
+Metode Pembelajaran Mesin ini "menggabungkan prediksi dari beberapa estimator dasar" untuk meningkatkan kualitas model. Dalam contoh kami, kami menggunakan Pohon Acak dan AdaBoost. 
 
-- [Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#forest), metode rata-rata, membangun 'hutan' dari 'pohon keputusan' yang diinfuskan dengan elemen acak untuk menghindari overfitting. Parameter n_estimators diatur ke jumlah pohon.
+- [Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#forest), metode pengambilan rata-rata, membangun 'hutan' 'pohon keputusan' yang dibubuhi random untuk menghindari overfitting. Parameter n_estimators diatur ke jumlah pohon.
 
-- [AdaBoost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) menyesuaikan pengklasifikasi ke dataset dan kemudian menyesuaikan salinan pengklasifikasi tersebut ke dataset yang sama. Metode ini berfokus pada bobot item yang diklasifikasikan secara salah dan menyesuaikan fit untuk pengklasifikasi berikutnya untuk memperbaiki.
+- [AdaBoost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) menyesuaikan sebuah pengklasifikasi ke dataset dan kemudian menyesuaikan salinan pengklasifikasi itu ke dataset yang sama. Ini memfokuskan pada bobot item yang salah klasifikasi dan mengatur ulang penyesuaian untuk pengklasifikasi berikutnya agar memperbaiki.
 
 ---
 
 ## 🚀Tantangan
 
-Setiap teknik ini memiliki sejumlah besar parameter yang dapat Anda sesuaikan. Teliti parameter default masing-masing dan pikirkan apa arti penyesuaian parameter ini untuk kualitas model.
+Masing-masing teknik ini memiliki sejumlah besar parameter yang bisa Anda atur. Riset parameter default masing-masing dan pikirkan apa arti mengatur parameter-parameter ini untuk kualitas model.
 
-## [Kuis setelah pelajaran](https://ff-quizzes.netlify.app/en/ml/)
+## [Kuis pasca-kuliah](https://ff-quizzes.netlify.app/en/ml/)
 
-## Tinjauan & Studi Mandiri
+## Review & Belajar Mandiri
 
-Ada banyak istilah teknis dalam pelajaran ini, jadi luangkan waktu untuk meninjau [daftar ini](https://docs.microsoft.com/dotnet/machine-learning/resources/glossary?WT.mc_id=academic-77952-leestott) istilah yang berguna!
+Ada banyak jargon dalam pelajaran ini, jadi luangkan waktu sebentar untuk meninjau [daftar ini](https://docs.microsoft.com/dotnet/machine-learning/resources/glossary?WT.mc_id=academic-77952-leestott) terminologi yang berguna!
 
 ## Tugas 
 
@@ -236,5 +236,7 @@ Ada banyak istilah teknis dalam pelajaran ini, jadi luangkan waktu untuk meninja
 
 ---
 
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
 **Penafian**:  
-Dokumen ini telah diterjemahkan menggunakan layanan penerjemahan AI [Co-op Translator](https://github.com/Azure/co-op-translator). Meskipun kami berusaha untuk memberikan hasil yang akurat, harap diingat bahwa terjemahan otomatis mungkin mengandung kesalahan atau ketidakakuratan. Dokumen asli dalam bahasa aslinya harus dianggap sebagai sumber yang otoritatif. Untuk informasi yang bersifat kritis, disarankan menggunakan jasa penerjemahan profesional oleh manusia. Kami tidak bertanggung jawab atas kesalahpahaman atau penafsiran yang keliru yang timbul dari penggunaan terjemahan ini.
+Dokumen ini telah diterjemahkan menggunakan layanan terjemahan AI [Co-op Translator](https://github.com/Azure/co-op-translator). Meskipun kami berupaya untuk memberikan terjemahan yang akurat, harap diketahui bahwa terjemahan otomatis mungkin mengandung kesalahan atau ketidakakuratan. Dokumen asli dalam bahasa aslinya harus dianggap sebagai sumber otoritatif. Untuk informasi penting, disarankan menggunakan jasa terjemahan profesional oleh manusia. Kami tidak bertanggung jawab atas kesalahpahaman atau salah tafsir yang timbul dari penggunaan terjemahan ini.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->
