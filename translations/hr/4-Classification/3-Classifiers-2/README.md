@@ -1,42 +1,42 @@
 # Klasifikatori kuhinja 2
 
-U ovoj drugoj lekciji o klasifikaciji istražit ćete više načina za klasifikaciju numeričkih podataka. Također ćete naučiti o posljedicama odabira jednog klasifikatora u odnosu na drugi.
+U ovoj drugoj lekciji o klasifikaciji, istražit ćete više načina za klasifikaciju numeričkih podataka. Također ćete naučiti o posljedicama odabira jednog klasifikatora u odnosu na drugi.
 
 ## [Kviz prije predavanja](https://ff-quizzes.netlify.app/en/ml/)
 
-### Preduvjeti
+### Pretpostavka
 
-Pretpostavljamo da ste završili prethodne lekcije i da imate očišćeni skup podataka u svojoj mapi `data` pod nazivom _cleaned_cuisines.csv_ u korijenu ove mape s 4 lekcije.
+Pretpostavljamo da ste završili prethodne lekcije i imate očišćeni skup podataka u svojoj `data` mapi pod nazivom _cleaned_cuisines.csv_ u korijenu ove mape s 4 lekcije.
 
 ### Priprema
 
-Učitali smo vašu datoteku _notebook.ipynb_ s očišćenim skupom podataka i podijelili je u X i y podatkovne okvire, spremne za proces izgradnje modela.
+Učitani su vam _notebook.ipynb_ datoteka s očišćenim skupom podataka i podijelili smo ga u X i y datafrejmove, spremne za proces izgradnje modela.
 
 ## Karta klasifikacije
 
-Ranije ste naučili o raznim opcijama koje imate pri klasifikaciji podataka koristeći Microsoftov vodič. Scikit-learn nudi sličan, ali detaljniji vodič koji može dodatno pomoći u sužavanju izbora procjenitelja (drugi naziv za klasifikatore):
+Prije ste naučili o različitim opcijama koje imate kod klasificiranja podataka koristeći Microsoftovu varalicu. Scikit-learn nudi sličnu, ali detaljniju varalicu koja može dodatno pomoći pri sužavanju vaših procjenitelja (drugi izraz za klasifikatore):
 
-![ML Karta iz Scikit-learn](../../../../4-Classification/3-Classifiers-2/images/map.png)
-> Savjet: [posjetite ovu kartu online](https://scikit-learn.org/stable/tutorial/machine_learning_map/) i kliknite na putanju kako biste pročitali dokumentaciju.
+![ML karta iz Scikit-learn](../../../../translated_images/hr/map.e963a6a51349425a.webp)
+> Savjet: [posjetite ovu kartu online](https://scikit-learn.org/stable/tutorial/machine_learning_map/) i klikajte duž staze da pročitate dokumentaciju.
 
 ### Plan
 
-Ova karta je vrlo korisna kada imate jasno razumijevanje svojih podataka, jer možete 'hodati' njenim stazama do odluke:
+Ova karta je vrlo korisna kad imate jasno razumijevanje svojih podataka, jer možete 'šetati' njenim stazama do odluke:
 
 - Imamo >50 uzoraka
 - Želimo predvidjeti kategoriju
 - Imamo označene podatke
 - Imamo manje od 100K uzoraka
-- ✨ Možemo odabrati Linear SVC
+- ✨ Možemo odabrati Linearni SVC
 - Ako to ne uspije, budući da imamo numeričke podatke
-    - Možemo pokušati ✨ KNeighbors Classifier 
-      - Ako to ne uspije, pokušajte ✨ SVC i ✨ Ensemble Classifiers
+    - Možemo pokušati sa ✨ KNeighbors klasifikatorom
+      - Ako to ne uspije, pokušajte ✨ SVC i ✨ Ensemble klasifikatore
 
-Ovo je vrlo koristan put za slijediti.
+Ovo je vrlo korisna staza za praćenje.
 
 ## Vježba - podijelite podatke
 
-Slijedeći ovu putanju, trebali bismo započeti uvozom nekih biblioteka koje ćemo koristiti.
+Prateći ovu stazu, trebali bismo započeti uvozom nekih biblioteka za korištenje.
 
 1. Uvezite potrebne biblioteke:
 
@@ -50,31 +50,31 @@ Slijedeći ovu putanju, trebali bismo započeti uvozom nekih biblioteka koje će
     import numpy as np
     ```
 
-1. Podijelite svoje podatke za treniranje i testiranje:
+1. Podijelite svoje podatke za trening i test:
 
     ```python
-    X_train, X_test, y_train, y_test = train_test_split(cuisines_feature_df, cuisines_label_df, test_size=0.3)
+    X_train, X_test, y_train, y_test = train_test_split(cuisines_features_df, cuisines_label_df, test_size=0.3)
     ```
 
-## Linear SVC klasifikator
+## Linearni SVC klasifikator
 
-Support-Vector clustering (SVC) je dio obitelji tehnika strojnog učenja Support-Vector machines (SVM) (saznajte više o njima dolje). U ovoj metodi možete odabrati 'kernel' kako biste odlučili kako grupirati oznake. Parametar 'C' odnosi se na 'regularizaciju' koja regulira utjecaj parametara. Kernel može biti jedan od [nekoliko](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC); ovdje ga postavljamo na 'linear' kako bismo osigurali korištenje linearne SVC. Vjerojatnost je prema zadanim postavkama 'false'; ovdje je postavljamo na 'true' kako bismo dobili procjene vjerojatnosti. Postavljamo random state na '0' kako bismo promiješali podatke za dobivanje vjerojatnosti.
+Support-Vector clustering (SVC) je član obitelji Support-Vector strojeva za ML tehnike (saznajte više o njima dolje). U ovoj metodi možete odabrati 'kernel' kojim odlučujete kako grupirati oznake. Parametar 'C' odnosi se na 'regularizaciju' koja regulira utjecaj parametara. Kernel može biti jedan od [više](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC); ovdje smo ga postavili na 'linearni' da osiguramo korištenje linearnog SVC-a. Vjerojatnost je prema zadanim postavkama 'false'; ovdje smo je postavili na 'true' da prikupimo procjene vjerojatnosti. Postavili smo random_state na '0' da promiješamo podatke za dobivanje vjerojatnosti.
 
 ### Vježba - primijenite linearni SVC
 
-Započnite stvaranjem niza klasifikatora. Postupno ćete dodavati ovom nizu dok testiramo.
+Započnite stvaranjem niza klasifikatora. Postupno ćete dodavati u ovaj niz dok testiramo.
 
-1. Započnite s Linear SVC:
+1. Započnite s linearnim SVC:
 
     ```python
     C = 10
-    # Create different classifiers.
+    # Izradite različite klasifikatore.
     classifiers = {
         'Linear SVC': SVC(kernel='linear', C=C, probability=True,random_state=0)
     }
     ```
 
-2. Trenirajte svoj model koristeći Linear SVC i ispišite izvještaj:
+2. Naučite svoj model koristeći Linearni SVC i ispišite izvještaj:
 
     ```python
     n_classifiers = len(classifiers)
@@ -107,13 +107,13 @@ Započnite stvaranjem niza klasifikatora. Postupno ćete dodavati ovom nizu dok 
 
 ## K-Neighbors klasifikator
 
-K-Neighbors je dio obitelji metoda strojnog učenja "neighbors", koje se mogu koristiti za nadzirano i nenadzirano učenje. U ovoj metodi unaprijed definirani broj točaka se stvara, a podaci se prikupljaju oko tih točaka kako bi se predvidjele generalizirane oznake za podatke.
+K-Neighbors je dio obitelji "neighbors" ML metoda, koje se mogu koristiti za nadzirano i nenadzirano učenje. U ovoj metodi se stvara unaprijed definirani broj točaka i podaci se skupljaju oko tih točaka tako da se mogu predvidjeti generalizirane oznake za podatke.
 
 ### Vježba - primijenite K-Neighbors klasifikator
 
-Prethodni klasifikator je bio dobar i dobro je radio s podacima, ali možda možemo postići bolju točnost. Pokušajte s K-Neighbors klasifikatorom.
+Prethodni klasifikator je bio dobar i dobro je radio s podacima, ali možda možemo postići bolju točnost. Isprobajte K-Neighbors klasifikator.
 
-1. Dodajte liniju svom nizu klasifikatora (dodajte zarez nakon stavke Linear SVC):
+1. Dodajte liniju u svoj niz klasifikatora (dodajte zarez nakon stavke Linearni SVC):
 
     ```python
     'KNN classifier': KNeighborsClassifier(C),
@@ -136,23 +136,23 @@ Prethodni klasifikator je bio dobar i dobro je radio s podacima, ali možda mož
     weighted avg       0.76      0.74      0.74      1199
     ```
 
-    ✅ Saznajte više o [K-Neighbors](https://scikit-learn.org/stable/modules/neighbors.html#neighbors)
+    ✅ Saznajte o [K-Neighbors](https://scikit-learn.org/stable/modules/neighbors.html#neighbors)
 
 ## Support Vector Classifier
 
-Support-Vector klasifikatori su dio obitelji metoda strojnog učenja [Support-Vector Machine](https://wikipedia.org/wiki/Support-vector_machine) koje se koriste za zadatke klasifikacije i regresije. SVM "mapira primjere za treniranje na točke u prostoru" kako bi maksimizirao udaljenost između dvije kategorije. Naknadni podaci se mapiraju u ovaj prostor kako bi se predvidjela njihova kategorija.
+Support-Vector klasifikatori su dio obitelji [Support-Vector Machine](https://wikipedia.org/wiki/Support-vector_machine) ML metoda koje se koriste za klasifikacijske i regresijske zadatke. SVM-ovi "mapiraju primjere treninga u točke u prostoru" kako bi maksimalizirali udaljenost između dvije kategorije. Sljedeći podaci se mapiraju u taj prostor kako bi se mogla predvidjeti njihova kategorija.
 
 ### Vježba - primijenite Support Vector Classifier
 
-Pokušajmo postići malo bolju točnost s Support Vector Classifier.
+Pokušajmo dobiti malo bolju točnost s Support Vector Classifierom.
 
-1. Dodajte zarez nakon stavke K-Neighbors, a zatim dodajte ovu liniju:
+1. Dodajte zarez nakon stavke K-Neighbors, pa zatim dodajte ovu liniju:
 
     ```python
     'SVC': SVC(),
     ```
 
-    Rezultat je vrlo dobar!
+    Rezultat je prilično dobar!
 
     ```output
     Accuracy (train) for SVC: 83.2% 
@@ -169,18 +169,18 @@ Pokušajmo postići malo bolju točnost s Support Vector Classifier.
     weighted avg       0.84      0.83      0.83      1199
     ```
 
-    ✅ Saznajte više o [Support-Vectors](https://scikit-learn.org/stable/modules/svm.html#svm)
+    ✅ Saznajte o [Support-Vectors](https://scikit-learn.org/stable/modules/svm.html#svm)
 
-## Ensemble Classifiers
+## Ensemble klasifikatori
 
-Slijedimo put do samog kraja, iako je prethodni test bio vrlo dobar. Pokušajmo s 'Ensemble Classifiers', konkretno Random Forest i AdaBoost:
+Slijedimo stazu do samog kraja, iako je prethodni test bio prilično dobar. Isprobajmo neke 'Ensemble klasifikatore', konkretno Random Forest i AdaBoost:
 
 ```python
   'RFST': RandomForestClassifier(n_estimators=100),
   'ADA': AdaBoostClassifier(n_estimators=100)
 ```
 
-Rezultat je vrlo dobar, posebno za Random Forest:
+Rezultat je vrlo dobar, osobito za Random Forest:
 
 ```output
 Accuracy (train) for RFST: 84.5% 
@@ -210,31 +210,33 @@ Accuracy (train) for ADA: 72.4%
 weighted avg       0.73      0.72      0.72      1199
 ```
 
-✅ Saznajte više o [Ensemble Classifiers](https://scikit-learn.org/stable/modules/ensemble.html)
+✅ Saznajte o [Ensemble klasifikatorima](https://scikit-learn.org/stable/modules/ensemble.html)
 
-Ova metoda strojnog učenja "kombinira predviđanja nekoliko osnovnih procjenitelja" kako bi poboljšala kvalitetu modela. U našem primjeru koristili smo Random Trees i AdaBoost. 
+Ova metoda strojnog učenja "kombinira predviđanja nekoliko osnovnih procjenitelja" kako bi poboljšala kvalitetu modela. U našem smo primjeru koristili Random Trees i AdaBoost.
 
-- [Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#forest), metoda prosjeka, gradi 'šumu' 'odlučujućih stabala' s dodanom slučajnošću kako bi se izbjeglo prekomjerno prilagođavanje. Parametar n_estimators postavljen je na broj stabala.
+- [Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#forest), metoda prosječavanja, gradi 'šumu' 'odlučnih stabala' obogaćenu slučajnostima kako bi se izbjeglo prekomjerno prilagođavanje. Parametar n_estimators postavljen je na broj stabala.
 
-- [AdaBoost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) prilagođava klasifikator skupu podataka, a zatim prilagođava kopije tog klasifikatora istom skupu podataka. Fokusira se na težine pogrešno klasificiranih stavki i prilagođava fit za sljedeći klasifikator kako bi ih ispravio.
+- [AdaBoost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) trenira klasifikator na skupu podataka, a zatim trenira kopije tog klasifikatora na istom skupu podataka. Fokusira se na težine pogrešno klasificiranih elemenata i prilagođava fit sljedećem klasifikatoru da ispravi.
 
 ---
 
 ## 🚀Izazov
 
-Svaka od ovih tehnika ima veliki broj parametara koje možete prilagoditi. Istražite zadane parametre svake od njih i razmislite što bi prilagodba tih parametara značila za kvalitetu modela.
+Svaka od ovih tehnika ima veliki broj parametara koje možete mijenjati. Istražite zadane parametre svakog i razmislite što bi mijenjanje tih parametara značilo za kvalitetu modela.
 
 ## [Kviz nakon predavanja](https://ff-quizzes.netlify.app/en/ml/)
 
-## Pregled i samostalno učenje
+## Pregled i samostalna studija
 
-U ovim lekcijama ima puno stručnih izraza, pa odvojite trenutak da pregledate [ovaj popis](https://docs.microsoft.com/dotnet/machine-learning/resources/glossary?WT.mc_id=academic-77952-leestott) korisne terminologije!
+U ovim lekcijama ima puno žargona, pa odvojite minutu da pregledate [ovaj popis](https://docs.microsoft.com/dotnet/machine-learning/resources/glossary?WT.mc_id=academic-77952-leestott) korisne terminologije!
 
-## Zadatak 
+## Zadatak
 
-[Parametarska igra](assignment.md)
+[Igra s parametrima](assignment.md)
 
 ---
 
-**Odricanje od odgovornosti**:  
-Ovaj dokument je preveden pomoću AI usluge za prevođenje [Co-op Translator](https://github.com/Azure/co-op-translator). Iako nastojimo osigurati točnost, imajte na umu da automatski prijevodi mogu sadržavati pogreške ili netočnosti. Izvorni dokument na izvornom jeziku treba smatrati autoritativnim izvorom. Za ključne informacije preporučuje se profesionalni prijevod od strane ljudskog prevoditelja. Ne preuzimamo odgovornost za bilo kakve nesporazume ili pogrešne interpretacije koje proizlaze iz korištenja ovog prijevoda.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Napomena**:  
+Ovaj je dokument preveden pomoću AI usluge prevođenja [Co-op Translator](https://github.com/Azure/co-op-translator). Iako nastojimo osigurati točnost, imajte na umu da automatski prijevodi mogu sadržavati pogreške ili netočnosti. Izvorni dokument na izvornom jeziku treba se smatrati službenim i autoritativnim izvorom. Za kritične informacije preporučuje se profesionalni ljudski prijevod. Ne preuzimamo odgovornost za nesporazume ili kriva tumačenja koja proizlaze iz uporabe ovog prijevoda.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->
