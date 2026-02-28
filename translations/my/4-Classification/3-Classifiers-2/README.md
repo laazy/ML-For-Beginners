@@ -1,44 +1,44 @@
-# Cuisine classifiers 2
+# အစားအသောက် အမျိုးအစား ခွဲခြားခြင်း 2
 
-ဒီ classification သင်ခန်းစာအပိုင်း (၂) မှာ သင် numeric data ကို classify လုပ်နိုင်တဲ့ နည်းလမ်းတွေကို ပိုမိုလေ့လာနိုင်မှာဖြစ်ပါတယ်။ အပြင်မှာ classifier တစ်ခုကို ရွေးချယ်တဲ့အခါမှာ ဖြစ်နိုင်တဲ့ အကျိုးဆက်တွေကိုလည်း သင်လေ့လာနိုင်ပါမယ်။
+ဒီ ဒုတိယအတန်းခွဲခြားခြင်း ပညာသင်ခန်းစာမှာ သင်သည် ဂဏန်း ဒေတာများကို အမျိုးအစား ခွဲခြားနိုင်မည့် နည်းလမ်းများ ပိုမိုလေ့လာမည်ဖြစ်သည်။ သင်သည် အမျိုးအစားခွဲခြားသူ တစ်ခုပြီး တစ်ခုကို ရွေးချယ်ရာမှ ဖြစ်ပေါ်နိုင်သည့် ထိခိုက်မှုများကိုလည်း သိရှိမည်ဖြစ်သည်။
 
-## [Pre-lecture quiz](https://ff-quizzes.netlify.app/en/ml/)
+## [သင်ခန်းစာမတိုင်ခင် မေးခွန်းစစ်](https://ff-quizzes.netlify.app/en/ml/)
 
-### ကြိုတင်လိုအပ်ချက်
+### ယခင်သင်ခန်းစာလိုအပ်ချက်
 
-သင်ဟာ အရင် lessons တွေကိုပြီးစီးထားပြီး `data` folder ထဲမှာ _cleaned_cuisines.csv_ ဆိုတဲ့ cleaned dataset ကိုရှိထားတယ်လို့ ယူဆပါတယ်။ ဒီ dataset ဟာ lessons (၄) ခုပါဝင်တဲ့ folder ရဲ့ root မှာရှိပါတယ်။
+သင်သည် ယခင်သင်ခန်းစာများကို ပြီးမြောက်ပြီးဖြစ်ပြီး၊ ဒီ ၄-ခန်းသင်ခန်းစာ folder၏ ရှေ့ဆက် သက်သက်ရှိသော _cleaned_cuisines.csv_ ဟူသော သန့်ရှင်းထားသော ဒေတာစုစည်းမှုကို `data` ဖိုလ်ဒါအတွင်းရှိနေသည်ဟု ထင်မြင်ကြောင်း။ 
 
-### ပြင်ဆင်မှု
+### အဆင်ပြေမှု
 
-သင့် _notebook.ipynb_ ဖိုင်ကို cleaned dataset နဲ့ loaded လုပ်ပြီး model တည်ဆောက်မှုအတွက် X နဲ့ y dataframes အဖြစ် ခွဲထားပါတယ်။
+သင်၏ _notebook.ipynb_ ဖိုင်ကို သန့်ရှင်းထားသော ဒေတာနှင့် ဖွင့်ထားပြီး X နှင့် y dataframes သို့ ခွဲထားပြီး မော်ဒယ်တည်ဆောက်ခြင်းလုပ်ငန်းစဉ်အတွက် အသင့်ဖြစ်သည်။
 
-## Classification map
+## အမျိုးအစား ခွဲခြားခြင်း အမြေပုံ
 
-အရင် lessons မှာ Microsoft ရဲ့ cheat sheet ကို အသုံးပြုပြီး data ကို classify လုပ်နိုင်တဲ့ နည်းလမ်းတွေကို သင်လေ့လာခဲ့ပါတယ်။ Scikit-learn မှာ cheat sheet တစ်ခုလည်းရှိပြီး၊ အဲဒီ cheat sheet က သင့် estimators (classifier ကိုခေါ်တဲ့အခြားအမည်) ကို ပိုမိုကျဉ်းကျဉ်းစစ်နိုင်အောင် ကူညီပေးနိုင်ပါတယ်။
+ပြီးခဲ့သောအချိန်တွင် Microsoft ၏ cheat sheet ကို အသုံးပြု၍ ဒေတာ ခွဲခြားရာမှာ ရွေးချယ်နိုင်သည့် နည်းလမ်းမျိုးစုံကို သင်သိရှိခဲ့သည်။ Scikit-learn သည် ဆက်ဆံမှု ပိုမြင့်နှင့် အသေးစိတ်ကဲြသော cheat sheet ကို အသုံးပြုနိုင်ပြီး classifier များအား ပိုမို ကန့်သတ်နိုင်စေသည် (classifier အတွက် alternative term ဖြစ်သည်)။
 
-![ML Map from Scikit-learn](../../../../4-Classification/3-Classifiers-2/images/map.png)
-> Tip: [visit this map online](https://scikit-learn.org/stable/tutorial/machine_learning_map/) နှင့် path ကို click လုပ်ပြီး documentation ကိုဖတ်ပါ။
+![ML Map from Scikit-learn](../../../../translated_images/my/map.e963a6a51349425a.webp)
+> အကြံပြုချက်- [ဤမြေပုံကို အွန်လိုင်းတွင် သွားရောက်ကြည့်ရှုပါ](https://scikit-learn.org/stable/tutorial/machine_learning_map/)၊ လမ်းကြောင်းအလိုက် နှိပ်၍ စာရွက်စာတမ်းများကို ဖတ်ရှုနိုင်ပါသည်။
 
 ### အစီအစဉ်
 
-ဒီ map ဟာ သင့် data ကို ရှင်းလင်းစွာနားလည်ပြီးတဲ့အခါမှာ အလွန်အသုံးဝင်ပါတယ်။ သင့် data ကို 'လမ်း' တစ်ခုလိုဖြတ်သန်းပြီး ဆုံးဖြတ်ချက်ကို ရယူနိုင်ပါတယ်။
+ဒီမြေပုံသည် သင်၏ ဒေတာကို လုံးလုံးလင်လင် သိရှိပြီးနောက်တွင် ဦးတည်ချက်ချရာတွင် အလွန်အသုံးဝင်သည်။
 
-- ကျွန်တော်တို့မှာ >50 samples ရှိပါတယ်
-- ကျွန်တော်တို့ category တစ်ခုကို predict လုပ်ချင်ပါတယ်
-- ကျွန်တော်တို့မှာ labeled data ရှိပါတယ်
-- ကျွန်တော်တို့မှာ 100K samples ထက်နည်းပါတယ်
-- ✨ Linear SVC ကို ရွေးချယ်နိုင်ပါတယ်
-- အဲဒါမအောင်မြင်ရင်၊ ကျွန်တော်တို့မှာ numeric data ရှိတဲ့အတွက်
-    - ✨ KNeighbors Classifier ကို စမ်းကြည့်နိုင်ပါတယ်
-      - အဲဒါမအောင်မြင်ရင် ✨ SVC နဲ့ ✨ Ensemble Classifiers ကို စမ်းကြည့်ပါ
+- မည်သည့်နောက်ထပ် sampling များ > 50ရှိသည်
+- အမျိုးအစားတစ်ခုကို ခန့်မှန်းလိုသည်
+- label အချက်အလက်ရှိသည်
+- sampling များ < 100K ဖြစ်သည်
+- ✨ Linear SVC ကို ရွေးချယ်နိုင်သည်
+- အကယ်၍ မအောင်မြင်ပါက, ဂဏန်းဒေတာရှိသောကြောင့်
+  - ✨ KNeighbors Classifier ကို စမ်းသပ်နိုင်သည်
+    - မအောင်မြင်ပါက ✨ SVC နှင့် ✨ Ensemble Classifiers ကို စမ်းသပ်နိုင်သည်
 
-ဒီလမ်းကြောင်းဟာ အလွန်အသုံးဝင်ပါတယ်။
+ဒီလမ်းကြောင်းသည် လိုက်နာရန်အတွက် အလွန် အကျိုးဖြစ်ဖွယ် ဖြစ်သည်။
 
-## လေ့ကျင့်မှု - data ကို ခွဲခြားပါ
+## လေ့ကျင့်ခန်း - ဒေတာကို ခွဲခြားမှု
 
-ဒီလမ်းကြောင်းကိုလိုက်ပြီး အသုံးပြုရန် libraries တချို့ကို import လုပ်ရပါမယ်။
+ဒီလမ်းကြောင်းအရ သုံးရန်လိုအပ်သည့် libraries များကို ယနေ့ဆီစတင် အတင်ပါ။
 
-1. လိုအပ်တဲ့ libraries တွေကို Import လုပ်ပါ:
+1. လိုအပ်သော libraries များကို ထည့်သွင်းပါ-
 
     ```python
     from sklearn.neighbors import KNeighborsClassifier
@@ -50,31 +50,31 @@
     import numpy as np
     ```
 
-1. သင့် training data နဲ့ test data ကို ခွဲခြားပါ:
+1. သင်၏ သင်ကြားမှုနှင့် စမ်းသပ်မှု ဒေတာကို ခွဲပါ-
 
     ```python
-    X_train, X_test, y_train, y_test = train_test_split(cuisines_feature_df, cuisines_label_df, test_size=0.3)
+    X_train, X_test, y_train, y_test = train_test_split(cuisines_features_df, cuisines_label_df, test_size=0.3)
     ```
 
 ## Linear SVC classifier
 
-Support-Vector clustering (SVC) ဟာ Support-Vector machines ML techniques မျိုးရိုးရဲ့ အစိတ်အပိုင်းတစ်ခုဖြစ်ပါတယ် (အောက်မှာပိုမိုလေ့လာနိုင်ပါတယ်)။ ဒီနည်းလမ်းမှာ label တွေကို cluster လုပ်ဖို့ 'kernel' ကိုရွေးချယ်နိုင်ပါတယ်။ 'C' parameter ဟာ 'regularization' ကိုဆိုလိုပြီး parameters တွေ၏ အကျိုးသက်ရောက်မှုကို ထိန်းညှိပေးပါတယ်။ Kernel ဟာ [အမျိုးမျိုး](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC) ရှိနိုင်ပြီး၊ ဒီမှာ 'linear' ကို set လုပ်ထားပါတယ်။ Probability ဟာ 'false' အဖြစ် default ဖြစ်ပြီး၊ ဒီမှာ 'true' ကို set လုပ်ထားပါတယ်။ Random state ကို '0' အဖြစ် set လုပ်ထားပြီး data ကို shuffle လုပ်ကာ probabilities ရယူထားပါတယ်။
+Support-Vector clustering (SVC) သည် Support-Vector machine များ၏ ကလေး ဖြစ်ပြီး ML နည်းပညာမျိုးဆက်တစ်ခုဖြစ်သည် (အောက်တွင် ပိုမိုလေ့လာပါ)။ ဤနည်း၊ သင်သည် 'kernel' ကို ရွေးချယ်ကာ labels များကို ဘယ်လို အုပ်စုဖွဲ့မည်ကိုဆုံးဖြတ်နိုင်သည်။ 'C' parameter သည် 'regularization' ကို ဆိုလိုပြီး သတ်မှတ်မှု parameter များ၏ သက်ရောက်မှုကို ထိန်းညှိပေးသည်။ kernel သည် [အမျိုးမျိုး](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC) ရှိသော်လည်း; ဒီမှာ ဗဟိုထားသည်မှာ 'linear' ဖြစ်ပြီး linear SVC ကိုအသုံးချရန်ဖြစ်သည်။ Probability သည် မပေးထားပါက 'false' ဖြစ်သည်; ဒီမှာ ကို 'true' သတ်မှတ်ထားပြီး probability အခြေခံခန့်မှန်းမှုများပိုရရှိစေရန် ဖြစ်သည်။ random state ကို '0' သတ်မှတ်၍ ဒေတာတွေ စီမံချက်တည့် စောင့်ရှောက်ခြင်းအတွက်ဖြစ်သည်။
 
-### လေ့ကျင့်မှု - Linear SVC ကို အသုံးပြုပါ
+### လေ့ကျင့်ခန်း - Linear SVC ကို အသုံးပြုပါ
 
-Classifiers array တစ်ခုကို စတင်ဖန်တီးပါ။ စမ်းသပ်မှုအတိုင်း ဒီ array ကို တိုးချဲ့သွားပါမယ်။
+စတင်ရန် classifier array တစ်ခုကို ပြုလုပ်ပါ။ စမ်းသပ်မှုကြာလာသည့်အချိန်တွင် ဒီ array ထဲတွင် ဆက်လက် လုပ်ဆောင်သွားမည်။
 
-1. Linear SVC ကို စတင်ပါ:
+1. Linear SVC ဖြင့် စတင်ပါ-
 
     ```python
     C = 10
-    # Create different classifiers.
+    # ကွဲပြားတဲ့ classifier များကို ဖန်တီးပါ။
     classifiers = {
         'Linear SVC': SVC(kernel='linear', C=C, probability=True,random_state=0)
     }
     ```
 
-2. Linear SVC ကို အသုံးပြုပြီး model ကို train လုပ်ပြီး report ကို print ထုတ်ပါ:
+2. Linear SVC ကို အသုံးပြု၍ မော်ဒယ်ကို လေ့ကျင့်ပြီး အစီရင်ခံစာ ထုတ်ရန်-
 
     ```python
     n_classifiers = len(classifiers)
@@ -88,7 +88,7 @@ Classifiers array တစ်ခုကို စတင်ဖန်တီးပါ�
         print(classification_report(y_test,y_pred))
     ```
 
-    ရလဒ်က အတော်လည်းကောင်းပါတယ်:
+    ရလဒ်က အလွန်ကောင်းမွန်သည်-
 
     ```output
     Accuracy (train) for Linear SVC: 78.6% 
@@ -107,19 +107,19 @@ Classifiers array တစ်ခုကို စတင်ဖန်တီးပါ�
 
 ## K-Neighbors classifier
 
-K-Neighbors ဟာ ML methods "neighbors" မျိုးရိုးရဲ့ အစိတ်အပိုင်းတစ်ခုဖြစ်ပြီး supervised နဲ့ unsupervised learning နှစ်မျိုးလုံးမှာ အသုံးပြုနိုင်ပါတယ်။ ဒီနည်းလမ်းမှာ point အရေအတွက်ကို predefined လုပ်ပြီး၊ generalized labels တွေကို predict လုပ်နိုင်ဖို့ data တွေကို အဲဒီ point တွေကို စုစည်းထားပါတယ်။
+K-Neighbors သည် "neighbors" မျိုးဆက် ထဲရှိ ML နည်းလမ်းတစ်ခုဖြစ်ပြီး supervised နှင့် unsupervised learning နှစ်မျိုးလုံး အသုံးပြုနိုင်သည်။ ဤနည်းလမ်းတွင် ဖတ်ရှုသူများ စုစည်းထားသည့် အချက်အလက်များ၏ အရေအတွက်ကို သတ်မှတ်ပြီး အချက်အလက်များကို ဤအချက်အလက်များနားတွင် စုစည်းကာ အခြေခံ၍ label များကို ခန့်မှန်းသည်။
 
-### လေ့ကျင့်မှု - K-Neighbors classifier ကို အသုံးပြုပါ
+### လေ့ကျင့်ခန်း - K-Neighbors classifier ကို အသုံးပြုပါ
 
-အရင် classifier က data နဲ့ အတော်လည်းကောင်းပါတယ်၊ ဒါပေမယ့် accuracy ပိုမိုကောင်းနိုင်မလား စမ်းကြည့်ပါ။ K-Neighbors classifier ကို စမ်းသပ်ပါ။
+ယခင် classifier သည် ဒေတာနှင့် အတူ ကောင်းမွန်စွာ လုပ်ဆောင်သည်၊ ဒါပေမယ့် တိကျမှန်ကန်မှု ပိုမိုကောင်းစေဖို့ လုပ်နိုင်သည်။ K-Neighbors classifier ကို စမ်းကြည့်ပါ။
 
-1. Linear SVC item အပြီးမှာ comma ထည့်ပြီး classifier array ကို တိုးချဲ့ပါ:
+1. သင်၏ classifier array တွင် (Linear SVC မှာ comma ထည့်ပါ) အတန်းတစ်ကြောင်း ထည့်ပါ-
 
     ```python
     'KNN classifier': KNeighborsClassifier(C),
     ```
 
-    ရလဒ်က နည်းနည်းပိုမိုဆိုးပါတယ်:
+    ရလဒ်က နည်းနည်း ပိုမဆိုးသည်-
 
     ```output
     Accuracy (train) for KNN classifier: 73.8% 
@@ -136,23 +136,23 @@ K-Neighbors ဟာ ML methods "neighbors" မျိုးရိုးရဲ့ �
     weighted avg       0.76      0.74      0.74      1199
     ```
 
-    ✅ [K-Neighbors](https://scikit-learn.org/stable/modules/neighbors.html#neighbors) ကိုလေ့လာပါ
+    ✅ [K-Neighbors](https://scikit-learn.org/stable/modules/neighbors.html#neighbors) အကြောင်း သင်ယူရန်
 
 ## Support Vector Classifier
 
-Support-Vector classifiers ဟာ [Support-Vector Machine](https://wikipedia.org/wiki/Support-vector_machine) မျိုးရိုးရဲ့ အစိတ်အပိုင်းတစ်ခုဖြစ်ပြီး classification နဲ့ regression tasks တွေမှာ အသုံးပြုနိုင်ပါတယ်။ SVMs ဟာ "training examples တွေကို အာကာသထဲမှာ point အဖြစ် map လုပ်ပြီး" category နှစ်ခုကြားအကွာအဝေးကို maximize လုပ်ပါတယ်။ နောက်ထပ် data တွေကို အဲဒီအာကာသထဲ map လုပ်ပြီး category ကို predict လုပ်နိုင်ပါတယ်။
+Support-Vector classifier များသည် [Support-Vector Machine](https://wikipedia.org/wiki/Support-vector_machine) မျိုးဆက် ML နည်းလမ်းတစ်ခုဖြစ်ပြီး classification နှင့် regression လုပ်ငန်းများတွင် အသုံးပြုသည်။ SVM များသည် "သင်ကြားမှုဥပမာများကို အကွက်အတွင်း အချက်အလက်များအဖြစ် မှတ်တမ်းတင်ပြီး" အမျိုးအစား နှစ်ခုကြား အကွာအဝေးကို အများဆုံး ပြုလုပ်သည်။ နောက်ထပ်ရလာသော ဒေတာများသည် ဒီအကွက်တွင် စံချိန်ထားပြီး ထိုအမျိုးအစား ခန့်မှန်းမှု ခံယူသည်။
 
-### လေ့ကျင့်မှု - Support Vector Classifier ကို အသုံးပြုပါ
+### လေ့ကျင့်ခန်း - Support Vector Classifier ကို အသုံးပြုပါ
 
-Support Vector Classifier ကို အသုံးပြုပြီး accuracy ပိုမိုကောင်းနိုင်မလား စမ်းကြည့်ပါ။
+Support Vector Classifier နှင့် တိကျမှန်ကန်မှု ပိုမိုကောင်းစေဖို့ စမ်းကြည့်လိုက်ပါ။
 
-1. K-Neighbors item အပြီးမှာ comma ထည့်ပြီး ဒီ line ကို ထည့်ပါ:
+1. K-Neighbors item မှ comma ထည့်ပြီး အောက်ပါလိုင်းကို ထည့်ပါ-
 
     ```python
     'SVC': SVC(),
     ```
 
-    ရလဒ်က အတော်လည်းကောင်းပါတယ်!
+    ရလဒ်က အလွန်ကောင်းမွန်သည်!
 
     ```output
     Accuracy (train) for SVC: 83.2% 
@@ -169,18 +169,18 @@ Support Vector Classifier ကို အသုံးပြုပြီး accurac
     weighted avg       0.84      0.83      0.83      1199
     ```
 
-    ✅ [Support-Vectors](https://scikit-learn.org/stable/modules/svm.html#svm) ကိုလေ့လာပါ
+    ✅ [Support-Vectors](https://scikit-learn.org/stable/modules/svm.html#svm) အကြောင်း သင်ယူရန်
 
 ## Ensemble Classifiers
 
-အရင် test က အတော်လည်းကောင်းပါတယ်၊ ဒါပေမယ့် လမ်းကြောင်းကို အဆုံးထိလိုက်ကြည့်ပါ။ 'Ensemble Classifiers' ကို စမ်းသပ်ကြည့်ပါ၊ အထူးသဖြင့် Random Forest နဲ့ AdaBoost:
+ယခင် စမ်းသပ်မှုက အလွန်ကောင်းမှုရှိသော်လည်း၊ လမ်းကြောင်းအား အဆုံးတိုင်ထိ လိုက်နာကြည့်ပါမည်။ 'Ensemble Classifiers', အထူးသဖြင့် Random Forest နှင့် AdaBoost ကို စမ်းသပ်ပါ-
 
 ```python
   'RFST': RandomForestClassifier(n_estimators=100),
   'ADA': AdaBoostClassifier(n_estimators=100)
 ```
 
-ရလဒ်က အတော်လည်းကောင်းပါတယ်၊ အထူးသဖြင့် Random Forest:
+ရလဒ်က အထူးသဖြင့် Random Forest မှာ အလွန်ကောင်းသည်-
 
 ```output
 Accuracy (train) for RFST: 84.5% 
@@ -210,31 +210,33 @@ Accuracy (train) for ADA: 72.4%
 weighted avg       0.73      0.72      0.72      1199
 ```
 
-✅ [Ensemble Classifiers](https://scikit-learn.org/stable/modules/ensemble.html) ကိုလေ့လာပါ
+✅ [Ensemble Classifiers](https://scikit-learn.org/stable/modules/ensemble.html) အကြောင်း သင်ယူပါ
 
-Machine Learning ရဲ့ ဒီနည်းလမ်းဟာ "base estimators အများအပြားရဲ့ prediction တွေကို ပေါင်းစပ်ပြီး" model quality ကို တိုးတက်စေပါတယ်။ ကျွန်တော်တို့ရဲ့ ဥပမာမှာ Random Trees နဲ့ AdaBoost ကို အသုံးပြုထားပါတယ်။
+ဒီ Machine Learning နည်းလမ်းသည် "အခြေခံ လေ့လာမှုနည်းလမ်းတစ်ချို့၏ ခန့်မှန်းချက်များကို ပေါင်းစည်းခြင်း" ဖြင့် မော်ဒယ်အရည်အသွေးကို တိုးတက်စေသည်။ ဥပမာမှာ Random Trees နှင့် AdaBoost ကို အသုံးပြုခဲ့သည်။
 
-- [Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#forest) ဟာ averaging method ဖြစ်ပြီး၊ 'decision trees' တွေကို 'forest' တစ်ခုအဖြစ် တည်ဆောက်ကာ randomness ကို ထည့်သွင်းပြီး overfitting ကိုရှောင်ရှားပါတယ်။ n_estimators parameter ကို trees အရေအတွက်အဖြစ် set လုပ်ထားပါတယ်။
+- [Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#forest) သည် averaging နည်းလမ်းဖြစ်ပြီး random ထည့်သွင်းထားသော 'decision trees' များဆောက်ပြီး overfitting မဖြစ်အောင် ကြိုးပမ်းသည်။ n_estimators parameter သည် သစ်ပင် အရေအတွက်ဖြစ်သည်။
 
-- [AdaBoost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) ဟာ dataset ကို classifier တစ်ခုနဲ့ fit လုပ်ပြီး၊ အဲဒီ classifier ကို dataset အပေါ်မှာ ထပ်မံ fit လုပ်ပါတယ်။ အမှားဖြစ်တဲ့ items တွေ၏ weight ကို အာရုံစိုက်ပြီး၊ နောက်ထပ် classifier အတွက် fit ကို ပြင်ဆင်ပေးပါတယ်။
+- [AdaBoost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) သည် dataset အတွက် classifier တစ်ခု အသုံးပြုကာ ထို classifier ၏ များစွာကို ထပ်မံခေါ်ယူကာ မမှန်ကန်စွာ ခွဲခြားထားသည့် အချက်အလက်များ အလေးချိန်ပေး ပြင်ဆင်ရန် ကြိုးပမ်းသည်။
 
 ---
 
-## 🚀Challenge
+## 🚀 စိန်ခေါ်မှု
 
-ဒီ techniques တစ်ခုချင်းစီမှာ parameters အများအပြားရှိပြီး၊ default parameters တွေကို tweak လုပ်နိုင်ပါတယ်။ တစ်ခုချင်းစီရဲ့ default parameters တွေကို လေ့လာပြီး၊ parameters တွေကို tweak လုပ်ရင် model quality အပေါ် ဘယ်လိုသက်ရောက်မှုရှိမလဲ စဉ်းစားပါ။
+နည်းလမ်းတိုင်းတွင် parameter များ အများကြီးရှိပြီး သင် tweak လုပ်နိုင်သည်။ parameter များ၏ default တန်ဖိုးများကို လေ့လာပြီး parameter tuning မှ မော်ဒယ် အရည်အသွေး တိုးတက်မှုအတွက် ဘာကို ဆိုလိုလိုက်လိမ့်မည်ဟု စဥ်းစားကြည့်ပါ။
 
-## [Post-lecture quiz](https://ff-quizzes.netlify.app/en/ml/)
+## [သင်ခန်းစာပြီးနောက် မေးခွန်းစစ်](https://ff-quizzes.netlify.app/en/ml/)
 
-## Review & Self Study
+## ပြန်လည်ကြည့်ရှုမှု & ကိုယ်တိုင်လေ့လာမှု
 
-ဒီ lessons တွေမှာ jargon အများကြီးပါဝင်ပါတယ်၊ [ဒီစာရင်း](https://docs.microsoft.com/dotnet/machine-learning/resources/glossary?WT.mc_id=academic-77952-leestott) ကိုကြည့်ပြီး terminology အသုံးဝင်တဲ့အရာတွေကို ပြန်လည်သုံးသပ်ပါ။
+ဤသင်ခန်းစာများတွင် စကားလုံးအသုံးများနေသောကြောင့် [ဒီစာရင်း](https://docs.microsoft.com/dotnet/machine-learning/resources/glossary?WT.mc_id=academic-77952-leestott) တွင် ပါသည့် အသုံးဝင်သော 용어များကို အကောင်းဆုံး ပြန်လည် သုံးသပ်ပါ။
 
-## Assignment 
+## အပ်ဒိတ်
 
 [Parameter play](assignment.md)
 
 ---
 
-**အကြောင်းကြားချက်**:  
-ဤစာရွက်စာတမ်းကို AI ဘာသာပြန်ဝန်ဆောင်မှု [Co-op Translator](https://github.com/Azure/co-op-translator) ကို အသုံးပြု၍ ဘာသာပြန်ထားပါသည်။ ကျွန်ုပ်တို့သည် တိကျမှုအတွက် ကြိုးစားနေပါသော်လည်း၊ အလိုအလျောက် ဘာသာပြန်မှုများတွင် အမှားများ သို့မဟုတ် မတိကျမှုများ ပါရှိနိုင်သည်ကို သတိပြုပါ။ မူရင်းဘာသာစကားဖြင့် ရေးသားထားသော စာရွက်စာတမ်းကို အာဏာရှိသော ရင်းမြစ်အဖြစ် သတ်မှတ်သင့်ပါသည်။ အရေးကြီးသော အချက်အလက်များအတွက် လူ့ဘာသာပြန်ပညာရှင်များမှ ပရော်ဖက်ရှင်နယ် ဘာသာပြန်မှုကို အကြံပြုပါသည်။ ဤဘာသာပြန်မှုကို အသုံးပြုခြင်းမှ ဖြစ်ပေါ်လာသော အလွဲအမှားများ သို့မဟုတ် အနားလွဲမှုများအတွက် ကျွန်ုပ်တို့သည် တာဝန်မယူပါ။
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**တရားဝင်အကြောင်းကြားချက်**  
+ဤစာတမ်းကို AI ဘာသာပြန်ဝန်ဆောင်မှုဖြစ်သော [Co-op Translator](https://github.com/Azure/co-op-translator) အသုံးပြု၍ ဘာသာပြန်ထားပါသည်။ ကျွန်ုပ်တို့သည် တိကျမှုအတွက် ကြိုးပမ်း၍ဖြစ်သော်လည်း၊ အလိုအလျောက် ဘာသာပြန်ခြင်းက အမှားများ သို့မဟုတ် မှန်ကန်မှုလျော့နည်းမှုများ ပါဝင်နိုင်ကြောင်း သတိပြုပါရစေ။ မူလစာတမ်းကို မူလဘာသာဖြင့်သာ အတည်ပြုရမည့် အရင်းမြစ်အဖြစ် ယူဆရမည်ဖြစ်သည်။ အရေးကြီးသော အချက်အလက်များအတွက် အတွေ့အကြုံရှိ လူ့ဘာသာပြန်ကျွမ်းကျင်သူမှ ဘာသာပြန်ခြင်းကို အကြံပြုပါသည်။ ဤဘာသာပြန်ချက်အား အသုံးပြုမှုကြောင့် ဖြစ်ပေါ်နိုင်သည့် နားလည်မှု မမှန်ခြင်းများအတွက် ကျွန်ုပ်တို့သည် တာဝန်မဲ့ပါကြောင်း သတိပေးအပ်ပါသည်။
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

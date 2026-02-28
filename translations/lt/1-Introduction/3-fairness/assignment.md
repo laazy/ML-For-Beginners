@@ -1,16 +1,18 @@
-# Susipažinkite su Atsakingo DI įrankių rinkiniu
+# Ištyrkite Atsakingo DI įrankių rinkinį
 
-## Instrukcijos
+## Nurodymai
 
-Šioje pamokoje sužinojote apie Atsakingo DI įrankių rinkinį – „atvirojo kodo, bendruomenės palaikomą projektą, skirtą padėti duomenų mokslininkams analizuoti ir tobulinti DI sistemas.“ Šiai užduočiai atlikti išnagrinėkite vieną iš RAI įrankių rinkinio [užrašinių](https://github.com/microsoft/responsible-ai-toolbox/blob/main/notebooks/responsibleaidashboard/getting-started.ipynb) ir pateikite savo išvadas rašytiniame darbe arba pristatyme.
+Šioje pamokoje sužinojote apie Atsakingo DI įrankių rinkinį, „atviro kodo, bendruomenės valdoma projektą, padedantį duomenų mokslininkams analizuoti ir tobulinti DI sistemas.“ Šiam užduoties atlikimui ištyrinėkite vieną iš RAI Toolbox [užrašų knygelių](https://github.com/microsoft/responsible-ai-toolbox/blob/main/notebooks/responsibleaidashboard/tabular/getting-started.ipynb) ir pateikite savo išvadas rašto darbe arba pristatyme.
 
-## Vertinimo kriterijai
+## Vertinimo lentelė
 
-| Kriterijai | Puikiai | Pakankamai | Reikia tobulinti |
-| ---------- | ------- | ---------- | ---------------- |
-|            | Pateiktas rašytinis darbas arba „PowerPoint“ pristatymas, kuriame aptariamos Fairlearn sistemos, vykdyta užrašinė ir išvados, padarytos ją vykdant | Pateiktas rašytinis darbas be išvadų | Rašytinis darbas nepateiktas |
+| Kriterijus | Puikiai | Patenkinamai | Reikia patobulinimų |
+| -------- | --------- | -------- | ----------------- |
+|          | Pateikiamas rašto darbas arba „PowerPoint“ pristatymas, aptariantis Fairlearn sistemas, paleistą užrašų knygelę ir išvadas, padarytas ją paleidus        |   Pateikiamas rašto darbas be išvadų       |  Rašto darbo nėra                 |
 
 ---
 
-**Atsakomybės apribojimas**:  
-Šis dokumentas buvo išverstas naudojant AI vertimo paslaugą [Co-op Translator](https://github.com/Azure/co-op-translator). Nors siekiame tikslumo, prašome atkreipti dėmesį, kad automatiniai vertimai gali turėti klaidų ar netikslumų. Originalus dokumentas jo gimtąja kalba turėtų būti laikomas autoritetingu šaltiniu. Kritinei informacijai rekomenduojama profesionali žmogaus vertimo paslauga. Mes neprisiimame atsakomybės už nesusipratimus ar klaidingus interpretavimus, atsiradusius dėl šio vertimo naudojimo.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Atsakomybės išlyginimas**:
+Šis dokumentas buvo išverstas naudojant dirbtinio intelekto vertimo paslaugą [Co-op Translator](https://github.com/Azure/co-op-translator). Nors stengiamės užtikrinti tikslumą, atkreipkite dėmesį, kad automatizuoti vertimai gali turėti klaidų ar netikslumų. Originalus dokumentas gimtąja kalba turėtų būti laikomas autoritetingu šaltiniu. Kritinei informacijai rekomenduojamas profesionalus žmogaus vertimas. Neatsakome už jokius nesusipratimus ar klaidingus aiškinimus, kylančius dėl šio vertimo naudojimo.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->
