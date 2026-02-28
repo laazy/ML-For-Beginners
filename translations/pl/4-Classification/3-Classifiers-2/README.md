@@ -1,42 +1,42 @@
 # Klasyfikatory kuchni 2
 
-W tej drugiej lekcji dotyczącej klasyfikacji poznasz więcej sposobów klasyfikowania danych numerycznych. Dowiesz się również, jakie są konsekwencje wyboru jednego klasyfikatora zamiast innego.
+W tej drugiej lekcji klasyfikacji poznasz więcej sposobów klasyfikacji danych numerycznych. Dowiesz się również o konsekwencjach wyboru jednego klasyfikatora zamiast drugiego.
 
 ## [Quiz przed wykładem](https://ff-quizzes.netlify.app/en/ml/)
 
 ### Wymagania wstępne
 
-Zakładamy, że ukończyłeś poprzednie lekcje i masz wyczyszczony zbiór danych w folderze `data`, nazwany _cleaned_cuisines.csv_, znajdujący się w głównym katalogu tego czteroczęściowego kursu.
+Zakładamy, że ukończyłeś poprzednie lekcje i masz wyczyszczony zestaw danych w folderze `data` o nazwie _cleaned_cuisines.csv_ w katalogu głównym tego folderu z 4 lekcjami.
 
 ### Przygotowanie
 
-Załadowaliśmy Twój plik _notebook.ipynb_ z wyczyszczonym zbiorem danych i podzieliliśmy go na ramki danych X i y, gotowe do procesu budowy modelu.
+Wczytaliśmy do twojego pliku _notebook.ipynb_ wyczyszczony zestaw danych i podzieliliśmy go na ramki danych X i y, gotowe do procesu budowania modelu.
 
 ## Mapa klasyfikacji
 
-Wcześniej nauczyłeś się o różnych opcjach klasyfikacji danych, korzystając z ściągi Microsoftu. Scikit-learn oferuje podobną, ale bardziej szczegółową ściągę, która może pomóc jeszcze bardziej zawęzić wybór estymatorów (inaczej klasyfikatorów):
+Wcześniej poznałeś różne opcje klasyfikacji danych za pomocą ściągawki Microsoftu. Scikit-learn oferuje podobną, ale bardziej szczegółową ściągawkę, która może jeszcze bardziej zawęzić wybór twoich estymatorów (inna nazwa dla klasyfikatorów):
 
-![Mapa ML ze Scikit-learn](../../../../4-Classification/3-Classifiers-2/images/map.png)
-> Wskazówka: [odwiedź tę mapę online](https://scikit-learn.org/stable/tutorial/machine_learning_map/) i klikaj po ścieżkach, aby przeczytać dokumentację.
+![ML Map from Scikit-learn](../../../../translated_images/pl/map.e963a6a51349425a.webp)
+> Wskazówka: [odwiedź tę mapę online](https://scikit-learn.org/stable/tutorial/machine_learning_map/) i klikaj po ścieżce, aby czytać dokumentację.
 
 ### Plan
 
-Ta mapa jest bardzo pomocna, gdy masz jasne zrozumienie swoich danych, ponieważ możesz „przechodzić” jej ścieżkami, aby podjąć decyzję:
+Ta mapa jest bardzo pomocna, gdy masz jasne zrozumienie swoich danych, ponieważ możesz 'wędrować' jej ścieżkami do decyzji:
 
 - Mamy >50 próbek
 - Chcemy przewidzieć kategorię
-- Mamy dane z etykietami
-- Mamy mniej niż 100 tys. próbek
+- Mamy dane oznaczone
+- Mamy mniej niż 100 tysięcy próbek
 - ✨ Możemy wybrać Linear SVC
-- Jeśli to nie zadziała, ponieważ mamy dane numeryczne:
-    - Możemy spróbować ✨ KNeighbors Classifier 
+- Jeśli to nie zadziała, ponieważ mamy dane numeryczne
+    - Możemy spróbować ✨ KNeighbors Classifier
       - Jeśli to nie zadziała, spróbuj ✨ SVC i ✨ Ensemble Classifiers
 
-To bardzo pomocna ścieżka do naśladowania.
+To bardzo pomocna ścieżka do podążania.
 
-## Ćwiczenie - podziel dane
+## Ćwiczenie - podział danych
 
-Podążając tą ścieżką, powinniśmy zacząć od zaimportowania potrzebnych bibliotek.
+Podążając tą ścieżką, powinniśmy zacząć od zaimportowania kilku potrzebnych bibliotek.
 
 1. Zaimportuj potrzebne biblioteki:
 
@@ -50,31 +50,31 @@ Podążając tą ścieżką, powinniśmy zacząć od zaimportowania potrzebnych 
     import numpy as np
     ```
 
-1. Podziel dane na zestawy treningowe i testowe:
+1. Podziel dane na treningowe i testowe:
 
     ```python
-    X_train, X_test, y_train, y_test = train_test_split(cuisines_feature_df, cuisines_label_df, test_size=0.3)
+    X_train, X_test, y_train, y_test = train_test_split(cuisines_features_df, cuisines_label_df, test_size=0.3)
     ```
 
 ## Klasyfikator Linear SVC
 
-Support-Vector Clustering (SVC) to metoda z rodziny maszyn wektorów nośnych (Support-Vector Machines) w technikach uczenia maszynowego (więcej o nich poniżej). W tej metodzie możesz wybrać „jądro” (kernel), aby zdecydować, jak grupować etykiety. Parametr 'C' odnosi się do 'regularyzacji', która kontroluje wpływ parametrów. Jądro może być jednym z [kilku](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC); tutaj ustawiamy je na 'linear', aby wykorzystać liniowy SVC. Domyślnie prawdopodobieństwo jest ustawione na 'false'; tutaj ustawiamy je na 'true', aby uzyskać oszacowania prawdopodobieństwa. Parametr random state ustawiamy na '0', aby przetasować dane i uzyskać prawdopodobieństwa.
+Support-Vector clustering (SVC) jest techniką z rodziny maszyn wektorów nośnych (ang. Support-Vector machines), o których dowiesz się więcej poniżej. W tej metodzie możesz wybrać 'jądro' decydujące, jak grupować etykiety. Parametr 'C' odnosi się do 'regularizacji', która reguluje wpływ parametrów. Jądro może być jednym z [wielu](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC); tutaj ustawiamy je na 'linear', aby wykorzystać liniowy SVC. Parametr probability domyślnie jest 'false'; tutaj ustawiamy na 'true', aby zebrać oszacowania prawdopodobieństwa. Ustawiamy stan losowy na '0', aby przetasować dane, co pozwala otrzymać prawdopodobieństwa.
 
 ### Ćwiczenie - zastosuj Linear SVC
 
-Zacznij od stworzenia tablicy klasyfikatorów. Będziesz stopniowo dodawać do tej tablicy, testując różne metody.
+Zacznij od stworzenia tablicy klasyfikatorów. Będziesz ją stopniowo uzupełniać podczas testów.
 
 1. Zacznij od Linear SVC:
 
     ```python
     C = 10
-    # Create different classifiers.
+    # Utwórz różne klasyfikatory.
     classifiers = {
         'Linear SVC': SVC(kernel='linear', C=C, probability=True,random_state=0)
     }
     ```
 
-2. Wytrenuj model, używając Linear SVC, i wyświetl raport:
+2. Naucz model przy użyciu Linear SVC i wydrukuj raport:
 
     ```python
     n_classifiers = len(classifiers)
@@ -107,19 +107,19 @@ Zacznij od stworzenia tablicy klasyfikatorów. Będziesz stopniowo dodawać do t
 
 ## Klasyfikator K-Neighbors
 
-K-Neighbors należy do rodziny metod ML „sąsiadów”, które mogą być używane zarówno w uczeniu nadzorowanym, jak i nienadzorowanym. W tej metodzie tworzona jest z góry określona liczba punktów, a dane są grupowane wokół tych punktów, aby można było przewidzieć ogólne etykiety dla danych.
+K-Neighbors należy do rodziny metod "sąsiadów", które można stosować zarówno w uczeniu nadzorowanym, jak i nienadzorowanym. W tej metodzie tworzona jest zdefiniowana liczba punktów, a dane są grupowane wokół tych punktów, tak aby można było przewidzieć uogólnione etykiety dla danych.
 
 ### Ćwiczenie - zastosuj klasyfikator K-Neighbors
 
-Poprzedni klasyfikator był dobry i dobrze działał z danymi, ale może uda się uzyskać lepszą dokładność. Spróbuj klasyfikatora K-Neighbors.
+Poprzedni klasyfikator działał dobrze z danymi, ale może uzyskamy lepszą dokładność. Spróbuj klasyfikatora K-Neighbors.
 
-1. Dodaj linię do swojej tablicy klasyfikatorów (dodaj przecinek po elemencie Linear SVC):
+1. Dodaj linię do tablicy klasyfikatorów (dodaj przecinek po elemencie Linear SVC):
 
     ```python
     'KNN classifier': KNeighborsClassifier(C),
     ```
 
-    Wynik jest trochę gorszy:
+    Wynik jest nieco gorszy:
 
     ```output
     Accuracy (train) for KNN classifier: 73.8% 
@@ -140,11 +140,11 @@ Poprzedni klasyfikator był dobry i dobrze działał z danymi, ale może uda si�
 
 ## Klasyfikator Support Vector
 
-Klasyfikatory Support-Vector należą do rodziny metod ML [Support-Vector Machine](https://wikipedia.org/wiki/Support-vector_machine), które są używane do zadań klasyfikacji i regresji. SVM „mapuje przykłady treningowe na punkty w przestrzeni”, aby zmaksymalizować odległość między dwiema kategoriami. Kolejne dane są mapowane w tej przestrzeni, aby przewidzieć ich kategorię.
+Klasyfikatory support-vector są częścią rodziny metod [Support-Vector Machine](https://wikipedia.org/wiki/Support-vector_machine) stosowanych do zadań klasyfikacji i regresji. SVM „mapuje przykłady treningowe na punkty w przestrzeni”, aby zmaksymalizować odległość między dwiema kategoriami. Kolejne dane są mapowane do tej przestrzeni, aby można było przewidzieć ich kategorię.
 
-### Ćwiczenie - zastosuj klasyfikator Support Vector
+### Ćwiczenie - zastosuj Support Vector Classifier
 
-Spróbujmy uzyskać nieco lepszą dokładność za pomocą klasyfikatora Support Vector.
+Spróbujmy uzyskać nieco lepszą dokładność za pomocą Support Vector Classifier.
 
 1. Dodaj przecinek po elemencie K-Neighbors, a następnie dodaj tę linię:
 
@@ -171,9 +171,9 @@ Spróbujmy uzyskać nieco lepszą dokładność za pomocą klasyfikatora Support
 
     ✅ Dowiedz się więcej o [Support-Vectors](https://scikit-learn.org/stable/modules/svm.html#svm)
 
-## Klasyfikatory zespołowe (Ensemble Classifiers)
+## Klasyfikatory zespołowe (Ensemble)
 
-Podążajmy ścieżką do samego końca, mimo że poprzedni test był całkiem dobry. Wypróbujmy kilka klasyfikatorów zespołowych, w szczególności Random Forest i AdaBoost:
+Podążmy ścieżką aż do końca, chociaż poprzedni test był całkiem dobry. Spróbujmy kilku 'klasyfikatorów zespołowych', w szczególności Random Forest i AdaBoost:
 
 ```python
   'RFST': RandomForestClassifier(n_estimators=100),
@@ -210,31 +210,33 @@ Accuracy (train) for ADA: 72.4%
 weighted avg       0.73      0.72      0.72      1199
 ```
 
-✅ Dowiedz się więcej o [Klasyfikatorach zespołowych](https://scikit-learn.org/stable/modules/ensemble.html)
+✅ Dowiedz się o [Klasyfikatorach zespołowych](https://scikit-learn.org/stable/modules/ensemble.html)
 
-Ta metoda uczenia maszynowego „łączy przewidywania kilku podstawowych estymatorów”, aby poprawić jakość modelu. W naszym przykładzie użyliśmy Random Trees i AdaBoost. 
+Ta metoda uczenia maszynowego „łączy predykcje kilku bazowych estymatorów”, aby poprawić jakość modelu. W naszym przykładzie użyliśmy drzew losowych i AdaBoost.
 
-- [Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#forest), metoda uśredniania, buduje „las” „drzew decyzyjnych” z elementami losowości, aby uniknąć przeuczenia. Parametr n_estimators określa liczbę drzew.
+- [Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#forest), metoda uśredniająca, buduje 'las' 'drzew decyzyjnych' z elementem losowości, aby uniknąć przeuczenia. Parametr n_estimators określa liczbę drzew.
 
-- [AdaBoost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) dopasowuje klasyfikator do zbioru danych, a następnie dopasowuje kopie tego klasyfikatora do tego samego zbioru danych. Skupia się na wagach błędnie sklasyfikowanych elementów i dostosowuje dopasowanie kolejnego klasyfikatora, aby je poprawić.
+- [AdaBoost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) dopasowuje klasyfikator do zestawu danych, a następnie dopasowuje kopie tego klasyfikatora do tego samego zestawu. Skupia się na wagach błędnie sklasyfikowanych elementów i dostosowuje dopasowanie dla kolejnego klasyfikatora, aby to poprawić.
 
 ---
 
-## 🚀 Wyzwanie
+## 🚀Wyzwanie
 
-Każda z tych technik ma dużą liczbę parametrów, które możesz dostosować. Zbadaj domyślne parametry każdej z nich i zastanów się, co zmiana tych parametrów oznaczałaby dla jakości modelu.
+Każda z tych technik ma dużą liczbę parametrów, które możesz dostosować. Zbadaj domyślne parametry każdego z nich i zastanów się, co zmiana tych parametrów mogłaby oznaczać dla jakości modelu.
 
 ## [Quiz po wykładzie](https://ff-quizzes.netlify.app/en/ml/)
 
-## Przegląd i samodzielna nauka
+## Powtórka i samodzielna nauka
 
-W tych lekcjach pojawia się wiele żargonu, więc poświęć chwilę, aby przejrzeć [tę listę](https://docs.microsoft.com/dotnet/machine-learning/resources/glossary?WT.mc_id=academic-77952-leestott) przydatnej terminologii!
+W tych lekcjach jest dużo żargonu, więc poświęć chwilę na przegląd [tej listy](https://docs.microsoft.com/dotnet/machine-learning/resources/glossary?WT.mc_id=academic-77952-leestott) przydatnej terminologii!
 
-## Zadanie 
+## Zadanie
 
 [Zabawa z parametrami](assignment.md)
 
 ---
 
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
 **Zastrzeżenie**:  
-Ten dokument został przetłumaczony za pomocą usługi tłumaczeniowej AI [Co-op Translator](https://github.com/Azure/co-op-translator). Chociaż dokładamy wszelkich starań, aby tłumaczenie było precyzyjne, prosimy pamiętać, że automatyczne tłumaczenia mogą zawierać błędy lub nieścisłości. Oryginalny dokument w jego rodzimym języku powinien być uznawany za wiarygodne źródło. W przypadku informacji o krytycznym znaczeniu zaleca się skorzystanie z profesjonalnego tłumaczenia wykonanego przez człowieka. Nie ponosimy odpowiedzialności za jakiekolwiek nieporozumienia lub błędne interpretacje wynikające z korzystania z tego tłumaczenia.
+Ten dokument został przetłumaczony przy użyciu automatycznej usługi tłumaczeniowej [Co-op Translator](https://github.com/Azure/co-op-translator). Mimo że dążymy do dokładności, prosimy mieć na uwadze, że tłumaczenia automatyczne mogą zawierać błędy lub nieścisłości. Oryginalny dokument w języku macierzystym należy uznawać za źródło autorytatywne. W przypadku krytycznych informacji zalecane jest skorzystanie z profesjonalnego tłumaczenia wykonanego przez człowieka. Nie ponosimy odpowiedzialności za jakiekolwiek nieporozumienia lub błędne interpretacje wynikające z korzystania z tego tłumaczenia.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->
