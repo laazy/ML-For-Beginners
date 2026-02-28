@@ -1,44 +1,44 @@
-# Köögi klassifikaatorid 2
+# Köögikliidid 2
 
-Selles teises klassifikatsiooniõppetunnis uurid rohkem viise, kuidas klassifitseerida numbrilisi andmeid. Samuti õpid, millised on tagajärjed ühe klassifikaatori valimisel teise asemel.
+Selles teises klassifitseerimise õppetükis uurite rohkem viise, kuidas numbrilisi andmeid klassifitseerida. Samuti õpite, millised on tagajärjed ühe klassifikaatori valimisel teise asemel.
 
-## [Eelloengu viktoriin](https://ff-quizzes.netlify.app/en/ml/)
+## [Eel-loengu viktoriin](https://ff-quizzes.netlify.app/en/ml/)
 
-### Eeldused
+### Eeltingimus
 
-Eeldame, et oled läbinud eelnevad õppetunnid ja sul on puhastatud andmestik kaustas `data`, mille nimi on _cleaned_cuisines.csv_ ja mis asub selle nelja õppetunni kausta juurikas.
+Eeldame, et olete lõpetanud eelnevad õppetükid ja teil on puhas andmestik kaustas `data` nimega _cleaned_cuisines.csv_ selle nelja õppetüki kausta juures.
 
 ### Ettevalmistus
 
-Oleme sinu _notebook.ipynb_ faili laadinud puhastatud andmestikuga ja jaganud selle X ja y andmeraamideks, mis on valmis mudeli loomise protsessiks.
+Oleme laadinud teie _notebook.ipynb_ faili puhta andmestikuga ning jaganud selle X ja y andmeraamistikeks, valmis mudeli loomise protsessiks.
 
-## Klassifikatsiooni kaart
+## Klassifitseerimise kaart
 
-Eelnevalt õppisid erinevaid võimalusi andmete klassifitseerimiseks, kasutades Microsofti spikrit. Scikit-learn pakub sarnast, kuid detailsemat spikrit, mis aitab veelgi täpsemalt valida sobivaid hindajaid (teine termin klassifikaatorite kohta):
+Varem õppisite, millised võimalused teil on andmete klassifitseerimiseks Microsofti petutabelit kasutades. Scikit-learn pakub sarnast, kuid detailsemat petutabelit, mis aitab teil veelgi täpsemalt kitsendada oma hinnanguid (teine nimetus klassifikaatorite kohta):
 
-![ML kaart Scikit-learnilt](../../../../translated_images/et/map.e963a6a51349425a.webp)
-> Näpunäide: [vaata seda kaarti veebis](https://scikit-learn.org/stable/tutorial/machine_learning_map/) ja klõpsa teekonnal, et lugeda dokumentatsiooni.
+![ML Map from Scikit-learn](../../../../translated_images/et/map.e963a6a51349425a.webp)
+> Näpunäide: [külastage seda kaarti veebis](https://scikit-learn.org/stable/tutorial/machine_learning_map/) ja klõpsake rada, et lugeda dokumentatsiooni.
 
 ### Plaan
 
-See kaart on väga kasulik, kui sul on selge arusaam oma andmetest, kuna saad selle teekonnal liikuda otsuse suunas:
+See kaart on väga abiks, kui teil on andmetest selge arusaam, sest saate selle radadel "liikuda" otsuse tegemiseks:
 
-- Meil on >50 näidet
-- Tahame ennustada kategooriat
+- Meil on >50 proovi
+- Soovime ennustada kategooriat
 - Meil on märgistatud andmed
-- Meil on vähem kui 100K näidet
+- Meil on vähem kui 100K proovi
 - ✨ Võime valida Linear SVC
 - Kui see ei tööta, kuna meil on numbrilised andmed
-    - Võime proovida ✨ KNeighbors Classifier 
-      - Kui see ei tööta, proovime ✨ SVC ja ✨ Ensemble Classifiers
+    - Võime proovida ✨ KNeighbors Klassifikaatorit
+      - Kui see ei tööta, proovime ✨ SVC ja ✨ Ensemble Klassifikaatoreid
 
-See on väga kasulik teekond, mida järgida.
+See on väga kasulik rada järgida.
 
 ## Harjutus - andmete jagamine
 
-Selle teekonna järgimiseks peaksime alustama vajalike teekide importimisest.
+Sellele rajale järgides peaksime alustama vajalike raamatukogude importimisega.
 
-1. Impordi vajalikud teegid:
+1. Importige vajalikud raamatukogud:
 
     ```python
     from sklearn.neighbors import KNeighborsClassifier
@@ -50,31 +50,31 @@ Selle teekonna järgimiseks peaksime alustama vajalike teekide importimisest.
     import numpy as np
     ```
 
-1. Jaga oma treening- ja testandmed:
+1. Jagage oma treening- ja testandmed:
 
     ```python
-    X_train, X_test, y_train, y_test = train_test_split(cuisines_feature_df, cuisines_label_df, test_size=0.3)
+    X_train, X_test, y_train, y_test = train_test_split(cuisines_features_df, cuisines_label_df, test_size=0.3)
     ```
 
-## Linear SVC klassifikaator
+## Lineaarne SVC klassifikaator
 
-Support-Vector clustering (SVC) kuulub Support-Vector masinate ML-tehnikate perekonda (loe nende kohta rohkem allpool). Selles meetodis saad valida 'tuuma', et otsustada, kuidas silte grupeerida. Parameeter 'C' viitab 'regulatsioonile', mis reguleerib parameetrite mõju. Tuum võib olla üks [mitmest](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC); siin määrame selle 'lineaarseks', et kasutada lineaarset SVC-d. Tõenäosus on vaikimisi 'vale'; siin määrame selle 'tõeks', et saada tõenäosuse hinnanguid. Määrame juhusliku oleku '0', et andmeid segada ja saada tõenäosusi.
+Toetava vektori klasterdamine (SVC) kuulub Toetava vektori masinate perekonda ML tehnikaid (loetle allpool lisaks). Selles meetodis saate valida 'tuuma' ehk kerneli, et otsustada, kuidas siltide klastreid moodustada. Parameeter 'C' viitab 'regularisatsioonile', mis reguleerib parameetrite mõju. Kerneli valikud on [mitmed](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC); siin määrame selle väärtuseks 'linear', et kasutada lineaarset SVC-d. Tõenäosus on vaikimisi 'false'; siin seame selle 'true' väärtuseks, et saada tõenäosuse hinnanguid. Määrasime juhuse seisundi '0', et andmeid segada tõenäosuste saamiseks.
 
-### Harjutus - rakenda lineaarne SVC
+### Harjutus - rakenda lineaarset SVC-d
 
-Alusta klassifikaatorite massiivi loomisest. Lisad sellele massiivile järk-järgult, kui testime.
+Alusta klassifikaatorite massiivi loomisega. Selle massiivi lisad järjest, kui testime.
 
-1. Alusta Lineaarse SVC-ga:
+1. Alusta Linear SVC-d kasutades:
 
     ```python
     C = 10
-    # Create different classifiers.
+    # Loo erinevaid klassifikaatoreid.
     classifiers = {
         'Linear SVC': SVC(kernel='linear', C=C, probability=True,random_state=0)
     }
     ```
 
-2. Treeni oma mudelit, kasutades Lineaarset SVC-d, ja prindi välja raport:
+2. Treeni mudelit Linear SVC-ga ja prindi raport:
 
     ```python
     n_classifiers = len(classifiers)
@@ -88,7 +88,7 @@ Alusta klassifikaatorite massiivi loomisest. Lisad sellele massiivile järk-jär
         print(classification_report(y_test,y_pred))
     ```
 
-    Tulemus on üsna hea:
+    Tulemus on päris hea:
 
     ```output
     Accuracy (train) for Linear SVC: 78.6% 
@@ -105,21 +105,21 @@ Alusta klassifikaatorite massiivi loomisest. Lisad sellele massiivile järk-jär
     weighted avg       0.79      0.79      0.79      1199
     ```
 
-## K-Naabrite klassifikaator
+## K-naabrid klassifikaator
 
-K-Naabrid kuuluvad ML-meetodite "naabrite" perekonda, mida saab kasutada nii juhendatud kui juhendamata õppimiseks. Selles meetodis luuakse eelnevalt määratud arv punkte ja andmed kogutakse nende punktide ümber, et üldistatud silte saaks andmetele ennustada.
+K-naabrid kuuluvad "naabrid" perekonda ML meetodites, mida saab kasutada nii juhendatud kui juhendamata õppes. Selles meetodis luuakse ette määratud arv punkte ja andmed kogutakse nende punktide ümber, et andmete jaoks üldistatud silte ennustada.
 
-### Harjutus - rakenda K-Naabrite klassifikaator
+### Harjutus - rakenda K-naabrite klassifikaator
 
-Eelmine klassifikaator oli hea ja töötas andmetega hästi, kuid võib-olla saame parema täpsuse. Proovi K-Naabrite klassifikaatorit.
+Eelmine klassifikaator oli hea ja töötas andmetega hästi, kuid võib-olla saame parema täpsuse. Proovi K-naabrite klassifikaatorit.
 
-1. Lisa rida oma klassifikaatorite massiivi (lisa koma pärast Lineaarse SVC elementi):
+1. Lisa rida klassifikaatorite massiivi (pane koma Linear SVC rea järel):
 
     ```python
     'KNN classifier': KNeighborsClassifier(C),
     ```
 
-    Tulemus on veidi halvem:
+    Tulemus on natuke kehvem:
 
     ```output
     Accuracy (train) for KNN classifier: 73.8% 
@@ -136,17 +136,17 @@ Eelmine klassifikaator oli hea ja töötas andmetega hästi, kuid võib-olla saa
     weighted avg       0.76      0.74      0.74      1199
     ```
 
-    ✅ Loe [K-Naabrite](https://scikit-learn.org/stable/modules/neighbors.html#neighbors) kohta
+    ✅ Õpi lähemalt [K-naabritest](https://scikit-learn.org/stable/modules/neighbors.html#neighbors)
 
-## Support-Vector klassifikaator
+## Toetava vektori klassifikaator
 
-Support-Vector klassifikaatorid kuuluvad [Support-Vector Machine](https://wikipedia.org/wiki/Support-vector_machine) ML-meetodite perekonda, mida kasutatakse klassifikatsiooni ja regressiooni ülesannete jaoks. SVM-id "kaardistavad treeningnäited punktidena ruumis", et maksimeerida kahe kategooria vahelist kaugust. Järgnevad andmed kaardistatakse sellesse ruumi, et nende kategooriat ennustada.
+Toetava vektori klassifikaatorid on Toetava vektori masina (Support-Vector Machine) ML meetodite perekond, mida kasutatakse klassifitseerimise ja regressiooni ülesannetes. SVM-id „määratlevad treeningnäited ruumipunktidena”, et maksimeerida kahe kategooria vahelist kaugust. Järgnevaid andmeid kaardistatakse sellesse ruumi, et ennustada nende kategooriat.
 
-### Harjutus - rakenda Support-Vector klassifikaator
+### Harjutus - rakenda Toetava vektori klassifikaator
 
-Proovime veidi paremat täpsust Support-Vector klassifikaatoriga.
+Proovime veidi paremat täpsust Toetava vektori klassifikaatoriga.
 
-1. Lisa koma pärast K-Naabrite elementi ja seejärel lisa see rida:
+1. Lisa koma K-naabrite rea järel, seejärel lisa see rida:
 
     ```python
     'SVC': SVC(),
@@ -169,11 +169,11 @@ Proovime veidi paremat täpsust Support-Vector klassifikaatoriga.
     weighted avg       0.84      0.83      0.83      1199
     ```
 
-    ✅ Loe [Support-Vectors](https://scikit-learn.org/stable/modules/svm.html#svm) kohta
+    ✅ Õpi lähemalt [Toetavast vektorist](https://scikit-learn.org/stable/modules/svm.html#svm)
 
-## Ensemble klassifikaatorid
+## Ansambli klassifikaatorid
 
-Järgime teekonda lõpuni, kuigi eelmine test oli üsna hea. Proovime mõningaid 'Ensemble klassifikaatoreid', eriti Random Forest ja AdaBoost:
+Järgneme rajale lõpuni, kuigi eelmine test oli juba päris hea. Proovime ansambli klassifikaatoreid, eriti Random Forestit ja AdaBoosti:
 
 ```python
   'RFST': RandomForestClassifier(n_estimators=100),
@@ -210,31 +210,33 @@ Accuracy (train) for ADA: 72.4%
 weighted avg       0.73      0.72      0.72      1199
 ```
 
-✅ Loe [Ensemble klassifikaatorite](https://scikit-learn.org/stable/modules/ensemble.html) kohta
+✅ Õpi lähemalt [Ansambli klassifikaatoritest](https://scikit-learn.org/stable/modules/ensemble.html)
 
-See masinõppe meetod "ühendab mitme baashindaja ennustused", et parandada mudeli kvaliteeti. Meie näites kasutasime Random Trees ja AdaBoosti. 
+See Masinõppe meetod „ühendab mitme baas-hinnangu tegija ennustused”, et mudeli kvaliteeti parandada. Meie näites kasutasime juhuslikke puid ja AdaBoosti.
 
-- [Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#forest), keskmistamismeetod, ehitab 'otsustuspuude' 'metsa', mis on juhuslikkusega infundeeritud, et vältida üleõppimist. Parameeter n_estimators määratakse puude arvuks.
+- [Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#forest), keskmistamismeetod, ehitab 'puude metsa', mis on juhuslikkusega infundeeritud otsustuspuud, et vältida üleõppimist. n_estimators parameeter määrab puudede arvu.
 
-- [AdaBoost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) sobitab klassifikaatori andmestikuga ja seejärel sobitab selle klassifikaatori koopiaid samale andmestikule. See keskendub valesti klassifitseeritud üksuste kaaludele ja kohandab sobivust järgmise klassifikaatori jaoks, et parandada.
+- [AdaBoost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) sobitab klassifikaatori andmestikule ja seejärel sobitab selle klassifikaatori koopiad sama andmestikuga. See keskendub valesti klassifitseeritud esemete kaaludele ja kohandab järgmise klassifikaatori sobivust, et vea parandada.
 
 ---
 
 ## 🚀Väljakutse
 
-Igal neist tehnikatest on suur hulk parameetreid, mida saad kohandada. Uuri igaühe vaikimisi parameetreid ja mõtle, mida nende parameetrite kohandamine tähendaks mudeli kvaliteedi jaoks.
+Iga selle meetodi puhul on palju parameetreid, mida saate häälestada. Uurige iga meetodi vaikeparameetreid ja mõelge, mida nende parameetrite häälestamine mudeli kvaliteedi jaoks tähendaks.
 
-## [Järelloengu viktoriin](https://ff-quizzes.netlify.app/en/ml/)
+## [Pärast loengu viktoriin](https://ff-quizzes.netlify.app/en/ml/)
 
-## Ülevaade ja iseseisev õppimine
+## Ülevaade ja iseseisev õpe
 
-Nendes õppetundides on palju erialatermineid, seega võta hetk, et vaadata [seda nimekirja](https://docs.microsoft.com/dotnet/machine-learning/resources/glossary?WT.mc_id=academic-77952-leestott) kasulikest terminidest!
+Nendes õppetükkides on palju erialatermineid, seega võtke hetk ja vaadake üle [see nimekiri](https://docs.microsoft.com/dotnet/machine-learning/resources/glossary?WT.mc_id=academic-77952-leestott) kasulikust terminoloogiast!
 
-## Ülesanne 
+## Kodune ülesanne
 
 [Parameetrite mäng](assignment.md)
 
 ---
 
-**Lahtiütlus**:  
-See dokument on tõlgitud, kasutades AI tõlketeenust [Co-op Translator](https://github.com/Azure/co-op-translator). Kuigi püüame tagada täpsust, palun arvestage, et automaatsed tõlked võivad sisaldada vigu või ebatäpsusi. Algne dokument selle algses keeles tuleks lugeda autoriteetseks allikaks. Olulise teabe puhul on soovitatav kasutada professionaalset inimtõlget. Me ei vastuta selle tõlke kasutamisest tulenevate arusaamatuste või valede tõlgenduste eest.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Vastutusest loobumine**:
+See dokument on tõlgitud kasutades tehisintellektil põhinevat tõlke teenust [Co-op Translator](https://github.com/Azure/co-op-translator). Kuigi püüame täpsust, tuleb arvestada, et automaatsed tõlked võivad sisaldada vigu või ebatäpsusi. Originaaldokument selle emakeeles tuleks pidada autoriteetseks allikaks. Olulise teabe puhul soovitatakse kasutada professionaalset inimtõlget. Me ei vastuta ühegi arusaamatuse ega tõlgenduse eest, mis võivad selle tõlke kasutamisest tekkida.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

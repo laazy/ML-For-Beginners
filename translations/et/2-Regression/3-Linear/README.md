@@ -1,124 +1,136 @@
-# Ehita regressioonimudel Scikit-learniga: neli viisi regressiooniks
+# Ehita regressioonimudel, kasutades Scikit-learn'i: regressioon neli erinevat viisi
 
-![Lineaarse ja polünoomse regressiooni infograafika](../../../../translated_images/et/linear-polynomial.5523c7cb6576ccab.webp)
-> Infograafika autor: [Dasani Madipalli](https://twitter.com/dasani_decoded)
-## [Eelloengu viktoriin](https://ff-quizzes.netlify.app/en/ml/)
+## Algaja märkus
 
-> ### [See õppetund on saadaval ka R-is!](../../../../2-Regression/3-Linear/solution/R/lesson_3.html)
+Lineaarset regressiooni kasutatakse, kui tahame prognoosida **numbrilist väärtust** (näiteks maja hind, temperatuur või müük).
+See töötab leidmisega sirgjoont, mis kõige paremini esindab seost sisendfunktsioonide ja väljundi vahel.
+
+Selles õppetükis keskendume mõiste mõistmisele enne keerukamate regressioonitehnikate uurimist.
+![Lineaarne ja polünoomne regressioon infograafik](../../../../translated_images/et/linear-polynomial.5523c7cb6576ccab.webp)
+> Infograafik autorilt [Dasani Madipalli](https://twitter.com/dasani_decoded)
+## [Eelnev loengu visuaaltest](https://ff-quizzes.netlify.app/en/ml/)
+
+> ### [See õppetükk on saadaval ka R keeles!](../../../../2-Regression/3-Linear/solution/R/lesson_3.html)
 ### Sissejuhatus
 
-Siiani olete uurinud, mis on regressioon, kasutades näidisandmeid kõrvitsate hindade andmestikust, mida kasutame kogu selle õppetunni jooksul. Olete seda visualiseerinud ka Matplotlibi abil.
+Senini oled uurinud, mis on regressioon, kasutades näidisandmeid kõrvitsahinnast, mida kasutame kogu õppetüki vältel. Oled seda ka visualiseerinud Matplotlib'i abil.
 
-Nüüd olete valmis süvenema regressiooni masinõppe jaoks. Kuigi visualiseerimine aitab andmetest aru saada, peitub masinõppe tõeline jõud _mudelite treenimises_. Mudelid treenitakse ajalooliste andmete põhjal, et automaatselt tabada andmete sõltuvusi, ja need võimaldavad ennustada tulemusi uute andmete põhjal, mida mudel pole varem näinud.
+Nüüd oled valmis süvenema regressioonisse masinõppes. Kuigi visualiseerimine aitab andmeid mõista, tuleb masinõppe tõeline jõud _mudelite koolitamisest_. Mudelid koolitatakse ajalooliste andmete põhjal, et automaatselt jäädvustada andmete sõltuvused, võimaldades ennustada tulemusi uutele andmetele, mida mudel varem näinud ei ole.
 
-Selles õppetunnis õpite rohkem kahte tüüpi regressiooni kohta: _lihtne lineaarne regressioon_ ja _polünoomne regressioon_, koos mõningate matemaatiliste alustega, mis neid tehnikaid toetavad. Need mudelid võimaldavad meil ennustada kõrvitsate hindu sõltuvalt erinevatest sisendandmetest.
+Selles õppetükis õpid tundma kahte regressioonitüüpi: _lihtsat lineaarset regressiooni_ ja _polünoomset regressiooni_, koos mõningate matemaatiliste aluste selgitustega. Need mudelid võimaldavad meil ennustada kõrvitsahindu erinevate sisendandmete põhjal.
 
-[![ML algajatele - Lineaarse regressiooni mõistmine](https://img.youtube.com/vi/CRxFT8oTDMg/0.jpg)](https://youtu.be/CRxFT8oTDMg "ML algajatele - Lineaarse regressiooni mõistmine")
+[![Masinõpe algajatele - Lineaarse regressiooni mõistmine](https://img.youtube.com/vi/CRxFT8oTDMg/0.jpg)](https://youtu.be/CRxFT8oTDMg "Masinõpe algajatele - Lineaarse regressiooni mõistmine")
 
-> 🎥 Klõpsake ülaloleval pildil, et vaadata lühikest videot lineaarse regressiooni ülevaatest.
+> 🎥 Klõpsa ülalolevale pildile, et vaadata lühikest ülevaadet lineaarse regressiooni kohta.
 
-> Kogu selle õppekava jooksul eeldame minimaalset matemaatikaalast teadmist ja püüame muuta selle arusaadavaks teiste valdkondade õpilastele, seega jälgige märkmeid, 🧮 matemaatilisi vihjeid, diagramme ja muid õppimisvahendeid, mis aitavad mõistmist.
+> Selle õppekava jooksul eeldame vähest matemaatikateadmiste hulka ja püüame muuta selle teiste valdkondade üliõpilastele arusaadavaks, nii et jälgi märkusi, 🧮 selgitusi, diagramme ja teisi õppematerjale, mis hõlbustavad mõistmist.
 
-### Eeldused
+### Eelteadmised
 
-Praeguseks peaksite olema tuttav kõrvitsate andmete struktuuriga, mida me uurime. Need andmed on selle õppetunni _notebook.ipynb_ failis eelnevalt laaditud ja puhastatud. Failis kuvatakse kõrvitsate hind busheli kohta uues andmeraamis. Veenduge, et saate neid märkmikke Visual Studio Code'i kerneli abil käivitada.
+Sul peaks nüüd olema tuttav kõrvitsaandmete struktuur, mida me uurime. Need on eelnevalt laetud ja puhastatud antud õppetüki _notebook.ipynb_ failis. Failis kuvatakse kõrvitsahind busheli kohta uues andmeraamis. Veendu, et suudad need märkmikud Visual Studio Code'is tuumades jooksutada.
 
 ### Ettevalmistus
 
-Tuletame meelde, et laadite need andmed, et neilt küsimusi küsida.
+Meenutuseks: sa laadid neid andmeid, et esitada neile küsimusi.
 
 - Millal on parim aeg kõrvitsaid osta?
-- Millist hinda võin oodata miniatuurse kõrvitsate kasti eest?
-- Kas peaksin ostma neid poole busheli korvides või 1 1/9 busheli kastides?
-Uurime neid andmeid edasi.
+- Millist hinda võib oodata minikõrvitsate paki eest?
+- Kas peaksin ostma neid poolbusheli korvides või 1 1/9 busheli karbis?
+Jätkame andmete uurimist.
 
-Eelmises õppetunnis lõite Pandase andmeraami ja täitsite selle osa algsest andmestikust, standardiseerides hinnad busheli järgi. Sellega suutsime aga koguda ainult umbes 400 andmepunkti ja ainult sügiskuude kohta.
+Eelmisel õppetunnil lõid Pandase andmeraami ja täitsid selle osa algsest andmestikust, standardiseerides hinnad busheli alusel. Selle tegemisega kogusid siiski ainult umbes 400 andmepunkti ja ainult sügisekuude kohta.
 
-Vaadake andmeid, mis on selle õppetunni kaasasolevas märkmikus eelnevalt laaditud. Andmed on eelnevalt laaditud ja algne hajuvusdiagramm on koostatud, et näidata kuude andmeid. Võib-olla saame andmete olemuse kohta rohkem üksikasju, kui neid rohkem puhastame.
+Vaata andmeid, mida me eelnevalt laadsime selle õppetüki kaasasolevasse märkmikku. Andmed on eelnevalt laetud ja tehtud algne hajuvusdiagramm, mis näitab kuupõhiseid andmeid. Võib-olla saame andmete olemuse kohta veidi detailsemalt teada, tehes veel puhastust.
 
-## Lineaarse regressiooni joon
+## Lineaarse regressioonijoon
 
-Nagu õppisite 1. õppetunnis, on lineaarse regressiooni eesmärk joonistada joon, et:
+Nagu õppetükis 1 õppisid, on lineaarse regressiooni eesmärk joonistada joon, mis:
 
-- **Näidata muutujate seoseid**. Näidata muutujate vahelist seost
-- **Teha ennustusi**. Teha täpseid ennustusi selle kohta, kuhu uus andmepunkt selle joone suhtes paigutuks.
+- **Näitab muutujate seoseid**. Näitab seost muutujate vahel
+- **Teeb ennustusi**. Teeb täpseid prognoose, kuhu uus andmepunkt joone suhtes langeb.
+ 
+Tavaliselt joonistatakse sellist joont meetodi **Vähimate ruutude regressioon** abil. Mõiste "Vähimate ruutude" viitab meie mudeli koguviga minimeerimise protsessile. Iga andmepunkti puhul mõõdame vertikaalkauguse (nimetatakse jääkveaks) tegeliku punkti ja regressioonijoone vahel.
 
-Tüüpiline **väikseimate ruutude regressioon** joonistab sellist joont. Termin "väikseimad ruudud" tähendab, et kõik regressioonijoone ümber olevad andmepunktid ruudustatakse ja seejärel liidetakse. Ideaalis on see lõplik summa võimalikult väike, kuna soovime väikest vigade arvu ehk `väikseimad ruudud`.
+Me ruudutame need kaugused kahe peamise põhjuse tõttu:
 
-Teeme seda, kuna soovime modelleerida joont, millel on kõigi meie andmepunktide suhtes kõige väiksem kumulatiivne kaugus. Samuti ruudustame terminid enne nende liitmist, kuna meid huvitab nende suurus, mitte suund.
+1. **Suurema tähtsus kui suuna puhul:** Tahame, et -5 vea suurus oleks sama kui +5 viga. Ruudutamine teeb kõik väärtused positiivseks.
 
-> **🧮 Näita mulle matemaatikat**
->
-> Seda joont, mida nimetatakse _parima sobivuse jooneks_, saab väljendada [võrrandiga](https://en.wikipedia.org/wiki/Simple_linear_regression):
->
+2. **Ebatavaliste väärtuste karistamine:** Ruudutamine annab suurematele vigadele suurema kaalu, sundides joont olema lähemal kaugel olevatele punktidele.
+
+Seejärel liidame need ruudutatud väärtused kokku. Meie eesmärk on leida see konkreetne joon, millel see summa on minimaalne (võimalikult väike väärtus) — seega nimi "Vähimate ruutude".
+
+> **🧮 Näita mulle matemaatikat**  
+>  
+> Seda joont, mida nimetatakse _parima sobivusega joon_, saab väljendada [valemi abil](https://en.wikipedia.org/wiki/Simple_linear_regression):  
+>  
 > ```
 > Y = a + bX
 > ```
 >
-> `X` on 'selgitav muutuja'. `Y` on 'sõltuv muutuja'. Joone kalle on `b` ja `a` on y-teljelõige, mis viitab `Y` väärtusele, kui `X = 0`.
+> `X` on 'selgitav muutuja'. `Y` on 'sõltuv muutuja'. Joonte kalle on `b` ja `a` on y-lõikepunkt, mis tähistab `Y` väärtust, kui `X = 0`.
 >
->![kalle arvutamine](../../../../translated_images/et/slope.f3c9d5910ddbfcf9.webp)
+>![kallet arvutada](../../../../translated_images/et/slope.f3c9d5910ddbfcf9.webp)
 >
-> Kõigepealt arvutage kalle `b`. Infograafika autor: [Jen Looper](https://twitter.com/jenlooper)
+> Esiteks arvuta kalle `b`. Infograafik autorilt [Jen Looper](https://twitter.com/jenlooper)
 >
-> Teisisõnu, viidates meie kõrvitsate andmete algsele küsimusele: "ennusta kõrvitsa hinda busheli kohta kuu järgi", viitaks `X` hinnale ja `Y` müügikuule.
+> Teisisõnu, viidates meie kõrvitsaandmete algsele küsimusele: "prognoosi kõrvitsa hind busheli kohta kuu järgi", viitab `X` hinnale ja `Y` müügikuule.
 >
->![võrrandi täitmine](../../../../translated_images/et/calculation.a209813050a1ddb1.webp)
+>![valemi lõpetamine](../../../../translated_images/et/calculation.a209813050a1ddb1.webp)
 >
-> Arvutage Y väärtus. Kui maksate umbes 4 dollarit, peab olema aprill! Infograafika autor: [Jen Looper](https://twitter.com/jenlooper)
+> Arvuta `Y` väärtus. Kui maksad umbes 4 dollarit, peab see olema aprill! Infograafik autorilt [Jen Looper](https://twitter.com/jenlooper)
 >
-> Matemaatika, mis arvutab joone, peab näitama joone kallet, mis sõltub ka lõikepunktist ehk sellest, kus `Y` asub, kui `X = 0`.
+> Matemaatika, mis arvutab joone, peab demonstreerima joone kalde, mis sõltub ka lõikepunktist, ehk kus `Y` asub, kui `X = 0`.
 >
-> Võite vaadata nende väärtuste arvutamise meetodit veebisaidil [Math is Fun](https://www.mathsisfun.com/data/least-squares-regression.html). Külastage ka [väikseimate ruutude kalkulaatorit](https://www.mathsisfun.com/data/least-squares-calculator.html), et näha, kuidas numbrite väärtused joont mõjutavad.
+> Saad vaadata nende väärtuste arvutusmeetodit veebisaidil [Math is Fun](https://www.mathsisfun.com/data/least-squares-regression.html). Samuti külasta [kasutades vähimate ruutude kalkulaatorit](https://www.mathsisfun.com/data/least-squares-calculator.html), et näha, kuidas numbrite väärtused mõjutavad joont.
 
 ## Korrelatsioon
 
-Veel üks termin, mida mõista, on **korrelatsioonikordaja** antud X ja Y muutujate vahel. Hajuvusdiagrammi abil saate kiiresti visualiseerida seda kordajat. Diagramm, mille andmepunktid on korrektselt joondatud, omab kõrget korrelatsiooni, kuid diagramm, mille andmepunktid on X ja Y vahel laiali, omab madalat korrelatsiooni.
+Veel üks mõiste, mida mõista, on **Korrelatsioonikordaja** antud X ja Y muutujate vahel. Hajuvusdiagrammiga saab seda kordajat kiiresti visualiseerida. Kui andmepunktid paiknevad korrapärases reas, on kõrge korrelatsioon; kui punktid on hajutatud kõikjale X ja Y vahel, on korrelatsioon madal.
 
-Hea lineaarse regressiooni mudel on selline, millel on kõrge (lähemal 1-le kui 0-le) korrelatsioonikordaja, kasutades väikseimate ruutude regressiooni meetodit koos regressioonijoonega.
+Hea lineaarne regressioonimudel omab kõrget (lähemal 1-le kui 0-le) korrelatsioonikordajat, kasutades Vähimate ruutude regressiooni meetodit koos regressioonijoonega.
 
-✅ Käivitage selle õppetunni kaasasolev märkmik ja vaadake kuude ja hindade hajuvusdiagrammi. Kas andmed, mis seostavad kuud ja hinda kõrvitsate müügi puhul, tunduvad teie visuaalse tõlgenduse järgi hajuvusdiagrammil kõrge või madala korrelatsiooniga? Kas see muutub, kui kasutate kuude asemel täpsemat mõõdet, näiteks *aasta päeva* (st päevade arv aasta algusest)?
+✅ Käivita selle õppetüki märkmik ja vaata kuupõhist hinna hajuvusdiagrammi. Kas andmed, mis seovad kuupäeva ja kõrvitsate hinna, näivad omavat suurt või väikest korrelatsiooni vastavalt sinu visuaalsele tõlgendusele hajuvusdiagrammil? Kas see muutub, kui kasutad peenemat mõõdikut kui `Kuu`, nt *aasta päev* (st päevade arv aasta algusest)?
 
-Allolevas koodis eeldame, et oleme andmed puhastanud ja saanud andmeraami nimega `new_pumpkins`, mis näeb välja umbes selline:
+Järgmises koodis eeldame, et andmed on puhastatud ja meil on andmeraamistik nimega `new_pumpkins`, mis on sarnane järgmisele:
 
-ID | Kuu | AastaPäev | Sort | Linn | Pakend | Madal Hind | Kõrge Hind | Hind
----|-----|-----------|------|------|--------|------------|------------|-----
-70 | 9 | 267 | PIE TYPE | BALTIMORE | 1 1/9 busheli kastid | 15.0 | 15.0 | 13.636364
-71 | 9 | 267 | PIE TYPE | BALTIMORE | 1 1/9 busheli kastid | 18.0 | 18.0 | 16.363636
-72 | 10 | 274 | PIE TYPE | BALTIMORE | 1 1/9 busheli kastid | 18.0 | 18.0 | 16.363636
-73 | 10 | 274 | PIE TYPE | BALTIMORE | 1 1/9 busheli kastid | 17.0 | 17.0 | 15.454545
-74 | 10 | 281 | PIE TYPE | BALTIMORE | 1 1/9 busheli kastid | 15.0 | 15.0 | 13.636364
+ID | Kuu | AastaPäev | Tüüp | Linn | Pakk | Madal hind | Kõrge hind | Hind
+---|-------|-----------|---------|------|---------|-----------|------------|-------
+70 | 9 | 267 | KÕRVITSA TIPP | BALTIMORE | 1 1/9 busheli kastid | 15.0 | 15.0 | 13.636364
+71 | 9 | 267 | KÕRVITSA TIPP | BALTIMORE | 1 1/9 busheli kastid | 18.0 | 18.0 | 16.363636
+72 | 10 | 274 | KÕRVITSA TIPP | BALTIMORE | 1 1/9 busheli kastid | 18.0 | 18.0 | 16.363636
+73 | 10 | 274 | KÕRVITSA TIPP | BALTIMORE | 1 1/9 busheli kastid | 17.0 | 17.0 | 15.454545
+74 | 10 | 281 | KÕRVITSA TIPP | BALTIMORE | 1 1/9 busheli kastid | 15.0 | 15.0 | 13.636364
 
-> Kood andmete puhastamiseks on saadaval failis [`notebook.ipynb`](notebook.ipynb). Oleme teinud samad puhastamistoimingud nagu eelmises õppetunnis ja arvutanud `AastaPäev` veeru järgmise avaldise abil:
+> Andmete puhastamise kood on saadaval failis [`notebook.ipynb`](notebook.ipynb). Oleme teinud samad puhastamise sammud nagu eelnevas õppetükis ning arvutanud `AastaPäev` veeru järgmiselt: 
 
 ```python
 day_of_year = pd.to_datetime(pumpkins['Date']).apply(lambda dt: (dt-datetime(dt.year,1,1)).days)
 ```
 
-Nüüd, kui olete aru saanud lineaarse regressiooni matemaatikast, loome regressioonimudeli, et näha, kas suudame ennustada, milline kõrvitsate pakend pakub parimaid kõrvitsahindu. Keegi, kes ostab kõrvitsaid pühade kõrvitsaplatsi jaoks, võib soovida seda teavet, et optimeerida kõrvitsapakendite ostmist platsi jaoks.
+Nüüd, kui sul on arusaam lineaarse regressiooni matemaatikast, loome regressioonimudeli, et näha, kas võime ennustada, milline kõrvitsapakend annab parimad hinnad. Keegi, kes ostab kõrvitsaid püha-kõrvitsapeenrale, võib vajada seda infot, et osta parima hinnaga kõrvitsapakette.
 
 ## Korrelatsiooni otsimine
 
-[![ML algajatele - Korrelatsiooni otsimine: lineaarse regressiooni võti](https://img.youtube.com/vi/uoRq-lW2eQo/0.jpg)](https://youtu.be/uoRq-lW2eQo "ML algajatele - Korrelatsiooni otsimine: lineaarse regressiooni võti")
+[![Masinõpe algajatele - korrelatsiooni otsimine: lineaarse regressiooni võti](https://img.youtube.com/vi/uoRq-lW2eQo/0.jpg)](https://youtu.be/uoRq-lW2eQo "Masinõpe algajatele - korrelatsiooni otsimine: lineaarse regressiooni võti")
 
-> 🎥 Klõpsake ülaloleval pildil, et vaadata lühikest videot korrelatsiooni ülevaatest.
+> 🎥 Klõpsa ülalolevale pildile, et vaadata lühikest ülevaadet korrelatsioonist.
 
-Eelmises õppetunnis olete tõenäoliselt näinud, et keskmine hind erinevate kuude kohta näeb välja selline:
+Eelmisest õppetükist oled ilmselt näinud, et kuu keskmine hind näeb välja selline:
 
-<img alt="Keskmine hind kuu järgi" src="../../../../translated_images/et/barchart.a833ea9194346d76.webp" width="50%"/>
+<img alt="Keskmine hind kuu kaupa" src="../../../../translated_images/et/barchart.a833ea9194346d76.webp" width="50%"/>
 
-See viitab sellele, et peaks olema mingi korrelatsioon, ja me võime proovida treenida lineaarse regressiooni mudelit, et ennustada seost `Kuu` ja `Hinna` vahel või `AastaPäeva` ja `Hinna` vahel. Siin on hajuvusdiagramm, mis näitab viimast seost:
+See viitab võimalusele, et korrelatsioon võiks eksisteerida, ja võime proovida treenida lineaarset regressioonimudelit, mis ennustab seost `Kuu` ja `Hind` vahel või `AastaPäev` ja `Hind` vahel. Siin on hajuvusdiagramm, mis näitab viimast seost:
 
 <img alt="Hajuvusdiagramm hinna ja aasta päeva vahel" src="../../../../translated_images/et/scatter-dayofyear.bc171c189c9fd553.webp" width="50%" /> 
 
-Vaatame, kas korrelatsioon on olemas, kasutades funktsiooni `corr`:
+Vaatame, kas korrelatsiooni on, kasutades funktsiooni `corr`:
 
 ```python
 print(new_pumpkins['Month'].corr(new_pumpkins['Price']))
 print(new_pumpkins['DayOfYear'].corr(new_pumpkins['Price']))
 ```
 
-Tundub, et korrelatsioon on üsna väike, -0.15 `Kuu` järgi ja -0.17 `AastaPäeva` järgi, kuid võib olla veel üks oluline seos. Tundub, et erinevad kõrvitsasordid moodustavad erinevaid hinnaklastrid. Selle hüpoteesi kinnitamiseks joonistame iga kõrvitsakategooria erineva värviga. Kui edastame `scatter` joonistamisfunktsioonile parameetri `ax`, saame kõik punktid samale graafikule joonistada:
+Tundub, et korrelatsioon on suhteliselt väike, -0.15 `Kuu` järgi ja -0.17 `AastaPäeva` järgi, kuid võib olla mõni teine tähtis seos. Näib, et hinnad jagunevad erinevatesse gruppidesse vastavalt kõrvitsatüübile. Selle kinnitamiseks joonistame iga kõrvitsaliigi erinevas värvitoonis. Andmepunktide samaaegseks joonistamiseks peame `scatter` joonistamismetoodil kasutama parameetrit `ax`:
 
 ```python
 ax=None
@@ -128,42 +140,42 @@ for i,var in enumerate(new_pumpkins['Variety'].unique()):
     ax = df.plot.scatter('DayOfYear','Price',ax=ax,c=colors[i],label=var)
 ```
 
-<img alt="Hajuvusdiagramm hinna ja aasta päeva vahel" src="../../../../translated_images/et/scatter-dayofyear-color.65790faefbb9d54f.webp" width="50%" /> 
+<img alt="Hajuvusdiagramm hinna ja aasta päeva vahel värviliselt" src="../../../../translated_images/et/scatter-dayofyear-color.65790faefbb9d54f.webp" width="50%" /> 
 
-Meie uurimine viitab sellele, et sordil on müügikuupäevast suurem mõju üldisele hinnale. Seda näeme ka tulpdiagrammist:
+Meie uurimine viitab, et liigiga on suurem mõju üldisele hinnale kui müügikuupäeval. Seda näeme ka tulpdiagrammilt:
 
 ```python
 new_pumpkins.groupby('Variety')['Price'].mean().plot(kind='bar')
 ```
 
-<img alt="Tulpdiagramm hinna ja sordi vahel" src="../../../../translated_images/et/price-by-variety.744a2f9925d9bcb4.webp" width="50%" /> 
+<img alt="Tulpdiagramm hindade kohta liigiti" src="../../../../translated_images/et/price-by-variety.744a2f9925d9bcb4.webp" width="50%" /> 
 
-Keskendume hetkeks ainult ühele kõrvitsasordile, 'pie type', ja vaatame, millist mõju kuupäev hinnale avaldab:
+Keskendume hetkel ainult ühele kõrvitsaliigile, 'pirukaliigile', ja vaatame, kuidas hind sõltub kuupäevast:
 
 ```python
 pie_pumpkins = new_pumpkins[new_pumpkins['Variety']=='PIE TYPE']
 pie_pumpkins.plot.scatter('DayOfYear','Price') 
 ```
-<img alt="Hajuvusdiagramm hinna ja aasta päeva vahel" src="../../../../translated_images/et/pie-pumpkins-scatter.d14f9804a53f927e.webp" width="50%" /> 
+<img alt="Hajuvusdiagramm hinna ja aasta päeva vahel 'pirukaliigile'" src="../../../../translated_images/et/pie-pumpkins-scatter.d14f9804a53f927e.webp" width="50%" /> 
 
-Kui arvutame nüüd korrelatsiooni `Hinna` ja `AastaPäeva` vahel, kasutades funktsiooni `corr`, saame tulemuseks umbes `-0.27` - mis tähendab, et ennustava mudeli treenimine on mõistlik.
+Kui nüüd arvutada korrelatsioon `Price` ja `DayOfYear` vahel funktsiooniga `corr`, saame ligikaudu `-0.27` - mis tähendab, et prognoosimudeli koolitamine on mõistlik.
 
-> Enne lineaarse regressiooni mudeli treenimist on oluline veenduda, et meie andmed on puhtad. Lineaarne regressioon ei tööta hästi puuduvate väärtustega, seega on mõistlik kõik tühjad lahtrid eemaldada:
+> Enne lineaarse regressioonimudeli koolitamist on oluline veenduda, et andmed on puhtad. Lineaarne regressioon ei tööta hästi puuduvate väärtustega, seega on mõistlik tühjad lahtrid eemaldada:
 
 ```python
 pie_pumpkins.dropna(inplace=True)
 pie_pumpkins.info()
 ```
 
-Teine lähenemisviis oleks täita need tühjad väärtused vastava veeru keskmiste väärtustega.
+Teine võimalus oleks need tühjad väärtused asendada vastava veeru keskmisega.
 
 ## Lihtne lineaarne regressioon
 
-[![ML algajatele - Lineaarne ja polünoomne regressioon Scikit-learniga](https://img.youtube.com/vi/e4c_UP2fSjg/0.jpg)](https://youtu.be/e4c_UP2fSjg "ML algajatele - Lineaarne ja polünoomne regressioon Scikit-learniga")
+[![Masinõpe algajatele - lineaarne ja polünoomne regressioon Scikit-learniga](https://img.youtube.com/vi/e4c_UP2fSjg/0.jpg)](https://youtu.be/e4c_UP2fSjg "Masinõpe algajatele - lineaarne ja polünoomne regressioon Scikit-learniga")
 
-> 🎥 Klõpsake ülaloleval pildil, et vaadata lühikest videot lineaarse ja polünoomse regressiooni ülevaatest.
+> 🎥 Klõpsa ülalolevale pildile, et vaadata lühikest ülevaadet lineaarse ja polünoomse regressiooni kohta.
 
-Lineaarse regressiooni mudeli treenimiseks kasutame **Scikit-learn** teeki.
+Me koolitame oma lineaarse regressioonimudeli, kasutades **Scikit-learn'i** teeki.
 
 ```python
 from sklearn.linear_model import LinearRegression
@@ -171,30 +183,31 @@ from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 ```
 
-Alustame sisendväärtuste (omaduste) ja oodatud väljundi (sildi) eraldamisest eraldi numpy massiividesse:
+Alustame sisendväärtuste (tunnuste) ja oodatud väljundi (sildi) eraldamisest eraldi numpy massiivideks:
 
 ```python
 X = pie_pumpkins['DayOfYear'].to_numpy().reshape(-1,1)
 y = pie_pumpkins['Price']
 ```
 
-> Pange tähele, et pidime sisendandmetele rakendama `reshape`, et lineaarse regressiooni pakett neid õigesti mõistaks. Lineaarne regressioon eeldab sisendina 2D-massiivi, kus massiivi iga rida vastab sisendi omaduste vektorile. Meie puhul, kuna meil on ainult üks sisend, vajame massiivi kujuga N&times;1, kus N on andmestiku suurus.
+> Märka, et pidime sisendandmeid töötlema `reshape` abil, et LinearRepression pakett saaks neid õigesti mõista. Lineaarne regressioon eeldab 2D massiivi sisendina, kus iga rea vastab sisendfunktsioonide vektorile. Meie puhul, kui meil on ainult üks sisend, vajame massiivi kuju N &times; 1, kus N on andmestiku suurus.
 
-Seejärel peame andmed jagama treening- ja testandmestikeks, et saaksime pärast treenimist oma mudelit valideerida:
+Seejärel peame andmed jagama koolitus- ja testandmeteks, et saaksime mudelit pärast koolitust valideerida:
 
 ```python
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 ```
 
-Lõpuks võtab tegeliku lineaarse regressiooni mudeli treenimine ainult kaks koodirida. Määratleme `LinearRegression` objekti ja sobitame selle meie andmetega, kasutades meetodit `fit`:
+Lõpuks võtab lineaarse regressioonimudeli koolitus vaid kaks koodirida. Defineerime `LinearRegression` objekti ja sobitame selle meie andmetega meetodiga `fit`:
 
 ```python
 lin_reg = LinearRegression()
 lin_reg.fit(X_train,y_train)
 ```
 
-`LinearRegression` objekt pärast `fit`-imist sisaldab kõiki regressiooni koefitsiente, millele pääseb ligi omaduse `.coef_` kaudu. Meie puhul on ainult üks koefitsient, mis peaks olema umbes `-0.017`. See tähendab, et hinnad näivad aja jooksul veidi langevat, kuid mitte liiga palju, umbes 2 senti päevas. Samuti pääseme regressiooni lõikepunktile Y-teljega, kasutades `lin_reg.intercept_` - see on meie puhul umbes `21`, mis näitab hinda aasta alguses.
-Et näha, kui täpne meie mudel on, saame prognoosida hindu testandmestikul ja seejärel mõõta, kui lähedased meie prognoosid on oodatud väärtustele. Seda saab teha keskmise ruutvea (MSE) mõõdiku abil, mis on kõigi oodatud ja prognoositud väärtuste ruutude erinevuste keskmine.
+`LinearRegression` objekt sisaldab pärast `fit`-imist regressiooni kõiki koefitsiente, millele pääseb ligi `.coef_` omaduse kaudu. Meie puhul on vaid üks koefitsient, mis peaks olema umbes `-0.017`. See tähendab, et hinnad paistavad aja jooksul veidi langemas, aga mitte liiga palju, umbes 2 senti päevas. Samuti saame regressiooni lõikepunkti Y-teljel kätte `lin_reg.intercept_` abil - see on meie puhul umbes `21`, mis näitab hinna väärtust aasta alguses.
+
+Selleks, et näha, kui täpne meie mudel on, saame prognoosida hindu testandmestikul ja seejärel mõõta, kui lähedal on meie prognoosid oodatud väärtustele. Seda saab teha ruutkeskmise vea (MSE) mõõdikuga, mis on kõigi ruutude keskmine erinevus oodatud ja prognoositud väärtuste vahel.
 
 ```python
 pred = lin_reg.predict(X_test)
@@ -203,16 +216,15 @@ mse = np.sqrt(mean_squared_error(y_test,pred))
 print(f'Mean error: {mse:3.3} ({mse/np.mean(pred)*100:3.3}%)')
 ```
 
-Meie viga tundub olevat umbes 2 punkti, mis on ~17%. Mitte just väga hea. Teine mudeli kvaliteedi näitaja on **determinatsioonikordaja**, mida saab arvutada järgmiselt:
+Meie viga paistab olevat umbes 2 punkti, mis on umbes 17%. Mitte kuigi hea. Teine mudeli kvaliteedi näitaja on **determinisatsioonikordaja**, mida saab saada järgmise koodiga:
 
 ```python
 score = lin_reg.score(X_train,y_train)
 print('Model determination: ', score)
 ```
+Kui väärtus on 0, tähendab see, et mudel ei võta sisendandmeid arvesse ja toimib nagu *kõige halvem lineaarne prognoosija*, mis on lihtsalt tulemuse keskmine väärtus. Väärtus 1 tähendab, et suudame kõiki oodatud väljundeid täiuslikult prognoosida. Meie puhul on kordaja umbes 0.06, mis on üsna madal.
 
-Kui väärtus on 0, tähendab see, et mudel ei arvesta sisendandmeid ja toimib kui *halvim lineaarne ennustaja*, mis on lihtsalt tulemuse keskmine väärtus. Väärtus 1 tähendab, et suudame täiuslikult prognoosida kõiki oodatud väljundeid. Meie puhul on determinatsioonikordaja umbes 0.06, mis on üsna madal.
-
-Samuti saame testandmed koos regressioonijoonega graafikule panna, et paremini näha, kuidas regressioon meie puhul toimib:
+Testandmeid võime koos regressioonijoonisega joonistada, et paremini näha, kuidas regressioon meie puhul töötab:
 
 ```python
 plt.scatter(X_test,y_test)
@@ -221,19 +233,19 @@ plt.plot(X_test,pred)
 
 <img alt="Lineaarne regressioon" src="../../../../translated_images/et/linear-results.f7c3552c85b0ed1c.webp" width="50%" />
 
-## Polünoomiline regressioon
+## Polünoomne regressioon
 
-Teine lineaarse regressiooni tüüp on polünoomiline regressioon. Kuigi vahel on muutujate vahel lineaarne seos – näiteks mida suurem kõrvitsa maht, seda kõrgem hind – ei saa neid seoseid alati kujutada tasapinnana või sirgjoonena.
+Teine lineaarse regressiooni tüüp on polünoomne regressioon. Kuigi mõnikord on muutujate vahel lineaarne seos - näiteks suurem kõrvits mahult tähendab kõrgemat hinda -, siis mõnikord neid seoseid ei saa joonistada tasandina ega sirgjoonena.
 
-✅ Siin on [veel mõned näited](https://online.stat.psu.edu/stat501/lesson/9/9.8) andmetest, mis võiksid kasutada polünoomilist regressiooni.
+✅ Siin on [veel mõned näited](https://online.stat.psu.edu/stat501/lesson/9/9.8) andmetest, mille puhul võiks kasutada polünoomset regressiooni
 
-Vaata uuesti seost kuupäeva ja hinna vahel. Kas see hajusdiagramm tundub, et seda peaks tingimata analüüsima sirgjoonega? Kas hinnad ei võiks kõikuda? Sellisel juhul võid proovida polünoomilist regressiooni.
+Võta veelkord pilk peale seosele kuupäeva ja hinna vahel. Kas see hajuvusdiagramm tundub kindlasti nii, et seda peaks tingimata analüüsima sirgjoonega? Kas hinnad ei kõigu? Sellisel juhul võid proovida polünoomset regressiooni.
 
-✅ Polünoomid on matemaatilised avaldised, mis võivad koosneda ühest või mitmest muutujast ja kordajast.
+✅ Polünoomid on matemaatilised avaldised, mis võivad koosneda ühest või mitmest muutujast ja koefitsiendist
 
-Polünoomiline regressioon loob kõvera joone, et paremini sobitada mittelineaarseid andmeid. Meie puhul, kui lisame sisendandmetesse ruutvõrrandi `DayOfYear`, peaksime suutma oma andmeid sobitada paraboolse kõveraga, millel on aasta teatud punktis miinimum.
+Polünoomne regressioon loob kõverjoone, mis paremini sobib mittelineaarsete andmetega. Meie puhul, kui lisame sisendandmetesse ruutfunktsiooni `DayOfYear` muutujast, peaksime suutma sobitada andmeid paraboolkuvaga, millel on aasta jooksul mingi miinimumtipp.
 
-Scikit-learn sisaldab kasulikku [pipeline API-d](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html?highlight=pipeline#sklearn.pipeline.make_pipeline), et kombineerida erinevaid andmetöötluse samme. **Pipeline** on **hinnangute** ahel. Meie puhul loome pipeline'i, mis kõigepealt lisab mudelile polünoomilised omadused ja seejärel treenib regressiooni:
+Scikit-learn sisaldab kasulikku [pipeline API-d](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html?highlight=pipeline#sklearn.pipeline.make_pipeline), et kombineerida erinevad andmetöötluse sammud. **Pipelines** on **estimatsioonide** kett. Meie puhul loome väärtusahelas esimese sammuna polünoomsed tunnused ja seejärel treenime regressiooni:
 
 ```python
 from sklearn.preprocessing import PolynomialFeatures
@@ -244,43 +256,43 @@ pipeline = make_pipeline(PolynomialFeatures(2), LinearRegression())
 pipeline.fit(X_train,y_train)
 ```
 
-`PolynomialFeatures(2)` kasutamine tähendab, et lisame sisendandmetest kõik teise astme polünoomid. Meie puhul tähendab see lihtsalt `DayOfYear`<sup>2</sup>, kuid kahe sisendmuutuja X ja Y korral lisab see X<sup>2</sup>, XY ja Y<sup>2</sup>. Võime kasutada ka kõrgema astme polünoome, kui soovime.
+`PolynomialFeatures(2)` kasutamine tähendab, et kaasame kõik teise astme polünoomid sisendandmetest. Meie puhul tähendab see ainult `DayOfYear`<sup>2</sup>, aga kui on kaks sisendmuutujat X ja Y, lisab see X<sup>2</sup>, XY ja Y<sup>2</sup>. Saame kasutada ka kõrgema astme polünoome, kui soovime.
 
-Pipeline'i saab kasutada samamoodi nagu algset `LinearRegression` objekti, st saame pipeline'i `fit`-ida ja seejärel kasutada `predict`, et saada prognoositulemused. Siin on graafik, mis näitab testandmeid ja lähenduskõverat:
+Pipeline'idega saab tööd teha samamoodi nagu algse `LinearRegression` objektiga, s.t. saame `fit` väärtusahela ja seejärel `predict` meetodit kasutades saada prognoosid. Järgneval graafikul on testandmed ja ligikaudne kõver:
 
-<img alt="Polünoomiline regressioon" src="../../../../translated_images/et/poly-results.ee587348f0f1f60b.webp" width="50%" />
+<img alt="Polünoomne regressioon" src="../../../../translated_images/et/poly-results.ee587348f0f1f60b.webp" width="50%" />
 
-Polünoomilist regressiooni kasutades saame veidi madalama MSE ja kõrgema determinatsiooni, kuid mitte märkimisväärselt. Peame arvesse võtma ka teisi omadusi!
+Polünoomse regressiooni kasutamisel saame kergelt madalama MSE ja kõrgema determinatsiooni, kuid mitte märkimisväärselt. Peame arvesse võtma ka teisi tunnuseid!
 
-> Näed, et minimaalsed kõrvitsahinnad on täheldatud kuskil Halloweeni paiku. Kuidas sa seda selgitaksid?
+> Näed, et kõrvitsate hinnad on minimaalsed kusagil õuduspeo (Halloween) ajal. Kuidas seda seletada?
 
-🎃 Palju õnne, sa lõid mudeli, mis aitab prognoosida pirukakõrvitsate hinda. Tõenäoliselt saad sama protseduuri korrata kõigi kõrvitsatüüpide puhul, kuid see oleks tülikas. Õpime nüüd, kuidas arvestada kõrvitsasorti oma mudelis!
+🎃 Palju õnne, sa just lõid mudeli, mis aitab prognoosida kookkõrvitsate hinda. Saame tõenäoliselt sama protseduuri korrata kõigi kõrvitsaliikide jaoks, aga see oleks tüütu. Õpime nüüd, kuidas mudelis arvestada kõrvitsa sorti!
 
-## Kategoorilised omadused
+## Kategoorilised tunnused
 
-Ideaalis tahame olla võimelised prognoosima hindu erinevate kõrvitsasortide jaoks, kasutades sama mudelit. Kuid `Variety` veerg erineb veidi veergudest nagu `Month`, kuna see sisaldab mitte-numerilisi väärtusi. Selliseid veerge nimetatakse **kategoorilisteks**.
+Ideaalis tahame suuta prognoosida erinevate kõrvitsaliikide hindu sama mudeli abil. Kuid `Variety` (sort) veerg erineb sellistest veergudest nagu `Month` (kuu), sest see sisaldab mitte-arvulisi väärtusi. Selliseid veerge nimetatakse **kategoorilisteks**.
 
-[![ML algajatele - Kategooriliste omaduste prognoosimine lineaarse regressiooniga](https://img.youtube.com/vi/DYGliioIAE0/0.jpg)](https://youtu.be/DYGliioIAE0 "ML algajatele - Kategooriliste omaduste prognoosimine lineaarse regressiooniga")
+[![ML algajatele - kategooriliste tunnuste prognoosimine lineaarse regressiooniga](https://img.youtube.com/vi/DYGliioIAE0/0.jpg)](https://youtu.be/DYGliioIAE0 "ML algajatele - kategooriliste tunnuste prognoosimine lineaarse regressiooniga")
 
-> 🎥 Klõpsa ülaloleval pildil, et vaadata lühikest videot kategooriliste omaduste kasutamisest.
+> 🎥 Klõpsa ülaloleval pildil, et näha lühikest videot kategooriliste tunnuste kasutamisest.
 
 Siin näed, kuidas keskmine hind sõltub sordist:
 
-<img alt="Keskmine hind sordi järgi" src="../../../../translated_images/et/price-by-variety.744a2f9925d9bcb4.webp" width="50%" />
+<img alt="Keskmine hind sortide kaupa" src="../../../../translated_images/et/price-by-variety.744a2f9925d9bcb4.webp" width="50%" />
 
-Sordi arvesse võtmiseks peame esmalt selle numbriliseks vormiks teisendama ehk **kodeerima**. Selleks on mitu võimalust:
+Sordi arvesse võtmiseks peame esmalt selle numbriliseks muutma ehk **kodeerima**. Selleks on mitmeid võimalusi:
 
-* Lihtne **numbriline kodeerimine** loob tabeli erinevatest sortidest ja asendab sordinime selle tabeli indeksiga. See pole lineaarse regressiooni jaoks parim idee, kuna lineaarne regressioon võtab indeksi tegeliku numbrilise väärtuse ja lisab selle tulemusele, korrutades mingi kordajaga. Meie puhul on indeksi numbri ja hinna vaheline seos selgelt mittelineaarne, isegi kui tagame, et indeksid on järjestatud mingil konkreetsel viisil.
-* **Üks-ühele kodeerimine** asendab `Variety` veeru nelja erineva veeruga, üks iga sordi jaoks. Iga veerg sisaldab `1`, kui vastav rida kuulub antud sordile, ja `0` muidu. See tähendab, et lineaarse regressiooni korral on neli kordajat, üks iga kõrvitsasordi jaoks, mis vastutavad selle konkreetse sordi "algushinna" (või pigem "lisahinna") eest.
+* Lihtne **numbriline kodeerimine** loob nimekirja erinevatest sortidest ja asendab seejärel sordinime selle nimekirja indeksi vastu. See pole lineaarse regressiooni jaoks parim idee, sest lineaarne regressioon kasutab indeksi tegelikku numbrilist väärtust ja lisab seda tulemusele teatud koefitsiendiga. Meie puhul on seos indeksi numbri ja hinna vahel selgelt mittelineaarne, isegi kui indekseid järjestada kindlal viisil.
+* **One-hot kodeerimine** asendab `Variety` veeru nelja eraldi veeruga, ühe iga sordi jaoks. Igas veerus on väärtuseks `1`, kui vastav rida on antud sorti, ja `0` muul juhul. See tähendab, et lineaarse regressiooni jaoks on neli koefitsienti, üks iga kõrvitsaliigi jaoks, mis vastutab antud sordi "algusehinna" (või pigem "täiendava hinna") eest.
 
-Allolev kood näitab, kuidas saame sordi üks-ühele kodeerida:
+Alljärgnev kood näitab, kuidas sorti one-hot kodeerida:
 
 ```python
 pd.get_dummies(new_pumpkins['Variety'])
 ```
 
- ID | FAIRYTALE | MINIATURE | MIXED HEIRLOOM VARIETIES | PIE TYPE
-----|-----------|-----------|--------------------------|----------
+ ID | FAIRYTALE | MINIATURE | SEGASED PÄRANDLIIGID | KOOKKÕRVITS
+----|-----------|-----------|---------------------|------------
 70 | 0 | 0 | 0 | 1
 71 | 0 | 0 | 0 | 1
 ... | ... | ... | ... | ...
@@ -290,14 +302,14 @@ pd.get_dummies(new_pumpkins['Variety'])
 1741 | 0 | 1 | 0 | 0
 1742 | 0 | 1 | 0 | 0
 
-Lineaarse regressiooni treenimiseks, kasutades üks-ühele kodeeritud sorti sisendina, peame lihtsalt `X` ja `y` andmed õigesti initsialiseerima:
+Et kasutada lineaarset regressiooni one-hot kodeeritud sortide põhjal, peame lihtsalt õigesti algatama andmed `X` ja `y`:
 
 ```python
 X = pd.get_dummies(new_pumpkins['Variety'])
 y = new_pumpkins['Price']
 ```
 
-Ülejäänud kood on sama, mida kasutasime ülal lineaarse regressiooni treenimiseks. Kui proovid seda, näed, et keskmine ruutviga on umbes sama, kuid saame palju kõrgema determinatsioonikordaja (~77%). Täpsemate prognooside saamiseks saame arvesse võtta rohkem kategoorilisi omadusi, samuti numbrilisi omadusi, nagu `Month` või `DayOfYear`. Ühe suure omaduste massiivi saamiseks saame kasutada `join`:
+Ülejäänud kood on sama, mida kasutati eelnevalt lineaarse regressiooni treenimiseks. Kui proovida, näeme, et ruutkeskmine viga on umbes sama, kuid determinatsioonikordaja on palju kõrgem (~77%). Veelgi täpsemate prognooside saamiseks võime arvesse võtta rohkem kategoorilisi tunnuseid ning ka numbrilisi tunnuseid nagu `Month` või `DayOfYear`. Kõigi tunnuste ühtseks massiiviks saamiseks võime kasutada `join`:
 
 ```python
 X = pd.get_dummies(new_pumpkins['Variety']) \
@@ -307,31 +319,31 @@ X = pd.get_dummies(new_pumpkins['Variety']) \
 y = new_pumpkins['Price']
 ```
 
-Siin võtame arvesse ka `City` ja `Package` tüüpi, mis annab meile MSE 2.84 (10%) ja determinatsiooni 0.94!
+Siin võtame arvesse ka `City` ja `Package` tüüpi, mis annab meile MSE väärtuse 2.84 (10%) ja determinatsiooni 0.94!
 
 ## Kõik kokku
 
-Parima mudeli loomiseks saame kasutada kombineeritud (üks-ühele kodeeritud kategoorilised + numbrilised) andmeid ülaltoodud näitest koos polünoomilise regressiooniga. Siin on täielik kood sinu mugavuseks:
+Parima mudeli koostamiseks võime kasutada ülaltoodud näite kombineeritud (one-hot kodeeritud kategoorilised + numbrilised) andmed koos polünoomse regressiooniga. Siin on mugavaks kasutamiseks täielik kood:
 
 ```python
-# set up training data
+# seadista treeningandmed
 X = pd.get_dummies(new_pumpkins['Variety']) \
         .join(new_pumpkins['Month']) \
         .join(pd.get_dummies(new_pumpkins['City'])) \
         .join(pd.get_dummies(new_pumpkins['Package']))
 y = new_pumpkins['Price']
 
-# make train-test split
+# tee koolitus- ja testandmete jagamine
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 
-# setup and train the pipeline
+# seadista ja treeni andmetöötluskanal
 pipeline = make_pipeline(PolynomialFeatures(2), LinearRegression())
 pipeline.fit(X_train,y_train)
 
-# predict results for test data
+# ennusta tulemused testandmete jaoks
 pred = pipeline.predict(X_test)
 
-# calculate MSE and determination
+# arvuta keskmine ruutviga ja määramisaste
 mse = np.sqrt(mean_squared_error(y_test,pred))
 print(f'Mean error: {mse:3.3} ({mse/np.mean(pred)*100:3.3}%)')
 
@@ -339,34 +351,36 @@ score = pipeline.score(X_train,y_train)
 print('Model determination: ', score)
 ```
 
-See peaks andma meile parima determinatsioonikordaja, peaaegu 97%, ja MSE=2.23 (~8% prognoosiviga).
+See peaks andma parima determinatsioonikordaja, mis on peaaegu 97%, ning MSE=2.23 (~8% ennustuse viga).
 
 | Mudel | MSE | Determinatsioon |
 |-------|-----|-----------------|
-| `DayOfYear` Lineaarne | 2.77 (17.2%) | 0.07 |
-| `DayOfYear` Polünoomiline | 2.73 (17.0%) | 0.08 |
-| `Variety` Lineaarne | 5.24 (19.7%) | 0.77 |
-| Kõik omadused Lineaarne | 2.84 (10.5%) | 0.94 |
-| Kõik omadused Polünoomiline | 2.23 (8.25%) | 0.97 |
+| `DayOfYear` lineaarne | 2.77 (17.2%) | 0.07 |
+| `DayOfYear` polünoomne | 2.73 (17.0%) | 0.08 |
+| `Variety` lineaarne | 5.24 (19.7%) | 0.77 |
+| Kõik tunnused lineaarne | 2.84 (10.5%) | 0.94 |
+| Kõik tunnused polünoomne | 2.23 (8.25%) | 0.97 |
 
-🏆 Tubli töö! Lõid ühe tunni jooksul neli regressioonimudelit ja parandasid mudeli kvaliteeti 97%-ni. Regressiooni viimases osas õpid logistilist regressiooni kategooriate määramiseks.
+🏆 Väga hästi! Sa lõid nelja mudelit ühes õppetükis ja parandasid mudeli kvaliteedi 97% peale. Regressiooni viimases osas õpid logistilisest regressioonist, mida kasutatakse kategooriate määramiseks.
 
 ---
 ## 🚀Väljakutse
 
-Testi mitmeid erinevaid muutujaid selles märkmikus, et näha, kuidas korrelatsioon vastab mudeli täpsusele.
+Proovi selles märkmes mitu erinevat muutujat, et näha, kuidas korrelatsioon vastab mudeli täpsusele.
 
-## [Loengu järgne viktoriin](https://ff-quizzes.netlify.app/en/ml/)
+## [Loengu järgse test](https://ff-quizzes.netlify.app/en/ml/)
 
-## Ülevaade ja iseseisev õppimine
+## Kordamine & iseseisev õppimine
 
-Selles tunnis õppisime lineaarset regressiooni. On ka teisi olulisi regressiooni tüüpe. Loe Stepwise, Ridge, Lasso ja Elasticnet tehnikate kohta. Hea kursus, mida õppida, on [Stanfordi statistilise õppimise kursus](https://online.stanford.edu/courses/sohs-ystatslearning-statistical-learning).
+Selles õppetükis õppisime lineaarset regressiooni. On ka teisi olulisi regressioonitüüpe. Loe Stepwise-, Ridge-, Lasso- ja Elasticnet-meetodite kohta. Heaks õppeallikaks on [Stanfordi statistilise õppe kursus](https://online.stanford.edu/courses/sohs-ystatslearning-statistical-learning).
 
-## Ülesanne
+## Kodutöö
 
 [Ehita mudel](assignment.md)
 
 ---
 
-**Lahtiütlus**:  
-See dokument on tõlgitud AI tõlketeenuse [Co-op Translator](https://github.com/Azure/co-op-translator) abil. Kuigi püüame tagada täpsust, palume arvestada, et automaatsed tõlked võivad sisaldada vigu või ebatäpsusi. Algne dokument selle algses keeles tuleks pidada autoriteetseks allikaks. Olulise teabe puhul soovitame kasutada professionaalset inimtõlget. Me ei vastuta selle tõlke kasutamisest tulenevate arusaamatuste või valesti tõlgenduste eest.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Vastutusest loobumine**:
+See dokument on tõlgitud kasutades tehisintellekti tõlkimisteenust [Co-op Translator](https://github.com/Azure/co-op-translator). Kuigi püüame tagada täpsust, palun arvestage, et automaatsed tõlked võivad sisaldada vigu või ebatäpsusi. Algset dokumenti selle emakeeles tuleks pidada autoriteetseks allikaks. Olulise teabe puhul soovitatakse kasutada professionaalset inimtõlget. Me ei vastuta selle tõlkega seotud arusaamatuste või valesti mõistmiste eest.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

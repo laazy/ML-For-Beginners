@@ -2,17 +2,17 @@
 
 ## Instructions
 
-For dis lesson, you don learn about di Responsible AI Toolbox, wey be "open-source, community-driven project wey go help data scientists analyze and improve AI systems." For dis assignment, make you explore one of RAI Toolbox's [notebooks](https://github.com/microsoft/responsible-ai-toolbox/blob/main/notebooks/responsibleaidashboard/getting-started.ipynb) and report wetin you find for paper or presentation.
+For dis lesson, you learn about di Responsible AI Toolbox, wey be "open-source, community-driven project wey dey help data scientists analyze and improve AI systems." For dis assignment, make you explore one from RAI Toolbox [notebooks](https://github.com/microsoft/responsible-ai-toolbox/blob/main/notebooks/responsibleaidashboard/tabular/getting-started.ipynb) and report wetin you find inside paper or presentation.
 
 ## Rubric
 
 | Criteria | Exemplary | Adequate | Needs Improvement |
 | -------- | --------- | -------- | ----------------- |
-|          |  Paper or PowerPoint presentation dey wey talk about Fairlearn systems, di notebook wey dem run, and di conclusions wey dem get from am        |   Paper dey but e no get conclusions       |  No paper dey                 |
+|          |  Paper or powerpoint presentation wey discuss Fairlearn system dem, di notebook wey dem run, plus di conclusions wey dem draw from running am       |   Paper wey no get conclusion       |  No paper at all                 |
 
 ---
 
 <!-- CO-OP TRANSLATOR DISCLAIMER START -->
 **Disclaimer**:  
-Dis docu don use AI translation service [Co-op Translator](https://github.com/Azure/co-op-translator) take translate am. Even though we dey try make e accurate, abeg sabi say automated translations fit get mistake or no correct well. Di original docu for im native language na di main correct source. For important information, e good make una use professional human translation. We no go dey responsible for any misunderstanding or wrong interpretation wey fit happen because of dis translation.
+Dis document don translate wit AI translation service wey dem dey call [Co-op Translator](https://github.com/Azure/co-op-translator). Even tho we dey try make e correct, make you sabi say automatic translation fit get mistake or no too correct. Di original document wey dey di language wey e suppose dey na di correct one wey you go trust. If na serious matter, make you use professional human translation. We no go fit take responsibility if person misunderstanding or misinterpret something because of dis translation.
 <!-- CO-OP TRANSLATOR DISCLAIMER END -->

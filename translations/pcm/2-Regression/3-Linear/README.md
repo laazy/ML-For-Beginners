@@ -1,5 +1,11 @@
-# Build regression model wit Scikit-learn: regression four ways
+# Build a regression model using Scikit-learn: regression four ways
 
+## Beginner Note
+
+Linear regression dey used wen we want predict **numerical value** (like house price, temperature, or sales).
+E dey work by finding straight line way best represent di relationship between input features and di output.
+
+For dis lesson, we go focus on understanding di concept before we explore more advanced regression techniques.
 ![Linear vs polynomial regression infographic](../../../../translated_images/pcm/linear-polynomial.5523c7cb6576ccab.webp)
 > Infographic by [Dasani Madipalli](https://twitter.com/dasani_decoded)
 ## [Pre-lecture quiz](https://ff-quizzes.netlify.app/en/ml/)
@@ -7,79 +13,85 @@
 > ### [Dis lesson dey available for R!](../../../../2-Regression/3-Linear/solution/R/lesson_3.html)
 ### Introduction 
 
-So far, you don learn wetin regression be wit sample data wey we gather from pumpkin pricing dataset wey we go use for dis lesson. You don also use Matplotlib take visualize am.
+So far, you don explore wetin regression be with sample data wey we collect from di pumpkin pricing dataset wey we go use for dis lesson. You don also visualize am using Matplotlib.
 
-Now, you ready to go deeper into regression for ML. While visualization dey help you understand data, the real power of Machine Learning na from _training models_. Models dey train wit old data to automatically capture how data dey relate, and dem go help you predict wetin go happen for new data wey model never see before.
+Now you fit dive deeper into regression for ML. While visualization dey help you make sense of data, real power of Machine Learning na from _training models_. Models dey train on historic data to automatically catch data dependencies, and dem allow you predict outcomes for new data wey di model never see before.
 
-For dis lesson, you go learn more about two types of regression: _basic linear regression_ and _polynomial regression_, plus some of the math wey dey behind dis techniques. Dis models go help us predict pumpkin prices based on different input data.
+For dis lesson, you go learn more about two types of regression: _basic linear regression_ and _polynomial regression_, plus some math way dey behind these techniques. Dem models go allow us predict pumpkin prices based on different input data. 
 
 [![ML for beginners - Understanding Linear Regression](https://img.youtube.com/vi/CRxFT8oTDMg/0.jpg)](https://youtu.be/CRxFT8oTDMg "ML for beginners - Understanding Linear Regression")
 
-> 🎥 Click di image above for short video wey explain linear regression.
+> 🎥 Click di image wey dey above for short video overview of linear regression.
 
-> For dis curriculum, we dey assume say you no sabi too much math, and we dey try make am easy for students wey dey come from other fields, so watch out for notes, 🧮 callouts, diagrams, and other tools wey go help you understand.
+> Throughout dis curriculum, we assume say person no get much knowledge for math before, and we dey try make am easy for students wey dey comot from other fields, so watch for notes, 🧮 callouts, diagrams, and other learning tools to help you understand.
 
 ### Prerequisite
 
-By now, you suppose don sabi di structure of di pumpkin data wey we dey look. You go find am preloaded and pre-cleaned for dis lesson _notebook.ipynb_ file. For di file, di pumpkin price dey show per bushel for new data frame. Make sure say you fit run dis notebooks for kernels inside Visual Studio Code.
+You suppose sabi di structure of di pumpkin data wey we dey check by now. You fit find am preloaded and pre-cleaned inside dis lesson's _notebook.ipynb_ file. Inside di file, di pumpkin price dey show per bushel for new dataframe. Make sure say you fit run these notebooks inside Visual Studio Code kernels.
 
 ### Preparation
 
-Make we remind you, you dey load dis data so you fit ask questions about am.
+As reminder, you dey load dis data make you fit ask questions about am.
 
-- When be di best time to buy pumpkins? 
-- Wetin be di price wey I fit expect for case of miniature pumpkins?
-- I go buy dem for half-bushel baskets or di 1 1/9 bushel box?
-Make we continue to dig di data.
+- When na di best time to buy pumpkins? 
+- Wetin price fit be for one case of miniature pumpkins?
+- I suppose buy dem for half-bushel baskets or buy by 1 1/9 bushel box?
+Make we continue to look into dis data.
 
-For di previous lesson, you create Pandas data frame and put part of di original dataset inside, standardizing di pricing by di bushel. But as you do am, you only fit gather about 400 datapoints and na only for di fall months.
+For di previous lesson, you create Pandas dataframe and put small part of di original dataset for am, standardizing di pricing by di bushel. But by doing that, you only fit collect about 400 datapoints and na only for di fall months.
 
-Check di data wey we preloaded for dis lesson notebook. Di data don dey preloaded and we don chart initial scatterplot to show month data. Maybe we fit get more detail about di data nature if we clean am more.
+Check di data way we preload for dis lesson notebook. Di data dey preloaded and initial scatterplot dey show month data. Maybe we fit get small better detail about di nature of di data if we clean am more.
 
-## Linear regression line
+## A linear regression line
 
-As you learn for Lesson 1, di goal of linear regression na to fit plot line wey go:
+As you learn for Lesson 1, di aim of linear regression exercise na to fit plot one line to:
 
-- **Show variable relationships**. Show how di variables dey relate
-- **Make predictions**. Make correct predictions about where new datapoint go fall for di line. 
+- **Show variable relationships**. Show di relationship between variables
+- **Make predictions**. Make correct predictions on where new datapoint for fit fall inside relation to dat line.
  
-Di normal way for **Least-Squares Regression** na to draw dis type of line. Di term 'least-squares' mean say all di datapoints wey dey around di regression line go square and then add up. Ideally, di final sum suppose dey as small as e fit be, because we want low number of errors, or `least-squares`. 
+E common for **Least-Squares Regression** to draw dis kain line. Di term "Least-Squares" mean say you want minimize total error for our model. For every data point, we dey measure vertical distance (we call am residual) between di real point and our regression line.
 
-We dey do am because we want model line wey get di least total distance from all our data points. We dey square di terms before we add dem because we dey focus on di size, no be di direction.
+We dey square these distances for two main reasons:  
+
+1. **Magnitude over Direction:** We wan make error of -5 equal to error of +5. Squaring go make all values positive.  
+
+2. **Penalizing Outliers:** Squaring dey put more weight on bigger errors, e go make di line stay closer to points wey far away.  
+
+Then we add all these squared values together. Our goal na to find di line where dis total sum go minimum (smallest value)—na why dem call am "Least-Squares".  
 
 > **🧮 Show me di math** 
 > 
-> Dis line, wey dem dey call _line of best fit_ fit dey express by [one equation](https://en.wikipedia.org/wiki/Simple_linear_regression): 
+> Dis line wey we call _line of best fit_ fit be expressed by [one equation](https://en.wikipedia.org/wiki/Simple_linear_regression): 
 > 
 > ```
 > Y = a + bX
 > ```
 >
-> `X` na di 'explanatory variable'. `Y` na di 'dependent variable'. Di slope of di line na `b` and `a` na di y-intercept, wey mean di value of `Y` when `X = 0`. 
+> `X` na 'explanatory variable'. `Y` na 'dependent variable'. Di slope of di line na `b` and `a` na di y-intercept, way mean di value of `Y` when `X = 0`. 
 >
 >![calculate di slope](../../../../translated_images/pcm/slope.f3c9d5910ddbfcf9.webp)
 >
 > First, calculate di slope `b`. Infographic by [Jen Looper](https://twitter.com/jenlooper)
 >
-> In other words, and referring to our pumpkin data original question: "predict di price of pumpkin per bushel by month", `X` go mean di price and `Y` go mean di month of sale. 
+> To talk am another way, and referring to di pumpkin data original question: "predict price of pumpkin per bushel by month", `X` na price and `Y` na month of sale. 
 >
 >![complete di equation](../../../../translated_images/pcm/calculation.a209813050a1ddb1.webp)
 >
-> Calculate di value of Y. If you dey pay around $4, e fit be April! Infographic by [Jen Looper](https://twitter.com/jenlooper)
+> Calculate di value of Y. If you dey pay around $4, e be say na April! Infographic by [Jen Looper](https://twitter.com/jenlooper)
 >
-> Di math wey dey calculate di line suppose show di slope of di line, wey also depend on di intercept, or where `Y` dey when `X = 0`.
+> Di math wey calculate di line must show di slope of di line, way still depend on di intercept, or where `Y` dey when `X = 0`.
 >
-> You fit see di method of calculation for dis values for [Math is Fun](https://www.mathsisfun.com/data/least-squares-regression.html) web site. Also visit [dis Least-squares calculator](https://www.mathsisfun.com/data/least-squares-calculator.html) to see how di numbers' values dey affect di line.
+> You fit check di way to calculate dis values on di [Math is Fun](https://www.mathsisfun.com/data/least-squares-regression.html) website. Also visit [dis Least-squares calculator](https://www.mathsisfun.com/data/least-squares-calculator.html) to see how di numbers value affect di line.
 
 ## Correlation
 
-Another term wey you need understand na di **Correlation Coefficient** between di given X and Y variables. Using scatterplot, you fit quickly see dis coefficient. Scatterplot wey get datapoints wey dey arrange well for line get high correlation, but scatterplot wey get datapoints wey dey scatter anyhow between X and Y get low correlation.
+Another term to sabi na di **Correlation Coefficient** between X and Y variables. Using scatterplot, you fit quickly visualize dis coefficient. If plot get datapoints scatter for neat line, e get high correlation, but if datapoints scatter everywhere between X and Y, e get low correlation.
 
-Good linear regression model go be di one wey get high (nearer to 1 than 0) Correlation Coefficient using di Least-Squares Regression method wit regression line.
+Good linear regression model na di one way get high (near 1 pass near 0) Correlation Coefficient using Least-Squares Regression method and regression line.
 
-✅ Run di notebook wey follow dis lesson and look di Month to Price scatterplot. Di data wey dey associate Month to Price for pumpkin sales dey get high or low correlation, based on how you see di scatterplot? E go change if you use more detailed measure instead of `Month`, like *day of di year* (i.e. number of days since di year start)?
+✅ Run di notebook wey join dis lesson and check di Month to Price scatterplot. Di data way associate Month to Price for pumpkin sales get high or low correlation according to your visual interpretation? E go change if you use more detailed measure instead of `Month`, like *day of di year* (meaning number of days since year start)?
 
-For di code below, we go assume say we don clean di data, and we don get data frame wey dem dey call `new_pumpkins`, wey look like dis:
+For di code below, we go assume say we don clean di data, and get data frame named `new_pumpkins`, similar to dis:
 
 ID | Month | DayOfYear | Variety | City | Package | Low Price | High Price | Price
 ---|-------|-----------|---------|------|---------|-----------|------------|-------
@@ -89,36 +101,36 @@ ID | Month | DayOfYear | Variety | City | Package | Low Price | High Price | Pri
 73 | 10 | 274 | PIE TYPE | BALTIMORE | 1 1/9 bushel cartons | 17.0 | 17.0 | 15.454545
 74 | 10 | 281 | PIE TYPE | BALTIMORE | 1 1/9 bushel cartons | 15.0 | 15.0 | 13.636364
 
-> Di code to clean di data dey available for [`notebook.ipynb`](notebook.ipynb). We don do di same cleaning steps as di previous lesson, and we don calculate `DayOfYear` column using dis expression: 
+> Di code wey clean di data dey inside [`notebook.ipynb`](notebook.ipynb). We do di same cleaning steps like before, and we calculate `DayOfYear` column with dis expression: 
 
 ```python
 day_of_year = pd.to_datetime(pumpkins['Date']).apply(lambda dt: (dt-datetime(dt.year,1,1)).days)
 ```
 
-Now wey you don understand di math wey dey behind linear regression, make we create Regression model to see if we fit predict which package of pumpkins go get di best pumpkin prices. Person wey dey buy pumpkins for holiday pumpkin patch fit want dis info to optimize di purchase of pumpkin packages for di patch.
+Now wey you understand di math behind linear regression, make we create Regression model to see if we fit predict which pumpkin package go get di best pumpkin prices. Anybody buying pumpkins for holiday pumpkin patch fit want dis info to optimize how dem go buy pumpkin packages for di patch.
 
 ## Looking for Correlation
 
-[![ML for beginners - Looking for Correlation: Di Key to Linear Regression](https://img.youtube.com/vi/uoRq-lW2eQo/0.jpg)](https://youtu.be/uoRq-lW2eQo "ML for beginners - Looking for Correlation: Di Key to Linear Regression")
+[![ML for beginners - Looking for Correlation: The Key to Linear Regression](https://img.youtube.com/vi/uoRq-lW2eQo/0.jpg)](https://youtu.be/uoRq-lW2eQo "ML for beginners - Looking for Correlation: The Key to Linear Regression")
 
-> 🎥 Click di image above for short video wey explain correlation.
+> 🎥 Click di image above to watch short video overview about correlation.
 
-From di previous lesson, you don probably see say di average price for different months dey look like dis:
+From di last lesson, you probably don see dat average price for different months look like dis:
 
 <img alt="Average price by month" src="../../../../translated_images/pcm/barchart.a833ea9194346d76.webp" width="50%"/>
 
-Dis suggest say correlation dey, and we fit try train linear regression model to predict di relationship between `Month` and `Price`, or between `DayOfYear` and `Price`. Dis scatter plot dey show di relationship between `DayOfYear` and `Price`:
+Dis show say should get some correlation, and we fit try train linear regression model to predict di relationship between `Month` and `Price`, or between `DayOfYear` and `Price`. Dis na di scatter plot wey show di latter one:
 
 <img alt="Scatter plot of Price vs. Day of Year" src="../../../../translated_images/pcm/scatter-dayofyear.bc171c189c9fd553.webp" width="50%" /> 
 
-Make we see if correlation dey using di `corr` function:
+Make we check if correlation dey using `corr` function:
 
 ```python
 print(new_pumpkins['Month'].corr(new_pumpkins['Price']))
 print(new_pumpkins['DayOfYear'].corr(new_pumpkins['Price']))
 ```
 
-E be like say di correlation small, -0.15 by `Month` and -0.17 by di `DayOfMonth`, but e fit get another important relationship. E be like say different clusters of prices dey correspond to different pumpkin varieties. To confirm dis hypothesis, make we plot each pumpkin category using different color. By passing `ax` parameter to di `scatter` plotting function, we fit plot all points for di same graph:
+E be like say correlation small, -0.15 by `Month` and -0.17 by `DayOfMonth`, but fit be say another important relationship dey. E be like say different clusters of prices dey waka with different pumpkin varieties. To confirm dis hypothesis, make we plot each pumpkin category with different color. By passing `ax` parameter to `scatter` plotting function, we fit plot all points for one graph:
 
 ```python
 ax=None
@@ -130,7 +142,7 @@ for i,var in enumerate(new_pumpkins['Variety'].unique()):
 
 <img alt="Scatter plot of Price vs. Day of Year" src="../../../../translated_images/pcm/scatter-dayofyear-color.65790faefbb9d54f.webp" width="50%" /> 
 
-Our investigation dey suggest say variety dey affect di overall price pass di actual selling date. We fit see dis wit bar graph:
+Our check show say variety get more effect on overall price pass di actual selling date. We fit see dis with bar graph:
 
 ```python
 new_pumpkins.groupby('Variety')['Price'].mean().plot(kind='bar')
@@ -138,7 +150,7 @@ new_pumpkins.groupby('Variety')['Price'].mean().plot(kind='bar')
 
 <img alt="Bar graph of price vs variety" src="../../../../translated_images/pcm/price-by-variety.744a2f9925d9bcb4.webp" width="50%" /> 
 
-Make we focus for now only on one pumpkin variety, di 'pie type', and see wetin di date dey do to di price:
+Make we focus for now on one pumpkin variety, di 'pie type', and see wetin di date do to di price:
 
 ```python
 pie_pumpkins = new_pumpkins[new_pumpkins['Variety']=='PIE TYPE']
@@ -146,22 +158,22 @@ pie_pumpkins.plot.scatter('DayOfYear','Price')
 ```
 <img alt="Scatter plot of Price vs. Day of Year" src="../../../../translated_images/pcm/pie-pumpkins-scatter.d14f9804a53f927e.webp" width="50%" /> 
 
-If we now calculate di correlation between `Price` and `DayOfYear` using `corr` function, we go get something like `-0.27` - wey mean say training predictive model dey make sense.
+If we calculate correlation between `Price` and `DayOfYear` using `corr` function, we go get like `-0.27` - mean say e make sense to train predictive model.
 
-> Before we train linear regression model, e dey important to make sure say our data clean. Linear regression no dey work well wit missing values, so e make sense to remove all empty cells:
+> Before train linear regression model, e important to make sure our data clean well. Linear regression no dey work well if values dey miss, so e make sense to clear all empty cells:
 
 ```python
 pie_pumpkins.dropna(inplace=True)
 pie_pumpkins.info()
 ```
 
-Another way na to fill di empty values wit mean values from di corresponding column.
+Another way na to fill empty values with mean values from corresponding column.
 
 ## Simple Linear Regression
 
 [![ML for beginners - Linear and Polynomial Regression using Scikit-learn](https://img.youtube.com/vi/e4c_UP2fSjg/0.jpg)](https://youtu.be/e4c_UP2fSjg "ML for beginners - Linear and Polynomial Regression using Scikit-learn")
 
-> 🎥 Click di image above for short video wey explain linear and polynomial regression.
+> 🎥 Click di image above for short video overview of linear and polynomial regression.
 
 To train our Linear Regression model, we go use **Scikit-learn** library.
 
@@ -171,30 +183,31 @@ from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 ```
 
-We go first separate input values (features) and di expected output (label) into separate numpy arrays:
+We start by separating input values (features) and expected output (label) into separate numpy arrays:
 
 ```python
 X = pie_pumpkins['DayOfYear'].to_numpy().reshape(-1,1)
 y = pie_pumpkins['Price']
 ```
 
-> Note say we need perform `reshape` for di input data so di Linear Regression package go understand am well. Linear Regression dey expect 2D-array as input, where each row of di array dey correspond to vector of input features. For our case, since we get only one input - we need array wey get shape N&times;1, where N na di dataset size.
+> Note say we gatz do `reshape` on input data so Linear Regression package go fit understand am well well. Linear Regression dey expect 2D-array as input, where each row of di array represent vector of input features. Our case, we get only one input - so we need array with shape N&times;1, where N na size of dataset.
 
-Then, we go split di data into train and test datasets, so we fit validate our model after training:
+Then, we need to split data into train and test datasets so we fit validate our model after training:
 
 ```python
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 ```
 
-Finally, training di actual Linear Regression model na just two lines of code. We go define di `LinearRegression` object, and fit am to our data using di `fit` method:
+Finally, training actual Linear Regression model na just two lines of code. We define `LinearRegression` object, and fit am to our data using `fit` method:
 
 ```python
 lin_reg = LinearRegression()
 lin_reg.fit(X_train,y_train)
 ```
 
-Di `LinearRegression` object after `fit`-ting go get all di coefficients of di regression, wey you fit access using `.coef_` property. For our case, na just one coefficient dey, wey suppose dey around `-0.017`. E mean say prices dey drop small small wit time, but no too much, around 2 cents per day. We fit also access di intersection point of di regression wit Y-axis using `lin_reg.intercept_` - e go dey around `21` for our case, wey dey show di price at di beginning of di year.
-To check how correct our model dey, we fit predict price for test dataset, then measure how close our prediction dey to the expected value. We fit use mean square error (MSE) metrics do am, wey be the mean of all squared difference between expected and predicted value.
+Di `LinearRegression` object afta `fit`-ting get all di coefficients of di regression, we fit fit access using `.coef_` property. For our case, na only one coefficient wey dey, wey suppose dey around `-0.017`. E mean sey prices fit dey drop small with time, but e no too much, around 2 cents per day. We fit access di intersection point of di regression with Y-axis using `lin_reg.intercept_` - e go dey around `21` for our case, wey mean di price for beginning of di year.
+
+To see how correct our model be, we fit predict prices for test dataset, then measure how close our predictions be to di expected values. Dis one fit use mean square error (MSE) metrics, wey be di mean of all squared differences between expected and predicted value.
 
 ```python
 pred = lin_reg.predict(X_test)
@@ -203,16 +216,16 @@ mse = np.sqrt(mean_squared_error(y_test,pred))
 print(f'Mean error: {mse:3.3} ({mse/np.mean(pred)*100:3.3}%)')
 ```
 
-Our error dey around 2 points, wey be ~17%. E no too good. Another way to check model quality na **coefficient of determination**, wey we fit get like this:
+Our error dey around 2 points, wey be ~17%. E no too good. Another indicator of model quality na di **coefficient of determination**, wey fit get like dis:
 
 ```python
 score = lin_reg.score(X_train,y_train)
 print('Model determination: ', score)
 ```
 
-If the value na 0, e mean say the model no dey use input data at all, and e dey act like *worst linear predictor*, wey na just the mean value of the result. If the value na 1, e mean say we fit perfectly predict all expected outputs. For our case, the coefficient dey around 0.06, wey no too high.
+If di value na 0, e mean sey di model no dey consider input data, e just dey act as di *worst linear predictor*, wey na mean value of di result. If di value na 1, e mean sey we fit perfectly predict all expected outputs. For our case, di coefficient na around 0.06, wey low shaa.
 
-We fit also plot the test data together with the regression line to see how regression dey work for our case:
+We fit also plot di test data join with di regression line so dat we go fit see correct how regression dey work for our case:
 
 ```python
 plt.scatter(X_test,y_test)
@@ -223,17 +236,17 @@ plt.plot(X_test,pred)
 
 ## Polynomial Regression
 
-Another type of Linear Regression na Polynomial Regression. Sometimes, e get linear relationship between variables - like the bigger the pumpkin volume, the higher the price - but sometimes these relationships no fit dey as plane or straight line.
+Another kin of Linear Regression na Polynomial Regression. Sometimes, e for be say the relationship between variables be straight line - like di bigger di pumpkin volume, di higher di price - but sometimes, dis kain relationship no fit plot as plane or straight line. 
 
-✅ Here be [some more examples](https://online.stat.psu.edu/stat501/lesson/9/9.8) of data wey fit use Polynomial Regression.
+✅ Here na [some more examples](https://online.stat.psu.edu/stat501/lesson/9/9.8) of data wey polynomial regression fit work for
 
-Look again at the relationship between Date and Price. This scatterplot e sure say e suppose dey analyzed by straight line? Prices no fit dey fluctuate? For this case, you fit try polynomial regression.
+Look di relationship between Date and Price again. Dis scatterplot seem like e suppose analyze by straight line? Prices no dey fluctuate sef? For dis situation, you fit try polynomial regression.
 
-✅ Polynomials na mathematical expressions wey fit get one or more variables and coefficients.
+✅ Polynomials na mathematical expressions wey fit get one or more variables and coefficients
 
-Polynomial regression dey create curved line to fit nonlinear data well. For our case, if we add squared `DayOfYear` variable into input data, we fit fit our data with parabolic curve, wey go get minimum for one point inside the year.
+Polynomial regression dey create curved line to fit nonlinear data better. For our case, if we add squared `DayOfYear` variable enter input data, we suppose fit our data with parabolic curve, wey get minimum for one point inside di year.
 
-Scikit-learn get one helpful [pipeline API](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html?highlight=pipeline#sklearn.pipeline.make_pipeline) to join different steps of data processing together. **Pipeline** na chain of **estimators**. For our case, we go create pipeline wey first add polynomial features to our model, then train the regression:
+Scikit-learn get beta [pipeline API](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html?highlight=pipeline#sklearn.pipeline.make_pipeline) wey dey help combine different data processing steps together. **pipeline** na chain of **estimators**. For our case, we go create pipeline wey first add polynomial features to our model, then train di regression:
 
 ```python
 from sklearn.preprocessing import PolynomialFeatures
@@ -244,36 +257,36 @@ pipeline = make_pipeline(PolynomialFeatures(2), LinearRegression())
 pipeline.fit(X_train,y_train)
 ```
 
-Using `PolynomialFeatures(2)` mean say we go include all second-degree polynomials from the input data. For our case, e go just mean `DayOfYear`<sup>2</sup>, but if we get two input variables X and Y, e go add X<sup>2</sup>, XY and Y<sup>2</sup>. We fit also use higher degree polynomials if we want.
+Use `PolynomialFeatures(2)` mean sey we go include all second-degree polynomials from di input data. For us, e mean say na just `DayOfYear`<sup>2</sup>, but if we get two input variables X and Y, e go add X<sup>2</sup>, XY and Y<sup>2</sup>. We fit also use higher degree polynomials if we want.
 
-Pipelines fit dey used same way as the original `LinearRegression` object, like we fit `fit` the pipeline, then use `predict` to get the prediction results. Here be the graph wey show test data, and the approximation curve:
+Pipelines fit act like di original `LinearRegression` object, e.g. we fit `fit` di pipeline, then use `predict` to get prediction results. Dis na di graph wey show test data and approximation curve:
 
 <img alt="Polynomial regression" src="../../../../translated_images/pcm/poly-results.ee587348f0f1f60b.webp" width="50%" />
 
-Using Polynomial Regression, we fit get slightly lower MSE and higher determination, but e no dey significant. We need to consider other features!
+Using Polynomial Regression, we fit get small lower MSE and higher determination, but e no too much. We need consider other features!
 
-> You fit see say the minimum pumpkin prices dey somewhere around Halloween. How you fit explain this?
+> You fit see sey minimal pumpkin prices dey around Halloween. How you fit explain dat? 
 
-🎃 Congrats, you don create model wey fit help predict the price of pie pumpkins. You fit repeat the same process for all pumpkin types, but e go dey stressful. Make we learn how to take pumpkin variety into account for our model!
+🎃 Congrats, you just create model wey fit help predict pie pumpkins price. You fit fit repeat di same process for all pumpkin types, but dat one go dey tiring. Make we learn now how to take pumpkin variety enter our model!
 
 ## Categorical Features
 
-For ideal world, we go want predict prices for different pumpkin varieties using the same model. But the `Variety` column dey different from columns like `Month`, because e get non-numeric values. These kind columns na **categorical**.
+For correct world, we want fit predict prices for different pumpkin varieties using same model. But di `Variety` column differ from columns like `Month`, because e get non-numeric values. Dis kind columns na **categorical**.
 
 [![ML for beginners - Categorical Feature Predictions with Linear Regression](https://img.youtube.com/vi/DYGliioIAE0/0.jpg)](https://youtu.be/DYGliioIAE0 "ML for beginners - Categorical Feature Predictions with Linear Regression")
 
-> 🎥 Click the image above for short video overview of how to use categorical features.
+> 🎥 Click di image wey dey above for short video wey summarize how to use categorical features.
 
-Here you fit see how average price dey depend on variety:
+Here you fit see how average price depend on variety:
 
 <img alt="Average price by variety" src="../../../../translated_images/pcm/price-by-variety.744a2f9925d9bcb4.webp" width="50%" />
 
-To take variety into account, we first need to change am to numeric form, or **encode** am. E get different ways we fit do am:
+To take variety enter account, we first need to convert am to numeric form, or **encode** am. We get different ways to do am:
 
-* Simple **numeric encoding** go build table of different varieties, then replace the variety name with index for that table. This no be the best idea for linear regression, because linear regression dey use the actual numeric value of the index, and e dey add am to the result, multiplying by some coefficient. For our case, the relationship between the index number and the price no dey linear, even if we arrange indices in some specific way.
-* **One-hot encoding** go replace the `Variety` column with 4 different columns, one for each variety. Each column go get `1` if the row dey for that variety, and `0` if e no dey. This mean say linear regression go get four coefficients, one for each pumpkin variety, wey go show "starting price" (or "additional price") for that variety.
+* Simple **numeric encoding** go build table of different varieties, then replace variety name with index for that table. Dis one no too good for linear regression, because linear regression go take di numeric value of di index, add am to result, multiply by some coefficient. For our case, di relationship between index number and price no linear, even if we arrange indices some specific way.
+* **One-hot encoding** go replace `Variety` column with 4 different columns, one for each variety. Each column go get `1` if that row na dat variety, else `0`. Mean sey four coefficients go dey for linear regression, one for each pumpkin variety, wey dey responsible for "starting price" (or "additional price") for dat variety.
 
-The code below show how we fit one-hot encode variety:
+Dis code below show how we fit one-hot encode variety:
 
 ```python
 pd.get_dummies(new_pumpkins['Variety'])
@@ -290,14 +303,14 @@ pd.get_dummies(new_pumpkins['Variety'])
 1741 | 0 | 1 | 0 | 0
 1742 | 0 | 1 | 0 | 0
 
-To train linear regression using one-hot encoded variety as input, we just need to set `X` and `y` data correctly:
+To train linear regression using one-hot encoded variety as input, we just need to initialize `X` and `y` data well:
 
 ```python
 X = pd.get_dummies(new_pumpkins['Variety'])
 y = new_pumpkins['Price']
 ```
 
-The rest of the code na the same as the one we use before to train Linear Regression. If you try am, you go see say the mean squared error dey about the same, but we go get higher coefficient of determination (~77%). To get more accurate predictions, we fit take more categorical features into account, plus numeric features like `Month` or `DayOfYear`. To get one big array of features, we fit use `join`:
+Di rest of di code na di same wey we use above for Linear Regression training. If you try am, you go see say mean squared error dey about di same, but coefficient of determination go much higher (~77%). To get better predictions, we fit take more categorical features enter account, plus numeric features, like `Month` or `DayOfYear`. To get one large features array, we fit use `join`:
 
 ```python
 X = pd.get_dummies(new_pumpkins['Variety']) \
@@ -307,31 +320,31 @@ X = pd.get_dummies(new_pumpkins['Variety']) \
 y = new_pumpkins['Price']
 ```
 
-Here we also dey consider `City` and `Package` type, wey give us MSE 2.84 (10%), and determination 0.94!
+Here we also take `City` and `Package` type enter account, wey give MSE 2.84 (10%), plus determination 0.94!
 
 ## Putting it all together
 
-To make the best model, we fit use combined (one-hot encoded categorical + numeric) data from the example above together with Polynomial Regression. Here be the complete code for your convenience:
+To make di best model, we fit combine (one-hot encoded categorical + numeric) data from di example above join Polynomial Regression. Dis na di complete code for your ease:
 
 ```python
-# set up training data
+# prepare training data
 X = pd.get_dummies(new_pumpkins['Variety']) \
         .join(new_pumpkins['Month']) \
         .join(pd.get_dummies(new_pumpkins['City'])) \
         .join(pd.get_dummies(new_pumpkins['Package']))
 y = new_pumpkins['Price']
 
-# make train-test split
+# divide train and test data
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 
-# setup and train the pipeline
+# prepare and train di pipeline
 pipeline = make_pipeline(PolynomialFeatures(2), LinearRegression())
 pipeline.fit(X_train,y_train)
 
-# predict results for test data
+# predict results for test data dem
 pred = pipeline.predict(X_test)
 
-# calculate MSE and determination
+# calculate MSE and determination score
 mse = np.sqrt(mean_squared_error(y_test,pred))
 print(f'Mean error: {mse:3.3} ({mse/np.mean(pred)*100:3.3}%)')
 
@@ -339,7 +352,7 @@ score = pipeline.score(X_train,y_train)
 print('Model determination: ', score)
 ```
 
-This go give us the best determination coefficient of almost 97%, and MSE=2.23 (~8% prediction error).
+This one suppose give us best determination coefficient near 97%, and MSE=2.23 (~8% prediction error).
 
 | Model | MSE | Determination |
 |-------|-----|---------------|
@@ -349,18 +362,18 @@ This go give us the best determination coefficient of almost 97%, and MSE=2.23 (
 | All features Linear | 2.84 (10.5%) | 0.94 |
 | All features Polynomial | 2.23 (8.25%) | 0.97 |
 
-🏆 Well done! You don create four Regression models for one lesson, and improve the model quality to 97%. For the final section on Regression, you go learn about Logistic Regression to determine categories.
+🏆 Well done! You create four Regression models for one lesson, plus you improve model quality to 97%. For di last part of Regression, you go learn about Logistic Regression to determine categories.
 
 ---
 ## 🚀Challenge
 
-Test different variables for this notebook to see how correlation dey affect model accuracy.
+Test different variables for dis notebook to see how correlation link to model accuracy.
 
 ## [Post-lecture quiz](https://ff-quizzes.netlify.app/en/ml/)
 
 ## Review & Self Study
 
-For this lesson we learn about Linear Regression. E get other important types of Regression. Read about Stepwise, Ridge, Lasso and Elasticnet techniques. One good course to study more na the [Stanford Statistical Learning course](https://online.stanford.edu/courses/sohs-ystatslearning-statistical-learning).
+For dis lesson, we learn about Linear Regression. Get other important Regression types too. Read about Stepwise, Ridge, Lasso and Elasticnet techniques. One good course to study be di [Stanford Statistical Learning course](https://online.stanford.edu/courses/sohs-ystatslearning-statistical-learning)
 
 ## Assignment 
 
@@ -370,5 +383,5 @@ For this lesson we learn about Linear Regression. E get other important types of
 
 <!-- CO-OP TRANSLATOR DISCLAIMER START -->
 **Disclaimer**:  
-Dis dokyument don use AI transle-shon service [Co-op Translator](https://github.com/Azure/co-op-translator) do di transle-shon. Even as we dey try make am accurate, abeg make you sabi say transle-shon wey machine do fit get mistake or no dey correct well. Di original dokyument for im native language na di one wey you go take as di correct source. For important mata, e good make you use professional human transle-shon. We no go fit take blame for any misunderstanding or wrong interpretation wey fit happen because you use dis transle-shon.
+Dis document don translate wit AI translation service [Co-op Translator](https://github.com/Azure/co-op-translator). Even though we dey try make am correct, abeg sabi say automated translation fit get errors or no too correct. Di original document wey dey dia in im own language na di correct one. If na serious matter, better make person wey sabi do proper human translation do am. We no go hold ourselves responsible if pesin misunderstand or misinterpret any tin wey come from dis translation.
 <!-- CO-OP TRANSLATOR DISCLAIMER END -->

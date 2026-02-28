@@ -1,44 +1,44 @@
 # Cuisine classifiers 2
 
-For dis second lesson for classification, you go learn more ways wey you fit take classify numeric data. You go also sabi wetin fit happen if you choose one classifier instead of another one.
+Inside dis second classification lesson, you go explore more ways to classify numeric data. You go also learn about wetin fit happen if you choose one classifier pass the oda one.
 
 ## [Pre-lecture quiz](https://ff-quizzes.netlify.app/en/ml/)
 
 ### Prerequisite
 
-We dey assume say you don finish the previous lessons and you get clean dataset for your `data` folder wey dem call _cleaned_cuisines.csv_ for the root of dis 4-lesson folder.
+We dey assume say you don finish di previous lessons and you get cleaned dataset for your `data` folder wey dem call _cleaned_cuisines.csv_ for di root of dis 4-lesson folder.
 
 ### Preparation
 
-We don load your _notebook.ipynb_ file with the clean dataset and we don divide am into X and y dataframes, ready for the model building process.
+We don load your _notebook.ipynb_ file wit di cleaned dataset and we don divide am into X and y dataframes, ready for di model building process.
 
 ## A classification map
 
-Before, you don learn about the different options wey you fit use to classify data using Microsoft's cheat sheet. Scikit-learn get similar cheat sheet wey dey more detailed and fit help you narrow down your estimators (another name for classifiers):
+Before now, you don learn about di different options wey you get wen you dey classify data using Microsoft cheat sheet. Scikit-learn get similar, but more detailed cheat sheet wey fit help you narrow down your estimators (another word for classifiers):
 
 ![ML Map from Scikit-learn](../../../../translated_images/pcm/map.e963a6a51349425a.webp)
-> Tip: [visit dis map online](https://scikit-learn.org/stable/tutorial/machine_learning_map/) and click along the path to read documentation.
+> Tip: [visit dis map online](https://scikit-learn.org/stable/tutorial/machine_learning_map/) and click along di path to read documentation.
 
 ### The plan
 
-Dis map dey very helpful once you sabi your data well, as you fit 'walk' along the paths to make decision:
+Dis map go help wella if you done sabi your data well, because you fit 'walk' along e paths go make decision:
 
 - We get >50 samples
-- We wan predict category
+- We want predict category
 - We get labeled data
 - We get less than 100K samples
 - ✨ We fit choose Linear SVC
-- If e no work, since we get numeric data
+- If dis no work, since we get numeric data
     - We fit try ✨ KNeighbors Classifier 
-      - If e no work, try ✨ SVC and ✨ Ensemble Classifiers
+      - If dat one no work, try ✨ SVC and ✨ Ensemble Classifiers
 
-Dis path dey very helpful to follow.
+Dis na better way wey you fit follow.
 
 ## Exercise - split the data
 
-Follow dis path, we suppose start by importing some libraries wey we go use.
+Follow dis path, we suppose start by import some libraries to use.
 
-1. Import the libraries wey we need:
+1. Import di libraries wey you need:
 
     ```python
     from sklearn.neighbors import KNeighborsClassifier
@@ -53,12 +53,12 @@ Follow dis path, we suppose start by importing some libraries wey we go use.
 1. Split your training and test data:
 
     ```python
-    X_train, X_test, y_train, y_test = train_test_split(cuisines_feature_df, cuisines_label_df, test_size=0.3)
+    X_train, X_test, y_train, y_test = train_test_split(cuisines_features_df, cuisines_label_df, test_size=0.3)
     ```
 
 ## Linear SVC classifier
 
-Support-Vector clustering (SVC) na one method from the Support-Vector machines family of ML techniques (learn more about dem below). For dis method, you fit choose 'kernel' to decide how to cluster the labels. The 'C' parameter dey refer to 'regularization' wey dey control how parameters go influence the model. The kernel fit be one of [several](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC); here we set am to 'linear' to make sure say we dey use linear SVC. Probability dey default to 'false'; here we set am to 'true' to gather probability estimates. We set the random state to '0' to shuffle the data to get probabilities.
+Support-Vector clustering (SVC) na pikin from di Support-Vector machines family of ML techniques (you fit learn more about dem below). For dis method, you fit choose 'kernel' to decide how you go cluster di labels. Di 'C' parameter mean 'regularization' wey dey control how parameters go influence di model. Di kernel fit be one of [plenty](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC); for here we set am to 'linear' make we use linear SVC. Probability set to 'false' by default; but here we set am to 'true' to get probability estimates. We set random state to '0' to shuffle di data so that we fit get probabilities.
 
 ### Exercise - apply a linear SVC
 
@@ -68,13 +68,13 @@ Start by creating array of classifiers. You go dey add to dis array as we dey te
 
     ```python
     C = 10
-    # Create different classifiers.
+    # Make different classifier dem.
     classifiers = {
         'Linear SVC': SVC(kernel='linear', C=C, probability=True,random_state=0)
     }
     ```
 
-2. Train your model using Linear SVC and print report:
+2. Train your model using di Linear SVC and print report:
 
     ```python
     n_classifiers = len(classifiers)
@@ -88,7 +88,7 @@ Start by creating array of classifiers. You go dey add to dis array as we dey te
         print(classification_report(y_test,y_pred))
     ```
 
-    The result dey okay:
+    Di result good:
 
     ```output
     Accuracy (train) for Linear SVC: 78.6% 
@@ -107,19 +107,19 @@ Start by creating array of classifiers. You go dey add to dis array as we dey te
 
 ## K-Neighbors classifier
 
-K-Neighbors na part of the "neighbors" family of ML methods, wey fit work for supervised and unsupervised learning. For dis method, dem dey create predefined number of points and gather data around dem points so dat generalized labels fit dey predicted for the data.
+K-Neighbors na part of di "neighbors" family of ML methods, wey fit dey used for both supervised and unsupervised learning. For dis method, dem go set how many points before and gather data around dem points so that you fit predict labels wey fit generalize for di data.
 
 ### Exercise - apply the K-Neighbors classifier
 
-The previous classifier dey okay, e work well with the data, but maybe we fit get better accuracy. Try K-Neighbors classifier.
+Di previous classifier good and e work well for di data, but maybe we fit get better accuracy. Try K-Neighbors classifier.
 
-1. Add one line to your classifier array (add comma after the Linear SVC item):
+1. Add one line to your classifier array (put comma after the Linear SVC item):
 
     ```python
     'KNN classifier': KNeighborsClassifier(C),
     ```
 
-    The result no too good:
+    Di result just small worse:
 
     ```output
     Accuracy (train) for KNN classifier: 73.8% 
@@ -140,19 +140,19 @@ The previous classifier dey okay, e work well with the data, but maybe we fit ge
 
 ## Support Vector Classifier
 
-Support-Vector classifiers na part of the [Support-Vector Machine](https://wikipedia.org/wiki/Support-vector_machine) family of ML methods wey dem dey use for classification and regression tasks. SVMs "map training examples to points for space" to maximize the distance between two categories. Data wey go come later go dey mapped into dis space so dem fit predict their category.
+Support-Vector classifiers na part of di [Support-Vector Machine](https://wikipedia.org/wiki/Support-vector_machine) family of ML methods wey dem dey use for classification and regression tasks. SVMs "go map training examples go points for space" to make distance between two categories max. Data wey come after go also map inside dis space so that dem fit predict di category.
 
 ### Exercise - apply a Support Vector Classifier
 
-Make we try get better accuracy with Support Vector Classifier.
+Make we try small better accuracy with Support Vector Classifier.
 
-1. Add comma after the K-Neighbors item, then add dis line:
+1. Add comma after K-Neighbors item then add dis line:
 
     ```python
     'SVC': SVC(),
     ```
 
-    The result dey very good!
+    Di result good well!
 
     ```output
     Accuracy (train) for SVC: 83.2% 
@@ -173,14 +173,14 @@ Make we try get better accuracy with Support Vector Classifier.
 
 ## Ensemble Classifiers
 
-Make we follow the path reach the end, even though the previous test dey very good. Make we try some 'Ensemble Classifiers, like Random Forest and AdaBoost:
+Make we follow di path reach last, even though di previous test good well. Make we try some 'Ensemble Classifiers, especially Random Forest and AdaBoost:
 
 ```python
   'RFST': RandomForestClassifier(n_estimators=100),
   'ADA': AdaBoostClassifier(n_estimators=100)
 ```
 
-The result dey very good, especially for Random Forest:
+Di result correct wella, especially for Random Forest:
 
 ```output
 Accuracy (train) for RFST: 84.5% 
@@ -212,23 +212,23 @@ weighted avg       0.73      0.72      0.72      1199
 
 ✅ Learn about [Ensemble Classifiers](https://scikit-learn.org/stable/modules/ensemble.html)
 
-Dis method of Machine Learning "combine the predictions of several base estimators" to improve the model quality. For our example, we use Random Trees and AdaBoost. 
+Dis Machine Learning method "go join di predictions from many base estimators" to make di model better. For our example, we use Random Trees and AdaBoost.
 
-- [Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#forest), na averaging method, e dey build 'forest' of 'decision trees' wey get randomness to avoid overfitting. The n_estimators parameter dey set to the number of trees.
+- [Random Forest](https://scikit-learn.org/stable/modules/ensemble.html#forest), averaging method, dey build 'forest' of 'decision trees' wey get random nature to avoid overfitting. Di n_estimators parameter na di number of trees.
 
-- [AdaBoost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) dey fit classifier to dataset and then fit copies of dat classifier to the same dataset. E dey focus on the weights of items wey dem classify wrong and adjust the fit for the next classifier to correct am.
+- [AdaBoost](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) dey fit classifier to dataset then e fit many copies of dat classifier to di same dataset. E dey focus for weights of items wey classifier no classify well and e fit adjust di fit for next classifier to correct am.
 
 ---
 
 ## 🚀Challenge
 
-Each of dis techniques get plenty parameters wey you fit tweak. Research each one default parameters and think about wetin tweaking dis parameters go mean for the model quality.
+Each of these techniques get plenti parameters wey you fit change. Research how each one their default parameters be and reason how changing dem fit affect di model quality.
 
 ## [Post-lecture quiz](https://ff-quizzes.netlify.app/en/ml/)
 
 ## Review & Self Study
 
-Plenty grammar dey for dis lessons, so take small time review [dis list](https://docs.microsoft.com/dotnet/machine-learning/resources/glossary?WT.mc_id=academic-77952-leestott) of useful terminology!
+Plenty big big words dey dis lessons, so take small time review [dis list](https://docs.microsoft.com/dotnet/machine-learning/resources/glossary?WT.mc_id=academic-77952-leestott) of useful terms!
 
 ## Assignment 
 
@@ -238,5 +238,5 @@ Plenty grammar dey for dis lessons, so take small time review [dis list](https:/
 
 <!-- CO-OP TRANSLATOR DISCLAIMER START -->
 **Disclaimer**:  
-Dis dokyument don use AI transleshion service [Co-op Translator](https://github.com/Azure/co-op-translator) do di transleshion. Even though we dey try make am accurate, abeg make you sabi say machine transleshion fit get mistake or no dey correct well. Di original dokyument wey dey for im native language na di main source wey you go fit trust. For important informashon, e good make you use professional human transleshion. We no go fit take blame for any misunderstanding or wrong meaning wey fit happen because you use dis transleshion.
+Dis document don translate wit AI translation service [Co-op Translator](https://github.com/Azure/co-op-translator). Even though we dey try make am correct, abeg sabi say automated translation fit get some errors or mistake. Di original document for im own language na di correct source. If na important information, make you use professional human translation. We no go take responsibility for any wrong understanding or mistake wey fit happen because of this translation.
 <!-- CO-OP TRANSLATOR DISCLAIMER END -->
