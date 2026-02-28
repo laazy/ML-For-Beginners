@@ -1,53 +1,65 @@
-# Vytvorenie regresného modelu pomocou Scikit-learn: štyri spôsoby regresie
+# Vytvorte regresný model pomocou Scikit-learn: štyri spôsoby regresie
 
-![Infografika lineárna vs polynomiálna regresia](../../../../2-Regression/3-Linear/images/linear-polynomial.png)
+## Poznámka pre začiatočníkov
+
+Lineárna regresia sa používa, keď chceme predpovedať **číselnú hodnotu** (napríklad cenu domu, teplotu alebo predaj).
+Funguje tak, že nájde priamku, ktorá najlepšie reprezentuje vzťah medzi vstupnými premennými a výstupom.
+
+V tejto lekcii sa zameriavame na pochopenie konceptu predtým, než preskúmame pokročilejšie regresné techniky.
+![Lineárna vs polynomiálna regresia infografika](../../../../translated_images/sk/linear-polynomial.5523c7cb6576ccab.webp)
 > Infografika od [Dasani Madipalli](https://twitter.com/dasani_decoded)
 ## [Kvíz pred prednáškou](https://ff-quizzes.netlify.app/en/ml/)
 
-> ### [Táto lekcia je dostupná v R!](../../../../2-Regression/3-Linear/solution/R/lesson_3.html)
-### Úvod 
+> ### [Táto lekcia je dostupná aj v R!](../../../../2-Regression/3-Linear/solution/R/lesson_3.html)
+### Úvod
 
-Doteraz ste preskúmali, čo je regresia, na vzorových údajoch zo súboru údajov o cenách tekvíc, ktorý budeme používať počas celej tejto lekcie. Vizualizovali ste ich pomocou Matplotlibu.
+Doteraz ste preskúmali, čo je regresia, pomocou vzorových údajov zo súboru údajov o cene tekvíc, ktorý budeme používať počas celej tejto lekcie. Tiež ste ich vizualizovali pomocou Matplotlib.
 
-Teraz ste pripravení ponoriť sa hlbšie do regresie pre strojové učenie. Zatiaľ čo vizualizácia vám umožňuje pochopiť údaje, skutočná sila strojového učenia spočíva v _tréningu modelov_. Modely sú trénované na historických údajoch, aby automaticky zachytili závislosti medzi údajmi, a umožňujú vám predpovedať výsledky pre nové údaje, ktoré model predtým nevidel.
+Teraz ste pripravení ponoriť sa hlbšie do regresie pre ML. Zatiaľ čo vizualizácia umožňuje lepšie pochopiť údaje, skutočná sila strojového učenia pochádza z _trénovania modelov_. Modely sa trénujú na historických dátach, aby automaticky zachytili závislosti v dátach, a umožňujú vám predpovedať výsledky pre nové dáta, ktoré model predtým nevidel.
 
-V tejto lekcii sa dozviete viac o dvoch typoch regresie: _základná lineárna regresia_ a _polynomiálna regresia_, spolu s niektorými matematickými základmi týchto techník. Tieto modely nám umožnia predpovedať ceny tekvíc na základe rôznych vstupných údajov.
+V tejto lekcii sa dozviete viac o dvoch typoch regresie: _základnej lineárnej regresii_ a _polynomiálnej regresii_ spolu s niektorou z matematiky, ktorá stojí za týmito technikami. Tieto modely nám umožnia predpovedať ceny tekvíc v závislosti od rôznych vstupných údajov.
 
 [![ML pre začiatočníkov - Pochopenie lineárnej regresie](https://img.youtube.com/vi/CRxFT8oTDMg/0.jpg)](https://youtu.be/CRxFT8oTDMg "ML pre začiatočníkov - Pochopenie lineárnej regresie")
 
-> 🎥 Kliknite na obrázok vyššie pre krátky video prehľad o lineárnej regresii.
+> 🎥 Kliknite na obrázok vyššie pre krátke video o lineárnej regresii.
 
-> Počas celého kurzu predpokladáme minimálne znalosti matematiky a snažíme sa sprístupniť obsah študentom z iných odborov, preto sledujte poznámky, 🧮 výpočty, diagramy a ďalšie nástroje na učenie, ktoré vám pomôžu pochopiť obsah.
+> Počas celého kurikula predpokladáme minimálne znalosti matematiky a snažíme sa ich sprístupniť študentom z iných odborov, tak sledujte poznámky, 🧮 upozornenia, diagramy a ďalšie výučbové pomôcky na lepšie pochopenie.
 
 ### Predpoklady
 
-Teraz by ste mali byť oboznámení so štruktúrou údajov o tekviciach, ktoré skúmame. Nájdete ich prednahrané a predčistené v súbore _notebook.ipynb_ tejto lekcie. V súbore je cena tekvíc zobrazená za bušel v novom dátovom rámci. Uistite sa, že dokážete spustiť tieto notebooky v jadrách vo Visual Studio Code.
+Teraz by ste už mali byť oboznámení so štruktúrou údajov o tekviciach, ktoré skúmame. Nájdete ich prednačítané a predvyčistené v súbore _notebook.ipynb_ tejto lekcie. V súbore je cena tekvíc uvedená za košík v novom dátovom rámci. Uistite sa, že viete spustiť tieto notebooky v kerneloch vo Visual Studio Code.
 
 ### Príprava
 
-Pripomeňme si, že tieto údaje načítavate, aby ste mohli klásť otázky:
+Ako pripomienku, načítavate tieto údaje, aby ste na nich mohli klásť otázky.
 
-- Kedy je najlepší čas na kúpu tekvíc? 
-- Akú cenu môžem očakávať za balenie miniatúrnych tekvíc?
-- Mám ich kúpiť v polovičných bušlových košoch alebo v 1 1/9 bušlových škatuliach?
-Poďme sa hlbšie pozrieť na tieto údaje.
+- Kedy je najlepší čas na nákup tekvíc? 
+- Akú cenu môžem očakávať za balenie mini tekvíc?
+- Mám ich kúpiť v polkošíkoch alebo v krabici 1 1/9 košíka?
+Poďme sa ďalej ponoriť do tohto dátového súboru.
 
-V predchádzajúcej lekcii ste vytvorili Pandas dátový rámec a naplnili ho časťou pôvodného súboru údajov, štandardizujúc ceny podľa bušlu. Týmto spôsobom ste však dokázali zhromaždiť iba približne 400 dátových bodov a iba pre jesenné mesiace.
+V predchádzajúcej lekcii ste vytvorili dátový rámec Pandas a naplnili ho časťou pôvodného datasetu, štandardizujúc ceny podľa košíka. Týmto ste však získali iba asi 400 dátových bodov a len pre jesenné mesiace.
 
-Pozrite sa na údaje, ktoré sme prednahrali v notebooku tejto lekcie. Údaje sú prednahrané a úvodný bodový graf je vytvorený na zobrazenie údajov podľa mesiacov. Možno môžeme získať trochu viac detailov o povahe údajov ich ďalším čistením.
+Pozrite si údaje, ktoré sme prednačítali v sprievodnom notebooku tejto lekcie. Údaje sú predpripravené a prvý rozptýlený graf ukazuje mesiac predaja. Možno pôjdeme ďalej a vyčistíme dáta podrobnejšie.
 
 ## Lineárna regresná čiara
 
-Ako ste sa naučili v Lekcii 1, cieľom cvičenia lineárnej regresie je byť schopný nakresliť čiaru na:
+Ako ste sa naučili v Lekcii 1, cieľom lineárnej regresie je nakresliť čiaru, ktorá:
 
-- **Ukázanie vzťahov medzi premennými**. Ukázať vzťah medzi premennými
-- **Predpovedanie**. Urobiť presné predpovede, kde by nový dátový bod spadol vo vzťahu k tejto čiare. 
- 
-Typické pre **regresiu metódou najmenších štvorcov** je nakresliť tento typ čiary. Termín 'najmenšie štvorce' znamená, že všetky dátové body obklopujúce regresnú čiaru sú umocnené na druhú a potom sčítané. Ideálne je, aby tento konečný súčet bol čo najmenší, pretože chceme nízky počet chýb, alebo `najmenšie štvorce`. 
+- **Ukazuje vzťah medzi premennými**. Ukáže vzťah medzi premennými
+- **Predpovedá**. Umožní presne predpovedať, kde by nový dátový bod ležal vzhľadom na túto čiaru.
 
-Robíme to, pretože chceme modelovať čiaru, ktorá má najmenšiu kumulatívnu vzdialenosť od všetkých našich dátových bodov. Tiež umocňujeme hodnoty na druhú pred ich sčítaním, pretože nás zaujíma ich veľkosť, nie ich smer.
+Typické na **regresii metódou najmenších štvorcov** je kreslenie takéhoto druhu čiary. Termín "najmenšie štvorce" označuje proces minimalizácie celkovej chyby v našom modeli. Pre každý dátový bod meriame vertikálnu vzdialenosť (nazývanú rezíduum) medzi skutočným bodom a regresnou čiarou.
 
-> **🧮 Ukážte mi matematiku** 
+Tieto vzdialenosti umocňujeme na druhú pre dva hlavné dôvody:
+
+1. **Veľkosť pred smerom:** Chceme, aby chyba -5 bola rovnocenná chybe +5. Umocnenie na druhú zmení všetky hodnoty na kladné.
+
+2. **Trestenie odľahlých hodnôt:** Umocnenie na druhú dáva väčšiu váhu väčším chybám, núti čiaru zostať bližšie k bodom, ktoré sú vzdialené.
+
+Tieto umocnené hodnoty potom sčítame. Naším cieľom je nájsť čiaru, kde výsledný súčet bude čo najmenší (najmenšia možná hodnota) — odtiaľ názov "najmenšie štvorce".
+
+> **🧮 Ukáž mi matematiku** 
 > 
 > Táto čiara, nazývaná _čiara najlepšieho prispôsobenia_, môže byť vyjadrená [rovnicou](https://en.wikipedia.org/wiki/Simple_linear_regression): 
 > 
@@ -55,70 +67,70 @@ Robíme to, pretože chceme modelovať čiaru, ktorá má najmenšiu kumulatívn
 > Y = a + bX
 > ```
 >
-> `X` je 'vysvetľujúca premenná'. `Y` je 'závislá premenná'. Sklon čiary je `b` a `a` je y-priesečník, ktorý odkazuje na hodnotu `Y`, keď `X = 0`. 
+> `X` je 'vysvetľujúca premenná'. `Y` je 'závislá premenná'. Sklon čiary je `b` a `a` je y-priesečník, ktorý predstavuje hodnotu `Y` pre `X = 0`. 
 >
->![výpočet sklonu](../../../../2-Regression/3-Linear/images/slope.png)
+>![vypočítajte sklon](../../../../translated_images/sk/slope.f3c9d5910ddbfcf9.webp)
 >
 > Najprv vypočítajte sklon `b`. Infografika od [Jen Looper](https://twitter.com/jenlooper)
 >
-> Inými slovami, a odkazujúc na pôvodnú otázku o údajoch o tekviciach: "predpovedajte cenu tekvice za bušel podľa mesiaca", `X` by odkazovalo na cenu a `Y` by odkazovalo na mesiac predaja. 
+> Inými slovami a odkazujúc na pôvodnú otázku našich údajov o tekviciach: "predpovedať cenu tekvice za košík podľa mesiaca", `X` by predstavoval cenu a `Y` by označoval mesiac predaja.
 >
->![dokončenie rovnice](../../../../2-Regression/3-Linear/images/calculation.png)
+>![dokončite rovnicu](../../../../translated_images/sk/calculation.a209813050a1ddb1.webp)
 >
-> Vypočítajte hodnotu Y. Ak platíte okolo $4, musí byť apríl! Infografika od [Jen Looper](https://twitter.com/jenlooper)
+> Vypočítajte hodnotu Y. Ak platíte okolo 4 dolárov, musí to byť apríl! Infografika od [Jen Looper](https://twitter.com/jenlooper)
 >
-> Matematika, ktorá vypočítava čiaru, musí demonštrovať sklon čiary, ktorý tiež závisí od priesečníka, alebo kde sa `Y` nachádza, keď `X = 0`.
+> Matematika, ktorá počíta čiaru, musí ukázať sklon čiary, ktorý závisí aj od priesečníka, teda kde sa `Y` nachádza, keď `X = 0`.
 >
-> Metódu výpočtu týchto hodnôt si môžete pozrieť na webovej stránke [Math is Fun](https://www.mathsisfun.com/data/least-squares-regression.html). Navštívte tiež [tento kalkulátor metódy najmenších štvorcov](https://www.mathsisfun.com/data/least-squares-calculator.html), aby ste videli, ako hodnoty čísel ovplyvňujú čiaru.
+> Metódu výpočtu týchto hodnôt môžete vidieť na webovej stránke [Math is Fun](https://www.mathsisfun.com/data/least-squares-regression.html). Navštívte tiež [tento Least-squares kalkulátor](https://www.mathsisfun.com/data/least-squares-calculator.html), aby ste videli, ako hodnoty čísel ovplyvňujú čiaru.
 
 ## Korelácia
 
-Ďalší termín, ktorý je potrebné pochopiť, je **koeficient korelácie** medzi danými premennými X a Y. Pomocou bodového grafu môžete rýchlo vizualizovať tento koeficient. Graf s dátovými bodmi rozmiestnenými v úhľadnej čiare má vysokú koreláciu, ale graf s dátovými bodmi rozmiestnenými všade medzi X a Y má nízku koreláciu.
+Ešte jeden termín, ktorý je dobré pochopiť, je **Korelačný koeficient** medzi danými premennými X a Y. Pomocou rozptýleného grafu môžete rýchlo vizualizovať tento koeficient. Graf, kde sú body rozptýlené pozdĺž čistej čiary, má vysokú koreláciu, zatiaľ čo graf, kde sú body rozptýlené všade medzi X a Y, má nízku koreláciu.
 
-Dobrý model lineárnej regresie bude taký, ktorý má vysoký (bližšie k 1 ako k 0) koeficient korelácie pomocou metódy najmenších štvorcov s regresnou čiarou.
+Dobrý lineárny regresný model bude taký, ktorý má vysoký (bližšie k 1 než k 0) Korelačný koeficient použitím metódy najmenších štvorcov s regresnou čiarou.
 
-✅ Spustite notebook, ktorý sprevádza túto lekciu, a pozrite sa na bodový graf Mesiac vs Cena. Zdá sa, že údaje spájajúce Mesiac s Cenou za predaj tekvíc majú podľa vašej vizuálnej interpretácie bodového grafu vysokú alebo nízku koreláciu? Zmení sa to, ak použijete jemnejšie meranie namiesto `Mesiac`, napr. *deň v roku* (t. j. počet dní od začiatku roka)?
+✅ Spustite notebook sprevádzajúci túto lekciu a pozrite sa na rozptýlený graf Mesiac k Cene. Zdá sa vám, že dáta spájajúce Mesiac s Cenou predaja tekvíc majú vysokú alebo nízku koreláciu podľa vašej vizuálnej interpretácie rozptýleného grafu? Zmení sa to, ak namiesto `Month` použijete detailnejšie meranie, napríklad *deň v roku* (t.j. počet dní od začiatku roka)?
 
-V nasledujúcom kóde predpokladáme, že sme vyčistili údaje a získali dátový rámec nazvaný `new_pumpkins`, podobný nasledujúcemu:
+Nižšie v kóde predpokladáme, že sme údaje vyčistili a získali dátový rámec nazvaný `new_pumpkins`, podobný nasledovnému:
 
-ID | Mesiac | DeňVroku | Typ | Mesto | Balenie | Nízka cena | Vysoká cena | Cena
+ID | Month | DayOfYear | Variety | City | Package | Low Price | High Price | Price
 ---|-------|-----------|---------|------|---------|-----------|------------|-------
-70 | 9 | 267 | PIE TYPE | BALTIMORE | 1 1/9 bušlové kartóny | 15.0 | 15.0 | 13.636364
-71 | 9 | 267 | PIE TYPE | BALTIMORE | 1 1/9 bušlové kartóny | 18.0 | 18.0 | 16.363636
-72 | 10 | 274 | PIE TYPE | BALTIMORE | 1 1/9 bušlové kartóny | 18.0 | 18.0 | 16.363636
-73 | 10 | 274 | PIE TYPE | BALTIMORE | 1 1/9 bušlové kartóny | 17.0 | 17.0 | 15.454545
-74 | 10 | 281 | PIE TYPE | BALTIMORE | 1 1/9 bušlové kartóny | 15.0 | 15.0 | 13.636364
+70 | 9 | 267 | PIE TYPE | BALTIMORE | 1 1/9 bushel cartons | 15.0 | 15.0 | 13.636364
+71 | 9 | 267 | PIE TYPE | BALTIMORE | 1 1/9 bushel cartons | 18.0 | 18.0 | 16.363636
+72 | 10 | 274 | PIE TYPE | BALTIMORE | 1 1/9 bushel cartons | 18.0 | 18.0 | 16.363636
+73 | 10 | 274 | PIE TYPE | BALTIMORE | 1 1/9 bushel cartons | 17.0 | 17.0 | 15.454545
+74 | 10 | 281 | PIE TYPE | BALTIMORE | 1 1/9 bushel cartons | 15.0 | 15.0 | 13.636364
 
-> Kód na čistenie údajov je dostupný v [`notebook.ipynb`](../../../../2-Regression/3-Linear/notebook.ipynb). Vykonali sme rovnaké kroky čistenia ako v predchádzajúcej lekcii a vypočítali sme stĺpec `DeňVroku` pomocou nasledujúceho výrazu: 
+> Kód na vyčistenie dát je dostupný v [`notebook.ipynb`](notebook.ipynb). Vykonali sme rovnaké čistiace kroky ako v predchádzajúcej lekcii a vypočítali stĺpec `DayOfYear` pomocou nasledujúceho výrazu:
 
 ```python
 day_of_year = pd.to_datetime(pumpkins['Date']).apply(lambda dt: (dt-datetime(dt.year,1,1)).days)
 ```
 
-Teraz, keď rozumiete matematike za lineárnou regresiou, poďme vytvoriť regresný model, aby sme zistili, ktorý balík tekvíc bude mať najlepšie ceny tekvíc. Niekto, kto kupuje tekvice na sviatočnú tekvicovú záhradu, by mohol chcieť tieto informácie, aby optimalizoval svoje nákupy balíkov tekvíc pre záhradu.
+Keďže už rozumiete matematike za lineárnou regresiou, vytvorme regresný model, aby sme zistili, či vieme predpovedať, ktoré balenie tekvíc bude mať najlepšiu cenu. Niekto, kto kupuje tekvice na jesennú výzdobu, by možno chcel tieto informácie, aby mohol optimalizovať nákup balení tekvíc pre svoj patch.
 
 ## Hľadanie korelácie
 
-[![ML pre začiatočníkov - Hľadanie korelácie: Kľúč k lineárnej regresii](https://img.youtube.com/vi/uoRq-lW2eQo/0.jpg)](https://youtu.be/uoRq-lW2eQo "ML pre začiatočníkov - Hľadanie korelácie: Kľúč k lineárnej regresii")
+[![ML pre začiatočníkov - Hľadanie korelácie: kľúč k lineárnej regresii](https://img.youtube.com/vi/uoRq-lW2eQo/0.jpg)](https://youtu.be/uoRq-lW2eQo "ML pre začiatočníkov - Hľadanie korelácie: kľúč k lineárnej regresii")
 
-> 🎥 Kliknite na obrázok vyššie pre krátky video prehľad o korelácii.
+> 🎥 Kliknite na obrázok vyššie pre krátke video o korelácii.
 
-Z predchádzajúcej lekcie ste pravdepodobne videli, že priemerná cena za rôzne mesiace vyzerá takto:
+Z predchádzajúcej lekcie ste pravdepodobne videli, že priemerná cena podľa mesiacov vyzerá takto:
 
 <img alt="Priemerná cena podľa mesiaca" src="../../../../translated_images/sk/barchart.a833ea9194346d76.webp" width="50%"/>
 
-To naznačuje, že by mala existovať nejaká korelácia, a môžeme skúsiť trénovať model lineárnej regresie na predpovedanie vzťahu medzi `Mesiac` a `Cena`, alebo medzi `DeňVroku` a `Cena`. Tu je bodový graf, ktorý ukazuje druhý vzťah:
+To naznačuje, že nejaká korelácia tam bude, a môžeme skúsiť natrénovať lineárny regresný model na predpovedanie vzťahu medzi `Month` a `Price`, alebo medzi `DayOfYear` a `Price`. Tu je rozptýlený graf, ktorý ukazuje druhý vzťah:
 
-<img alt="Bodový graf Cena vs. Deň v roku" src="../../../../translated_images/sk/scatter-dayofyear.bc171c189c9fd553.webp" width="50%" /> 
+<img alt="Rozptýlený graf Cena vs. Deň v roku" src="../../../../translated_images/sk/scatter-dayofyear.bc171c189c9fd553.webp" width="50%" /> 
 
-Pozrime sa, či existuje korelácia pomocou funkcie `corr`:
+Skúsme zistiť koreláciu pomocou funkcie `corr`:
 
 ```python
 print(new_pumpkins['Month'].corr(new_pumpkins['Price']))
 print(new_pumpkins['DayOfYear'].corr(new_pumpkins['Price']))
 ```
 
-Zdá sa, že korelácia je pomerne malá, -0.15 podľa `Mesiac` a -0.17 podľa `DeňVroku`, ale mohol by existovať iný dôležitý vzťah. Zdá sa, že existujú rôzne zhluky cien zodpovedajúce rôznym odrodám tekvíc. Na potvrdenie tejto hypotézy nakreslime každú kategóriu tekvíc pomocou inej farby. Pri prechode parametra `ax` do funkcie `scatter` môžeme nakresliť všetky body na rovnaký graf:
+Zdá sa, že korelácia je pomerne malá, -0.15 podľa `Month` a -0.17 podľa `DayOfMonth`, ale môže tu byť iný dôležitý vzťah. Vyzerá to, že existujú rôzne skupiny cien zodpovedajúce rôznym odrodám tekvíc. Aby sme túto hypotézu potvrdili, nakreslime každú kategóriu tekvíc inou farbou. Pre odovzdanie parametra `ax` funkcii `scatter` môžeme vykresliť všetky body do rovnakého grafu:
 
 ```python
 ax=None
@@ -128,42 +140,42 @@ for i,var in enumerate(new_pumpkins['Variety'].unique()):
     ax = df.plot.scatter('DayOfYear','Price',ax=ax,c=colors[i],label=var)
 ```
 
-<img alt="Bodový graf Cena vs. Deň v roku" src="../../../../translated_images/sk/scatter-dayofyear-color.65790faefbb9d54f.webp" width="50%" /> 
+<img alt="Rozptýlený graf Cena vs. Deň v roku s farebným rozlíšením" src="../../../../translated_images/sk/scatter-dayofyear-color.65790faefbb9d54f.webp" width="50%" /> 
 
-Naše vyšetrovanie naznačuje, že odroda má väčší vplyv na celkovú cenu ako skutočný dátum predaja. Môžeme to vidieť na stĺpcovom grafe:
+Naše vyšetrovanie naznačuje, že odroda má väčší vplyv na celkovú cenu než samotný dátum predaja. Vidíme to aj na stĺpcovom grafe:
 
 ```python
 new_pumpkins.groupby('Variety')['Price'].mean().plot(kind='bar')
 ```
 
-<img alt="Stĺpcový graf cena vs odroda" src="../../../../translated_images/sk/price-by-variety.744a2f9925d9bcb4.webp" width="50%" /> 
+<img alt="Stĺpcový graf ceny podľa odrody" src="../../../../translated_images/sk/price-by-variety.744a2f9925d9bcb4.webp" width="50%" /> 
 
-Zamerajme sa na chvíľu iba na jednu odrodu tekvíc, 'pie type', a pozrime sa, aký vplyv má dátum na cenu:
+Zamerajme sa teraz na jednu odrodu tekvíc, 'pie type', a pozrime sa, aký vplyv má dátum na cenu:
 
 ```python
 pie_pumpkins = new_pumpkins[new_pumpkins['Variety']=='PIE TYPE']
 pie_pumpkins.plot.scatter('DayOfYear','Price') 
 ```
-<img alt="Bodový graf Cena vs. Deň v roku" src="../../../../translated_images/sk/pie-pumpkins-scatter.d14f9804a53f927e.webp" width="50%" /> 
+<img alt="Rozptýlený graf Cena vs. Deň v roku pre pie type" src="../../../../translated_images/sk/pie-pumpkins-scatter.d14f9804a53f927e.webp" width="50%" /> 
 
-Ak teraz vypočítame koreláciu medzi `Cena` a `DeňVroku` pomocou funkcie `corr`, dostaneme hodnotu okolo `-0.27` - čo znamená, že trénovanie prediktívneho modelu má zmysel.
+Ak teraz vypočítame koreláciu medzi `Price` a `DayOfYear` pomocou funkcie `corr`, získame približne `-0.27` — čo znamená, že natrénovanie prediktívneho modelu má zmysel.
 
-> Pred trénovaním modelu lineárnej regresie je dôležité zabezpečiť, aby naše údaje boli čisté. Lineárna regresia nefunguje dobre s chýbajúcimi hodnotami, preto má zmysel zbaviť sa všetkých prázdnych buniek:
+> Pred trénovaním lineárneho regresného modelu je dôležité zabezpečiť, že naše dáta sú čisté. Lineárna regresia nefunguje dobre s chýbajúcimi hodnotami, preto je rozumné zbaviť sa všetkých prázdnych buniek:
 
 ```python
 pie_pumpkins.dropna(inplace=True)
 pie_pumpkins.info()
 ```
 
-Ďalším prístupom by bolo vyplniť tieto prázdne hodnoty priemernými hodnotami z príslušného stĺpca.
+Iný prístup by bol vyplniť tieto prázdne hodnoty priemernými hodnotami príslušného stĺpca.
 
 ## Jednoduchá lineárna regresia
 
 [![ML pre začiatočníkov - Lineárna a polynomiálna regresia pomocou Scikit-learn](https://img.youtube.com/vi/e4c_UP2fSjg/0.jpg)](https://youtu.be/e4c_UP2fSjg "ML pre začiatočníkov - Lineárna a polynomiálna regresia pomocou Scikit-learn")
 
-> 🎥 Kliknite na obrázok vyššie pre krátky video prehľad o lineárnej a polynomiálnej regresii.
+> 🎥 Kliknite na obrázok vyššie pre krátke video o lineárnej a polynomiálnej regresii.
 
-Na trénovanie nášho modelu lineárnej regresie použijeme knižnicu **Scikit-learn**.
+Na trénovanie nášho lineárneho regresného modelu použijeme knižnicu **Scikit-learn**.
 
 ```python
 from sklearn.linear_model import LinearRegression
@@ -171,31 +183,31 @@ from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 ```
 
-Začíname oddelením vstupných hodnôt (príznakov) a očakávaného výstupu (označenia) do samostatných numpy polí:
+Začneme tým, že oddelíme vstupné hodnoty (vlastnosti) a očakávaný výstup (štítok) do samostatných numpy polí:
 
 ```python
 X = pie_pumpkins['DayOfYear'].to_numpy().reshape(-1,1)
 y = pie_pumpkins['Price']
 ```
 
-> Všimnite si, že sme museli vykonať `reshape` na vstupných údajoch, aby ich balík lineárnej regresie správne pochopil. Lineárna regresia očakáva 2D pole ako vstup, kde každý riadok poľa zodpovedá vektoru vstupných príznakov. V našom prípade, keďže máme iba jeden vstup, potrebujeme pole s tvarom N×1, kde N je veľkosť súboru údajov.
+> Všimnite si, že sme museli vykonať `reshape` na vstupných dátach, aby ich balíček Linear Regression správne pochopil. Lineárna regresia očakáva vstup v tvare 2D poľa, kde každý riadok poľa zodpovedá vektoru vstupných vlastností. V našom prípade, keďže máme iba jeden vstup, potrebujeme pole tvaru N&times;1, kde N je veľkosť datasetu.
 
-Potom musíme rozdeliť údaje na trénovací a testovací súbor údajov, aby sme mohli po tréningu overiť náš model:
+Potom musíme rozdeliť údaje na tréningové a testovacie datasety, aby sme mohli po trénovaní modelu overiť jeho výkon:
 
 ```python
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 ```
 
-Nakoniec, samotné trénovanie modelu lineárnej regresie trvá iba dva riadky kódu. Definujeme objekt `LinearRegression` a prispôsobíme ho našim údajom pomocou metódy `fit`:
+Nakoniec samotné trénovanie lineárneho regresného modelu zaberie len dva riadky kódu. Definujeme objekt `LinearRegression` a prispôsobíme ho našim dátam pomocou metódy `fit`:
 
 ```python
 lin_reg = LinearRegression()
 lin_reg.fit(X_train,y_train)
 ```
 
-Objekt `LinearRegression` po prispôsobení obsahuje všetky koeficienty regresie, ku ktorým je možné pristupovať pomocou vlastnosti `.coef_`. V našom prípade existuje iba jeden koeficient, ktorý by mal byť okolo `-0.017`. To znamená, že ceny sa zdajú klesať trochu s časom, ale nie príliš, približne o 2 centy za deň. Môžeme tiež pristupovať k priesečníku regresie s Y-osou pomocou `lin_reg.intercept_` - bude to okolo `21` v našom prípade, čo naznačuje cenu na začiatku roka.
+Objekt `LinearRegression` po natrénovaní obsahuje všetky koeficienty regresie, ku ktorým sa dá pristúpiť pomocou vlastnosti `.coef_`. V našom prípade je len jeden koeficient, ktorý by mal byť okolo `-0.017`. To znamená, že ceny sa zdajú s časom mierne znižovať, ale nie príliš, približne o 2 centy za deň. Môžeme tiež pristúpiť k priesečníku regresie s osou Y pomocou `lin_reg.intercept_` – v našom prípade to bude okolo `21`, čo značí cenu na začiatku roka.
 
-Aby sme videli, aký presný je náš model, môžeme predpovedať ceny na testovacom súbore údajov a potom zmerať, ako blízko sú naše predpovede k očakávaným hodnotám. To sa dá urobiť pomocou metriky strednej kvadratickej chyby (MSE), ktorá je priemerom všetkých kvadratických rozdielov medzi očakávanou a predpovedanou hodnotou.
+Aby sme videli, aká je presnosť nášho modelu, môžeme predikovať ceny na testovacej množine dát a potom zmerať, ako sú naše predpovede blízke očakávaným hodnotám. To sa dá urobiť pomocou metriky strednej štvorcovej chyby (MSE), čo je priemer všetkých štvorcových rozdielov medzi očakávanou a predikovanou hodnotou.
 
 ```python
 pred = lin_reg.predict(X_test)
@@ -203,36 +215,37 @@ pred = lin_reg.predict(X_test)
 mse = np.sqrt(mean_squared_error(y_test,pred))
 print(f'Mean error: {mse:3.3} ({mse/np.mean(pred)*100:3.3}%)')
 ```
-Naša chyba sa zdá byť okolo 2 bodov, čo je ~17 %. Nie je to príliš dobré. Ďalším indikátorom kvality modelu je **koeficient determinácie**, ktorý môžeme získať takto:
+
+Naša chyba sa javí okolo 2 bodov, čo je približne 17%. Nie je to príliš dobré. Ďalším ukazovateľom kvality modelu je **koeficient determinácie**, ktorý môžeme získať takto:
 
 ```python
 score = lin_reg.score(X_train,y_train)
 print('Model determination: ', score)
-```  
-Ak je hodnota 0, znamená to, že model neberie do úvahy vstupné údaje a funguje ako *najhorší lineárny prediktor*, čo je jednoducho priemerná hodnota výsledku. Hodnota 1 znamená, že môžeme dokonale predpovedať všetky očakávané výstupy. V našom prípade je koeficient okolo 0.06, čo je pomerne nízke.
+```
+Ak je hodnota 0, znamená to, že model neberie do úvahy vstupné dáta a správa sa ako *najhorší lineárny prediktor*, ktorý je jednoducho priemernou hodnotou výsledku. Hodnota 1 znamená, že dokážeme dokonale predpovedať všetky očakávané výstupy. V našom prípade je koeficient okolo 0.06, čo je dosť nízke.
 
-Môžeme tiež vykresliť testovacie údaje spolu s regresnou čiarou, aby sme lepšie videli, ako regresia funguje v našom prípade:
+Môžeme tiež vykresliť testovacie dáta spolu s regresnou čiarou, aby sme lepšie videli, ako regresia funguje v našom prípade:
 
 ```python
 plt.scatter(X_test,y_test)
 plt.plot(X_test,pred)
-```  
+```
 
-<img alt="Lineárna regresia" src="../../../../translated_images/sk/linear-results.f7c3552c85b0ed1c.webp" width="50%" />
+<img alt="Linear regression" src="../../../../translated_images/sk/linear-results.f7c3552c85b0ed1c.webp" width="50%" />
 
 ## Polynomická regresia
 
-Ďalším typom lineárnej regresie je polynomická regresia. Zatiaľ čo niekedy existuje lineárny vzťah medzi premennými – čím väčší objem tekvice, tým vyššia cena – niekedy tieto vzťahy nemožno vykresliť ako rovinu alebo priamku.
+Ďalším typom lineárnej regresie je polynomická regresia. Kým niekedy existuje lineárny vzťah medzi premennými – čím väčšia je tekvica objemom, tým vyššia je cena – niekedy sa tieto vzťahy nedajú zobraziť ako rovina alebo priamka.
 
-✅ Tu sú [niektoré ďalšie príklady](https://online.stat.psu.edu/stat501/lesson/9/9.8) údajov, ktoré by mohli využiť polynomickú regresiu.
+✅ Tu je [niekoľko ďalších príkladov](https://online.stat.psu.edu/stat501/lesson/9/9.8) dát, pre ktoré by bolo vhodné použiť polynomickú regresiu
 
-Pozrite sa znova na vzťah medzi dátumom a cenou. Zdá sa, že tento bodový graf by mal byť nevyhnutne analyzovaný priamkou? Nemôžu ceny kolísať? V tomto prípade môžete vyskúšať polynomickú regresiu.
+Pozrite sa ešte raz na vzťah medzi dátumom a cenou. Zdá sa vám, že by mal byť nevyhnutne analyzovaný priamkou? Nemôžu ceny kolísať? V tomto prípade môžete skúsiť polynomickú regresiu.
 
-✅ Polynómy sú matematické výrazy, ktoré môžu pozostávať z jednej alebo viacerých premenných a koeficientov.
+✅ Polynomické výrazy sú matematické výrazy, ktoré môžu obsahovať jednu alebo viac premenných a koeficientov
 
-Polynomická regresia vytvára zakrivenú čiaru, ktorá lepšie zodpovedá nelineárnym údajom. V našom prípade, ak do vstupných údajov zahrnieme premennú `DayOfYear` na druhú, mali by sme byť schopní prispôsobiť naše údaje parabolickou krivkou, ktorá bude mať minimum v určitom bode počas roka.
+Polynomická regresia vytvára zakrivenú čiaru, aby lepšie vyhovela nelineárnym dátam. V našom prípade, ak do vstupných dát zahrnieme druhú mocninu premennej `DayOfYear`, mali by sme byť schopní prispôsobiť dáta parabolickou krivkou, ktorá bude mať minimum v určitom bode v priebehu roka.
 
-Scikit-learn obsahuje užitočné [API pre pipeline](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html?highlight=pipeline#sklearn.pipeline.make_pipeline), ktoré kombinuje rôzne kroky spracovania údajov. **Pipeline** je reťaz **odhadovateľov**. V našom prípade vytvoríme pipeline, ktorá najskôr pridá polynomické prvky do nášho modelu a potom trénuje regresiu:
+Scikit-learn obsahuje užitočné [pipeline API](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html?highlight=pipeline#sklearn.pipeline.make_pipeline) na kombinovanie rôznych krokov spracovania dát dokopy. **Pipeline** je reťazec **estimatorov**. V našom prípade vytvoríme pipeline, ktorá najprv pridá polynomické prvky do nášho modelu a potom trénuje regresiu:
 
 ```python
 from sklearn.preprocessing import PolynomialFeatures
@@ -241,62 +254,62 @@ from sklearn.pipeline import make_pipeline
 pipeline = make_pipeline(PolynomialFeatures(2), LinearRegression())
 
 pipeline.fit(X_train,y_train)
-```  
+```
 
-Použitie `PolynomialFeatures(2)` znamená, že zahrnieme všetky polynómy druhého stupňa zo vstupných údajov. V našom prípade to bude znamenať len `DayOfYear`<sup>2</sup>, ale pri dvoch vstupných premenných X a Y to pridá X<sup>2</sup>, XY a Y<sup>2</sup>. Môžeme tiež použiť polynómy vyššieho stupňa, ak chceme.
+Použitie `PolynomialFeatures(2)` znamená, že zahrnieme všetky polynómy druhého stupňa z vstupných dát. V našom prípade to bude iba `DayOfYear`<sup>2</sup>, ale pri dvoch vstupných premenných X a Y sa pridajú X<sup>2</sup>, XY a Y<sup>2</sup>. Môžeme tiež použiť polynómy vyšších stupňov, ak chceme.
 
-Pipeline môžeme používať rovnakým spôsobom ako pôvodný objekt `LinearRegression`, t.j. môžeme pipeline `fit` a potom použiť `predict` na získanie výsledkov predikcie. Tu je graf zobrazujúci testovacie údaje a aproximačnú krivku:
+Pipeline možno používať rovnako ako pôvodný objekt `LinearRegression`, teda môžeme pipeline natrénovať pomocou `fit` a potom použiť `predict` na získanie výsledkov predikcie. Tu je graf zobrazujúci testovacie dáta a aproximačnú krivku:
 
-<img alt="Polynomická regresia" src="../../../../translated_images/sk/poly-results.ee587348f0f1f60b.webp" width="50%" />
+<img alt="Polynomial regression" src="../../../../translated_images/sk/poly-results.ee587348f0f1f60b.webp" width="50%" />
 
-Použitím polynomickej regresie môžeme dosiahnuť mierne nižšie MSE a vyššiu determináciu, ale nie významne. Musíme zohľadniť ďalšie prvky!
+Použitím polynomickej regresie môžeme dosiahnuť mierne nižšiu MSE a vyšší koeficient determinácie, ale nie výrazne. Musíme zohľadniť ďalšie vlastnosti!
 
-> Vidíte, že minimálne ceny tekvíc sú pozorované niekde okolo Halloweenu. Ako to môžete vysvetliť?
+> Vidíte, že minimálne ceny tekvíc sa prejavujú niekde okolo Halloweenu. Ako by ste to vysvetlili?
 
-🎃 Gratulujeme, práve ste vytvorili model, ktorý môže pomôcť predpovedať cenu tekvíc na koláče. Pravdepodobne môžete zopakovať rovnaký postup pre všetky typy tekvíc, ale to by bolo zdĺhavé. Poďme sa teraz naučiť, ako zohľadniť odrodu tekvíc v našom modeli!
+🎃 Gratulujeme, práve ste vytvorili model, ktorý môže pomôcť predpovedať cenu tekvíc na koláče. Pravdepodobne môžete rovnaký postup zopakovať pre všetky druhy tekvíc, ale to by bolo zdĺhavé. Naučíme sa teraz, ako zohľadniť odrodu tekvice v našom modeli!
 
-## Kategorické prvky
+## Kategorické vlastnosti
 
-V ideálnom svete chceme byť schopní predpovedať ceny pre rôzne odrody tekvíc pomocou rovnakého modelu. Stĺpec `Variety` je však trochu odlišný od stĺpcov ako `Month`, pretože obsahuje nenumerické hodnoty. Takéto stĺpce sa nazývajú **kategorické**.
+V ideálnom svete chceme byť schopní predpovedať ceny pre rôzne odrody tekvíc pomocou toho istého modelu. Avšak stĺpec `Variety` je trochu iný ako stĺpce ako `Month`, pretože obsahuje nečíselné hodnoty. Takéto stĺpce sa nazývajú **kategorické**.
 
-[![ML pre začiatočníkov - Predikcia kategorických prvkov pomocou lineárnej regresie](https://img.youtube.com/vi/DYGliioIAE0/0.jpg)](https://youtu.be/DYGliioIAE0 "ML pre začiatočníkov - Predikcia kategorických prvkov pomocou lineárnej regresie")
+[![ML pre začiatočníkov – predikcie kategórií pomocou lineárnej regresie](https://img.youtube.com/vi/DYGliioIAE0/0.jpg)](https://youtu.be/DYGliioIAE0 "ML pre začiatočníkov – predikcie kategórií pomocou lineárnej regresie")
 
-> 🎥 Kliknite na obrázok vyššie pre krátky video prehľad o používaní kategorických prvkov.
+> 🎥 Kliknite na obrázok vyššie pre krátky videopríklad použitia kategorických vlastností.
 
-Tu môžete vidieť, ako priemerná cena závisí od odrody:
+Tu vidíte, ako priemerná cena závisí na odrode:
 
-<img alt="Priemerná cena podľa odrody" src="../../../../translated_images/sk/price-by-variety.744a2f9925d9bcb4.webp" width="50%" />
+<img alt="Average price by variety" src="../../../../translated_images/sk/price-by-variety.744a2f9925d9bcb4.webp" width="50%" />
 
-Aby sme zohľadnili odrodu, musíme ju najskôr previesť na numerickú formu, alebo ju **zakódovať**. Existuje niekoľko spôsobov, ako to môžeme urobiť:
+Aby sme zohľadnili odrodu, musíme ju najskôr premeniť na číselnú formu, teda **zakódovať** ju. Existuje niekoľko spôsobov, ako to urobiť:
 
-* Jednoduché **numerické kódovanie** vytvorí tabuľku rôznych odrôd a potom nahradí názov odrody indexom v tejto tabuľke. Toto nie je najlepší nápad pre lineárnu regresiu, pretože lineárna regresia berie skutočnú numerickú hodnotu indexu a pridáva ju k výsledku, násobiac ju nejakým koeficientom. V našom prípade je vzťah medzi číslom indexu a cenou jasne nelineárny, aj keď zabezpečíme, že indexy sú usporiadané určitým spôsobom.
-* **One-hot kódovanie** nahradí stĺpec `Variety` štyrmi rôznymi stĺpcami, jeden pre každú odrodu. Každý stĺpec bude obsahovať `1`, ak príslušný riadok patrí danej odrode, a `0` inak. To znamená, že v lineárnej regresii budú štyri koeficienty, jeden pre každú odrodu tekvíc, zodpovedné za "východiskovú cenu" (alebo skôr "dodatočnú cenu") pre danú odrodu.
+* Jednoduché **číselné kódovanie** vytvorí tabuľku rôznych odrôd a potom nahradí názov odrody indexom z tejto tabuľky. To nie je najlepšia voľba pre lineárnu regresiu, pretože lineárna regresia vezme skutočnú číslenú hodnotu indexu a vynásobí ju koeficientom, čím ju pridá k výsledku. V našom prípade je vzťah medzi číslom indexu a cenou zjavne nelineárny, aj keď zabezpečíme, že indexy budú usporiadané určitým spôsobom.
+* **One-hot encoding** nahradí stĺpec `Variety` štyrmi rôznymi stĺpcami, po jednom pre každú odrodu. Každý stĺpec bude obsahovať `1`, ak príslušný riadok je danej odrody, a `0` inak. To znamená, že v lineárnej regresii budú štyri koeficienty, jeden pre každú odrodu tekvíc, zodpovedajúce „počiatočnej cene“ (alebo skôr „dodatočnej cene“) pre túto konkrétnu odrodu.
 
-Nižšie uvedený kód ukazuje, ako môžeme zakódovať odrodu pomocou one-hot kódovania:
+Nasledujúci kód ukazuje, ako môžeme one-hot kódovať odrodu:
 
 ```python
 pd.get_dummies(new_pumpkins['Variety'])
-```  
+```
 
- ID | FAIRYTALE | MINIATURE | MIXED HEIRLOOM VARIETIES | PIE TYPE  
-----|-----------|-----------|--------------------------|----------  
-70 | 0 | 0 | 0 | 1  
-71 | 0 | 0 | 0 | 1  
-... | ... | ... | ... | ...  
-1738 | 0 | 1 | 0 | 0  
-1739 | 0 | 1 | 0 | 0  
-1740 | 0 | 1 | 0 | 0  
-1741 | 0 | 1 | 0 | 0  
-1742 | 0 | 1 | 0 | 0  
+ ID | FAIRYTALE | MINIATURE | MIXED HEIRLOOM VARIETIES | PIE TYPE
+----|-----------|-----------|--------------------------|----------
+70 | 0 | 0 | 0 | 1
+71 | 0 | 0 | 0 | 1
+... | ... | ... | ... | ...
+1738 | 0 | 1 | 0 | 0
+1739 | 0 | 1 | 0 | 0
+1740 | 0 | 1 | 0 | 0
+1741 | 0 | 1 | 0 | 0
+1742 | 0 | 1 | 0 | 0
 
-Na trénovanie lineárnej regresie pomocou one-hot zakódovanej odrody ako vstupu stačí správne inicializovať údaje `X` a `y`:
+Na trénovanie lineárnej regresie so vstupom ako one-hot kódovaná odroda stačí správne inicializovať dáta `X` a `y`:
 
 ```python
 X = pd.get_dummies(new_pumpkins['Variety'])
 y = new_pumpkins['Price']
-```  
+```
 
-Zvyšok kódu je rovnaký ako ten, ktorý sme použili vyššie na trénovanie lineárnej regresie. Ak to vyskúšate, uvidíte, že stredná kvadratická chyba je približne rovnaká, ale získame oveľa vyšší koeficient determinácie (~77 %). Na získanie ešte presnejších predpovedí môžeme zohľadniť viac kategorických prvkov, ako aj numerické prvky, ako `Month` alebo `DayOfYear`. Na získanie jedného veľkého poľa prvkov môžeme použiť `join`:
+Zvyšok kódu je rovnaký ako sme používali vyššie na trénovanie lineárnej regresie. Ak to vyskúšate, uvidíte, že stredná štvorcová chyba je približne rovnaká, ale získame oveľa vyšší koeficient determinácie (~77%). Pre ešte presnejšie predikcie môžeme zohľadniť ďalšie kategorické vlastnosti, ako aj číselné vlastnosti, napríklad `Month` alebo `DayOfYear`. Na získanie jedného veľkého poľa vlastností môžeme použiť `join`:
 
 ```python
 X = pd.get_dummies(new_pumpkins['Variety']) \
@@ -304,63 +317,62 @@ X = pd.get_dummies(new_pumpkins['Variety']) \
         .join(pd.get_dummies(new_pumpkins['City'])) \
         .join(pd.get_dummies(new_pumpkins['Package']))
 y = new_pumpkins['Price']
-```  
+```
 
-Tu tiež zohľadňujeme `City` a typ balenia `Package`, čo nám dáva MSE 2.84 (10 %) a determináciu 0.94!
+Tu tiež zohľadňujeme `City` a typ `Package`, čo nám dáva MSE 2.84 (10%) a determináciu 0.94!
 
-## Spojenie všetkého dohromady
+## Spojme to všetko dokopy
 
-Na vytvorenie najlepšieho modelu môžeme použiť kombinované (one-hot zakódované kategorické + numerické) údaje z vyššie uvedeného príkladu spolu s polynomickou regresiou. Tu je kompletný kód pre vaše pohodlie:
+Na vytvorenie najlepšieho modelu môžeme použiť kombinované (one-hot kódované kategorické + číselné) dáta z vyššie uvedeného príkladu spolu s polynomickou regresiou. Tu je kompletný kód pre vašu pohodlnosť:
 
 ```python
-# set up training data
+# nastaviť tréningové dáta
 X = pd.get_dummies(new_pumpkins['Variety']) \
         .join(new_pumpkins['Month']) \
         .join(pd.get_dummies(new_pumpkins['City'])) \
         .join(pd.get_dummies(new_pumpkins['Package']))
 y = new_pumpkins['Price']
 
-# make train-test split
+# vykonať rozdelenie na trénovaciu a testovaciu množinu
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 
-# setup and train the pipeline
+# nastaviť a trénovať pipeline
 pipeline = make_pipeline(PolynomialFeatures(2), LinearRegression())
 pipeline.fit(X_train,y_train)
 
-# predict results for test data
+# predpovedať výsledky pre testovacie dáta
 pred = pipeline.predict(X_test)
 
-# calculate MSE and determination
+# vypočítať MSE a koeficient určenia
 mse = np.sqrt(mean_squared_error(y_test,pred))
 print(f'Mean error: {mse:3.3} ({mse/np.mean(pred)*100:3.3}%)')
 
 score = pipeline.score(X_train,y_train)
 print('Model determination: ', score)
-```  
+```
 
-Toto by nám malo dať najlepší koeficient determinácie takmer 97 % a MSE=2.23 (~8 % predikčná chyba).
+To by nám malo dať najlepší koeficient determinácie takmer 97% a MSE=2.23 (~8% chyba predikcie).
 
-| Model | MSE | Determinácia |  
-|-------|-----|-------------|  
-| `DayOfYear` Lineárny | 2.77 (17.2 %) | 0.07 |  
-| `DayOfYear` Polynomický | 2.73 (17.0 %) | 0.08 |  
-| `Variety` Lineárny | 5.24 (19.7 %) | 0.77 |  
-| Všetky prvky Lineárny | 2.84 (10.5 %) | 0.94 |  
-| Všetky prvky Polynomický | 2.23 (8.25 %) | 0.97 |  
+| Model | MSE | Koeficient determinácie |
+|-------|-----|-------------------------|
+| Lineárna regresia s `DayOfYear` | 2.77 (17,2%) | 0.07 |
+| Polynomická regresia s `DayOfYear` | 2.73 (17,0%) | 0.08 |
+| Lineárna regresia s `Variety` | 5.24 (19,7%) | 0.77 |
+| Lineárna regresia so všetkými vlastnosťami | 2.84 (10,5%) | 0.94 |
+| Polynomická regresia so všetkými vlastnosťami | 2.23 (8,25%) | 0.97 |
 
-🏆 Výborne! Vytvorili ste štyri regresné modely v jednej lekcii a zlepšili kvalitu modelu na 97 %. V poslednej časti o regresii sa naučíte o logistickej regresii na určenie kategórií.
+🏆 Výborne! V tejto lekcii ste vytvorili štyri regresné modely a zlepšili kvalitu modelu na 97%. V záverečnej sekcii o regresii sa naučíte o logistickej regresii na určenie kategórií.
 
 ---
-
 ## 🚀Výzva
 
-Otestujte niekoľko rôznych premenných v tomto notebooku, aby ste videli, ako korelácia zodpovedá presnosti modelu.
+Otestujte niekoľko rôznych premenných v tomto zápisníku a zistite, ako korelácia súvisí s presnosťou modelu.
 
 ## [Kvíz po prednáške](https://ff-quizzes.netlify.app/en/ml/)
 
-## Prehľad a samoštúdium
+## Prehľad a samostatné štúdium
 
-V tejto lekcii sme sa naučili o lineárnej regresii. Existujú aj ďalšie dôležité typy regresie. Prečítajte si o technikách Stepwise, Ridge, Lasso a Elasticnet. Dobrý kurz na štúdium je [Stanford Statistical Learning course](https://online.stanford.edu/courses/sohs-ystatslearning-statistical-learning).
+V tejto lekcii sme sa naučili o lineárnej regresii. Existujú aj iné dôležité typy regresie. Prečítajte si o technikách Stepwise, Ridge, Lasso a Elasticnet. Dobrou študijnou pomôckou je [kurz Stanford Statistical Learning](https://online.stanford.edu/courses/sohs-ystatslearning-statistical-learning).
 
 ## Zadanie
 
@@ -368,5 +380,7 @@ V tejto lekcii sme sa naučili o lineárnej regresii. Existujú aj ďalšie dôl
 
 ---
 
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
 **Upozornenie**:  
-Tento dokument bol preložený pomocou služby AI prekladu [Co-op Translator](https://github.com/Azure/co-op-translator). Hoci sa snažíme o presnosť, prosím, berte na vedomie, že automatizované preklady môžu obsahovať chyby alebo nepresnosti. Pôvodný dokument v jeho rodnom jazyku by mal byť považovaný za autoritatívny zdroj. Pre kritické informácie sa odporúča profesionálny ľudský preklad. Nie sme zodpovední za žiadne nedorozumenia alebo nesprávne interpretácie vyplývajúce z použitia tohto prekladu.
+Tento dokument bol preložený pomocou AI prekladateľskej služby [Co-op Translator](https://github.com/Azure/co-op-translator). Hoci sa snažíme o presnosť, uvedomte si, že automatické preklady môžu obsahovať chyby alebo nepresnosti. Originálny dokument v jeho pôvodnom jazyku by mal byť považovaný za autoritatívny zdroj. Pre kritické informácie sa odporúča profesionálny ľudský preklad. Nenesieme zodpovednosť za akékoľvek nedorozumenia alebo nesprávne interpretácie vyplývajúce z použitia tohto prekladu.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->
