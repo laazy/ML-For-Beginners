@@ -36,8 +36,8 @@
     "language_code": "et"
   },
   "1-Introduction/4-techniques-of-ML/README.md": {
-    "original_hash": "9d91f3af3758fdd4569fb410575995ef",
-    "translation_date": "2025-10-11T11:29:27+00:00",
+    "original_hash": "84b1715a6be62ef1697351dcc5d7b567",
+    "translation_date": "2026-04-26T19:25:37+00:00",
     "source_file": "1-Introduction/4-techniques-of-ML/README.md",
     "language_code": "et"
   },
@@ -90,8 +90,8 @@
     "language_code": "et"
   },
   "2-Regression/3-Linear/README.md": {
-    "original_hash": "26c53a922f1f1e8542b0ea41ff52221a",
-    "translation_date": "2026-04-20T17:13:13+00:00",
+    "original_hash": "8b776e731c35b171d316d01d0e7b1369",
+    "translation_date": "2026-04-26T19:25:13+00:00",
     "source_file": "2-Regression/3-Linear/README.md",
     "language_code": "et"
   },
@@ -105,6 +105,12 @@
     "original_hash": "a39c15d63f3b2795ee2284a82b986b93",
     "translation_date": "2025-10-11T11:47:15+00:00",
     "source_file": "2-Regression/3-Linear/solution/Julia/README.md",
+    "language_code": "et"
+  },
+  "2-Regression/3-Linear/solution/notebook.ipynb": {
+    "original_hash": "6781223ffbe8cfdaa38d0200f08e1288",
+    "translation_date": "2026-04-26T19:22:25+00:00",
+    "source_file": "2-Regression/3-Linear/solution/notebook.ipynb",
     "language_code": "et"
   },
   "2-Regression/4-Logistic/README.md": {

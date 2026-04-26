@@ -1,123 +1,125 @@
 # Masinõppe tehnikad
 
-Masinõppe mudelite ja nende kasutatava andmete loomise, kasutamise ja hooldamise protsess erineb oluliselt paljudest teistest arendusvoogudest. Selles õppetükis selgitame seda protsessi ja toome välja peamised tehnikad, mida peate teadma. Te saate:
+Masinõppemudelite loomise, kasutamise ja hooldamise protsess ning andmed, mida nad kasutavad, on väga erinev paljudest teistest arendusvoogudest. Selles õppetükis demüstifitseerime protsessi ja anname ülevaate peamistest tehnikatest, mida on vaja teada. Sa:
 
-- Mõista masinõppe aluseks olevaid protsesse üldisel tasemel.
-- Uurida põhimõisteid nagu "mudelid", "ennustused" ja "treeningandmed".
+- Mõistad masinõppe alusprotsesse ülevaatlikult.
+- Uurite põhimõisteid nagu „mudelid“, „ennustused“ ja „õppematerjalid“.
 
-## [Eelloengu viktoriin](https://ff-quizzes.netlify.app/en/ml/)
+## [Eelõppe viktoriin](https://ff-quizzes.netlify.app/en/ml/)
 
-[![Masinõpe algajatele - Masinõppe tehnikad](https://img.youtube.com/vi/4NGM0U2ZSHU/0.jpg)](https://youtu.be/4NGM0U2ZSHU "Masinõpe algajatele - Masinõppe tehnikad")
+[![ML algajatele - Masinõppe tehnikad](https://img.youtube.com/vi/4NGM0U2ZSHU/0.jpg)](https://youtu.be/4NGM0U2ZSHU "ML algajatele - Masinõppe tehnikad")
 
-> 🎥 Klõpsake ülaloleval pildil, et vaadata lühivideot, mis käsitleb seda õppetundi.
+> 🎥 Klõpsa ülaloleval pildil, et vaadata lühikest videot, mis läbib selle õppetüki.
 
 ## Sissejuhatus
 
-Üldisel tasemel koosneb masinõppe (ML) protsesside loomise kunst mitmest etapist:
+Kõrgemal tasemel koosneb masinõppe (ML) protsesside loomine mitmest etapist:
 
-1. **Küsimuse määratlemine**. Enamik ML-protsesse algab küsimuse esitamisega, millele ei saa vastata lihtsa tingimusliku programmi või reeglipõhise mootoriga. Need küsimused keskenduvad sageli ennustustele, mis põhinevad andmekogumil.
-2. **Andmete kogumine ja ettevalmistamine**. Küsimusele vastamiseks on vaja andmeid. Teie andmete kvaliteet ja mõnikord ka kogus määravad, kui hästi saate oma algsele küsimusele vastata. Andmete visualiseerimine on selle etapi oluline osa. See etapp hõlmab ka andmete jagamist treening- ja testimisgruppideks, et mudelit ehitada.
-3. **Treeningmeetodi valimine**. Sõltuvalt teie küsimusest ja andmete olemusest peate valima, kuidas soovite mudelit treenida, et see kõige paremini kajastaks teie andmeid ja teeks täpseid ennustusi. See ML-protsessi osa nõuab spetsiifilist ekspertiisi ja sageli märkimisväärset katsetamist.
-4. **Mudeli treenimine**. Kasutades oma treeningandmeid, kasutate erinevaid algoritme, et treenida mudelit andmetes mustrite äratundmiseks. Mudel võib kasutada sisemisi kaalusid, mida saab kohandada, et eelistada teatud andmeosi teiste ees, et luua parem mudel.
-5. **Mudeli hindamine**. Kasutate varem nägemata andmeid (oma testimisandmeid) kogutud komplektist, et näha, kuidas mudel toimib.
-6. **Parameetrite häälestamine**. Mudeli toimivuse põhjal saate protsessi uuesti läbi teha, kasutades erinevaid parameetreid või muutujaid, mis kontrollivad mudeli treenimiseks kasutatud algoritmide käitumist.
+1. **Küsimuse valimine**. Enamik ML protsesse algab küsimusest, millele ei saa vastata lihtsa tingimusprogrammi või reeglitel põhineva mootoriga. Need küsimused keerlevad sageli andmekogumi põhjal tehtavate ennustuste ümber.
+2. **Andmete kogumine ja ettevalmistamine**. Küsimusele vastamiseks on vaja andmeid. Andmete kvaliteet ja mõnikord ka hulk määravad, kui hästi saate oma algset küsimust vastata. Andmete visualiseerimine on selle etapi oluline osa. Käesolev etapp hõlmab ka andmete jagamist treening- ja testimisrühmadeks mudeli ehitamiseks.
+3. **Õppemeetodi valimine**. Sõltuvalt küsimusest ja andmete olemusest peate valima, kuidas mudelit treenida, et kõige paremini andmeid kajastada ja teha täpseid ennustusi. See on ML protsessi osa, mis nõuab eriteadmisi ja sageli ka rohkelt katsetamist.
+4. **Mudeli treenimine**. Kasutades treeningandmeid, kasutate erinevaid algoritme, et treenida mudelit, mis tunneb ära mustreid andmetes. Mudel võib kasutada sisemisi kaalusid, mida saab kohandada, et anda teatud andmeosadele eelistust parema mudeli loomiseks.
+5. **Mudeli hindamine**. Kasutate esmakordselt nägemata andmeid (testandmed) oma kogumist, et näha, kuidas mudel toimib.
+6. **Parameetrite häälestamine**. Tuginedes mudeli jõudlusele, saate protsessi läbi teha uuesti, kasutades erinevaid parameetreid või muutujaid, mis kontrollivad algoritmide käitumist mudeli treenimiseks.
 7. **Ennustamine**. Kasutage uusi sisendeid, et testida mudeli täpsust.
 
-## Millist küsimust esitada
+## Millist küsimust küsida
 
-Arvutid on eriti osavad andmetes peidetud mustrite avastamisel. See oskus on väga kasulik teadlastele, kellel on küsimusi antud valdkonna kohta, millele ei saa lihtsalt vastata tingimuslikult põhineva reeglimootoriga. Näiteks aktuaari ülesande puhul võib andmeteadlane koostada käsitsi loodud reeglid suitsetajate ja mittesuitsetajate suremuse kohta.
+Arvutid on eriti osavad varjatud mustrite avastamisel andmetes. See omadus on väga kasulik teadlastele, kellel on küsimusi antud valdkonna kohta, millele ei saa lihtsalt tingimusel põhineva reeglimootoriga vastata. Näiteks aktuaariülesandes võib andmeteadlane koostada käsitsi loodud reegleid suitsetajate ja mitte-suitsetajate suremuse kohta.
 
-Kui võrrandisse tuuakse palju muid muutujaid, võib ML-mudel osutuda tõhusamaks, et ennustada tulevasi suremuse määrasid varasema terviseajaloo põhjal. Rõõmsam näide võiks olla aprillikuu ilmaprognooside tegemine antud asukohas, kasutades andmeid, mis hõlmavad laius- ja pikkuskraadi, kliimamuutusi, ookeani lähedust, jugavoolu mustreid ja palju muud.
+Kui võetakse arvesse palju teisi muutujaid, võib masinõppemudel olla efektiivsem tulevaste suremusmäärade ennustamiseks varasema terviseandmete põhjal. Rõõmsam näide võib olla aprilli kuu ilmaennustuse tegemine antud asukoha kohta, põhinedes andmetel, mis sisaldavad laiust, pikkust, kliimamuutust, lähedust ookeanile, jetivoolu mustreid ja palju muud.
 
-✅ See [slaidiesitlus](https://www2.cisl.ucar.edu/sites/default/files/2021-10/0900%20June%2024%20Haupt_0.pdf) ilmamudelite kohta pakub ajaloolist perspektiivi ML-i kasutamiseks ilmaanaluüsi tegemisel.  
+✅ See [slaidikomplekt](https://www2.cisl.ucar.edu/sites/default/files/2021-10/0900%20June%2024%20Haupt_0.pdf) ilma mudelite kohta pakub ajaloolist perspektiivi masinõppe kasutamise kohta ilmaanalüüsis.  
 
-## Ehituseelne töö
+## Enne ehitamise ülesanded
 
-Enne mudeli ehitamist on mitmeid ülesandeid, mida peate täitma. Oma küsimuse testimiseks ja hüpoteesi loomiseks mudeli ennustuste põhjal peate tuvastama ja seadistama mitmeid elemente.
+Enne mudeli ehitamise alustamist tuleb sooritada mitu ülesannet. Selleks, et testida oma küsimust ja vormida hüpoteesi mudeli ennustuste põhjal, peate kindlaks tegema ja seadistama mitmed elemendid.
 
 ### Andmed
 
-Küsimusele kindlusega vastamiseks vajate piisavalt õiget tüüpi andmeid. Sellel hetkel peate tegema kaks asja:
+Et küsimusele kindlusega vastata, on vaja head kogust andmeid õiges formaadis. Sel hetkel tuleb teha kaks asja:
 
-- **Andmete kogumine**. Pidades silmas eelmist õppetundi andmeanalüüsi õiglusest, koguge oma andmeid hoolikalt. Olge teadlik nende andmete allikatest, võimalikest sisemistest kallutustest ja dokumenteerige nende päritolu.
-- **Andmete ettevalmistamine**. Andmete ettevalmistamise protsess hõlmab mitmeid samme. Võib-olla peate andmeid koondama ja normaliseerima, kui need pärinevad erinevatest allikatest. Andmete kvaliteeti ja kvantiteeti saab parandada mitmel viisil, näiteks teisendades stringe numbriteks (nagu teeme [klasterdamises](../../5-Clustering/1-Visualize/README.md)). Võite ka luua uusi andmeid, mis põhinevad algsetel andmetel (nagu teeme [klassifitseerimises](../../4-Classification/1-Introduction/README.md)). Andmeid saab puhastada ja redigeerida (nagu teeme enne [veebirakenduse](../../3-Web-App/README.md) õppetundi). Lõpuks võib osutuda vajalikuks andmete juhuslikustamine ja segamine, sõltuvalt teie treeningtehnikatest.
+- **Koguge andmed**. Pidades meeles eelmist õppetundi õiglusest andmeanalüüsis, koguge andmed hoolikalt. Olge teadlik andmete allikatest, võimalike kallutatuste olemasolust ja dokumenteerige selle päritolu.
+- **Valmistage andmed ette**. Andmete ettevalmistamise protsessis on mitu sammu. Võite vajada andmete kogumist ja normaliseerimist, kui need pärinevad erinevatest allikatest. Andmete kvaliteeti ja hulka saab parandada erinevate meetoditega, näiteks konverteerides stringid numbriteks (nagu teeme [klastris](../../5-Clustering/1-Visualize/README.md)). Samuti võite genereerida uusi andmeid, lähtudes algsetest andmetest (nagu teeme [klassifitseerimises](../../4-Classification/1-Introduction/README.md)). Andmeid saab puhastada ja redigeerida (nagu teeme enne [veebirakenduse](../../3-Web-App/README.md) õpetust). Lõpuks võib olla vajalik andmete juhuslikustamine ja segamine, sõltuvalt teie õppetehnikatest.
 
-✅ Pärast andmete kogumist ja töötlemist võtke hetk, et näha, kas nende kuju võimaldab teil vastata kavandatud küsimusele. Võib juhtuda, et andmed ei tööta teie antud ülesandes hästi, nagu avastame [klasterdamise](../../5-Clustering/1-Visualize/README.md) õppetundides!
+✅ Pärast andmete kogumist ja töötlemist võtke hetk, et hinnata, kas andmete kuju võimaldab teil esitatud küsimusele vastata. Võib-olla ei sobi andmed teie ülesande jaoks hästi, nagu avastame meie [klastrite](../../5-Clustering/1-Visualize/README.md) õppetundides!
 
-### Omadused ja sihtmärk
+### Tunnused ja sihtmärk
 
-[Omadus](https://www.datasciencecentral.com/profiles/blogs/an-introduction-to-variable-and-feature-selection) on teie andmete mõõdetav omadus. Paljudes andmekogumites väljendatakse seda veerupäisena, näiteks "kuupäev", "suurus" või "värv". Teie omadusmuutuja, mida tavaliselt tähistatakse koodis `X`, esindab sisendmuutujat, mida kasutatakse mudeli treenimiseks.
+[Tunnus](https://www.datasciencecentral.com/profiles/blogs/an-introduction-to-variable-and-feature-selection) on andmete mõõdetav omadus. Paljudes andmekogumites väljendub see veerupäisena nagu „kuupäev“, „suurus“ või „värv“. Teie tunnuse muutuja, tavaliselt koodis tähistatud `X`-ga, esindab sisendmuutujat, mida kasutatakse mudeli treenimiseks.
 
-Sihtmärk on asi, mida proovite ennustada. Sihtmärk, mida tavaliselt tähistatakse koodis `y`, esindab vastust küsimusele, mida proovite oma andmetelt küsida: detsembris, milline **värv** kõrvitsatest on kõige odavam? San Franciscos, millised naabruskonnad pakuvad parimat kinnisvara **hinda**? Mõnikord viidatakse sihtmärgile ka kui sildi atribuudile.
+Sihtmärk on see, mida püüate ennustada. Sihtmärk, tavaliselt tähistatud koodis `y`-ga, esindab küsimusele, mida esitate oma andmetele, vastust: detsembris, mis värvi kõrvitsad on odavaimad? San Franciscos, millistel linnaosadel on parim kinnisvara hind? Mõnikord nimetatakse sihtmärki ka sildi atribuudi nimega.
 
-### Omadusmuutuja valimine
+### Tunnuse muutuja valimine
 
-🎓 **Omaduste valik ja omaduste ekstraheerimine** Kuidas valida, millist muutujat mudeli ehitamisel kasutada? Tõenäoliselt läbite protsessi, kus valite omaduste valiku või ekstraheerimise abil õiged muutujad kõige paremini toimiva mudeli jaoks. Need pole siiski samad: "Omaduste ekstraheerimine loob uusi omadusi algsete omaduste funktsioonidest, samas kui omaduste valik tagastab omaduste alamhulga." ([allikas](https://wikipedia.org/wiki/Feature_selection))
+🎓 **Tunnuse valik ja tunnuse ekstraheerimine** Kuidas valida muutuja mudeli ehitamisel? Tõenäoliselt läbite tunnuse valiku või tunnuse ekstraheerimise protsessi, et valida kõige sobivamad muutujad parima jõudlusega mudeli jaoks. Need pole siiski sama asi: "Tunnuse ekstraheerimine loob uusi tunnuseid originaaltunnuste funktsioonidest, samas kui tunnuse valik tagastab tunnuste alamhulga." ([allikas](https://wikipedia.org/wiki/Feature_selection))
 
-### Andmete visualiseerimine
+### Visualiseeri oma andmeid
 
-Andmeteadlase tööriistakomplekti oluline aspekt on võime visualiseerida andmeid, kasutades mitmeid suurepäraseid teeke, nagu Seaborn või MatPlotLib. Andmete visuaalne esitamine võib võimaldada teil avastada peidetud korrelatsioone, mida saate ära kasutada. Teie visualisatsioonid võivad aidata teil avastada kallutatust või tasakaalustamata andmeid (nagu avastame [klassifitseerimises](../../4-Classification/2-Classifiers-1/README.md)).
+Andmeteadlase tööriistakasti oluline aspekt on võime visualiseerida andmeid, kasutades mitmeid suurepäraseid raamistikke nagu Seaborn või MatPlotLib. Andmete visuaalne esitamine võib aidata teil avastada varjatud korrelatsioone, mida saate ära kasutada. Teie visualiseeringud võivad aidata ka avastada kallutatust või ebatasakaalustatud andmeid (nagu avastame [klassifitseerimises](../../4-Classification/2-Classifiers-1/README.md)).
 
-### Andmekogumi jagamine
+### Jagage oma andmekogum
 
-Enne treenimist peate jagama oma andmekogumi kaheks või enamaks ebavõrdse suurusega osaks, mis siiski esindavad andmeid hästi.
+Enne treenimist peate jagama oma andmekogu kahte või enamasse ebavõrdsesse ossa, mis siiski andmeid hästi esindavad.
 
-- **Treening**. See osa andmekogumist sobitatakse teie mudeliga, et seda treenida. See komplekt moodustab suurema osa algsest andmekogumist.
-- **Testimine**. Testandmekogum on sõltumatu andmete grupp, mis sageli kogutakse algsetest andmetest ja mida kasutatakse ehitatud mudeli toimivuse kinnitamiseks.
-- **Valideerimine**. Valideerimiskomplekt on väiksem sõltumatu näidete grupp, mida kasutatakse mudeli hüperparameetrite või arhitektuuri häälestamiseks, et mudelit täiustada. Sõltuvalt teie andmete suurusest ja küsimusest, mida esitate, ei pruugi teil olla vaja seda kolmandat komplekti luua (nagu märgime [ajasarja prognoosimise](../../7-TimeSeries/1-Introduction/README.md) õppetundides).
+- **Treening**. See osa andmekogumist sobitub mudeliga selle treenimiseks. See komplekt moodustab enamikku algsest andmekogumist.
+- **Testimine**. Testandmekogu on sõltumatu andmed rühm, sageli kogutud algsetest andmetest, mida kasutatakse ehitatud mudeli jõudluse kinnitamiseks.
+- **Kinnitamine**. Kinnitamise komplekt on väiksem sõltumatu näidiste kogum, mida kasutatakse mudeli hüperparameetrite või arhitektuuri häälestamiseks mudeli parandamiseks. Sõltuvalt andmete suurusest ja küsimusest, mida esitate, ei pruugi olla vaja seda kolmandat komplekti luua (nagu märgime [aegrea ennustamises](../../7-TimeSeries/1-Introduction/README.md)).
 
 ## Mudeli ehitamine
 
-Kasutades oma treeningandmeid, on teie eesmärk ehitada mudel ehk teie andmete statistiline esitus, kasutades erinevaid algoritme selle **treenimiseks**. Mudeli treenimine võimaldab sellel andmetega tutvuda ja teha oletusi tajutud mustrite kohta, mida see avastab, valideerib ja aktsepteerib või lükkab tagasi.
+Kasutades treeningandmeid, on eesmärgiks ehitada mudel ehk statistiline andmete esitlus, kasutades erinevaid algoritme selle **treenimiseks**. Mudeli treenimine eksponeerib seda andmetele ja võimaldab tal teha oletusi avastatud mustrite kohta, kinnitada neid ja vastu võtta või tagasi lükata.
 
-### Treeningmeetodi valimine
+### Õppemeetodi valimine
 
-Sõltuvalt teie küsimusest ja andmete olemusest valite meetodi selle treenimiseks. Läbi käies [Scikit-learn'i dokumentatsiooni](https://scikit-learn.org/stable/user_guide.html) - mida me selles kursuses kasutame - saate uurida mitmeid viise mudeli treenimiseks. Sõltuvalt teie kogemustest peate võib-olla proovima mitmeid erinevaid meetodeid, et ehitada parim mudel. Tõenäoliselt läbite protsessi, kus andmeteadlased hindavad mudeli toimivust, toites sellele varem nägemata andmeid, kontrollides täpsust, kallutatust ja muid kvaliteeti halvendavaid probleeme ning valides ülesande jaoks kõige sobivama treeningmeetodi.
+Sõltuvalt küsimusest ja andmete olemusest valite, kuidas mudelit treenida. Läbides [Scikit-learni dokumentatsiooni](https://scikit-learn.org/stable/user_guide.html) – mida selles kursuses kasutame – saate uurida mitmeid viise, kuidas mudelit treenida. Oma kogemuse põhjal võib teil olla vaja proovida mitut erinevat meetodit parima mudeli ehitamiseks. Tõenäoliselt läbite protsessi, kus andmeteadlased hindavad mudeli jõudlust, pakkudes sellele nägemata andmeid, kontrollides täpsust, kallutatust ja muid kvaliteeti halvendavaid tegureid ning valides ülesande jaoks kõige sobivama õppemeetodi.
 
 ### Mudeli treenimine
 
-Relvastatud oma treeningandmetega olete valmis neid "sobitama", et luua mudel. Märkate, et paljudes ML-teekides leiate koodi "model.fit" - just sel ajal saadate oma omadusmuutuja väärtuste massiivina (tavaliselt "X") ja sihtmuutuja (tavaliselt "y").
+Varustatuna treeningandmetega olete valmis mudelit „sobitama“. Paljuski leiab paljudes ML raamistikus koodi 'model.fit' – just sel hetkel saadate oma tunnuse muutuja väärtuste massiivi (tavaliselt 'X') ja sihtmuutuja (tavaliselt 'y').
 
 ### Mudeli hindamine
 
-Kui treenimisprotsess on lõpule jõudnud (suure mudeli treenimiseks võib kuluda palju iteratsioone ehk "epohhe"), saate mudeli kvaliteeti hinnata, kasutades testandmeid selle toimivuse mõõtmiseks. Need andmed on algsete andmete alamhulk, mida mudel pole varem analüüsinud. Saate printida välja tabeli mudeli kvaliteedi mõõdikutega.
+Kui treenimisprotsess on lõpule jõudnud (suurte mudelite treenimine võib võtta mitu iteratsiooni ehk "epohhi"), saate mudeli kvaliteeti hinnata, kasutades testandmeid tema jõudluse mõõtmiseks. Need andmed on alamhulk algsetest andmetest, mida mudel pole varem analüüsinud. Saate printida mudeli kvaliteedi mõõdikute tabeli.
 
 🎓 **Mudeli sobitamine**
 
-Masinõppe kontekstis viitab mudeli sobitamine mudeli aluseks oleva funktsiooni täpsusele, kui see üritab analüüsida andmeid, millega see pole tuttav.
+Masinõppe kontekstis viitab mudeli sobitamine mudeli aluseks oleva funktsiooni täpsusele, kui ta proovib analüüsida andmeid, millega tal veel kogemusi pole.
 
-🎓 **Alasobitamine** ja **ülesobitamine** on levinud probleemid, mis halvendavad mudeli kvaliteeti, kuna mudel sobitub kas liiga halvasti või liiga hästi. See põhjustab mudeli ennustusi, mis on kas liiga tihedalt seotud või liiga lõdvalt seotud treeningandmetega. Ülesobitunud mudel ennustab treeningandmeid liiga hästi, kuna see on õppinud andmete üksikasju ja müra liiga hästi. Alasobitunud mudel pole täpne, kuna see ei suuda täpselt analüüsida ei oma treeningandmeid ega andmeid, mida see pole veel "näinud".
+🎓 **Alasobitamine** ja **ülesobitamine** on levinud probleemid, mis vähendavad mudeli kvaliteeti, kui mudel kas ei sobitu piisavalt hästi või sobitub liiga täpselt. Selline olukord põhjustab, et mudel teeb ennustusi kas liiga rangelt või liiga vabalt sobitudes oma treeningandmetega. Ülesobitatud mudel ennustab treeningandmeid liiga hästi, kuna on õppinud andmete detailid ja müra liiga põhjalikult. Alasobitatud mudel ei ole täpne, kuna ei suuda täpselt analüüsida ei oma treeningandmeid ega ka varem "nägemata" andmeid.
 
-![ülesobitunud mudel](../../../../translated_images/et/overfitting.1c132d92bfd93cb6.webp)
-> Infograafik: [Jen Looper](https://twitter.com/jenlooper)
+![ülesobitatud mudel](../../../../translated_images/et/overfitting.1c132d92bfd93cb6.webp)
+> Infograafika autor: [Jen Looper](https://twitter.com/jenlooper)
 
 ## Parameetrite häälestamine
 
-Kui teie algne treenimine on lõpule jõudnud, jälgige mudeli kvaliteeti ja kaaluge selle parandamist, kohandades selle "hüperparameetreid". Lugege selle protsessi kohta rohkem [dokumentatsioonis](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-tune-hyperparameters?WT.mc_id=academic-77952-leestott).
+Kui esmane treening on tehtud, jälgige mudeli kvaliteeti ja kaalutlege selle parandamist, häälestades selle „hüperparameetreid“. Selle protsessi kohta lugege rohkem [dokumentatsioonist](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-tune-hyperparameters?WT.mc_id=academic-77952-leestott).
 
 ## Ennustamine
 
-See on hetk, mil saate kasutada täiesti uusi andmeid, et testida mudeli täpsust. Rakendatud ML-i seadetes, kus ehitate veebivarasid mudeli kasutamiseks tootmises, võib see protsess hõlmata kasutaja sisendi kogumist (näiteks nupuvajutus), et määrata muutuja ja saata see mudelile järeldamiseks või hindamiseks.
+See on hetk, kus saate kasutada täiesti uusi andmeid, et testida mudeli täpsust. Rakendusliku ML keskkonnas, kus ehitate veebivarasid mudeli kasutamiseks tootmises, võib see protsess hõlmata kasutajasisendi kogumist (näiteks nupu vajutuse) muutuja seadmiseks ja mudelile edastamiseks inferentsiks ehk hinnanguks.
 
-Nendes õppetundides avastate, kuidas kasutada neid samme andmete ettevalmistamiseks, mudeli ehitamiseks, testimiseks, hindamiseks ja ennustamiseks - kõik andmeteadlase žestid ja palju muud, kui edendate oma teekonda "täisstack" ML-inseneriks saamiseks.
+Nendes õppetundides avastate, kuidas neid samme kasutada ettevalmistamiseks, ehitamiseks, testimiseks, hindamiseks ja ennustamiseks – kõik need on andmeteadlase žestid ja palju muud – kui te arendate end ‘täispaketi’ masinõppe inseneriks.
 
 ---
 
 ## 🚀Väljakutse
 
-Joonistage vooskeem, mis kajastab ML-praktiku samme. Kus näete end praegu protsessis? Kus ennustate, et teil võib tekkida raskusi? Mis tundub teile lihtne?
+Joonista vooskeem, mis peegeldab masinõppe praktikandi samme. Kus sa hetkel protsessis seisad? Kus arvad, et võivad tekkida raskused? Mis tundub sulle kerge?
 
-## [Järelloengu viktoriin](https://ff-quizzes.netlify.app/en/ml/)
+## [Pärastloengu viktoriin](https://ff-quizzes.netlify.app/en/ml/)
 
-## Ülevaade ja iseseisev õppimine
+## Kordamine ja iseseisev õppimine
 
-Otsige veebist intervjuusid andmeteadlastega, kes räägivad oma igapäevasest tööst. Siin on [üks](https://www.youtube.com/watch?v=Z3IjgbbCEfs).
+Otsi internetist intervjuusid andmeteadlastega, kes räägivad oma igapäevatööst. Siin on [üks](https://www.youtube.com/watch?v=Z3IjgbbCEfs).
 
-## Ülesanne
+## Kodune ülesanne
 
-[Intervjueerige andmeteadlast](assignment.md)
+[Intervjueeri andmeteadlast](assignment.md)
 
 ---
 
-**Lahtiütlus**:  
-See dokument on tõlgitud AI tõlketeenuse [Co-op Translator](https://github.com/Azure/co-op-translator) abil. Kuigi püüame tagada täpsust, palume arvestada, et automaatsed tõlked võivad sisaldada vigu või ebatäpsusi. Algne dokument selle algses keeles tuleks pidada autoriteetseks allikaks. Olulise teabe puhul soovitame kasutada professionaalset inimtõlget. Me ei vastuta selle tõlke kasutamisest tulenevate arusaamatuste või valesti tõlgenduste eest.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Vastutusest loobumine**:  
+See dokument on tõlgitud AI tõlketeenuse [Co-op Translator](https://github.com/Azure/co-op-translator) abil. Kuigi püüame täpsust, palun pange tähele, et automatiseeritud tõlked võivad sisaldada vigu või ebatäpsusi. Originaaldokument oma emakeeles tuleks pidada autoriteetseks allikaks. Olulise teabe puhul soovitatakse professionaalset inimtõlget. Me ei vastuta selle tõlke kasutamisest tulenevate arusaamatuste ega valesti tõlgendamise eest.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->
