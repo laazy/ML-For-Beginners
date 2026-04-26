@@ -1,123 +1,125 @@
 # Techniki uczenia maszynowego
 
-Proces tworzenia, używania i utrzymywania modeli uczenia maszynowego oraz danych, które wykorzystują, różni się znacząco od wielu innych przepływów pracy w programowaniu. W tej lekcji rozwiejemy wątpliwości dotyczące tego procesu i przedstawimy główne techniki, które warto znać. Dowiesz się:
+Proces budowania, używania i utrzymywania modeli uczenia maszynowego oraz danych, których używają, różni się znacznie od wielu innych przepływów pracy programistycznej. W tej lekcji rozwiejemy tajemnice tego procesu i przedstawimy główne techniki, które musisz znać. Nauczysz się:
 
-- Jak zrozumieć procesy leżące u podstaw uczenia maszynowego na wysokim poziomie.
-- Jak zgłębić podstawowe pojęcia, takie jak „modele”, „predykcje” i „dane treningowe”.
+- Rozumieć procesy leżące u podstaw uczenia maszynowego na wysokim poziomie.
+- Poznawać podstawowe pojęcia, takie jak „modele”, „prognozy” i „dane treningowe”.
 
-## [Quiz przed lekcją](https://ff-quizzes.netlify.app/en/ml/)
+## [Quiz przed wykładem](https://ff-quizzes.netlify.app/en/ml/)
 
-[![ML dla początkujących - Techniki uczenia maszynowego](https://img.youtube.com/vi/4NGM0U2ZSHU/0.jpg)](https://youtu.be/4NGM0U2ZSHU "ML dla początkujących - Techniki uczenia maszynowego")
+[![ML for beginners - Techniques of Machine Learning](https://img.youtube.com/vi/4NGM0U2ZSHU/0.jpg)](https://youtu.be/4NGM0U2ZSHU "ML for beginners - Techniques of Machine Learning")
 
-> 🎥 Kliknij obrazek powyżej, aby obejrzeć krótki film omawiający tę lekcję.
+> 🎥 Kliknij powyższy obraz, aby obejrzeć krótki film omawiający tę lekcję.
 
 ## Wprowadzenie
 
-Na wysokim poziomie, proces tworzenia systemów uczenia maszynowego (ML) składa się z kilku kroków:
+Na wysokim poziomie, rzemiosło tworzenia procesów uczenia maszynowego (ML) składa się z kilku etapów:
 
-1. **Określenie pytania**. Większość procesów ML zaczyna się od postawienia pytania, na które nie można odpowiedzieć za pomocą prostego programu warunkowego lub silnika opartego na regułach. Pytania te często dotyczą przewidywań opartych na zbiorze danych.
-2. **Zbieranie i przygotowanie danych**. Aby móc odpowiedzieć na pytanie, potrzebujesz danych. Jakość, a czasem ilość danych, będzie decydować o tym, jak dobrze możesz odpowiedzieć na swoje pytanie. Wizualizacja danych jest ważnym aspektem tego etapu. Ten etap obejmuje również podział danych na grupy treningowe i testowe w celu budowy modelu.
-3. **Wybór metody treningowej**. W zależności od pytania i charakteru danych, musisz wybrać sposób trenowania modelu, aby najlepiej odzwierciedlał dane i dokonywał trafnych przewidywań. To część procesu ML, która wymaga specjalistycznej wiedzy i często dużej ilości eksperymentów.
-4. **Trenowanie modelu**. Korzystając z danych treningowych, używasz różnych algorytmów, aby nauczyć model rozpoznawania wzorców w danych. Model może wykorzystywać wewnętrzne wagi, które można dostosować, aby preferować określone części danych nad innymi, co prowadzi do lepszego modelu.
-5. **Ocena modelu**. Używasz danych, których model wcześniej nie widział (danych testowych), aby sprawdzić, jak model działa.
-6. **Dostrajanie parametrów**. Na podstawie wyników modelu możesz powtórzyć proces, używając różnych parametrów lub zmiennych, które kontrolują zachowanie algorytmów używanych do trenowania modelu.
-7. **Przewidywanie**. Użyj nowych danych wejściowych, aby sprawdzić dokładność modelu.
+1. **Zdecyduj o pytaniu**. Większość procesów ML zaczyna się od postawienia pytania, na które nie można odpowiedzieć za pomocą prostego programu warunkowego lub silnika opartego na regułach. Pytania te często dotyczą prognoz opartych na zbiorze danych.
+2. **Zbierz i przygotuj dane**. Aby odpowiedzieć na swoje pytanie, potrzebujesz danych. Jakość, a czasami ilość danych, określi, jak dobrze możesz odpowiedzieć na pytanie. Wizualizacja danych jest ważnym aspektem tej fazy. Ta faza obejmuje także podział danych na grupę treningową i testową do budowy modelu.
+3. **Wybierz metodę treningu**. W zależności od pytania i charakteru danych musisz wybrać, jak chcesz trenować model, aby najlepiej odzwierciedlał dane i wykonywał dokładne prognozy. To część procesu ML, która wymaga specjalistycznej wiedzy i często sporej ilości eksperymentów.
+4. **Wytrenuj model**. Korzystając z danych treningowych, zastosujesz różne algorytmy do wytrenowania modelu, aby rozpoznawał wzorce w danych. Model może wykorzystywać wewnętrzne wagi, które można dostosowywać, aby faworyzować pewne części danych i zbudować lepszy model.
+5. **Oceń model**. Używasz dotychczas niewidzianych danych (danych testowych) z twojego zbioru, aby sprawdzić, jak model działa.
+6. **Dostrajanie parametrów**. Na podstawie wydajności modelu możesz powtórzyć proces, stosując różne parametry lub zmienne, które kontrolują zachowanie algorytmów używanych do trenowania modelu.
+7. **Prognozuj**. Użyj nowych danych wejściowych do przetestowania dokładności modelu.
 
-## Jakie pytanie zadać?
+## Jakie pytanie zadać
 
-Komputery są szczególnie dobre w odkrywaniu ukrytych wzorców w danych. Ta umiejętność jest bardzo pomocna dla badaczy, którzy mają pytania dotyczące określonej dziedziny, na które nie można łatwo odpowiedzieć, tworząc silnik oparty na regułach warunkowych. Na przykład, w zadaniu aktuarialnym, data scientist może skonstruować ręcznie stworzone reguły dotyczące śmiertelności palaczy w porównaniu z niepalącymi.
+Komputery są szczególnie dobre w odkrywaniu ukrytych wzorców w danych. Ta użyteczność jest niezwykle pomocna dla badaczy, którzy mają pytania dotyczące danej dziedziny, na które trudno odpowiedzieć, tworząc warunkowy silnik reguł. Na przykład, przy zadaniu aktuarialnym, data scientist może zbudować ręcznie opracowane reguły dotyczące śmiertelności palaczy w porównaniu z niepalącymi.
 
-Jednak gdy do równania wprowadza się wiele innych zmiennych, model ML może okazać się bardziej efektywny w przewidywaniu przyszłych wskaźników śmiertelności na podstawie historii zdrowotnej. Bardziej optymistycznym przykładem może być przewidywanie pogody na kwiecień w danej lokalizacji na podstawie danych takich jak szerokość geograficzna, długość geograficzna, zmiany klimatyczne, bliskość oceanu, wzorce prądów strumieniowych i inne.
+Gdy do równania wprowadzonych zostanie wiele innych zmiennych, model ML może okazać się bardziej efektywny w przewidywaniu przyszłych wskaźników śmiertelności na podstawie historii zdrowotnej. Bardziej optymistycznym przykładem może być prognozowanie pogody na kwiecień dla danego miejsca na podstawie danych, które obejmują szerokość geograficzną, długość geograficzną, zmiany klimatu, bliskość oceanu, wzorce prądów strumieniowych i więcej.
 
-✅ Ta [prezentacja](https://www2.cisl.ucar.edu/sites/default/files/2021-10/0900%20June%2024%20Haupt_0.pdf) dotycząca modeli pogodowych oferuje historyczną perspektywę wykorzystania ML w analizie pogody.  
+✅ Ten [pakiet slajdów](https://www2.cisl.ucar.edu/sites/default/files/2021-10/0900%20June%2024%20Haupt_0.pdf) dotyczący modeli pogodowych oferuje historyczną perspektywę wykorzystania ML w analizie pogodowej.
 
-## Zadania przed budową modelu
+## Zadania przedbudowy
 
-Przed rozpoczęciem budowy modelu musisz wykonać kilka zadań. Aby przetestować swoje pytanie i sformułować hipotezę na podstawie przewidywań modelu, musisz zidentyfikować i skonfigurować kilka elementów.
+Zanim zaczniesz budować model, musisz wykonać kilka zadań. Aby przetestować swoje pytanie i sformułować hipotezę na podstawie prognoz modelu, musisz zidentyfikować i skonfigurować kilka elementów.
 
 ### Dane
 
-Aby móc odpowiedzieć na pytanie z jakąkolwiek pewnością, potrzebujesz odpowiedniej ilości danych o właściwym typie. Na tym etapie musisz zrobić dwie rzeczy:
+Aby z dużą pewnością odpowiedzieć na swoje pytanie, potrzebujesz odpowiedniej ilości danych odpowiedniego typu. W tym momencie musisz wykonać dwie rzeczy:
 
-- **Zbierz dane**. Mając na uwadze poprzednią lekcję dotyczącą sprawiedliwości w analizie danych, zbieraj dane ostrożnie. Zwróć uwagę na źródła tych danych, wszelkie wrodzone uprzedzenia, które mogą zawierać, i dokumentuj ich pochodzenie.
-- **Przygotuj dane**. Proces przygotowania danych obejmuje kilka kroków. Możesz potrzebować zestawić dane i znormalizować je, jeśli pochodzą z różnych źródeł. Możesz poprawić jakość i ilość danych za pomocą różnych metod, takich jak konwersja ciągów znaków na liczby (jak robimy w [Klasteryzacji](../../5-Clustering/1-Visualize/README.md)). Możesz również wygenerować nowe dane na podstawie oryginalnych (jak robimy w [Klasyfikacji](../../4-Classification/1-Introduction/README.md)). Możesz wyczyścić i edytować dane (jak zrobimy przed lekcją dotyczącą [Aplikacji Webowej](../../3-Web-App/README.md)). Na koniec możesz również potrzebować ich losowego uporządkowania i przetasowania, w zależności od technik treningowych.
+- **Zbierz dane**. Mając na uwadze poprzednią lekcję na temat równości w analizie danych, zbieraj dane ostrożnie. Bądź świadomy źródeł tych danych, ewentualnych wbudowanych uprzedzeń oraz dokumentuj ich pochodzenie.
+- **Przygotuj dane**. W procesie przygotowania danych jest kilka etapów. Może być konieczne zebranie danych i ich normalizacja, jeśli pochodzą z różnych źródeł. Możesz poprawić jakość i ilość danych poprzez różne metody, takie jak konwersja łańcuchów znaków na liczby (jak robimy w [Klasteryzacji](../../5-Clustering/1-Visualize/README.md)). Możesz także wygenerować nowe dane na bazie oryginalnych (jak robimy w [Klasyfikacji](../../4-Classification/1-Introduction/README.md)). Możesz oczyścić i edytować dane (jak zrobimy przed lekcją [Aplikacja Webowa](../../3-Web-App/README.md)). Na koniec może być także potrzebne losowe uporządkowanie i przetasowanie danych, zależnie od wybranych technik treningowych.
 
-✅ Po zebraniu i przetworzeniu danych, poświęć chwilę, aby sprawdzić, czy ich struktura pozwoli Ci odpowiedzieć na zamierzone pytanie. Może się okazać, że dane nie sprawdzą się dobrze w Twoim zadaniu, jak odkrywamy w naszych lekcjach dotyczących [Klasteryzacji](../../5-Clustering/1-Visualize/README.md)!
+✅ Po zebraniu i przetworzeniu danych, poświęć chwilę, by sprawdzić, czy ich forma pozwoli na odpowiedź na planowane pytanie. Może się okazać, że dane nie sprawdzą się dobrze przy danym zadaniu, co odkrywamy w lekcjach [Klasteryzacji](../../5-Clustering/1-Visualize/README.md)!
 
 ### Cechy i cel
 
-[Cechy](https://www.datasciencecentral.com/profiles/blogs/an-introduction-to-variable-and-feature-selection) to mierzalne właściwości Twoich danych. W wielu zbiorach danych są one wyrażone jako nagłówki kolumn, takie jak „data”, „rozmiar” czy „kolor”. Zmienna cechy, zwykle reprezentowana jako `X` w kodzie, reprezentuje zmienną wejściową, która będzie używana do trenowania modelu.
+[Cechą](https://www.datasciencecentral.com/profiles/blogs/an-introduction-to-variable-and-feature-selection) jest mierzalna właściwość danych. W wielu zbiorach danych jest ona wyrażana jako nagłówek kolumny, taki jak 'data', 'rozmiar' lub 'kolor'. Zmienna cechy, zwykle oznaczana w kodzie jako `X`, reprezentuje zmienną wejściową, która będzie używana do trenowania modelu.
 
-Cel to rzecz, którą próbujesz przewidzieć. Cel, zwykle reprezentowany jako `y` w kodzie, odpowiada na pytanie, które próbujesz zadać swoim danym: w grudniu, jaki **kolor** dyni będzie najtańszy? W San Francisco, które dzielnice będą miały najlepsze **ceny** nieruchomości? Czasami cel nazywany jest również atrybutem etykiety.
+Cel to rzecz, którą próbujesz przewidzieć. Cel, zwykle oznaczany w kodzie jako `y`, reprezentuje odpowiedź na pytanie, które zadajesz danym: w grudniu, jakie kolory dyni będą najtańsze? w San Francisco, które dzielnice będą miały najlepsze ceny nieruchomości? Czasem cel nazywany jest też etykietą (label).
 
 ### Wybór zmiennej cechy
 
-🎓 **Wybór cech i ekstrakcja cech** Jak wybrać odpowiednią zmienną podczas budowy modelu? Prawdopodobnie przejdziesz przez proces wyboru cech lub ekstrakcji cech, aby wybrać odpowiednie zmienne dla najbardziej wydajnego modelu. Nie są to jednak te same procesy: „Ekstrakcja cech tworzy nowe cechy na podstawie funkcji oryginalnych cech, podczas gdy wybór cech zwraca podzbiór cech.” ([źródło](https://wikipedia.org/wiki/Feature_selection))
+🎓 **Wybór cech i ekstrakcja cech** Skąd wiesz, którą zmienną wybrać przy budowie modelu? Prawdopodobnie przejdziesz przez proces wyboru cech lub ekstrakcji cech, aby wybrać odpowiednie zmienne do najlepszego modelu. Nie są to jednak tożsame procesy: „Ekstrakcja cech tworzy nowe cechy na podstawie funkcji oryginalnych cech, natomiast wybór cech zwraca podzbiór cech.” ([źródło](https://wikipedia.org/wiki/Feature_selection))
 
-### Wizualizacja danych
+### Wizualizuj swoje dane
 
-Ważnym aspektem narzędzi data scientist jest możliwość wizualizacji danych za pomocą kilku doskonałych bibliotek, takich jak Seaborn czy MatPlotLib. Reprezentowanie danych wizualnie może pozwolić Ci odkryć ukryte korelacje, które możesz wykorzystać. Twoje wizualizacje mogą również pomóc w odkryciu uprzedzeń lub niezrównoważonych danych (jak odkrywamy w [Klasyfikacji](../../4-Classification/2-Classifiers-1/README.md)).
+Ważnym elementem zestawu narzędzi data scientistów jest możliwość wizualizacji danych przy użyciu znakomitych bibliotek, takich jak Seaborn czy MatPlotLib. Graficzne przedstawienie danych może pozwolić na odkrycie ukrytych korelacji, które można wykorzystać. Wizualizacje mogą także pomóc w wykryciu uprzedzeń lub niezrównoważonych danych (co odkrywamy w [Klasyfikacji](../../4-Classification/2-Classifiers-1/README.md)).
 
 ### Podział zbioru danych
 
-Przed treningiem musisz podzielić swój zbiór danych na dwie lub więcej części o nierównych rozmiarach, które nadal dobrze reprezentują dane.
+Przed treningiem musisz podzielić zbiór danych na dwie lub więcej części o nierównej wielkości, które nadal dobrze reprezentują dane.
 
-- **Trening**. Ta część zbioru danych jest dopasowana do Twojego modelu, aby go wytrenować. Ten zestaw stanowi większość oryginalnego zbioru danych.
-- **Testowanie**. Zestaw testowy to niezależna grupa danych, często pochodząca z oryginalnych danych, którą używasz do potwierdzenia wydajności zbudowanego modelu.
-- **Walidacja**. Zestaw walidacyjny to mniejsza niezależna grupa przykładów, którą używasz do dostrajania hiperparametrów modelu lub jego architektury, aby poprawić model. W zależności od rozmiaru danych i pytania, które zadajesz, możesz nie potrzebować budować tego trzeciego zestawu (jak zauważamy w [Prognozowaniu szeregów czasowych](../../7-TimeSeries/1-Introduction/README.md)).
+- **Treningowy**. Ta część zbioru danych służy do dopasowania modelu i jego treningu. Ta grupa stanowi większość oryginalnego zbioru danych.
+- **Testowy**. Zbiór testowy to niezależna grupa danych, często wyodrębniona z oryginalnego zbioru, którą używasz do potwierdzenia jakości wytrenowanego modelu.
+- **Walidacyjny**. Zbiór walidacyjny to mniejsza, niezależna grupa przykładów, którą używasz do dostrojenia hiperparametrów lub architektury, aby poprawić model. W zależności od wielkości twoich danych i pytania, które zadajesz, możesz nie potrzebować tworzyć tego trzeciego zbioru (jak zaznaczamy w [Prognozowaniu szeregów czasowych](../../7-TimeSeries/1-Introduction/README.md)).
 
 ## Budowa modelu
 
-Korzystając z danych treningowych, Twoim celem jest zbudowanie modelu, czyli statystycznej reprezentacji danych, używając różnych algorytmów do jego **trenowania**. Trenowanie modelu pozwala mu na analizę danych i dokonywanie założeń dotyczących wzorców, które odkrywa, weryfikuje i akceptuje lub odrzuca.
+Korzystając z danych treningowych, twoim celem jest zbudowanie modelu, czyli statystycznej reprezentacji danych, używając różnych algorytmów do jego **wytrenowania**. Trening modelu polega na „ekspozycji” modelu na dane, co pozwala mu dokonywać założeń na temat rozpoznawanych wzorców, które następnie weryfikuje, akceptuje lub odrzuca.
 
-### Wybór metody treningowej
+### Wybierz metodę treningu
 
-W zależności od pytania i charakteru danych wybierzesz metodę ich trenowania. Przeglądając [dokumentację Scikit-learn](https://scikit-learn.org/stable/user_guide.html) - którą używamy w tym kursie - możesz odkryć wiele sposobów trenowania modelu. W zależności od doświadczenia możesz musieć wypróbować kilka różnych metod, aby zbudować najlepszy model. Prawdopodobnie przejdziesz przez proces, w którym data scientist ocenia wydajność modelu, podając mu dane, których wcześniej nie widział, sprawdzając dokładność, uprzedzenia i inne problemy obniżające jakość, oraz wybierając najbardziej odpowiednią metodę treningową dla danego zadania.
+W zależności od pytania i charakteru danych wybierzesz metodę treningu. Przeglądając [dokumentację Scikit-learn](https://scikit-learn.org/stable/user_guide.html) – której używamy w tym kursie – możesz poznać wiele sposobów trenowania modelu. W zależności od doświadczenia, możesz spróbować kilku różnych metod, aby zbudować najlepszy model. Najczęściej proces ten obejmuje ocenę wydajności modelu przez data scientistów - podają im dane niewidziane wcześniej, sprawdzają dokładność, uprzedzenia i inne problemy obniżające jakość, a następnie wybierają najbardziej odpowiednią metodę treningu.
 
-### Trenowanie modelu
+### Wytrenuj model
 
-Mając dane treningowe, jesteś gotowy, aby „dopasować” je do stworzenia modelu. Zauważysz, że w wielu bibliotekach ML znajdziesz kod „model.fit” - to właśnie wtedy przesyłasz zmienną cechy jako tablicę wartości (zwykle „X”) i zmienną celu (zwykle „y”).
+Mając dane treningowe, jesteś gotów „dopasować” je, aby stworzyć model. W wielu bibliotekach ML znajdziesz polecenie 'model.fit' - właśnie wtedy przesyłasz swoją zmienną cechy jako tablicę wartości (zwykle 'X') oraz zmienną celu (zwykle 'y').
 
-### Ocena modelu
+### Oceń model
 
-Po zakończeniu procesu treningowego (może to zająć wiele iteracji, czyli „epok”, aby wytrenować duży model), będziesz mógł ocenić jakość modelu, używając danych testowych do oceny jego wydajności. Te dane są podzbiorem oryginalnych danych, których model wcześniej nie analizował. Możesz wydrukować tabelę metryk dotyczących jakości modelu.
+Po zakończeniu procesu treningowego (który może wymagać wielu iteracji, zwanych 'epokami', by wytrenować duży model), możesz ocenić jakość modelu, używając danych testowych do pomiaru jego wydajności. Dane te to podzbiór oryginalnych danych, których model wcześniej nie analizował. Możesz wyświetlić tabelę z metrykami jakości swojego modelu.
 
 🎓 **Dopasowanie modelu**
 
-W kontekście uczenia maszynowego dopasowanie modelu odnosi się do dokładności funkcji modelu, gdy próbuje analizować dane, których nie zna.
+W kontekście uczenia maszynowego dopasowanie modelu odnosi się do dokładności funkcji leżącej u podstaw modelu podczas próby analizy nieznanych mu danych.
 
-🎓 **Niedopasowanie** i **przeuczenie** to częste problemy, które obniżają jakość modelu, gdy model dopasowuje się albo zbyt słabo, albo zbyt dobrze. Powoduje to, że model dokonuje przewidywań albo zbyt ściśle związanych, albo zbyt luźno związanych z danymi treningowymi. Model przeuczony przewiduje dane treningowe zbyt dobrze, ponieważ nauczył się zbyt dobrze szczegółów i szumów danych. Model niedopasowany nie jest dokładny, ponieważ nie potrafi ani dokładnie analizować danych treningowych, ani danych, których jeszcze „nie widział”.
+🎓 **Niedopasowanie** i **przeuczenie** to częste problemy obniżające jakość modelu, gdy model dopasowuje się albo zbyt słabo, albo zbyt mocno. Powoduje to, że prognozy modelu są zbyt dokładnie (overfit) lub zbyt niedokładnie (underfit) dopasowane do danych treningowych. Model overfit przewiduje dane treningowe zbyt dokładnie, ponieważ zbyt dobrze poznał szczegóły i szumy danych. Model underfit jest niedokładny, ponieważ nie potrafi ani poprawnie analizować danych treningowych, ani danych, których wcześniej nie „widział”.
 
-![model przeuczony](../../../../1-Introduction/4-techniques-of-ML/images/overfitting.png)
+![overfitting model](../../../../translated_images/pl/overfitting.1c132d92bfd93cb6.webp)
 > Infografika autorstwa [Jen Looper](https://twitter.com/jenlooper)
 
 ## Dostrajanie parametrów
 
-Po zakończeniu początkowego treningu, obserwuj jakość modelu i rozważ jego poprawę poprzez dostosowanie „hiperparametrów”. Przeczytaj więcej o tym procesie [w dokumentacji](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-tune-hyperparameters?WT.mc_id=academic-77952-leestott).
+Gdy wstępny trening jest ukończony, obserwuj jakość modelu i rozważ jego ulepszenie poprzez dostrajanie 'hiperparametrów'. Więcej informacji o tym procesie znajdziesz [w dokumentacji](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-tune-hyperparameters?WT.mc_id=academic-77952-leestott).
 
-## Przewidywanie
+## Prognozowanie
 
-To moment, w którym możesz użyć zupełnie nowych danych, aby przetestować dokładność swojego modelu. W „zastosowanym” środowisku ML, gdzie budujesz zasoby internetowe do użycia modelu w produkcji, proces ten może obejmować zbieranie danych od użytkownika (np. naciśnięcie przycisku), aby ustawić zmienną i przesłać ją do modelu w celu wnioskowania lub oceny.
+To moment, w którym możesz użyć całkowicie nowych danych, aby przetestować dokładność modelu. W praktycznym zastosowaniu ML, gdzie budujesz zasoby webowe do użycia modelu w produkcji, proces ten może wiązać się z pozyskaniem danych od użytkownika (np. naciśnięcie przycisku), ustawieniem zmiennej i przesłaniem jej do modelu do inferencji, czyli oceny.
 
-W tych lekcjach odkryjesz, jak używać tych kroków do przygotowania, budowy, testowania, oceny i przewidywania - wszystkie gesty data scientist i więcej, w miarę jak postępujesz w swojej podróży, aby zostać „full stack” inżynierem ML.
+W tych lekcjach poznasz, jak korzystać z tych kroków, aby przygotować, zbudować, przetestować, ocenić i prognozować – wszystkie gesty data scientista i jeszcze więcej, na drodze do zostania inżynierem ML 'full stack'.
 
 ---
 
 ## 🚀Wyzwanie
 
-Narysuj diagram przepływu przedstawiający kroki praktyka ML. Gdzie widzisz siebie teraz w tym procesie? Gdzie przewidujesz, że napotkasz trudności? Co wydaje się łatwe?
+Narysuj schemat blokowy odzwierciedlający kroki praktyka ML. Gdzie widzisz siebie obecnie w tym procesie? Gdzie przewidujesz trudności? Co wydaje ci się łatwe?
 
-## [Quiz po lekcji](https://ff-quizzes.netlify.app/en/ml/)
+## [Quiz po wykładzie](https://ff-quizzes.netlify.app/en/ml/)
 
-## Przegląd i samodzielna nauka
+## Powtórka i samodzielna nauka
 
-Poszukaj w internecie wywiadów z data scientistami, którzy omawiają swoją codzienną pracę. Oto [jeden](https://www.youtube.com/watch?v=Z3IjgbbCEfs).
+Wyszukaj w internecie wywiady z data scientistami, którzy opowiadają o swojej codziennej pracy. Oto [jeden](https://www.youtube.com/watch?v=Z3IjgbbCEfs).
 
 ## Zadanie
 
-[Przeprowadź wywiad z data scientistem](assignment.md)
+[Przeprowadź wywiad z data scientistą](assignment.md)
 
 ---
 
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
 **Zastrzeżenie**:  
-Ten dokument został przetłumaczony za pomocą usługi tłumaczeniowej AI [Co-op Translator](https://github.com/Azure/co-op-translator). Chociaż dokładamy wszelkich starań, aby tłumaczenie było precyzyjne, prosimy pamiętać, że automatyczne tłumaczenia mogą zawierać błędy lub nieścisłości. Oryginalny dokument w jego rodzimym języku powinien być uznawany za wiarygodne źródło. W przypadku informacji o krytycznym znaczeniu zaleca się skorzystanie z profesjonalnego tłumaczenia wykonanego przez człowieka. Nie ponosimy odpowiedzialności za jakiekolwiek nieporozumienia lub błędne interpretacje wynikające z korzystania z tego tłumaczenia.
+Dokument ten został przetłumaczony za pomocą usługi tłumaczeń AI [Co-op Translator](https://github.com/Azure/co-op-translator). Choć dokładamy starań, aby tłumaczenie było precyzyjne, prosimy pamiętać, że automatyczne tłumaczenia mogą zawierać błędy lub niedokładności. Oryginalny dokument w języku źródłowym powinien być uznawany za wersję autorytatywną. W przypadku informacji o kluczowym znaczeniu zalecane jest skorzystanie z profesjonalnego tłumaczenia wykonanego przez człowieka. Nie ponosimy odpowiedzialności za jakiekolwiek nieporozumienia lub błędne interpretacje wynikające z użycia tego tłumaczenia.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

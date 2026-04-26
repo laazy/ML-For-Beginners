@@ -1,123 +1,125 @@
 # Makine Öğrenimi Teknikleri
 
-Makine öğrenimi modellerini oluşturma, kullanma ve bu modellerin kullandığı verileri yönetme süreci, birçok diğer geliştirme iş akışından oldukça farklıdır. Bu derste, süreci açıklığa kavuşturacak ve bilmeniz gereken temel teknikleri özetleyeceğiz. Şunları yapacaksınız:
+Makine öğrenimi modelleri ve kullandıkları verileri oluşturma, kullanma ve sürdürme süreci, birçok diğer geliştirme iş akışından çok farklı bir süreçtir. Bu derste, süreci sadeleştirecek ve bilmeniz gereken temel tekniklerin ana hatlarını çizeceğiz. Şunları yapacaksınız:
 
-- Makine öğreniminin temel süreçlerini yüksek seviyede anlayacaksınız.
+- Makine öğreniminin temelini oluşturan süreçleri yüksek seviyede anlayacaksınız.
 - 'Modeller', 'tahminler' ve 'eğitim verisi' gibi temel kavramları keşfedeceksiniz.
 
-## [Ders Öncesi Test](https://ff-quizzes.netlify.app/en/ml/)
+## [Ders öncesi quiz](https://ff-quizzes.netlify.app/en/ml/)
 
-[![Yeni Başlayanlar için ML - Makine Öğrenimi Teknikleri](https://img.youtube.com/vi/4NGM0U2ZSHU/0.jpg)](https://youtu.be/4NGM0U2ZSHU "Yeni Başlayanlar için ML - Makine Öğrenimi Teknikleri")
+[![ML for beginners - Techniques of Machine Learning](https://img.youtube.com/vi/4NGM0U2ZSHU/0.jpg)](https://youtu.be/4NGM0U2ZSHU "ML for beginners - Techniques of Machine Learning")
 
-> 🎥 Yukarıdaki görsele tıklayarak bu dersle ilgili kısa bir videoya ulaşabilirsiniz.
+> 🎥 Bu derste ilerlemek için yukarıdaki görsele tıklayın.
 
 ## Giriş
 
-Genel olarak, makine öğrenimi (ML) süreçlerini oluşturma sanatı birkaç adımdan oluşur:
+Yüksek seviyede, makine öğrenimi (ML) süreçleri oluşturma sanatı birkaç adımdan oluşur:
 
-1. **Soruyu belirleyin**. Çoğu ML süreci, basit bir koşullu program veya kurallara dayalı bir motorla cevaplanamayan bir soruyu sormakla başlar. Bu sorular genellikle bir veri koleksiyonuna dayalı tahminlerle ilgilidir.
-2. **Veri toplayın ve hazırlayın**. Sorunuzu cevaplayabilmek için veriye ihtiyacınız var. Verinizin kalitesi ve bazen miktarı, başlangıçtaki sorunuza ne kadar iyi cevap verebileceğinizi belirler. Veriyi görselleştirmek bu aşamanın önemli bir parçasıdır. Bu aşama ayrıca veriyi bir eğitim ve test grubuna ayırmayı içerir.
-3. **Eğitim yöntemini seçin**. Sorunuza ve verinizin doğasına bağlı olarak, verinizi en iyi şekilde yansıtacak ve doğru tahminler yapacak bir model eğitme yöntemini seçmeniz gerekir. Bu, ML sürecinizin özel uzmanlık gerektiren ve genellikle önemli miktarda deneme gerektiren kısmıdır.
-4. **Modeli eğitin**. Eğitim verinizi kullanarak, çeşitli algoritmalarla bir model eğiterek verideki desenleri tanımasını sağlarsınız. Model, verinin belirli bölümlerini diğerlerine göre önceliklendirmek için ayarlanabilir içsel ağırlıklar kullanabilir.
-5. **Modeli değerlendirin**. Topladığınız veri setinden daha önce hiç görülmemiş verileri (test verinizi) kullanarak modelin performansını değerlendirirsiniz.
-6. **Parametre ayarı**. Modelinizin performansına bağlı olarak, modeli eğitmek için kullanılan algoritmaların davranışını kontrol eden farklı parametreler veya değişkenler kullanarak süreci yeniden yapabilirsiniz.
-7. **Tahmin yapın**. Modelinizin doğruluğunu test etmek için yeni girdiler kullanın.
+1. **Soruyu belirleyin**. Çoğu ML süreci, basit bir koşullu program veya kurallara dayalı motorla cevaplanamayan bir soruyu sorarak başlar. Bu sorular genellikle bir veri koleksiyonuna dayanan tahminlerle ilgilidir.
+2. **Veri toplayın ve hazırlayın**. Sorunuzu cevaplayabilmek için veriye ihtiyacınız vardır. Verinizin kalitesi ve zaman zaman miktarı, ilk sorunuza ne kadar iyi cevap verebileceğinizi belirler. Veriyi görselleştirmek bu aşamanın önemli bir parçasıdır. Bu aşama ayrıca, bir modeli oluşturmak için veriyi eğitim ve test gruplarına ayırmayı da içerir.
+3. **Bir eğitim yöntemi seçin**. Sorunuza ve verinizin doğasına bağlı olarak, verinizi en iyi şekilde yansıtacak ve doğru tahminler yapacak bir modeli nasıl eğitmek istediğinizi seçmeniz gerekir. Bu, ML sürecinizin belirli uzmanlık gerektiren ve genellikle önemli miktarda deney gerektiren kısmıdır.
+4. **Modeli eğitin**. Eğitim verilerinizi kullanarak, verideki kalıpları tanımak için çeşitli algoritmalarla bir modeli eğiteceksiniz. Model, verinin bazı bölümlerini diğerlerine göre daha öncelikli kılmak için ayarlanabilen iç ağırlıkları kullanabilir.
+5. **Modeli değerlendirin**. Daha önce hiç görmediğiniz veriyi (test verilerinizi) kullanarak modelin performansını kontrol edersiniz.
+6. **Parametre ayarlaması yapın**. Modelinizin performansına dayanarak, modeli eğitmek için kullanılan algoritmaların davranışını kontrol eden farklı parametrelerle veya değişkenlerle süreci yeniden yapabilirsiniz.
+7. **Tahmin yapın**. Modelinizin doğruluğunu test etmek için yeni girişler kullanın.
 
-## Hangi Soruyu Sormalı?
+## Hangi soruyu sormalı
 
-Bilgisayarlar, verilerdeki gizli desenleri keşfetme konusunda oldukça yeteneklidir. Bu yetenek, belirli bir alanda basit bir kurallara dayalı motor oluşturarak kolayca cevaplanamayan soruları olan araştırmacılar için çok faydalıdır. Örneğin, bir aktüeryal görevde, bir veri bilimci sigara içenler ile içmeyenlerin ölüm oranları hakkında el yapımı kurallar oluşturabilir.
+Bilgisayarlar, veride gizli kalmış kalıpları keşfetme konusunda özellikle iyidir. Bu fayda, belirli bir alanla ilgili soruları koşullu kurallara dayalı bir motor oluşturmakla kolayca cevaplanamayan araştırmacılar için çok değerlidir. Örneğin, bir aktüeryal görevde, bir veri bilimci sigara içenler ve içmeyenlerin ölüm oranı hakkında el yapımı kurallar oluşturabilir.
 
-Ancak, birçok başka değişken denkleme dahil edildiğinde, bir ML modeli geçmiş sağlık geçmişine dayanarak gelecekteki ölüm oranlarını tahmin etmekte daha verimli olabilir. Daha neşeli bir örnek olarak, bir konumda Nisan ayı için hava durumu tahminleri yapmak, enlem, boylam, iklim değişikliği, okyanusa yakınlık, jet akımı desenleri ve daha fazlasını içeren verilere dayanabilir.
+Ancak, birçok başka değişken bu denklemde yer aldığında, ML modeli geçmiş sağlık geçmişine dayalı gelecekteki ölüm oranlarını tahmin etmek için daha verimli olabilir. Daha neşeli bir örnek, enlem, boylam, iklim değişikliği, okyanusa yakınlık, jet akımlarının desenleri ve daha fazlasını içeren verilere dayalı olarak belirli bir konumda Nisan ayı hava tahminleri yapmak olabilir.
 
-✅ Bu [sunum dosyası](https://www2.cisl.ucar.edu/sites/default/files/2021-10/0900%20June%2024%20Haupt_0.pdf), hava analizi için ML kullanımı hakkında tarihsel bir perspektif sunmaktadır.
+✅ Bu [sunum dizisi](https://www2.cisl.ucar.edu/sites/default/files/2021-10/0900%20June%2024%20Haupt_0.pdf) hava modelleri hakkında ML kullanımı için tarihsel bir perspektif sunar.
 
-## Model Oluşturmadan Önceki Görevler
+## Ön hazırlık görevleri
 
-Modelinizi oluşturmaya başlamadan önce tamamlamanız gereken birkaç görev vardır. Sorunuzu test etmek ve bir modelin tahminlerine dayalı bir hipotez oluşturmak için birkaç unsuru tanımlamanız ve yapılandırmanız gerekir.
+Modelinizi oluşturmaya başlamadan önce tamamlamanız gereken birkaç görev vardır. Sorunuzu test etmek ve modelin tahminlerine dayanan bir hipotez oluşturmak için çeşitli unsurları tanımlamanız ve yapılandırmanız gerekir.
 
 ### Veri
 
-Sorunuzu herhangi bir kesinlikle cevaplayabilmek için doğru türde yeterli miktarda veriye ihtiyacınız var. Bu noktada yapmanız gereken iki şey var:
+Sorunuza belirli bir kesinlikle cevap verebilmek için doğru türde yeterli miktarda veriye ihtiyacınız vardır. Bu noktada yapmanız gereken iki şey vardır:
 
-- **Veri toplayın**. Veri analizi hakkındaki önceki derste adalet konusunu göz önünde bulundurarak, verinizi dikkatlice toplayın. Bu verinin kaynaklarının, sahip olabileceği herhangi bir içsel önyargının farkında olun ve kökenini belgeleyin.
-- **Veriyi hazırlayın**. Veri hazırlama sürecinde birkaç adım vardır. Veriler farklı kaynaklardan geliyorsa, verileri birleştirmeniz ve normalleştirmeniz gerekebilir. Verinin kalitesini ve miktarını, dizeleri sayılara dönüştürmek gibi çeşitli yöntemlerle artırabilirsiniz (örneğin [Kümeleme](../../5-Clustering/1-Visualize/README.md) dersinde yaptığımız gibi). Ayrıca, orijinal veriye dayanarak yeni veri üretebilirsiniz (örneğin [Sınıflandırma](../../4-Classification/1-Introduction/README.md) dersinde yaptığımız gibi). Veriyi temizleyebilir ve düzenleyebilirsiniz (örneğin [Web Uygulaması](../../3-Web-App/README.md) dersinden önce yapacağımız gibi). Son olarak, eğitim tekniklerinize bağlı olarak veriyi rastgeleleştirmeniz ve karıştırmanız gerekebilir.
+- **Veri toplayın**. Veri analizinde adalet hakkında önceki dersi aklınızda tutarak verinizi dikkatlice toplayın. Bu verinin kaynaklarının farkında olun, sahip olabileceği herhangi bir yerleşik önyargıyı göz önünde bulundurun ve kökenini belgeleyin.
+- **Veriyi hazırlayın**. Veri hazırlama sürecinde birkaç adım vardır. Veriler çeşitli kaynaklardan geliyorsa onları toplamanız ve normalleştirmeniz gerekebilir. Verinin kalitesini ve miktarını, [Kümeleme](../../5-Clustering/1-Visualize/README.md) dersinde yaptığımız gibi dizeleri sayılara dönüştürmek gibi çeşitli yöntemlerle artırabilirsiniz. Ayrıca, orijinal veriye dayalı yeni veriler oluşturabilirsiniz ([Sınıflandırma](../../4-Classification/1-Introduction/README.md) dersinde yaptığımız gibi). Veriyi temizleyebilir ve düzenleyebilirsiniz ([Web Uygulaması](../../3-Web-App/README.md) dersinden önceki gibi). Son olarak, eğitim tekniklerinize bağlı olarak veriyi rastgele karıştırmanız ve karıştırmanız gerekebilir.
 
-✅ Verinizi topladıktan ve işledikten sonra, şeklinin hedeflediğiniz soruyu ele almanıza izin verip vermeyeceğini kontrol etmek için bir an durun. Verinin, belirli bir görevde iyi performans göstermeyeceğini [Kümeleme](../../5-Clustering/1-Visualize/README.md) derslerinde keşfettiğimiz gibi fark edebilirsiniz!
+✅ Verinizi topladıktan ve işledikten sonra, şeklinin sorunuza cevap vermenize izin verip vermediğine bakmak için bir an durun. Verinin görevde iyi performans göstermeyebileceği gibi durumlarla [Kümeleme](../../5-Clustering/1-Visualize/README.md) derslerinde karşılaşıyoruz!
 
 ### Özellikler ve Hedef
 
-Bir [özellik](https://www.datasciencecentral.com/profiles/blogs/an-introduction-to-variable-and-feature-selection), verinizin ölçülebilir bir özelliğidir. Çoğu veri setinde, 'tarih', 'boyut' veya 'renk' gibi sütun başlıkları olarak ifade edilir. Kodda genellikle `X` olarak temsil edilen özellik değişkeniniz, modeli eğitmek için kullanılacak giriş değişkenini temsil eder.
+[Özellik](https://www.datasciencecentral.com/profiles/blogs/an-introduction-to-variable-and-feature-selection), verinizin ölçülebilir bir niteliğidir. Pek çok veri setinde bu, 'tarih', 'boyut' veya 'renk' gibi bir sütun başlığı olarak ifade edilir. Özellik değişkeniniz, genellikle kodda `X` ile gösterilir, bir modeli eğitmek için kullanılan giriş değişkenini temsil eder.
 
-Bir hedef, tahmin etmeye çalıştığınız şeydir. Kodda genellikle `y` olarak temsil edilen hedef, verinizden sormaya çalıştığınız sorunun cevabını temsil eder: Aralık ayında hangi **renkteki** kabaklar en ucuz olacak? San Francisco'da hangi mahalleler en iyi gayrimenkul **fiyatına** sahip olacak? Hedef bazen etiket özelliği olarak da adlandırılır.
+Hedef, tahmin etmeye çalıştığınız şeydir. Hedef, genellikle kodda `y` ile gösterilir, verinizden sormaya çalıştığınız sorunun cevabını temsil eder: Aralık ayında en ucuz balkabağı **rengi** ne olacak? San Francisco'da en iyi gayrimenkul **fiyatına** sahip mahalleler hangileri olacak? Bazen hedef bir etiket (label) özniteliği olarak da adlandırılır.
 
-### Özellik Değişkeninizi Seçmek
+### Özellik değişkeninizi seçmek
 
-🎓 **Özellik Seçimi ve Özellik Çıkarımı** Model oluştururken hangi değişkeni seçeceğinizi nasıl bileceksiniz? Muhtemelen en iyi performans gösteren model için doğru değişkenleri seçmek üzere bir özellik seçimi veya özellik çıkarımı sürecinden geçeceksiniz. Ancak, bunlar aynı şey değildir: "Özellik çıkarımı, orijinal özelliklerin fonksiyonlarından yeni özellikler oluştururken, özellik seçimi özelliklerin bir alt kümesini döndürür." ([kaynak](https://wikipedia.org/wiki/Feature_selection))
+🎓 **Özellik Seçimi ve Özellik Çıkarımı** Bir model kurarken hangi değişkeni seçeceğinizi nasıl biliyorsunuz? Muhtemelen en etkili modeli oluşturmak için doğru değişkenleri seçmek üzere bir özellik seçimi veya özellik çıkarımı sürecinden geçeceksiniz. Ancak bu ikisi aynı şey değildir: "Özellik çıkarımı, orijinal özelliklerin fonksiyonlarından yeni özellikler oluştururken, özellik seçimi özelliklerin bir alt kümesini döndürür." ([kaynak](https://wikipedia.org/wiki/Feature_selection))
 
-### Verinizi Görselleştirin
+### Verinizi görselleştirin
 
-Bir veri bilimcinin araç setinin önemli bir yönü, Seaborn veya MatPlotLib gibi birkaç mükemmel kütüphaneyi kullanarak veriyi görselleştirme gücüdür. Verinizi görsel olarak temsil etmek, yararlanabileceğiniz gizli korelasyonları ortaya çıkarmanıza olanak sağlayabilir. Görselleştirmeleriniz ayrıca önyargı veya dengesiz veriyi ortaya çıkarmanıza yardımcı olabilir (örneğin [Sınıflandırma](../../4-Classification/2-Classifiers-1/README.md) dersinde keşfettiğimiz gibi).
+Bir veri bilimcisinin araç setinin önemli bir yönü, Seaborn veya MatPlotLib gibi birkaç mükemmel kütüphane kullanarak veriyi görselleştirme gücüdür. Verinizi görsel olarak temsil etmek, kullanabileceğiniz gizli korelasyonları ortaya çıkarabilir. Görselleştirmeleriniz ayrıca önyargıyı veya dengesiz veriyi ortaya çıkarabilir (bunu [Sınıflandırma](../../4-Classification/2-Classifiers-1/README.md) dersinde keşfediyoruz).
 
-### Veri Setinizi Bölün
+### Veri setinizi bölün
 
-Eğitimden önce, veri setinizi eşit olmayan boyutlarda iki veya daha fazla parçaya ayırmanız gerekir, ancak bu parçalar yine de veriyi iyi temsil etmelidir.
+Eğitime başlamadan önce, veri setinizi eşit olmayan ancak veriyi iyi temsil eden iki veya daha fazla parçaya bölmeniz gerekir.
 
-- **Eğitim**. Veri setinin bu kısmı, modelinizi eğitmek için modele uyarlanır. Bu set, orijinal veri setinin çoğunluğunu oluşturur.
+- **Eğitim**. Veri setinin bu kısmı, modeli eğitmek için kullanılır. Bu set orijinal veri setinin çoğunluğunu oluşturur.
 - **Test**. Test veri seti, genellikle orijinal veriden toplanan bağımsız bir veri grubudur ve oluşturulan modelin performansını doğrulamak için kullanılır.
-- **Doğrulama**. Doğrulama seti, modelin hiperparametrelerini veya mimarisini iyileştirmek için kullandığınız daha küçük bağımsız bir örnek grubudur. Verinizin boyutuna ve sorduğunuz soruya bağlı olarak, bu üçüncü seti oluşturmanız gerekmeyebilir (örneğin [Zaman Serisi Tahmini](../../7-TimeSeries/1-Introduction/README.md) dersinde belirttiğimiz gibi).
+- **Doğrulama**. Doğrulama seti, modeli iyileştirmek için modelin hiperparametrelerini veya mimarisini ayarlamak için kullanılan daha küçük bağımsız bir örnek grubudur. Verinizin boyutuna ve sorduğunuz soruya bağlı olarak bu üçüncü seti oluşturmanız gerekmeyebilir ([Zaman Serisi Tahmini](../../7-TimeSeries/1-Introduction/README.md) dersinde not ettiğimiz gibi).
 
-## Model Oluşturma
+## Model oluşturma
 
-Eğitim verinizi kullanarak, amacınız çeşitli algoritmalar kullanarak verinizin istatistiksel bir temsilini oluşturmak, yani bir model oluşturmaktır. Modeli eğitmek, veriyi analiz etmesine, algıladığı desenler hakkında varsayımlar yapmasına, doğrulamasına ve kabul veya reddetmesine olanak tanır.
+Eğitim verinizi kullanarak, modeli **eğitmek** için çeşitli algoritmalar kullanarak verinizin istatistiksel bir temsilini oluşturmayı hedeflersiniz. Bir modeli eğitmek, onu veriye maruz bırakır ve keşfettiği, doğruladığı ve kabul ya da reddettiği algılanan kalıplar hakkında varsayımlarda bulunmasını sağlar.
 
-### Eğitim Yöntemini Belirleyin
+### Bir eğitim yöntemi seçin
 
-Sorunuza ve verinizin doğasına bağlı olarak, onu eğitmek için bir yöntem seçersiniz. Bu kursta kullandığımız [Scikit-learn belgelerini](https://scikit-learn.org/stable/user_guide.html) inceleyerek bir modeli eğitmek için birçok yöntemi keşfedebilirsiniz. Deneyiminize bağlı olarak, en iyi modeli oluşturmak için birkaç farklı yöntemi denemeniz gerekebilir. Veri bilimcilerin bir modeli performansını değerlendirmek için daha önce görülmemiş verilerle beslediği, doğruluk, önyargı ve diğer kaliteyi düşüren sorunları kontrol ettiği ve mevcut görev için en uygun eğitim yöntemini seçtiği bir süreçten geçmeniz muhtemeldir.
+Sorunuza ve verinizin doğasına bağlı olarak, onu eğitmek için bir yöntem seçeceksiniz. Bu derste kullandığımız [Scikit-learn dokümantasyonu](https://scikit-learn.org/stable/user_guide.html)'nu adım adım inceleyerek bir modeli eğitmenin birçok yolunu keşfedebilirsiniz. Deneyiminize bağlı olarak, en iyi modeli oluşturmak için birkaç farklı yöntemi denemeniz gerekebilir. Veri bilimcilerin, modele hiç görmediği veriyi vererek performansını değerlendirdiği, doğruluğu, önyargıyı ve diğer kaliteyi düşüren sorunları kontrol ettiği ve görev için en uygun eğitim yöntemini seçtiği bir süreci muhtemelen yaşayacaksınız.
 
-### Modeli Eğitin
+### Modeli eğitin
 
-Eğitim verinizle donanmış olarak, bir model oluşturmak için onu 'uydurmaya' hazırsınız. Birçok ML kütüphanesinde 'model.fit' kodunu göreceksiniz - bu, özellik değişkeninizi (genellikle 'X') ve hedef değişkeninizi (genellikle 'y') bir değer dizisi olarak gönderdiğiniz zamandır.
+Eğitim verinizle hazırlanmış olarak, modeli oluşturmak için 'fit' işlemini gerçekleştirmeye hazırsınız. Pek çok ML kütüphanesinde 'model.fit' kodunu göreceksiniz - bu aşamada genellikle özellik değişkeninizi (`X`) ve hedef değişkeninizi (`y`) değerler dizisi olarak gönderirsiniz.
 
-### Modeli Değerlendirin
+### Modeli değerlendirin
 
-Eğitim süreci tamamlandıktan sonra (büyük bir modeli eğitmek için birçok yineleme veya 'epoch' gerekebilir), modelin kalitesini test verilerini kullanarak performansını ölçerek değerlendirebilirsiniz. Bu veri, modelin daha önce analiz etmediği orijinal verinin bir alt kümesidir. Modelinizin kalitesi hakkında bir metrik tablosu yazdırabilirsiniz.
+Eğitim süreci tamamlandıktan sonra (büyük bir modeli eğitmek için birçok yineleme veya 'epoch' gerekebilir), test verilerini kullanarak modelin kalitesini değerlendirebilirsiniz. Bu veriler, modelin daha önce analiz etmediği orijinal verinin bir alt kümesidir. Modelinizin kalitesi hakkında metriklerden oluşan bir tablo yazdırabilirsiniz.
 
-🎓 **Model Uydurma**
+🎓 **Model uyumu**
 
-Makine öğrenimi bağlamında, model uydurma, modelin tanımadığı veriyi analiz etmeye çalışırken temel fonksiyonunun doğruluğunu ifade eder.
+Makine öğrenimi bağlamında model uyumu, modelin bilinmeyen verileri analiz etmeye çalışırken altında yatan fonksiyonunun doğruluğunu ifade eder.
 
-🎓 **Eksik Uydurma** ve **Aşırı Uydurma**, modelin kalitesini düşüren yaygın sorunlardır. Model ya yeterince iyi uydurulmaz ya da çok iyi uydurulur. Bu, modelin tahminlerini ya eğitim verisine çok sıkı ya da çok gevşek bir şekilde hizalamasına neden olur. Aşırı uydurulmuş bir model, verinin ayrıntılarını ve gürültüsünü çok iyi öğrendiği için eğitim verisini çok iyi tahmin eder. Eksik uydurulmuş bir model ise ne eğitim verisini ne de daha önce 'görmediği' veriyi doğru bir şekilde analiz edebilir.
+🎓 **Eksik uyum** ve **aşırı uyum** yaygın sorunlardır ve modelin kalitesini düşürür; model ya yeterince iyi uymamış ya da aşırı iyi uymuş olur. Bu, modelin tahminlerini eğitim verisiyle ya çok sıkı ya da çok gevşek hizalanmış şekilde yapmasına neden olur. Aşırı uyumlu model, verinin detaylarını ve gürültüyü çok iyi öğrendiği için eğitim verisini çok iyi tahmin eder. Eksik uyumlu model ise ne eğitim verisini ne de daha önce 'görmediği' veriyi doğru analiz edebilir.
 
-![aşırı uydurma modeli](../../../../1-Introduction/4-techniques-of-ML/images/overfitting.png)
-> [Jen Looper](https://twitter.com/jenlooper) tarafından hazırlanan infografik
+![aşırı uyumlu model](../../../../translated_images/tr/overfitting.1c132d92bfd93cb6.webp)
+> Bilgi grafiği: [Jen Looper](https://twitter.com/jenlooper)
 
-## Parametre Ayarı
+## Parametre ayarlaması
 
-İlk eğitiminiz tamamlandıktan sonra, modelin kalitesini gözlemleyin ve 'hiperparametrelerini' ayarlayarak iyileştirmeyi düşünün. Süreç hakkında daha fazla bilgi için [belgelere](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-tune-hyperparameters?WT.mc_id=academic-77952-leestott) göz atın.
+İlk eğitiminiz tamamlandıktan sonra, modelin kalitesini gözlemleyin ve 'hiperparametrelerini' ayarlayarak geliştirmeyi düşünün. Sürecin daha fazlası için [dokümantasyona bakabilirsiniz](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-tune-hyperparameters?WT.mc_id=academic-77952-leestott).
 
 ## Tahmin
 
-Bu, tamamen yeni verileri kullanarak modelinizin doğruluğunu test edebileceğiniz andır. 'Uygulamalı' bir ML ortamında, modeli üretimde kullanmak için web varlıkları oluşturduğunuzda, bu süreç bir değişkeni ayarlamak ve değerlendirme veya çıkarım için modele göndermek üzere kullanıcı girdisi (örneğin bir düğme basışı) toplamayı içerebilir.
+Bu, modelinizin doğruluğunu tamamen yeni verilerle test edebileceğiniz andır. Üretimde modeli kullanmak üzere web varlıkları oluşturduğunuz 'uygulamalı' ML ortamında, bu süreç modelin çıkarım veya değerlendirme için değişkeni ayarlayıp modele göndermek üzere (örneğin bir düğmeye basılması gibi) kullanıcı girdisi toplama içerebilir.
 
-Bu derslerde, bir veri bilimcinin tüm hareketlerini ve daha fazlasını keşfederek, bir 'tam yığın' ML mühendisi olma yolculuğunuzda ilerlerken bu adımları hazırlama, oluşturma, test etme, değerlendirme ve tahmin yapma süreçlerini öğreneceksiniz.
+Bu derslerde, bir veri bilimcisinin tüm jestlerini ve daha fazlasını — model hazırlamayı, oluşturmayı, test etmeyi, değerlendirmeyi ve tahmin yapmayı — öğrenerek 'full stack' ML mühendisi olma yolunda ilerleyeceksiniz.
 
 ---
 
 ## 🚀Meydan Okuma
 
-Bir ML uygulayıcısının adımlarını yansıtan bir akış şeması çizin. Sürecin şu an neresinde olduğunuzu düşünüyorsunuz? Nerede zorluk yaşayacağınızı tahmin ediyorsunuz? Size kolay gelen nedir?
+Bir ML uygulayıcısının adımlarını yansıtan bir akış şeması çizin. Şu anda sürecin hangi aşamasında olduğunuzu düşünüyorsunuz? Hangi aşamada zorlanacağınızı tahmin ediyorsunuz? Size kolay gelen şeyler neler?
 
-## [Ders Sonrası Test](https://ff-quizzes.netlify.app/en/ml/)
+## [Ders sonrası quiz](https://ff-quizzes.netlify.app/en/ml/)
 
-## Gözden Geçirme ve Kendi Kendine Çalışma
+## Gözden Geçirme & Kendi Kendine Çalışma
 
-Günlük işlerini tartışan veri bilimcilerle yapılan röportajları çevrimiçi arayın. İşte [bir tanesi](https://www.youtube.com/watch?v=Z3IjgbbCEfs).
+Günlük işlerinden bahseden veri bilimcilerle yapılmış çevrimiçi röportajlar arayın. İşte [biri](https://www.youtube.com/watch?v=Z3IjgbbCEfs).
 
 ## Ödev
 
-[Bir veri bilimciyle röportaj yapın](assignment.md)
+[Bir veri bilimci ile röportaj yapın](assignment.md)
 
 ---
 
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
 **Feragatname**:  
-Bu belge, AI çeviri hizmeti [Co-op Translator](https://github.com/Azure/co-op-translator) kullanılarak çevrilmiştir. Doğruluk için çaba göstersek de, otomatik çevirilerin hata veya yanlışlık içerebileceğini lütfen unutmayın. Belgenin orijinal dili, yetkili kaynak olarak kabul edilmelidir. Kritik bilgiler için profesyonel insan çevirisi önerilir. Bu çevirinin kullanımından kaynaklanan yanlış anlamalar veya yanlış yorumlamalardan sorumlu değiliz.
+Bu belge, AI çeviri servisi [Co-op Translator](https://github.com/Azure/co-op-translator) kullanılarak çevrilmiştir. Doğruluk için çaba sarf etsek de, otomatik çevirilerin hatalar veya yanlışlıklar içerebileceğinin farkında olunuz. Orijinal belge, kendi ana dilindeki haliyle yetkili kaynak olarak kabul edilmelidir. Kritik bilgiler için profesyonel insan çevirisi önerilir. Bu çevirinin kullanılmasıyla ortaya çıkabilecek yanlış anlamalar veya yanlış yorumlamalar nedeniyle sorumluluk kabul edilmeyecektir.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->
