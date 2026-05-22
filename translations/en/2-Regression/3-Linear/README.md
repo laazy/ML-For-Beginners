@@ -2,11 +2,11 @@
 
 ## Beginner Note
 
-Linear regression is used when we want to predict a **numerical value** (for example, house price, temperature, or sales).
+Linear regression is used when we want to predict a **numerical value** (for example, house price, temperature, or sales).  
 It works by finding a straight line that best represents the relationship between input features and the output.
 
-In this lesson, we focus on understanding the concept before exploring more advanced regression techniques.
-![Linear vs polynomial regression infographic](../../../../translated_images/en/linear-polynomial.5523c7cb6576ccab.webp)
+In this lesson, we focus on understanding the concept before exploring more advanced regression techniques.  
+![Linear vs polynomial regression infographic](../../../../translated_images/en/linear-polynomial.5523c7cb6576ccab.webp)  
 > Infographic by [Dasani Madipalli](https://twitter.com/dasani_decoded)
 ## [Pre-lecture quiz](https://ff-quizzes.netlify.app/en/ml/)
 
@@ -130,7 +130,7 @@ print(new_pumpkins['Month'].corr(new_pumpkins['Price']))
 print(new_pumpkins['DayOfYear'].corr(new_pumpkins['Price']))
 ```
 
-It looks like the correlation is pretty small, -0.15 by `Month` and -0.17 by the `DayOfMonth`, but there could be another important relationship. It looks like there are different clusters of prices corresponding to different pumpkin varieties. To confirm this hypothesis, let's plot each pumpkin category using a different color. By passing an `ax` parameter to the `scatter` plotting function we can plot all points on the same graph:
+It looks like the correlation is pretty small, -0.15 by `Month` and -0.17 by the `DayOfYear`, but there could be another important relationship. It looks like there are different clusters of prices corresponding to different pumpkin varieties. To confirm this hypothesis, let's plot each pumpkin category using a different color. By passing an `ax` parameter to the `scatter` plotting function we can plot all points on the same graph:
 
 ```python
 ax=None
@@ -258,11 +258,33 @@ pipeline.fit(X_train,y_train)
 
 Using `PolynomialFeatures(2)` means that we will include all second-degree polynomials from the input data. In our case it will just mean `DayOfYear`<sup>2</sup>, but given two input variables X and Y, this will add X<sup>2</sup>, XY and Y<sup>2</sup>. We may also use higher degree polynomials if we want.
 
-Pipelines can be used in the same manner as the original `LinearRegression` object, i.e. we can `fit` the pipeline, and then use `predict` to get the prediction results. Here is the graph showing test data, and the approximation curve:
+Pipelines can be used in the same manner as the original `LinearRegression` object, i.e. we can `fit` the pipeline, and then use `predict` to get the prediction results:
+
+```python
+pred = pipeline.predict(X_test)
+
+rmse = np.sqrt(mean_squared_error(y_test,pred))
+print(f'RMSE: {rmse:3.3} ({rmse/np.mean(pred)*100:3.3}%)')
+
+score = pipeline.score(X_train,y_train)
+print('Model determination: ', score)
+```
+
+To plot the smooth approximation curve, we use `np.linspace` to create a uniform range of input values, rather than plotting directly on the unordered test data (which would produce a zigzag line):
+
+```python
+X_range = np.linspace(X_test.min(), X_test.max(), 100).reshape(-1,1)
+y_range = pipeline.predict(X_range)
+
+plt.scatter(X_test, y_test)
+plt.plot(X_range, y_range)
+```
+
+Here is the graph showing test data, and the approximation curve:
 
 <img alt="Polynomial regression" src="../../../../translated_images/en/poly-results.ee587348f0f1f60b.webp" width="50%" />
 
-Using Polynomial Regression, we can get slightly lower MSE and higher determination, but not significantly. We need to take into account other features!
+Using Polynomial Regression, we can get slightly lower RMSE and higher determination, but not significantly. We need to take into account other features!
 
 > You can see that the minimal pumpkin prices are observed somewhere around Halloween. How can you explain this? 
 
@@ -319,7 +341,7 @@ X = pd.get_dummies(new_pumpkins['Variety']) \
 y = new_pumpkins['Price']
 ```
 
-Here we also take into account `City` and `Package` type, which gives us MSE 2.84 (10%), and determination 0.94!
+Here we also take into account `City` and `Package` type, which gives us RMSE 2.84 (10.5%), and determination 0.94!
 
 ## Putting it all together
 
@@ -343,17 +365,17 @@ pipeline.fit(X_train,y_train)
 # predict results for test data
 pred = pipeline.predict(X_test)
 
-# calculate MSE and determination
-mse = np.sqrt(mean_squared_error(y_test,pred))
-print(f'Mean error: {mse:3.3} ({mse/np.mean(pred)*100:3.3}%)')
+# calculate RMSE and determination
+rmse = mean_squared_error(y_test, pred, squared=False)
+print(f'RMSE: {rmse:3.3} ({rmse/pred.mean()*100:3.3}%)')
 
 score = pipeline.score(X_train,y_train)
 print('Model determination: ', score)
 ```
 
-This should give us the best determination coefficient of almost 97%, and MSE=2.23 (~8% prediction error).
+This should give us the best determination coefficient of almost 97%, and RMSE=2.23 (~8% prediction error).
 
-| Model | MSE | Determination |
+| Model | RMSE | Determination |
 |-------|-----|---------------|
 | `DayOfYear` Linear | 2.77 (17.2%) | 0.07 |
 | `DayOfYear` Polynomial | 2.73 (17.0%) | 0.08 |
