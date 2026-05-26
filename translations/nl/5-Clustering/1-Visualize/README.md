@@ -1,108 +1,108 @@
 # Introductie tot clustering
 
-Clustering is een type [Ongecontroleerd Leren](https://wikipedia.org/wiki/Unsupervised_learning) dat ervan uitgaat dat een dataset niet gelabeld is of dat de invoer niet gekoppeld is aan vooraf gedefinieerde uitkomsten. Het gebruikt verschillende algoritmen om door niet-gelabelde gegevens te sorteren en groepen te vormen op basis van patronen die het in de gegevens herkent.
+Clustering is een type [Ongecontroleerd Leren](https://wikipedia.org/wiki/Unsupervised_learning) dat ervan uitgaat dat een dataset niet gelabeld is of dat de inputs niet gekoppeld zijn aan vooraf gedefinieerde outputs. Het gebruikt verschillende algoritmen om ongelabelde data te sorteren en groepen te maken op basis van patronen die het in de data waarneemt.
 
-[![No One Like You van PSquare](https://img.youtube.com/vi/ty2advRiWJM/0.jpg)](https://youtu.be/ty2advRiWJM "No One Like You van PSquare")
+[![No One Like You by PSquare](https://img.youtube.com/vi/ty2advRiWJM/0.jpg)](https://youtu.be/ty2advRiWJM "No One Like You by PSquare")
 
-> 🎥 Klik op de afbeelding hierboven voor een video. Terwijl je machine learning met clustering bestudeert, geniet van wat Nigeriaanse Dance Hall-nummers - dit is een hoog gewaardeerd nummer uit 2014 van PSquare.
+> 🎥 Klik op de afbeelding hierboven voor een video. Terwijl je machine learning met clustering bestudeert, geniet van wat Nigeriaanse Dance Hall tracks - dit is een zeer gewaardeerd nummer uit 2014 van PSquare.
 
-## [Quiz voorafgaand aan de les](https://ff-quizzes.netlify.app/en/ml/)
+## [Pre-lecture quiz](https://ff-quizzes.netlify.app/en/ml/)
 
 ### Introductie
 
-[Clustering](https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-30164-8_124) is erg nuttig voor data-exploratie. Laten we kijken of het kan helpen trends en patronen te ontdekken in de manier waarop Nigeriaanse luisteraars muziek consumeren.
+[Clustering](https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-30164-8_124) is erg nuttig voor data verkenning. Laten we zien of het kan helpen bij het ontdekken van trends en patronen in de manier waarop Nigeriaanse publieken muziek consumeren.
 
-✅ Neem een minuut de tijd om na te denken over de toepassingen van clustering. In het dagelijks leven gebeurt clustering bijvoorbeeld wanneer je een stapel wasgoed hebt en de kleding van je gezinsleden moet sorteren 🧦👕👖🩲. In data science gebeurt clustering wanneer je probeert de voorkeuren van een gebruiker te analyseren of de kenmerken van een niet-gelabelde dataset te bepalen. Clustering helpt op een bepaalde manier om chaos te begrijpen, zoals een sokkenla.
+✅ Neem een minuut om na te denken over de toepassingen van clustering. In het echte leven gebeurt clustering altijd wanneer je een stapel wasgoed hebt en de kleren van je familieleden moet sorteren 🧦👕👖🩲. In datawetenschap gebeurt clustering wanneer je probeert de voorkeuren van een gebruiker te analyseren, of de kenmerken van een ongelabelde dataset te bepalen. Clustering helpt op een bepaalde manier om chaos te begrijpen, zoals een sokkenla.
 
 [![Introductie tot ML](https://img.youtube.com/vi/esmzYhuFnds/0.jpg)](https://youtu.be/esmzYhuFnds "Introductie tot Clustering")
 
-> 🎥 Klik op de afbeelding hierboven voor een video: MIT's John Guttag introduceert clustering.
+> 🎥 Klik op de afbeelding hierboven voor een video: John Guttag van MIT introduceert clustering
 
-In een professionele omgeving kan clustering worden gebruikt om zaken zoals marktsegmentatie te bepalen, bijvoorbeeld om te achterhalen welke leeftijdsgroepen welke producten kopen. Een andere toepassing zou anomaliedetectie kunnen zijn, bijvoorbeeld om fraude op te sporen in een dataset van creditcardtransacties. Of je kunt clustering gebruiken om tumoren te identificeren in een reeks medische scans.
+In een professionele omgeving kan clustering gebruikt worden om dingen te bepalen zoals marksegmentatie, vaststellen welke leeftijdsgroepen welke artikelen kopen, bijvoorbeeld. Een andere toepassing is anomaliedetectie, bijvoorbeeld om fraude te detecteren in een dataset van creditcardtransacties. Of je zou clustering kunnen gebruiken om tumoren te bepalen in een reeks medische scans.
 
-✅ Denk een minuut na over hoe je clustering 'in het wild' bent tegengekomen, bijvoorbeeld in een bank-, e-commerce- of zakelijke omgeving.
+✅ Denk een minuut na over hoe je clustering wellicht bent tegengekomen 'in het wild', in een banking-, e-commerce- of zakelijke omgeving.
 
-> 🎓 Interessant genoeg is clusteranalyse ontstaan in de vakgebieden antropologie en psychologie in de jaren 1930. Kun je je voorstellen hoe het toen werd gebruikt?
+> 🎓 Interessant genoeg is clusteranalyse ontstaan in de vakgebieden Antropologie en Psychologie in de jaren 1930. Kun je je voorstellen hoe het toen werd gebruikt?
 
-Een andere toepassing zou kunnen zijn het groeperen van zoekresultaten - bijvoorbeeld door winkellinks, afbeeldingen of recensies. Clustering is nuttig wanneer je een grote dataset hebt die je wilt verkleinen en waarop je meer gedetailleerde analyses wilt uitvoeren. De techniek kan worden gebruikt om meer te leren over gegevens voordat andere modellen worden gebouwd.
+Alternatief kun je het gebruiken voor het groeperen van zoekresultaten - bijvoorbeeld op winkellinks, afbeeldingen of recensies. Clustering is nuttig wanneer je een grote dataset hebt die je wilt verkleinen en waarop je meer gedetailleerde analyse wilt uitvoeren, zodat de techniek gebruikt kan worden om over data te leren voordat andere modellen worden geconstrueerd.
 
-✅ Zodra je gegevens zijn georganiseerd in clusters, wijs je ze een cluster-ID toe. Deze techniek kan nuttig zijn om de privacy van een dataset te behouden; je kunt in plaats daarvan verwijzen naar een datapunt via zijn cluster-ID, in plaats van via meer onthullende identificeerbare gegevens. Kun je andere redenen bedenken waarom je een cluster-ID zou gebruiken in plaats van andere elementen van het cluster om het te identificeren?
+✅ Zodra je data is georganiseerd in clusters, ken je elk cluster een ID toe, en deze techniek kan handig zijn bij het waarborgen van de privacy van een dataset; je kunt in plaats daarvan naar een datapunt verwijzen via zijn cluster-ID in plaats van met meer onthullende identificeerbare data. Kun je andere redenen bedenken waarom je naar een cluster-ID zou verwijzen in plaats van naar andere elementen van het cluster om het te identificeren?
 
-Verdiep je kennis van clusteringtechnieken in deze [Learn-module](https://docs.microsoft.com/learn/modules/train-evaluate-cluster-models?WT.mc_id=academic-77952-leestott).
+Verdiep je in clusteringtechnieken in deze [Leer module](https://docs.microsoft.com/learn/modules/train-evaluate-cluster-models?WT.mc_id=academic-77952-leestott)
 
 ## Aan de slag met clustering
 
-[Scikit-learn biedt een breed scala](https://scikit-learn.org/stable/modules/clustering.html) aan methoden om clustering uit te voeren. Het type dat je kiest, hangt af van je gebruikssituatie. Volgens de documentatie heeft elke methode verschillende voordelen. Hier is een vereenvoudigde tabel van de methoden die door Scikit-learn worden ondersteund en hun geschikte gebruikssituaties:
+[Scikit-learn biedt een grote reeks](https://scikit-learn.org/stable/modules/clustering.html) methoden om clustering uit te voeren. De keuze hangt af van je gebruikssituatie. Volgens de documentatie heeft elke methode verschillende voordelen. Hier is een vereenvoudigde tabel van de door Scikit-learn ondersteunde methoden en hun toepassingsgebieden:
 
-| Methode                      | Gebruikssituatie                                                      |
-| :--------------------------- | :-------------------------------------------------------------------- |
-| K-Means                      | algemeen gebruik, inductief                                           |
-| Affinity propagation         | veel, ongelijke clusters, inductief                                   |
-| Mean-shift                   | veel, ongelijke clusters, inductief                                   |
-| Spectral clustering          | weinig, gelijke clusters, transductief                                |
-| Ward hiërarchische clustering| veel, beperkte clusters, transductief                                 |
-| Agglomerative clustering     | veel, beperkt, niet-Euclidische afstanden, transductief               |
+| Naam van methode             | Gebruik                                                                 |
+| :--------------------------- | :--------------------------------------------------------------------- |
+| K-Means                      | algemeen doel, inductief                                                |
+| Affiniteit propagatie        | veel, ongelijke clusters, inductief                                    |
+| Mean-shift                   | veel, ongelijke clusters, inductief                                    |
+| Spectrale clustering         | weinig, gelijke clusters, transductief                                 |
+| Ward hiërarchische clustering| veel, beperkende clusters, transductief                               |
+| Agglomeratieve clustering    | veel, beperkend, niet-Euclidische afstanden, transductief              |
 | DBSCAN                       | niet-vlakke geometrie, ongelijke clusters, transductief               |
 | OPTICS                       | niet-vlakke geometrie, ongelijke clusters met variabele dichtheid, transductief |
-| Gaussian mixtures            | vlakke geometrie, inductief                                           |
-| BIRCH                        | grote dataset met uitschieters, inductief                             |
+| Gaussiaanse mengsels         | vlakke geometrie, inductief                                            |
+| BIRCH                        | grote dataset met uitschieters, inductief                              |
 
-> 🎓 Hoe we clusters creëren heeft veel te maken met hoe we de datapunten in groepen verzamelen. Laten we wat terminologie uitpakken:
+> 🎓 Hoe we clusters maken heeft veel te maken met hoe we de datapunten in groepen verzamelen. Laten we wat vocabulaire uitleggen:
 >
 > 🎓 ['Transductief' vs. 'inductief'](https://wikipedia.org/wiki/Transduction_(machine_learning))
 > 
-> Transductieve inferentie is afgeleid van waargenomen trainingsgevallen die worden gekoppeld aan specifieke testgevallen. Inductieve inferentie is afgeleid van trainingsgevallen die worden gekoppeld aan algemene regels die pas daarna worden toegepast op testgevallen.
+> Transductieve inferentie wordt afgeleid van waargenomen trainingsgevallen die map naar specifieke testgevallen. Inductieve inferentie wordt afgeleid van trainingsgevallen die map naar algemene regels die pas dan worden toegepast op testgevallen.
 > 
-> Een voorbeeld: Stel je hebt een dataset die slechts gedeeltelijk gelabeld is. Sommige dingen zijn 'platen', sommige 'cd's', en sommige zijn blanco. Jouw taak is om labels toe te voegen aan de blanco items. Als je een inductieve aanpak kiest, train je een model dat zoekt naar 'platen' en 'cd's', en pas je die labels toe op je niet-gelabelde gegevens. Deze aanpak zal moeite hebben om dingen te classificeren die eigenlijk 'cassettebandjes' zijn. Een transductieve aanpak daarentegen behandelt deze onbekende gegevens effectiever omdat het werkt om vergelijkbare items samen te groeperen en vervolgens een label toe te passen op een groep. In dit geval kunnen clusters 'ronde muzikale dingen' en 'vierkante muzikale dingen' weerspiegelen.
+> Een voorbeeld: Stel je hebt een dataset die slechts gedeeltelijk gelabeld is. Sommige dingen zijn 'platen', andere 'cd's', en sommige zijn leeg. Jouw taak is om labels te geven aan de lege plaatsen. Kies je een inductieve aanpak, dan train je een model op 'platen' en 'cd's' en pas je die labels toe op ongelabelde data. Deze aanpak zal moeite hebben met het classificeren van dingen die eigenlijk 'cassettes' zijn. Een transductieve aanpak daarentegen gaat dit onbekende data effectiever aan omdat het werkt om gelijke items te groeperen en een label toe te passen op de groep. In dit geval kunnen clusters 'ronde muziekdingen' en 'vierkante muziekdingen' reflecteren.
 > 
-> 🎓 ['Niet-vlakke' vs. 'vlakke' geometrie](https://datascience.stackexchange.com/questions/52260/terminology-flat-geometry-in-the-context-of-clustering)
+> 🎓 ['Niet-vlak' vs. 'vlakke' geometrie](https://datascience.stackexchange.com/questions/52260/terminology-flat-geometry-in-the-context-of-clustering)
 > 
-> Afgeleid van wiskundige terminologie, verwijst niet-vlakke vs. vlakke geometrie naar de manier waarop afstanden tussen punten worden gemeten, ofwel 'vlak' ([Euclidisch](https://wikipedia.org/wiki/Euclidean_geometry)) of 'niet-vlak' (niet-Euclidisch).
+> Afgeleid van wiskundige terminologie verwijst niet-vlak vs. vlakke geometrie naar de maat van afstanden tussen punten door middel van 'vlakke' ([Euclidische](https://wikipedia.org/wiki/Euclidean_geometry)) of 'niet-vlakke' (niet-Euclidische) geometrische methoden.
 >
->'Vlak' in deze context verwijst naar Euclidische geometrie (delen hiervan worden onderwezen als 'platte' geometrie), en niet-vlak verwijst naar niet-Euclidische geometrie. Wat heeft geometrie te maken met machine learning? Nou, als twee velden die geworteld zijn in wiskunde, moet er een gemeenschappelijke manier zijn om afstanden tussen punten in clusters te meten, en dat kan op een 'vlakke' of 'niet-vlakke' manier, afhankelijk van de aard van de gegevens. [Euclidische afstanden](https://wikipedia.org/wiki/Euclidean_distance) worden gemeten als de lengte van een lijnsegment tussen twee punten. [Niet-Euclidische afstanden](https://wikipedia.org/wiki/Non-Euclidean_geometry) worden gemeten langs een curve. Als je gegevens, gevisualiseerd, niet op een vlak lijken te bestaan, moet je mogelijk een gespecialiseerd algoritme gebruiken om ze te verwerken.
+> 'Vlak' in deze context verwijst naar Euclidische geometrie (onderdelen daarvan worden onderwezen als 'vlakke' geometrie) en niet-vlak verwijst naar niet-Euclidische geometrie. Wat heeft geometrie te maken met machine learning? Nou, aangezien het twee vakgebieden zijn die geworteld zijn in wiskunde, moet er een gemeenschappelijke manier zijn om afstanden tussen punten in clusters te meten, en dat kan op een 'vlakke' of 'niet-vlakke' manier, afhankelijk van de aard van de data. [Euclidische afstanden](https://wikipedia.org/wiki/Euclidean_distance) worden gemeten als de lengte van een lijnstuk tussen twee punten. [Niet-Euclidische afstanden](https://wikipedia.org/wiki/Non-Euclidean_geometry) worden gemeten langs een kromme. Als jouw data, gevisualiseerd, lijkt te bestaan op iets anders dan een vlak, heb je mogelijk een gespecialiseerd algoritme nodig om het aan te kunnen.
 >
-![Vlakke vs Niet-vlakke Geometrie Infographic](../../../../5-Clustering/1-Visualize/images/flat-nonflat.png)
+![Flat vs Nonflat Geometry Infographic](../../../../translated_images/nl/flat-nonflat.d1c8c6e2a96110c1.webp)
 > Infographic door [Dasani Madipalli](https://twitter.com/dasani_decoded)
 > 
 > 🎓 ['Afstanden'](https://web.stanford.edu/class/cs345a/slides/12-clustering.pdf)
 > 
-> Clusters worden gedefinieerd door hun afstandsmatrix, bijvoorbeeld de afstanden tussen punten. Deze afstand kan op verschillende manieren worden gemeten. Euclidische clusters worden gedefinieerd door het gemiddelde van de puntwaarden en bevatten een 'centroid' of middelpunt. Afstanden worden dus gemeten door de afstand tot dat middelpunt. Niet-Euclidische afstanden verwijzen naar 'clustroids', het punt dat het dichtst bij andere punten ligt. Clustroids kunnen op verschillende manieren worden gedefinieerd.
+> Clusters worden gedefinieerd door hun afstandsmatrix, bijvoorbeeld de afstanden tussen punten. Deze afstand kan op verschillende manieren worden gemeten. Euclidische clusters worden bepaald door het gemiddelde van de puntwaarden en bevatten een 'centroid' of middelpunt. Afstanden worden dan gemeten als de afstand tot dat centroid. Niet-Euclidische afstanden verwijzen naar 'clustroids', het punt dat het dichtst bij andere punten ligt. Clustroids kunnen op verschillende manieren worden gedefinieerd.
 > 
 > 🎓 ['Beperkt'](https://wikipedia.org/wiki/Constrained_clustering)
 > 
-> [Beperkte Clustering](https://web.cs.ucdavis.edu/~davidson/Publications/ICDMTutorial.pdf) introduceert 'semi-gecontroleerd' leren in deze ongecontroleerde methode. De relaties tussen punten worden gemarkeerd als 'kan niet koppelen' of 'moet koppelen', zodat enkele regels worden opgelegd aan de dataset.
+> [Beperkte clustering](https://web.cs.ucdavis.edu/~davidson/Publications/ICDMTutorial.pdf) introduceert 'semi-gefundeerd' leren in deze ongecontroleerde methode. De relaties tussen punten worden gemarkeerd als 'mag niet linken' of 'moet linken' zodat regels op de dataset worden afgedwongen.
 >
->Een voorbeeld: Als een algoritme vrij wordt gelaten op een batch niet-gelabelde of semi-gelabelde gegevens, kunnen de clusters die het produceert van slechte kwaliteit zijn. In het bovenstaande voorbeeld kunnen de clusters 'ronde muzikale dingen', 'vierkante muzikale dingen', 'driehoekige dingen' en 'koekjes' groeperen. Als er enkele beperkingen of regels worden opgelegd ("het item moet van plastic zijn", "het item moet muziek kunnen produceren"), kan dit helpen om het algoritme te 'beperken' om betere keuzes te maken.
+> Een voorbeeld: Als een algoritme vrij op een batch ongelabelde of semi-gelabelde data wordt losgelaten, kunnen de geproduceerde clusters van slechte kwaliteit zijn. In het bovenstaande voorbeeld kunnen de clusters 'ronde muziekdingen', 'vierkante muziekdingen', 'driehoekige dingen' en 'koekjes' groeperen. Als je enkele beperkingen of regels toevoegt ("het item moet van plastic zijn", "het item moet muziek kunnen maken") kan dit helpen het algoritme te 'beperken' en betere keuzes te bepalen.
 > 
 > 🎓 'Dichtheid'
 > 
-> Gegevens die 'ruis' bevatten, worden beschouwd als 'dicht'. De afstanden tussen punten in elk van zijn clusters kunnen bij nader onderzoek meer of minder dicht, of 'geconcentreerd' blijken te zijn, en daarom moeten deze gegevens worden geanalyseerd met de juiste clusteringmethode. [Dit artikel](https://www.kdnuggets.com/2020/02/understanding-density-based-clustering.html) laat het verschil zien tussen het gebruik van K-Means clustering versus HDBSCAN-algoritmen om een dataset met ongelijke clusterdichtheid te verkennen.
+> Data die 'ruis' bevat wordt als 'dicht' beschouwd. De afstanden tussen punten in elk van de clusters kunnen na onderzoek meer of minder dicht zijn, of 'druk' en daarom moet deze data met de juiste clusteringmethode worden geanalyseerd. [Dit artikel](https://www.kdnuggets.com/2020/02/understanding-density-based-clustering.html) toont het verschil aan tussen het gebruik van K-Means clustering versus HDBSCAN-algoritmen om een lawaaierige dataset met ongelijke clusterdichtheid te onderzoeken.
 
-## Clustering-algoritmen
+## Clusteringsalgoritmen
 
-Er zijn meer dan 100 clustering-algoritmen, en hun gebruik hangt af van de aard van de gegevens. Laten we enkele van de belangrijkste bespreken:
+Er zijn meer dan 100 clusteringalgoritmen en hun gebruik hangt af van de aard van de data. Laten we enkele belangrijke bespreken:
 
-- **Hiërarchische clustering**. Als een object wordt geclassificeerd op basis van zijn nabijheid tot een nabijgelegen object, in plaats van tot een verder verwijderd object, worden clusters gevormd op basis van de afstand van hun leden tot en van andere objecten. Scikit-learn's agglomeratieve clustering is hiërarchisch.
+- **Hiërarchische clustering**. Als een object wordt geclassificeerd op basis van zijn nabijheid tot een naburig object, in plaats van tot een verder weg liggend object, worden clusters gevormd op basis van hun afstand tot en van andere objecten. Agglomeratieve clustering van Scikit-learn is hiërarchisch.
 
-   ![Hiërarchische clustering Infographic](../../../../5-Clustering/1-Visualize/images/hierarchical.png)
+   ![Hierarchische clustering Infographic](../../../../translated_images/nl/hierarchical.bf59403aa43c8c47.webp)
    > Infographic door [Dasani Madipalli](https://twitter.com/dasani_decoded)
 
-- **Centroid clustering**. Dit populaire algoritme vereist de keuze van 'k', of het aantal clusters dat moet worden gevormd, waarna het algoritme het middelpunt van een cluster bepaalt en gegevens rond dat punt verzamelt. [K-means clustering](https://wikipedia.org/wiki/K-means_clustering) is een populaire versie van centroid clustering. Het middelpunt wordt bepaald door het dichtstbijzijnde gemiddelde, vandaar de naam. De kwadratische afstand tot het cluster wordt geminimaliseerd.
+- **Centroid clustering**. Dit populaire algoritme vereist het kiezen van 'k', of het aantal clusters dat gevormd moet worden, waarna het algoritme het middelpunt van een cluster bepaalt en data daaromheen verzamelt. [K-means clustering](https://wikipedia.org/wiki/K-means_clustering) is een populaire versie van centroid clustering. Het centrum wordt bepaald door het dichtstbijzijnde gemiddelde, vandaar de naam. De kwadratische afstand tot het cluster wordt geminimaliseerd.
 
-   ![Centroid clustering Infographic](../../../../5-Clustering/1-Visualize/images/centroid.png)
+   ![Centroid clustering Infographic](../../../../translated_images/nl/centroid.097fde836cf6c918.webp)
    > Infographic door [Dasani Madipalli](https://twitter.com/dasani_decoded)
 
-- **Distributie-gebaseerde clustering**. Gebaseerd op statistische modellering, richt distributie-gebaseerde clustering zich op het bepalen van de waarschijnlijkheid dat een datapunt tot een cluster behoort, en wijst het dienovereenkomstig toe. Gaussian mixture-methoden behoren tot dit type.
+- **Op distributie gebaseerde clustering**. Gebaseerd op statistische modellering, richt distributiegebaseerde clustering zich op het bepalen van de waarschijnlijkheid dat een datapunt tot een cluster behoort, en wijst het dienovereenkomstig toe. Gaussiaanse mengsels behoren tot dit type.
 
-- **Dichtheid-gebaseerde clustering**. Datapunten worden toegewezen aan clusters op basis van hun dichtheid, of hun groepering rond elkaar. Datapunten ver van de groep worden beschouwd als uitschieters of ruis. DBSCAN, Mean-shift en OPTICS behoren tot dit type clustering.
+- **Dichtheidsgebaseerde clustering**. Datapunten worden toegewezen aan clusters op basis van hun dichtheid, of hun groepering rondom elkaar. Datapunten die ver van de groep liggen, worden beschouwd als uitschieters of ruis. DBSCAN, Mean-shift en OPTICS behoren tot dit type clustering.
 
-- **Raster-gebaseerde clustering**. Voor multidimensionale datasets wordt een raster gemaakt en worden de gegevens verdeeld over de cellen van het raster, waardoor clusters ontstaan.
+- **Rastersgebaseerde clustering**. Voor multidimensionale datasets wordt een raster gemaakt en wordt de data verdeeld over de cellen van het raster, waardoor clusters ontstaan.
 
-## Oefening - cluster je gegevens
+## Oefening - cluster je data
 
-Clustering als techniek wordt sterk ondersteund door goede visualisatie, dus laten we beginnen met het visualiseren van onze muziekgegevens. Deze oefening helpt ons te beslissen welke van de clusteringmethoden we het meest effectief kunnen gebruiken voor de aard van deze gegevens.
+Clustering als techniek wordt sterk ondersteund door goede visualisatie, dus laten we beginnen met het visualiseren van onze muziekdata. Deze oefening helpt ons te beslissen welke clusteringmethode we het beste kunnen gebruiken voor de aard van deze data.
 
-1. Open het [_notebook.ipynb_](https://github.com/microsoft/ML-For-Beginners/blob/main/5-Clustering/1-Visualize/notebook.ipynb)-bestand in deze map.
+1. Open het [_notebook.ipynb_](https://github.com/microsoft/ML-For-Beginners/blob/main/5-Clustering/1-Visualize/notebook.ipynb) bestand in deze map.
 
 1. Importeer het `Seaborn`-pakket voor goede datavisualisatie.
 
@@ -110,7 +110,7 @@ Clustering als techniek wordt sterk ondersteund door goede visualisatie, dus lat
     !pip install seaborn
     ```
 
-1. Voeg de muziekinformatie toe uit [_nigerian-songs.csv_](https://github.com/microsoft/ML-For-Beginners/blob/main/5-Clustering/data/nigerian-songs.csv). Laad een dataframe met enkele gegevens over de nummers. Bereid je voor om deze gegevens te verkennen door de bibliotheken te importeren en de gegevens uit te lezen:
+1. Voeg de songdata toe van [_nigerian-songs.csv_](https://github.com/microsoft/ML-For-Beginners/blob/main/5-Clustering/data/nigerian-songs.csv). Laad een dataframe met wat gegevens over de nummers. Maak je klaar om deze data te verkennen door de bibliotheken te importeren en de data uit te dumpen:
 
     ```python
     import matplotlib.pyplot as plt
@@ -120,23 +120,23 @@ Clustering als techniek wordt sterk ondersteund door goede visualisatie, dus lat
     df.head()
     ```
 
-    Bekijk de eerste paar regels van de gegevens:
+    Bekijk de eerste paar datalijnen:
 
-    |     | naam                     | album                        | artiest             | artiest_top_genre | release_date | lengte | populariteit | dansbaarheid | akoestiek   | energie | instrumentaliteit | levendigheid | luidheid | spraakzaamheid | tempo   | maatsoort      |
-    | --- | ------------------------ | ---------------------------- | ------------------- | ----------------- | ------------ | ------ | ------------ | ------------ | ----------- | ------ | ----------------- | ------------ | -------- | -------------- | ------- | -------------- |
-    | 0   | Sparky                   | Mandy & The Jungle           | Cruel Santino       | alternatieve r&b  | 2019         | 144000 | 48           | 0.666        | 0.851       | 0.42   | 0.534             | 0.11         | -6.699   | 0.0829         | 133.015 | 5              |
-    | 1   | shuga rush               | EVERYTHING YOU HEARD IS TRUE | Odunsi (The Engine) | afropop           | 2020         | 89488  | 30           | 0.71         | 0.0822      | 0.683  | 0.000169          | 0.101        | -5.64    | 0.36           | 129.993 | 3              |
-| 2   | LITT!                    | LITT!                        | AYLØ                | indie r&b        | 2018         | 207758 | 40         | 0.836        | 0.272        | 0.564  | 0.000537         | 0.11     | -7.127   | 0.0424      | 130.005 | 4              |
-| 3   | Confident / Feeling Cool | Enjoy Your Life              | Lady Donli          | nigerian pop     | 2019         | 175135 | 14         | 0.894        | 0.798        | 0.611  | 0.000187         | 0.0964   | -4.961   | 0.113       | 111.087 | 4              |
-| 4   | wanted you               | rare.                        | Odunsi (The Engine) | afropop          | 2018         | 152049 | 25         | 0.702        | 0.116        | 0.833  | 0.91             | 0.348    | -6.044   | 0.0447      | 105.115 | 4              |
+    |     | name                     | album                        | artist              | artist_top_genre | release_date | length | popularity | danceability | acousticness | energy | instrumentalness | liveness | loudness | speechiness | tempo   | time_signature |
+    | --- | ------------------------ | ---------------------------- | ------------------- | ---------------- | ------------ | ------ | ---------- | ------------ | ------------ | ------ | ---------------- | -------- | -------- | ----------- | ------- | -------------- |
+    | 0   | Sparky                   | Mandy & The Jungle           | Cruel Santino       | alternative r&b  | 2019         | 144000 | 48         | 0.666        | 0.851        | 0.42   | 0.534            | 0.11     | -6.699   | 0.0829      | 133.015 | 5              |
+    | 1   | shuga rush               | EVERYTHING YOU HEARD IS TRUE | Odunsi (The Engine) | afropop          | 2020         | 89488  | 30         | 0.71         | 0.0822       | 0.683  | 0.000169         | 0.101    | -5.64    | 0.36        | 129.993 | 3              |
+    | 2   | LITT!                    | LITT!                        | AYLØ                | indie r&b        | 2018         | 207758 | 40         | 0.836        | 0.272        | 0.564  | 0.000537         | 0.11     | -7.127   | 0.0424      | 130.005 | 4              |
+    | 3   | Confident / Feeling Cool | Enjoy Your Life              | Lady Donli          | nigerian pop     | 2019         | 175135 | 14         | 0.894        | 0.798        | 0.611  | 0.000187         | 0.0964   | -4.961   | 0.113       | 111.087 | 4              |
+    | 4   | wanted you               | rare.                        | Odunsi (The Engine) | afropop          | 2018         | 152049 | 25         | 0.702        | 0.116        | 0.833  | 0.91             | 0.348    | -6.044   | 0.0447      | 105.115 | 4              |
 
-1. Verkrijg wat informatie over de dataframe door `info()` aan te roepen:
+1. Krijg wat informatie over de dataframe, door `info()` aan te roepen:
 
     ```python
     df.info()
     ```
 
-   De output ziet er ongeveer zo uit:
+   De output ziet er als volgt uit:
 
     ```output
     <class 'pandas.core.frame.DataFrame'>
@@ -164,7 +164,7 @@ Clustering als techniek wordt sterk ondersteund door goede visualisatie, dus lat
     memory usage: 66.4+ KB
     ```
 
-1. Controleer dubbel op null-waarden door `isnull()` aan te roepen en te verifiëren dat de som 0 is:
+1. Controleer dubbel op null waarden, door `isnull()` aan te roepen en te verifiëren dat de som 0 is:
 
     ```python
     df.isnull().sum()
@@ -209,9 +209,9 @@ Clustering als techniek wordt sterk ondersteund door goede visualisatie, dus lat
     | 75%   | 2017         | 242098.5    | 31         | 0.8295       | 0.403        | 0.87575  | 0.000234         | 0.164    | -3.331    | 0.177       | 125.03925  | 4              |
     | max   | 2020         | 511738      | 73         | 0.966        | 0.954        | 0.995    | 0.91             | 0.811    | 0.582     | 0.514       | 206.007    | 5              |
 
-> 🤔 Als we werken met clustering, een ongesuperviseerde methode die geen gelabelde data vereist, waarom tonen we deze data dan met labels? In de data-exploratiefase zijn ze handig, maar ze zijn niet noodzakelijk voor de clustering-algoritmes om te werken. Je zou net zo goed de kolomkoppen kunnen verwijderen en naar de data kunnen verwijzen via kolomnummer.
+> 🤔 Als we werken met clustering, een onbewaakte methode die geen gelabelde data vereist, waarom tonen we deze data dan met labels? In de data-exploratiefase zijn ze handig, maar ze zijn niet noodzakelijk voor de clustering-algoritmes om te werken. Je zou net zo goed de kolomkoppen kunnen verwijderen en naar de data verwijzen op kolomnummer.
 
-Bekijk de algemene waarden van de data. Merk op dat populariteit '0' kan zijn, wat aangeeft dat nummers geen ranking hebben. Laten we die binnenkort verwijderen.
+Bekijk de algemene waarden van de data. Let op dat populariteit '0' kan zijn, wat nummers toont die geen ranking hebben. Laten we die snel verwijderen.
 
 1. Gebruik een staafdiagram om de meest populaire genres te vinden:
 
@@ -225,13 +225,13 @@ Bekijk de algemene waarden van de data. Merk op dat populariteit '0' kan zijn, w
     plt.title('Top genres',color = 'blue')
     ```
 
-    ![most popular](../../../../5-Clustering/1-Visualize/images/popular.png)
+    ![meest populair](../../../../translated_images/nl/popular.9c48d84b3386705f.webp)
 
-✅ Als je meer topwaarden wilt zien, verander dan de top `[:5]` naar een grotere waarde, of verwijder het om alles te zien.
+✅ Als je meer topwaarden wilt zien, verander dan de top `[:5]` in een hogere waarde, of verwijder het om alles te zien.
 
 Let op, wanneer het topgenre wordt beschreven als 'Missing', betekent dit dat Spotify het niet heeft geclassificeerd, dus laten we het verwijderen.
 
-1. Verwijder ontbrekende data door deze eruit te filteren:
+1. Verwijder missende data door deze eruit te filteren
 
     ```python
     df = df[df['artist_top_genre'] != 'Missing']
@@ -242,11 +242,11 @@ Let op, wanneer het topgenre wordt beschreven als 'Missing', betekent dit dat Sp
     plt.title('Top genres',color = 'blue')
     ```
 
-    Controleer nu de genres opnieuw:
+    Controleer nu opnieuw de genres:
 
-    ![most popular](../../../../5-Clustering/1-Visualize/images/all-genres.png)
+    ![meest populair](../../../../translated_images/nl/all-genres.1d56ef06cefbfcd6.webp)
 
-1. De top drie genres domineren deze dataset verreweg. Laten we ons concentreren op `afro dancehall`, `afropop` en `nigerian pop`, en daarnaast de dataset filteren om alles met een populariteitswaarde van 0 te verwijderen (wat betekent dat het niet geclassificeerd is met een populariteit in de dataset en kan worden beschouwd als ruis voor onze doeleinden):
+1. Bij verreweg domineren de top drie genres deze dataset. Laten we ons concentreren op `afro dancehall`, `afropop` en `nigerian pop`, filter daarnaast de dataset om alles met een populariteitswaarde van 0 te verwijderen (wat betekent dat het niet geclassificeerd werd met een populariteit in de dataset en kan worden beschouwd als ruis voor onze doeleinden):
 
     ```python
     df = df[(df['artist_top_genre'] == 'afro dancehall') | (df['artist_top_genre'] == 'afropop') | (df['artist_top_genre'] == 'nigerian pop')]
@@ -266,21 +266,21 @@ Let op, wanneer het topgenre wordt beschreven als 'Missing', betekent dit dat Sp
     sns.heatmap(corrmat, vmax=.8, square=True)
     ```
 
-    ![correlations](../../../../5-Clustering/1-Visualize/images/correlation.png)
+    ![correlaties](../../../../translated_images/nl/correlation.a9356bb798f5eea5.webp)
 
-    De enige sterke correlatie is tussen `energy` en `loudness`, wat niet al te verrassend is, aangezien luide muziek meestal behoorlijk energiek is. Verder zijn de correlaties relatief zwak. Het zal interessant zijn om te zien wat een clustering-algoritme van deze data kan maken.
+    De enige sterke correlatie is tussen `energy` en `loudness`, wat niet zo verrassend is, aangezien harde muziek meestal vrij energiek is. Verder zijn de correlaties relatief zwak. Het zal interessant zijn om te zien wat een clustering-algoritme van deze data kan maken.
 
-    > 🎓 Merk op dat correlatie geen oorzaak-gevolg impliceert! We hebben bewijs van correlatie, maar geen bewijs van oorzaak-gevolg. Een [grappige website](https://tylervigen.com/spurious-correlations) heeft enkele visuals die dit punt benadrukken.
+    > 🎓 Let op dat correlatie geen causaliteit impliceert! We hebben bewijs van correlatie maar geen bewijs van causaliteit. Een [grappige website](https://tylervigen.com/spurious-correlations) heeft enkele visuals die dit punt benadrukken.
 
-Is er enige convergentie in deze dataset rond de waargenomen populariteit en dansbaarheid van een nummer? Een FacetGrid laat zien dat er concentrische cirkels zijn die op één lijn liggen, ongeacht het genre. Zou het kunnen dat Nigeriaanse smaken convergeren op een bepaald niveau van dansbaarheid voor dit genre?
+Is er enige convergentie in deze dataset rond de waargenomen populariteit en dansbaarheid van een nummer? Een FacetGrid laat zien dat er concentrische cirkels zijn die overeenkomen, ongeacht het genre. Zou het kunnen dat Nigeriaanse smaken convergeren op een bepaald niveau van dansbaarheid voor dit genre?
 
-✅ Probeer verschillende datapunten (energie, luidheid, spraakzaamheid) en meer of andere muziekgenres. Wat kun je ontdekken? Bekijk de `df.describe()`-tabel om de algemene spreiding van de datapunten te zien.
+✅ Probeer verschillende datapunten (energy, loudness, speechiness) en meer of andere muziekgenres. Wat kun je ontdekken? Bekijk de `df.describe()` tabel om de algemene spreiding van de datapunten te zien.
 
-### Oefening - data distributie
+### Oefening - datadistributie
 
 Zijn deze drie genres significant verschillend in de perceptie van hun dansbaarheid, gebaseerd op hun populariteit?
 
-1. Onderzoek de data distributie van onze top drie genres voor populariteit en dansbaarheid langs een gegeven x- en y-as.
+1. Onderzoek de datadistributie van onze top drie genres voor populariteit en dansbaarheid langs gegeven x- en y-assen.
 
     ```python
     sns.set_theme(style="ticks")
@@ -292,13 +292,13 @@ Zijn deze drie genres significant verschillend in de perceptie van hun dansbaarh
     )
     ```
 
-    Je kunt concentrische cirkels ontdekken rond een algemeen convergentiepunt, wat de verdeling van punten laat zien.
+    Je kunt concentrische cirkels ontdekken rond een algemeen convergentiepunt, die de spreiding van punten laten zien.
 
-    > 🎓 Merk op dat dit voorbeeld een KDE (Kernel Density Estimate) grafiek gebruikt die de data vertegenwoordigt met een continue waarschijnlijkheidsdichtheidscurve. Dit stelt ons in staat om data te interpreteren bij het werken met meerdere distributies.
+    > 🎓 Let op dat dit voorbeeld een KDE (Kernel Density Estimate) grafiek gebruikt die de data vertegenwoordigt met een continue kansdichtheidscurve. Dit stelt ons in staat data te interpreteren wanneer we met meerdere distributies werken.
 
-    Over het algemeen komen de drie genres losjes overeen in termen van hun populariteit en dansbaarheid. Het bepalen van clusters in deze losjes uitgelijnde data zal een uitdaging zijn:
+    Over het algemeen lijnen de drie genres vrij losjes uit in termen van hun populariteit en dansbaarheid. Het bepalen van clusters in deze losjes-uitgelijnde data zal een uitdaging zijn:
 
-    ![distribution](../../../../5-Clustering/1-Visualize/images/distribution.png)
+    ![distributie](../../../../translated_images/nl/distribution.9be11df42356ca95.webp)
 
 1. Maak een scatterplot:
 
@@ -308,25 +308,25 @@ Zijn deze drie genres significant verschillend in de perceptie van hun dansbaarh
        .add_legend()
     ```
 
-    Een scatterplot van dezelfde assen toont een vergelijkbaar patroon van convergentie.
+    Een scatterplot van dezelfde assen toont een vergelijkbaar patroon van convergentie
 
-    ![Facetgrid](../../../../5-Clustering/1-Visualize/images/facetgrid.png)
+    ![Facetgrid](../../../../translated_images/nl/facetgrid.9b2e65ce707eba1f.webp)
 
-Over het algemeen kun je voor clustering scatterplots gebruiken om clusters van data te tonen, dus het beheersen van dit type visualisatie is erg nuttig. In de volgende les zullen we deze gefilterde data gebruiken en k-means clustering toepassen om groepen in deze data te ontdekken die op interessante manieren lijken te overlappen.
+Over het algemeen kun je voor clustering scatterplots gebruiken om clusters van data te tonen, dus het beheersen van dit type visualisatie is erg nuttig. In de volgende les zullen we deze gefilterde data nemen en k-means clustering gebruiken om groepen in deze data te ontdekken die op interessante manieren overlappen.
 
 ---
 
 ## 🚀Uitdaging
 
-Ter voorbereiding op de volgende les, maak een diagram over de verschillende clustering-algoritmes die je zou kunnen ontdekken en gebruiken in een productieomgeving. Welke soorten problemen probeert de clustering op te lossen?
+Ter voorbereiding op de volgende les, maak een diagram over de verschillende clustering-algoritmes die je kunt ontdekken en gebruiken in een productieomgeving. Welke soorten problemen probeert clustering op te lossen?
 
 ## [Post-lecture quiz](https://ff-quizzes.netlify.app/en/ml/)
 
 ## Review & Zelfstudie
 
-Voordat je clustering-algoritmes toepast, zoals we hebben geleerd, is het een goed idee om de aard van je dataset te begrijpen. Lees meer over dit onderwerp [hier](https://www.kdnuggets.com/2019/10/right-clustering-algorithm.html)
+Voordat je clustering-algoritmen toepast, is het, zoals we hebben geleerd, een goed idee om de aard van je dataset te begrijpen. Lees meer over dit onderwerp [hier](https://www.kdnuggets.com/2019/10/right-clustering-algorithm.html)
 
-[Dit nuttige artikel](https://www.freecodecamp.org/news/8-clustering-algorithms-in-machine-learning-that-all-data-scientists-should-know/) leidt je door de verschillende manieren waarop clustering-algoritmes zich gedragen, gegeven verschillende datavormen.
+[Dit nuttige artikel](https://www.freecodecamp.org/news/8-clustering-algorithms-in-machine-learning-that-all-data-scientists-should-know/) leidt je door de verschillende manieren waarop diverse clustering-algoritmes zich gedragen, gegeven verschillende datavormen.
 
 ## Opdracht
 
@@ -334,5 +334,7 @@ Voordat je clustering-algoritmes toepast, zoals we hebben geleerd, is het een go
 
 ---
 
-**Disclaimer**:  
-Dit document is vertaald met behulp van de AI-vertalingsservice [Co-op Translator](https://github.com/Azure/co-op-translator). Hoewel we streven naar nauwkeurigheid, dient u zich ervan bewust te zijn dat geautomatiseerde vertalingen fouten of onnauwkeurigheden kunnen bevatten. Het originele document in de oorspronkelijke taal moet worden beschouwd als de gezaghebbende bron. Voor kritieke informatie wordt professionele menselijke vertaling aanbevolen. Wij zijn niet aansprakelijk voor eventuele misverstanden of verkeerde interpretaties die voortvloeien uit het gebruik van deze vertaling.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Disclaimer**:
+Dit document is vertaald met behulp van de AI vertaaldienst [Co-op Translator](https://github.com/Azure/co-op-translator). Hoewel we streven naar nauwkeurigheid, dient u er rekening mee te houden dat geautomatiseerde vertalingen fouten of onnauwkeurigheden kunnen bevatten. Het originele document in de oorspronkelijke taal moet worden beschouwd als de gezaghebbende bron. Voor kritieke informatie wordt professionele menselijke vertaling aanbevolen. Wij zijn niet aansprakelijk voor eventuele misverstanden of verkeerde interpretaties die voortvloeien uit het gebruik van deze vertaling.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->
