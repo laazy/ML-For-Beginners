@@ -6,74 +6,74 @@
 
 [![ML for beginners - Introduction to Machine Learning for Beginners](https://img.youtube.com/vi/6mSx_KJxcHI/0.jpg)](https://youtu.be/6mSx_KJxcHI "ML for beginners - Introduction to Machine Learning for Beginners")
 
-> 🎥 Click di image wey dey up for short video wey go show you how dis lesson dey work.
+> 🎥 Click di image wey dey top for short video wey dey run through dis lesson.
 
-Welcome to dis course wey dey about classical machine learning for beginners! Whether you be person wey no sabi anything about dis topic, or you be ML expert wey wan refresh your mind for one area, we happy say you join us! We wan make dis place friendly for you to start your ML study, and we go happy to check, reply, and add your [feedback](https://github.com/microsoft/ML-For-Beginners/discussions).
+Welcome to dis course on classical machine learning for beginners! Whether you dey totally new to dis topic, or you be experienced ML practitioner wey wan brush up for one area, we dey happy to get you join us! We want create one friendly launching spot for your ML study and we go happy to check, respond, and put your [feedback](https://github.com/microsoft/ML-For-Beginners/discussions) inside.
 
 [![Introduction to ML](https://img.youtube.com/vi/h0e2HAPTGF4/0.jpg)](https://youtu.be/h0e2HAPTGF4 "Introduction to ML")
 
-> 🎥 Click di image wey dey up for video: MIT's John Guttag dey explain machine learning
+> 🎥 Click di image wey dey top for video: MIT's John Guttag dey introduce machine learning
 
 ---
-## How to start with machine learning
+## Getting started with machine learning
 
-Before you go start dis curriculum, you need make your computer ready to run notebooks for your system.
+Before you start with dis curriculum, you need make your computer set up well and dey ready to run notebooks locally.
 
-- **Set up your machine with dis videos**. Use di links wey dey here to learn [how to install Python](https://youtu.be/CXZYvNRIAKM) for your system and [setup text editor](https://youtu.be/EU8eayHWoZg) for development.
-- **Learn Python**. E good make you sabi small about [Python](https://docs.microsoft.com/learn/paths/python-language/?WT.mc_id=academic-77952-leestott), one programming language wey data scientists dey use and we go use am for dis course.
-- **Learn Node.js and JavaScript**. We go still use JavaScript small for dis course when we dey build web apps, so you go need [node](https://nodejs.org) and [npm](https://www.npmjs.com/) for your system, plus [Visual Studio Code](https://code.visualstudio.com/) for Python and JavaScript development.
-- **Create GitHub account**. Since you find us for [GitHub](https://github.com), you fit don get account already, but if you never get, create one and fork dis curriculum make you use am. (No forget to give us star 😊)
-- **Check Scikit-learn**. Make you sabi [Scikit-learn](https://scikit-learn.org/stable/user_guide.html), one ML library wey we go dey use for dis lessons.
+- **Configure your machine with these videos**. Use di links dem below to learn [how to install Python](https://youtu.be/CXZYvNRIAKM) for your system and [setup a text editor](https://youtu.be/EU8eayHWoZg) for development.
+- **Learn Python**. E good make you get basic understanding of [Python](https://docs.microsoft.com/learn/paths/python-language/?WT.mc_id=academic-77952-leestott), one programming language wey data scientists dey use and we dey use for dis course.
+- **Learn Node.js and JavaScript**. We still go use JavaScript small for dis course when we dey build web apps, so you go need to get [node](https://nodejs.org) and [npm](https://www.npmjs.com/) install, plus [Visual Studio Code](https://code.visualstudio.com/) ready for both Python and JavaScript development.
+- **Create a GitHub account**. Since you find us here for [GitHub](https://github.com), you fit don get account, but if no be so, make you create one then fork dis curriculum make you fit use am for your own. (Feel free make you give us star too 😊)
+- **Explore Scikit-learn**. Make you sabi [Scikit-learn](https://scikit-learn.org/stable/user_guide.html), one set of ML libraries wey we dey talk about for these lessons.
 
 ---
 ## Wetin be machine learning?
 
-Di word 'machine learning' na one of di popular and common words wey people dey use today. E get chance say you don hear dis word before if you sabi technology small, no matter di area wey you dey work. But how machine learning dey work na mystery for many people. For person wey dey start machine learning, e fit look like say e too much. So e good make we understand wetin machine learning be, and learn am step by step, with practical examples.
+Di term 'machine learning' na one of di most popular and well-used words today. E get chance say you don hear dis term at least one time if you get any kinda knowledge about technology, no matter which area you dey work. But di way machine learning dey work na mystery to most people. For person wey dey start for machine learning, di subject fit hard sometimes. So e good make you understand wetin machine learning be for real, and make you learn am small-small by step, through practical examples.
 
 ---
-## Di hype curve
+## The hype curve
 
 ![ml hype curve](../../../../translated_images/pcm/hype.07183d711a17aafe.webp)
 
-> Google Trends dey show di recent 'hype curve' of di word 'machine learning'
+> Google Trends dey show di recent 'hype curve' of di term 'machine learning'
 
 ---
-## One mysterious world
+## A mysterious universe
 
-We dey live for one world wey full with plenty mystery. Big scientists like Stephen Hawking, Albert Einstein, and others don use their life dey find better information wey go show di mystery of di world wey dey around us. Na di way human beings dey learn: pikin dey learn new things and dey understand di world wey dey around am as e dey grow.
-
----
-## Di pikin brain
-
-Di brain and senses of pikin dey see wetin dey around am and dey learn di hidden patterns of life wey go help di pikin sabi how to use logic to understand di patterns wey e don learn. Di way human brain dey learn na wetin make humans be di most advanced living thing for dis world. Di way we dey learn and dey improve dey help us dey better as we dey grow. Dis learning ability and di way we dey change dey connect to one idea wey dem dey call [brain plasticity](https://www.simplypsychology.org/brain-plasticity.html). If we look am small, we fit see di way human brain dey learn and di idea of machine learning dey similar.
+We dey live for one universe wey full of plenty mysteries wey dey amaze us. Great scientists like Stephen Hawking, Albert Einstein, and many more don spend dia life dey find important information wey fit uncover di mysteries of di world wey dey round us. Na so human beings be to learn: pikin dey learn new tins and dey uncover how their world be year by year as dem dey grow.
 
 ---
-## Di human brain
+## The child's brain
 
-Di [human brain](https://www.livescience.com/29365-human-brain.html) dey see wetin dey happen for di real world, e dey process di information wey e see, e dey make sense of di information, and e dey act based on di situation. Na wetin we dey call intelligent behavior. When we program machine to act like say e get intelligent behavior, we dey call am artificial intelligence (AI).
+Pikin brain and sense dem dey gather facts about wetin dey around and dem dey learn di hidden patterns of life slowly wey go help di pikin create logical rules to sabi di patterns wey dem don learn. How human brain dey learn na wetin make humans be di most sabi animal for dis world. We dey learn steady by finding hidden patterns then we dey create new tins based on those patterns and dat dey help us better as we dey live. Dis ability to learn and change na wetin we dey call [brain plasticity](https://www.simplypsychology.org/brain-plasticity.html). For example, we fit see small similarity between how human brain dey learn and how machine learning dey work.
 
 ---
-## Some words wey you need sabi
+## The human brain
 
-Even though di words fit confuse person, machine learning (ML) na one important part of artificial intelligence. **ML dey use special algorithms to find better information and hidden patterns from di data wey e see to help di process of making sense of di data**.
+Di [human brain](https://www.livescience.com/29365-human-brain.html) dey collect tins from di real world, dey process wetin e gather, dey make smart decisions, then dey do actions based on situation. Na wetin we dey call intelligent behavior. When we program machine make e mimic dis intelligent behavior, na wetin dem dey call artificial intelligence (AI).
+
+---
+## Some terminology
+
+Even though di terms fit confuse, machine learning (ML) na important part of artificial intelligence. **ML dey use special algorithms to find important information and hidden patterns from data to support smart decision making**.
 
 ---
 ## AI, ML, Deep Learning
 
 ![AI, ML, deep learning, data science](../../../../translated_images/pcm/ai-ml-ds.537ea441b124ebf6.webp)
 
-> One diagram wey dey show di relationship between AI, ML, deep learning, and data science. Infographic by [Jen Looper](https://twitter.com/jenlooper) wey e take inspiration from [dis graphic](https://softwareengineering.stackexchange.com/questions/366996/distinction-between-ai-ml-neural-networks-deep-learning-and-data-mining)
+> One diagram wey show how AI, ML, deep learning, and data science dey relate. Infographic by [Jen Looper](https://twitter.com/jenlooper) inspired by [this graphic](https://softwareengineering.stackexchange.com/questions/366996/distinction-between-ai-ml-neural-networks-deep-learning-and-data-mining)
 
 ---
-## Wetin we go cover
+## Concepts to cover
 
-For dis curriculum, we go talk about di main ideas of machine learning wey beginner suppose sabi. We go focus on wetin we dey call 'classical machine learning' wey dey use Scikit-learn, one better library wey many students dey use to learn di basics. To understand di bigger ideas of artificial intelligence or deep learning, you need strong foundation for machine learning, and na wetin we wan give you here.
+For dis curriculum, we go only cover important machine learning concepts wey beginners need sabi. We go mainly talk about 'classical machine learning' we dey use Scikit-learn, one correct library wey many students dey use learn basics. To understand bigger concepts for artificial intelligence or deep learning, you need get correct basic knowledge for machine learning, so we wan give am here.
 
 ---
-## For dis course you go learn:
+## In this course you will learn:
 
-- di main ideas of machine learning
-- di history of ML
+- core concepts of machine learning
+- history of ML
 - ML and fairness
 - regression ML techniques
 - classification ML techniques
@@ -81,7 +81,7 @@ For dis curriculum, we go talk about di main ideas of machine learning wey begin
 - natural language processing ML techniques
 - time series forecasting ML techniques
 - reinforcement learning
-- real-world ways to use ML
+- real-world applications for ML
 
 ---
 ## Wetin we no go cover
@@ -90,54 +90,59 @@ For dis curriculum, we go talk about di main ideas of machine learning wey begin
 - neural networks
 - AI
 
-To make di learning easy, we no go talk about di hard parts of neural networks, 'deep learning' - di many-layered model-building wey dey use neural networks - and AI, we go talk about am for another curriculum. We go still bring data science curriculum later to focus on dat part of dis big field.
+To make learning better, we go avoid di complicated things about neural networks, 'deep learning' - wey na many-layer model building with neural networks - and AI, we go talk about those for another curriculum. We go still bring one data science curriculum to focus on that big part of dis field.
 
 ---
-## Why you go study machine learning?
+## Why study machine learning?
 
-Machine learning, if we look am from system side, na di way we dey create systems wey fit learn hidden patterns from data to help make smart decisions.
+Machine learning from system side na to create automated systems wey fit learn hidden patterns from data to help make smart decisions.
 
-Dis idea dey somehow connect to how human brain dey learn things based on di data wey e see from di world.
+Dis idea come from how human brain dey learn tins based on data e gather from outside world.
 
-✅ Think small why business go wan use machine learning instead of creating system wey dey use fixed rules.
-
----
-## How machine learning dey work
-
-Machine learning dey everywhere now, e dey as common as di data wey dey flow for our society, wey dey come from our smart phones, connected devices, and other systems. Because of di big potential of di latest machine learning algorithms, researchers dey use am to solve big problems for different areas with better results.
+✅ Think small about why business go want use machine learning strategies instead of to create hard coded rules-based engine.
 
 ---
-## Examples of how ML dey work
+## Why data quality matters
 
-**You fit use machine learning for plenty things**:
+Good quality data go make model work well. Bad or noisy data fit make wrong predictions even if you use better machine learning algorithms.
 
-- To predict di chance of disease from patient medical history or reports.
-- To use weather data predict wetin go happen for weather.
-- To understand di meaning of text.
-- To catch fake news to stop propaganda.
+---
+## Applications of machine learning
 
-Finance, economics, earth science, space exploration, biomedical engineering, cognitive science, and even humanities don dey use machine learning to solve di hard problems wey dey their area.
+Machine learning dey everywhere now, e dey everywhere like data wey dey flow for our societies wey come from our smart phones, connected devices, and other systems. Because machine learning algorithms get serious power, researchers don dey explore how dem fit solve wahala wey get many sides and many fields with good results.
+
+---
+## Examples of applied ML
+
+**You fit use machine learning for many ways**:
+
+- To predict if person get disease from their medical history or reports.
+- To use weather data predict weather changes.
+- To understand how text dey express feelings.
+- To find fake news and stop propaganda.
+
+Finance, economics, earth science, space exploration, biomedical engineering, cognitive science, and even humanities fields don use machine learning to solve serious, heavy data problems for their area.
 
 ---
 ## Conclusion
 
-Machine learning dey automate di process of finding patterns by getting better insights from real-world or generated data. E don show say e dey very useful for business, health, and financial areas, plus others.
+Machine learning dey automate how e dey find patterns by getting important insights from real or generated data. E don prove say e get big value for business, health, and financial applications and others.
 
-For di future wey dey come, to sabi di basics of machine learning go dey important for people from any area because e don dey everywhere.
+Soon, knowing di basics of machine learning go be must for people from any area because e don spread everywhere.
 
 ---
 # 🚀 Challenge
 
-Draw, for paper or use online app like [Excalidraw](https://excalidraw.com/), wetin you understand about di difference between AI, ML, deep learning, and data science. Add some ideas of di kind problems wey each of dis techniques dey good to solve.
+Sketch, for paper or use online app like [Excalidraw](https://excalidraw.com/), how you understand di difference between AI, ML, deep learning, and data science. Add some ideas of problems wey each of these techniques fit solve well.
 
 # [Post-lecture quiz](https://ff-quizzes.netlify.app/en/ml/)
 
 ---
 # Review & Self Study
 
-To learn more about how you fit work with ML algorithms for di cloud, follow dis [Learning Path](https://docs.microsoft.com/learn/paths/create-no-code-predictive-models-azure-machine-learning/?WT.mc_id=academic-77952-leestott).
+To learn more on how you fit work with ML algorithms for cloud, follow dis [Learning Path](https://docs.microsoft.com/learn/paths/create-no-code-predictive-models-azure-machine-learning/?WT.mc_id=academic-77952-leestott).
 
-Take one [Learning Path](https://docs.microsoft.com/learn/modules/introduction-to-machine-learning/?WT.mc_id=academic-77952-leestott) about di basics of ML.
+Take one [Learning Path](https://docs.microsoft.com/learn/modules/introduction-to-machine-learning/?WT.mc_id=academic-77952-leestott) about basics of ML.
 
 ---
 # Assignment
@@ -147,6 +152,6 @@ Take one [Learning Path](https://docs.microsoft.com/learn/modules/introduction-t
 ---
 
 <!-- CO-OP TRANSLATOR DISCLAIMER START -->
-**Disclaimer**:  
-Dis docu don dey translate wit AI translation service [Co-op Translator](https://github.com/Azure/co-op-translator). Even though we dey try make am accurate, abeg sabi say automatic translation fit get mistake or no correct well. Di original docu for im native language na di main correct source. For important information, e go beta make professional human translator check am. We no go fit take blame for any misunderstanding or wrong interpretation wey fit happen because you use dis translation.
+**Disclaimer**:
+Dis document don translate wit AI translation service [Co-op Translator](https://github.com/Azure/co-op-translator). Even tho we dey try make am correct, abeg make you know say automated translation fit get errors or mistakes. Di original document for dia own language na im be di correct source. For important info, make person wey sabi human translation do am. We no go responsible for any misunderstanding or wrong understanding wey fit happen because of dis translation.
 <!-- CO-OP TRANSLATOR DISCLAIMER END -->
