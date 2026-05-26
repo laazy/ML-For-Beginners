@@ -4,147 +4,154 @@
 
 ---
 
-[![Gépi tanulás kezdőknek - Bevezetés a gépi tanulásba](https://img.youtube.com/vi/6mSx_KJxcHI/0.jpg)](https://youtu.be/6mSx_KJxcHI "Gépi tanulás kezdőknek - Bevezetés a gépi tanulásba")
+[![ML kezdőknek - Bevezetés a gépi tanulásba kezdőknek](https://img.youtube.com/vi/6mSx_KJxcHI/0.jpg)](https://youtu.be/6mSx_KJxcHI "ML kezdőknek - Bevezetés a gépi tanulásba kezdőknek")
 
-> 🎥 Kattints a fenti képre egy rövid videóért, amely bemutatja ezt a leckét.
+> 🎥 Kattints a fenti képre egy rövid videó megtekintéséhez, amely ezen az órán dolgozik.
 
-Üdvözlünk ezen a kezdőknek szóló klasszikus gépi tanulás kurzuson! Akár teljesen új vagy a témában, akár tapasztalt ML szakemberként szeretnéd felfrissíteni tudásodat, örülünk, hogy csatlakoztál hozzánk! Célunk, hogy barátságos kiindulópontot biztosítsunk a gépi tanulás tanulmányozásához, és szívesen fogadjuk, értékeljük, valamint beépítjük [visszajelzéseidet](https://github.com/microsoft/ML-For-Beginners/discussions).
+Üdvözlünk ezen a klasszikus gépi tanulással foglalkozó kezdő tanfolyamon! Akár teljesen új vagy a témában, akár tapasztalt ML-gyakorló, aki egy területet szeretne felfrissíteni, örülünk, hogy csatlakoztál hozzánk! Barátságos kiindulópontot szeretnénk teremteni a gépi tanulás tanulmányozásához, és örömmel értékeljük, válaszolunk, valamint beépítjük az [visszajelzésedet](https://github.com/microsoft/ML-For-Beginners/discussions).
 
 [![Bevezetés a gépi tanulásba](https://img.youtube.com/vi/h0e2HAPTGF4/0.jpg)](https://youtu.be/h0e2HAPTGF4 "Bevezetés a gépi tanulásba")
 
-> 🎥 Kattints a fenti képre egy videóért: MIT John Guttag bemutatja a gépi tanulást
+> 🎥 Kattints a fenti képre egy videó megtekintéséhez: John Guttag az MIT-ről bemutatja a gépi tanulást
 
 ---
-## Első lépések a gépi tanulásban
+## Gépi tanulás kezdőknek
 
-Mielőtt elkezdenéd ezt a tananyagot, győződj meg róla, hogy számítógéped készen áll a notebookok helyi futtatására.
+Mielőtt elkezdenéd ezt a tananyagot, be kell állítanod a számítógépedet, hogy képes legyen helyben futtatni a jegyzetfüzeteket.
 
-- **Állítsd be a gépedet ezekkel a videókkal**. Használd az alábbi linkeket, hogy megtanuld [hogyan telepítsd a Python-t](https://youtu.be/CXZYvNRIAKM) a rendszeredre, és [hogyan állítsd be egy szövegszerkesztőt](https://youtu.be/EU8eayHWoZg) a fejlesztéshez.
-- **Tanuld meg a Python alapjait**. Ajánlott, hogy legyen alapvető ismereted a [Pythonról](https://docs.microsoft.com/learn/paths/python-language/?WT.mc_id=academic-77952-leestott), egy programozási nyelvről, amely hasznos az adatkutatók számára, és amelyet ebben a kurzusban használunk.
-- **Tanuld meg a Node.js-t és a JavaScriptet**. A kurzus során néhány alkalommal használjuk a JavaScriptet webalkalmazások készítéséhez, ezért szükséged lesz [node](https://nodejs.org) és [npm](https://www.npmjs.com/) telepítésére, valamint [Visual Studio Code](https://code.visualstudio.com/) használatára Python és JavaScript fejlesztéshez.
-- **Hozz létre egy GitHub fiókot**. Mivel itt találtál ránk a [GitHubon](https://github.com), lehet, hogy már van fiókod, de ha nincs, hozz létre egyet, majd forkolj meg ezt a tananyagot, hogy saját magad használhasd. (Ne felejts el csillagot adni nekünk 😊)
-- **Ismerkedj meg a Scikit-learnnel**. Ismerd meg a [Scikit-learn](https://scikit-learn.org/stable/user_guide.html) könyvtárat, amelyet ezekben a leckékben hivatkozunk.
-
----
-## Mi az a gépi tanulás?
-
-A 'gépi tanulás' kifejezés napjaink egyik legnépszerűbb és leggyakrabban használt fogalma. Nem kizárt, hogy legalább egyszer hallottad már ezt a kifejezést, ha valamilyen szinten ismered a technológiát, függetlenül attól, hogy milyen területen dolgozol. A gépi tanulás mechanikája azonban a legtöbb ember számára rejtély. Egy gépi tanulás kezdő számára a téma néha túlterhelőnek tűnhet. Ezért fontos megérteni, hogy valójában mi is a gépi tanulás, és lépésről lépésre, gyakorlati példákon keresztül tanulni róla.
+- **Állítsd be a gépedet ezekkel a videókkal**. Használd az alábbi linkeket, hogy megtudd, [hogyan telepítsd a Pythont](https://youtu.be/CXZYvNRIAKM) a rendszeredre, és hogyan [állíts be egy szövegszerkesztőt](https://youtu.be/EU8eayHWoZg) fejlesztéshez.
+- **Tanuld meg a Pythont**. Ajánlott alapszinten ismerni a [Pythont](https://docs.microsoft.com/learn/paths/python-language/?WT.mc_id=academic-77952-leestott), egy programozási nyelvet, amely hasznos az adattudósok számára, és amelyet ezen a tanfolyamon is használunk.
+- **Tanuld meg a Node.js-t és a JavaScriptet**. Néhányszor JavaScriptet is használunk majd a tanfolyamon webalkalmazások építésekor, ezért szükséged lesz a [node](https://nodejs.org) és [npm](https://www.npmjs.com/) telepítésére, valamint a [Visual Studio Code](https://code.visualstudio.com/) használatára Python és JavaScript fejlesztéshez.
+- **Hozz létre GitHub fiókot**. Mivel itt találtál ránk a [GitHub-on](https://github.com), lehet, hogy már van fiókod, de ha nincs, hozz létre egyet, majd forkold ezt a tananyagot, hogy a saját kedved szerint használd. (Nyugodtan adj nekünk egy csillagot is 😊)
+- **Ismerkedj meg a Scikit-learnnel**. Ismerd meg a [Scikit-learn](https://scikit-learn.org/stable/user_guide.html) könyvtárat, egy olyan ML könyvtárkészletet, amelyet ezekben a leckékben hivatkozunk.
 
 ---
-## A hype görbe
+## Mi a gépi tanulás?
 
-![ml hype curve](../../../../1-Introduction/1-intro-to-ML/images/hype.png)
-
-> A Google Trends mutatja a 'gépi tanulás' kifejezés legutóbbi hype görbéjét
+A "gépi tanulás" kifejezés manapság az egyik legnépszerűbb és leggyakrabban használt fogalom. Nem kis valószínűséggel hallottad már ezt a kifejezést legalább egyszer, ha valamennyire ismered a technológiát, bármilyen területen dolgozol is. A gépi tanulás mechanikája azonban a legtöbb ember számára titokzatos. Egy gépi tanulásban kezdő számára a téma néha túlnyomónak tűnhet. Ezért fontos megérteni, pontosan mi is a gépi tanulás, és lépésről lépésre, gyakorlati példákon keresztül tanulni róla.
 
 ---
-## Egy rejtélyes univerzum
+## A hisztériahullám
 
-Egy lenyűgöző rejtélyekkel teli univerzumban élünk. Nagy tudósok, mint Stephen Hawking, Albert Einstein és sokan mások, életüket annak szentelték, hogy értelmes információkat találjanak, amelyek feltárják a körülöttünk lévő világ rejtélyeit. Ez az emberi tanulás feltétele: egy emberi gyermek új dolgokat tanul, és évről évre felfedezi világának szerkezetét, ahogy felnőtté válik.
+![ml hype curve](../../../../translated_images/hu/hype.07183d711a17aafe.webp)
+
+> A Google Trends bemutatja a 'gépi tanulás' kifejezés legutóbbi 'hisztériahullámát' (hype curve)
+
+---
+## Egy titokzatos univerzum
+
+Egy érdekes titkokkal teli univerzumban élünk. Nagy tudósok, mint Stephen Hawking, Albert Einstein és sokan mások az életüket a világ titkainak feltárására szentelték. Ez az emberi tanulás állapota: egy gyerek folyamatosan új ismereteket tanul és évente fedezi fel a világának szerkezetét, miközben felnőtté válik.
 
 ---
 ## A gyermek agya
 
-Egy gyermek agya és érzékei érzékelik környezetük tényeit, és fokozatosan megtanulják az élet rejtett mintázatait, amelyek segítenek logikai szabályokat alkotni a tanult minták azonosításához. Az emberi agy tanulási folyamata teszi az embereket a világ legkifinomultabb élőlényévé. Azáltal, hogy folyamatosan tanulunk, felfedezzük a rejtett mintákat, majd innoválunk ezek alapján, képesek vagyunk egyre jobbak lenni életünk során. Ez a tanulási képesség és fejlődési kapacitás összefüggésben áll egy [agy plaszticitásának](https://www.simplypsychology.org/brain-plasticity.html) nevezett fogalommal. Felületesen nézve motivációs hasonlóságokat vonhatunk az emberi agy tanulási folyamata és a gépi tanulás fogalmai között.
+Egy gyermek agya és érzékelései észlelik a környezetük tényeket, és fokozatosan megtanulják az élet rejtett mintázatait, amelyek segítenek logikai szabályokat alkotni a megtanult minták azonosításához. Az emberi agy tanulási folyamata teszi az embert a világ legösszetettebb élőlényévé. A rejtett minták felfedezésével és azokon való innovációval folyamatosan jobbá tehetjük magunkat élethosszig tartó tanulás révén. Ez a tanulási képesség és fejlődő képesség kapcsolódik egy [agyplaszticitásnak](https://www.simplypsychology.org/brain-plasticity.html) nevezett fogalomhoz. Felszínesen motivációs hasonlóságokat találhatunk az emberi agy tanulási folyamata és a gépi tanulás fogalmai között.
 
 ---
 ## Az emberi agy
 
-Az [emberi agy](https://www.livescience.com/29365-human-brain.html) érzékeli a valós világ dolgait, feldolgozza az érzékelt információkat, racionális döntéseket hoz, és bizonyos körülmények alapján cselekszik. Ezt nevezzük intelligens viselkedésnek. Amikor egy intelligens viselkedési folyamatot programozunk egy gépbe, azt mesterséges intelligenciának (AI) nevezzük.
+Az [emberi agy](https://www.livescience.com/29365-human-brain.html) érzékeli a valós világ dolgait, feldolgozza az észlelt információt, racionális döntéseket hoz és bizonyos cselekvéseket hajt végre a körülmények alapján. Ezt nevezzük intelligens viselkedésnek. Amikor egy gépre programozunk egy olyan utánozható intelligens viselkedési folyamatot, ezt mesterséges intelligenciának (AI) nevezzük.
 
 ---
 ## Néhány terminológia
 
-Bár a fogalmak összekeverhetők, a gépi tanulás (ML) a mesterséges intelligencia fontos részhalmaza. **Az ML arra összpontosít, hogy speciális algoritmusokat használjon értelmes információk feltárására és rejtett minták megtalálására az érzékelt adatokból, hogy támogassa a racionális döntéshozatali folyamatot**.
+Bár ezek a kifejezések összekeverhetőek, a gépi tanulás (ML) az AI fontos része. **Az ML specializált algoritmusokat használ arra, hogy értelmes információt tárjon fel és rejtett mintákat találjon az észlelt adatokból, hogy alátámassza a racionális döntéshozatalt**.
 
 ---
 ## AI, ML, Mélytanulás
 
-![AI, ML, deep learning, data science](../../../../1-Introduction/1-intro-to-ML/images/ai-ml-ds.png)
+![AI, ML, deep learning, data science](../../../../translated_images/hu/ai-ml-ds.537ea441b124ebf6.webp)
 
-> Egy diagram, amely bemutatja az AI, ML, mélytanulás és adatkutatás közötti kapcsolatokat. Infografika [Jen Looper](https://twitter.com/jenlooper) által, amelyet [ez a grafika](https://softwareengineering.stackexchange.com/questions/366996/distinction-between-ai-ml-neural-networks-deep-learning-and-data-mining) inspirált.
-
----
-## Lefedendő fogalmak
-
-Ebben a tananyagban csak a gépi tanulás alapvető fogalmait fogjuk lefedni, amelyeket egy kezdőnek ismernie kell. Elsősorban a 'klasszikus gépi tanulást' tárgyaljuk, főként a Scikit-learn használatával, amely egy kiváló könyvtár, amit sok diák használ az alapok elsajátításához. Ahhoz, hogy megértsük a mesterséges intelligencia vagy mélytanulás szélesebb körű fogalmait, elengedhetetlen a gépi tanulás erős alapvető ismerete, és ezt szeretnénk itt biztosítani.
+> Egy ábra, amely bemutatja az AI, ML, mélytanulás és adattudomány közti kapcsolatokat. Infografika készítője [Jen Looper](https://twitter.com/jenlooper), inspirálódva [ebben a grafikában](https://softwareengineering.stackexchange.com/questions/366996/distinction-between-ai-ml-neural-networks-deep-learning-and-data-mining)
 
 ---
-## Ebben a kurzusban megtanulod:
+## Megbeszélendő fogalmak
+
+Ebben a tananyagban csak a gépi tanulás alapvető fogalmait fogjuk tárgyalni, amelyeket egy kezdőnek tudnia kell. Elsősorban a "klasszikus gépi tanulással" foglalkozunk, főként a Scikit-learn használatával, egy nagyszerű könyvtárral, amelyet sok tanuló használ az alapok elsajátításához. Az általánosabb mesterséges intelligencia vagy mélytanulás megértéséhez elengedhetetlen egy erős alapvető gépi tanulási ismeretanyag, amelyet itt kínálunk.
+
+---
+## Ebben a tanfolyamban megtanulod:
 
 - a gépi tanulás alapfogalmait
 - az ML történetét
-- az ML és az igazságosság kapcsolatát
+- az ML és a méltányosság kérdését
 - regressziós ML technikákat
 - osztályozási ML technikákat
 - klaszterezési ML technikákat
 - természetes nyelvfeldolgozási ML technikákat
-- időbeli előrejelzési ML technikákat
+- idősor előrejelzési ML technikákat
 - megerősítéses tanulást
-- az ML valós alkalmazásait
+- valós világban használatos ML alkalmazásokat
 
 ---
-## Amit nem fogunk lefedni
+## Amit nem tárgyalunk
 
 - mélytanulás
 - neurális hálózatok
-- mesterséges intelligencia
+- AI
 
-A jobb tanulási élmény érdekében elkerüljük a neurális hálózatok, a 'mélytanulás' - többrétegű modellépítés neurális hálózatokkal - és az AI komplexitásait, amelyeket egy másik tananyagban fogunk tárgyalni. Emellett egy közelgő adatkutatási tananyagot is kínálunk, amely erre a nagyobb területre összpontosít.
-
----
-## Miért érdemes gépi tanulást tanulni?
-
-A gépi tanulás rendszerszempontból úgy definiálható, mint automatizált rendszerek létrehozása, amelyek képesek rejtett mintákat tanulni az adatokból, hogy segítsenek intelligens döntések meghozatalában.
-
-Ez a motiváció lazán inspirálódik abból, ahogyan az emberi agy bizonyos dolgokat tanul az érzékelt adatok alapján.
-
-✅ Gondolkodj el egy percre azon, hogy egy vállalkozás miért választaná a gépi tanulási stratégiákat egy keményen kódolt szabályalapú motor létrehozása helyett.
+A jobb tanulási élmény érdekében elkerüljük a neurális hálózatok, a "mélytanulás" – azaz többrétegű neurális hálózatokkal való modellezés – és az AI bonyodalmait, amelyeket más tananyagban tárgyalunk majd. Hamarosan egy adattudományi tananyagot is kínálunk majd, amely erre a témakörre koncentrál.
 
 ---
-## A gépi tanulás alkalmazásai
+## Miért tanuljunk gépi tanulást?
 
-A gépi tanulás alkalmazásai ma már szinte mindenhol jelen vannak, és olyan elterjedtek, mint az adatok, amelyek társadalmainkban áramlanak, okostelefonjaink, csatlakoztatott eszközeink és más rendszereink által generálva. Figyelembe véve a legmodernebb gépi tanulási algoritmusok hatalmas potenciálját, a kutatók vizsgálják azok képességét, hogy multidimenziós és multidiszciplináris valós problémákat oldjanak meg nagy pozitív eredményekkel.
+Rendszerszempontból a gépi tanulás az automatizált rendszerek létrehozását jelenti, amelyek képesek rejtett mintákat tanulni az adatokból, hogy intelligens döntéseket segítsenek hozni.
+
+Ez az indíttatás lazán inspirált az emberi agy azon képessége által, hogy bizonyos dolgokat megtanul a külvilágból érkező adatok alapján.
+
+✅ Gondolkozz egy percig, miért szeretne egy vállalkozás inkább gépi tanulási stratégiákat alkalmazni, ahelyett, hogy keménykódolt szabályalapú rendszert hozna létre.
+
+---
+## Miért számít az adatminőség?
+
+A magas minőségű adatok javítják a modell teljesítményét. A rossz vagy zajos adatok pontatlan előrejelzésekhez vezethetnek, még fejlett gépi tanulási algoritmusok használata esetén is.
+
+---
+## Gépi tanulás alkalmazásai
+
+A gépi tanulás alkalmazásai szinte mindenhol megtalálhatók, olyan elterjedtek, mint a társadalmunkban áramló adatok, amelyeket okostelefonjaink, kapcsolódó eszközeink és más rendszereink generálnak. Tekintve a legkorszerűbb gépi tanulási algoritmusok hatalmas potenciálját, a kutatók számos terepen játszanak a képességeivel, hogy többdimenziós, több tudományterületet érintő való életbeli problémákat oldjanak meg nagy sikerekkel.
 
 ---
 ## Alkalmazott ML példák
 
-**A gépi tanulást számos módon használhatod**:
+**Sokféleképpen használható a gépi tanulás**:
 
-- Betegség valószínűségének előrejelzésére egy beteg kórtörténete vagy jelentései alapján.
-- Időjárási adatok felhasználásával időjárási események előrejelzésére.
-- Szöveg érzelmi tartalmának megértésére.
-- Hamis hírek és propaganda terjedésének megállítására.
+- Előrejelezni a betegség valószínűségét egy beteg orvosi története vagy jelentései alapján.
+- Időjárási adatok kihasználásával megjósolni az időjárási eseményeket.
+- Megérteni egy szöveg hangulatát.
+- Hamis hírek felismerése a propaganda terjedésének megállításához.
 
-A pénzügyek, közgazdaságtan, földtudomány, űrkutatás, biomedikai mérnökség, kognitív tudomány és még a humán tudományok területei is alkalmazzák a gépi tanulást, hogy megoldják saját területük nehéz, adatfeldolgozás-igényes problémáit.
+A pénzügy, közgazdaságtan, földtudomány, űrkutatás, biomedikai mérnökség, kognitív tudomány, sőt még a bölcsészettudományok is alkalmazzák a gépi tanulást, hogy megoldják saját területük nehéz, adatfeldolgozási feladatait.
 
 ---
-## Összegzés
+## Összefoglalás
 
-A gépi tanulás automatizálja a mintázat-felfedezés folyamatát azáltal, hogy értelmes betekintéseket talál a valós vagy generált adatokból. Bizonyította értékét az üzleti, egészségügyi és pénzügyi alkalmazásokban, többek között.
+A gépi tanulás automatizálja a mintakeresési folyamatot azzal, hogy jelentős betekintést nyújt valós vagy generált adatokból. Bizonyította értékességét az üzleti, egészségügyi és pénzügyi alkalmazások között.
 
-A közeljövőben a gépi tanulás alapjainak megértése elengedhetetlen lesz minden területen dolgozó emberek számára, tekintettel annak széles körű elterjedésére.
+A közeljövőben a gépi tanulás alapjainak megértése elengedhetetlen lesz bármely területről származó emberek számára a széleskörű terjedés miatt.
 
 ---
 # 🚀 Kihívás
 
-Rajzolj papíron vagy egy online alkalmazás, például [Excalidraw](https://excalidraw.com/) segítségével egy vázlatot arról, hogyan érted az AI, ML, mélytanulás és adatkutatás közötti különbségeket. Adj hozzá néhány ötletet arról, hogy milyen problémák megoldására alkalmasak ezek a technikák.
+Rajzold le papíron vagy egy online alkalmazásban, például [Excalidraw](https://excalidraw.com/), az AI, ML, mélytanulás és adattudomány közti különbségekről alkotott elképzelésedet. Adj hozzá néhány ötletet azokról a problémákról, amelyeket ezek a technikák jól oldanak meg.
 
 # [Előadás utáni kvíz](https://ff-quizzes.netlify.app/en/ml/)
 
 ---
 # Áttekintés és önálló tanulás
 
-Ha többet szeretnél megtudni arról, hogyan dolgozhatsz ML algoritmusokkal a felhőben, kövesd ezt a [tanulási útvonalat](https://docs.microsoft.com/learn/paths/create-no-code-predictive-models-azure-machine-learning/?WT.mc_id=academic-77952-leestott).
+Azt is megtudhatod, hogyan dolgozhatsz ML algoritmusokkal a felhőben, ha ezt a [tanulási utat](https://docs.microsoft.com/learn/paths/create-no-code-predictive-models-azure-machine-learning/?WT.mc_id=academic-77952-leestott) követed.
 
-Vegyél részt egy [tanulási útvonalon](https://docs.microsoft.com/learn/modules/introduction-to-machine-learning/?WT.mc_id=academic-77952-leestott), amely az ML alapjairól szól.
+Készíts egy [tanulási utat](https://docs.microsoft.com/learn/modules/introduction-to-machine-learning/?WT.mc_id=academic-77952-leestott) a gépi tanulás alapjairól.
 
 ---
 # Feladat
 
-[Indulj el](assignment.md)
+[Állítsd be és futtass](assignment.md)
 
 ---
 
-**Felelősség kizárása**:  
-Ez a dokumentum az AI fordítási szolgáltatás, a [Co-op Translator](https://github.com/Azure/co-op-translator) segítségével lett lefordítva. Bár törekszünk a pontosságra, kérjük, vegye figyelembe, hogy az automatikus fordítások hibákat vagy pontatlanságokat tartalmazhatnak. Az eredeti dokumentum az eredeti nyelvén tekintendő hiteles forrásnak. Kritikus információk esetén javasolt professzionális emberi fordítást igénybe venni. Nem vállalunk felelősséget semmilyen félreértésért vagy téves értelmezésért, amely a fordítás használatából eredhet.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Jogi nyilatkozat**:
+Ez a dokumentum az AI fordítási szolgáltatás, a [Co-op Translator](https://github.com/Azure/co-op-translator) segítségével készült. Bár az pontosságra törekszünk, kérjük, vegye figyelembe, hogy az automatikus fordítások hibákat vagy pontatlanságokat tartalmazhatnak. Az eredeti dokumentum az anyanyelvén tekintendő hiteles forrásnak. Fontos információk esetén professzionális emberi fordítást javasolunk. Nem vállalunk felelősséget semmilyen félreértésért vagy téves értelmezésért, amely ebből a fordításból ered.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->
