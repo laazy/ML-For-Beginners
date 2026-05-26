@@ -1,116 +1,115 @@
 # Introduktion till klustring
 
-Klustring är en typ av [Oövervakad inlärning](https://wikipedia.org/wiki/Unsupervised_learning) som förutsätter att en dataset är oetiketterad eller att dess indata inte är kopplade till fördefinierade utdata. Den använder olika algoritmer för att sortera igenom oetiketterad data och skapa grupper baserat på mönster som den identifierar i datan.
+Klustring är en typ av [Oövervakad inlärning](https://wikipedia.org/wiki/Unsupervised_learning) som förutsätter att en dataset är oetiketterad eller att dess indata inte är kopplade till fördefinierade utdata. Den använder olika algoritmer för att sortera igenom oetiketterad data och skapa grupper baserat på mönster den upptäcker i datan.
 
-[![No One Like You av PSquare](https://img.youtube.com/vi/ty2advRiWJM/0.jpg)](https://youtu.be/ty2advRiWJM "No One Like You av PSquare")
+[![No One Like You by PSquare](https://img.youtube.com/vi/ty2advRiWJM/0.jpg)](https://youtu.be/ty2advRiWJM "No One Like You by PSquare")
 
-> 🎥 Klicka på bilden ovan för en video. Medan du studerar maskininlärning med klustring, njut av några nigerianska Dance Hall-låtar - detta är en högt rankad låt från 2014 av PSquare.
+> 🎥 Klicka på bilden ovan för en video. Medan du studerar maskininlärning med klustring, njut av några nigerianska Dance Hall-spår – detta är en mycket uppskattad låt från 2014 av PSquare.
 
-## [Quiz före föreläsningen](https://ff-quizzes.netlify.app/en/ml/)
+## [Förföreläsningsquiz](https://ff-quizzes.netlify.app/en/ml/)
 
 ### Introduktion
 
 [Klustring](https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-30164-8_124) är mycket användbart för datautforskning. Låt oss se om det kan hjälpa till att upptäcka trender och mönster i hur nigerianska publikgrupper konsumerar musik.
 
-✅ Ta en minut och fundera på användningsområden för klustring. I verkliga livet sker klustring när du har en hög med tvätt och behöver sortera ut familjemedlemmarnas kläder 🧦👕👖🩲. Inom datavetenskap sker klustring när man försöker analysera en användares preferenser eller bestämma egenskaperna hos en oetiketterad dataset. Klustring hjälper på sätt och vis att skapa ordning i kaos, som en strumplåda.
+✅ Ta en minut och tänk på användningarna av klustring. I verkliga livet sker klustring när du har en hög med tvätt och behöver sortera ut familjemedlemmarnas kläder 🧦👕👖🩲. Inom datavetenskap sker klustring när man försöker analysera en användares preferenser eller bestämma egenskaper för någon oetiketterad dataset. Klustring hjälper på sätt och vis till att skapa ordning i kaos, som en strumplåda.
 
-[![Introduktion till ML](https://img.youtube.com/vi/esmzYhuFnds/0.jpg)](https://youtu.be/esmzYhuFnds "Introduktion till klustring")
+[![Introduction to ML](https://img.youtube.com/vi/esmzYhuFnds/0.jpg)](https://youtu.be/esmzYhuFnds "Introduction to Clustering")
 
 > 🎥 Klicka på bilden ovan för en video: MIT:s John Guttag introducerar klustring
 
-I en professionell miljö kan klustring användas för att bestämma saker som marknadssegmentering, till exempel vilka åldersgrupper som köper vilka produkter. Ett annat användningsområde kan vara att upptäcka avvikelser, kanske för att identifiera bedrägerier i en dataset med kreditkortstransaktioner. Eller så kan du använda klustring för att identifiera tumörer i en samling medicinska skanningar.
+I en professionell miljö kan klustring användas för att avgöra saker som marknadssegmentering, till exempel för att bestämma vilka åldersgrupper som köper vilka varor. En annan användning kan vara anomalidetektion, kanske för att upptäcka bedrägeri i en dataset med kreditkortstransaktioner. Eller så kan du använda klustring för att identifiera tumörer i en samling medicinska skanningar.
 
-✅ Fundera en minut på hur du kan ha stött på klustring 'i det vilda', inom bank, e-handel eller affärssammanhang.
+✅ Tänk en minut på hur du kan ha stött på klustring 'i det vilda', i bank-, e-handels- eller affärssammanhang.
 
-> 🎓 Intressant nog har klusteranalys sitt ursprung inom antropologi och psykologi på 1930-talet. Kan du föreställa dig hur det kan ha använts?
+> 🎓 Intressant nog härstammar klusteranalys från antropologi och psykologi på 1930-talet. Kan du föreställa dig hur det kunde ha använts?
 
-Alternativt kan du använda det för att gruppera sökresultat - till exempel shoppinglänkar, bilder eller recensioner. Klustring är användbart när du har en stor dataset som du vill reducera och analysera mer detaljerat, så tekniken kan användas för att lära sig om data innan andra modeller konstrueras.
+Alternativt kan du använda det för att gruppera sökresultat – till exempel efter shoppinglänkar, bilder eller recensioner. Klustring är användbart när du har en stor dataset som du vill reducera och på vilken du vill utföra mer granulär analys, så tekniken kan användas för att lära sig om data innan andra modeller konstrueras.
 
-✅ När din data är organiserad i kluster tilldelar du den ett kluster-ID, och denna teknik kan vara användbar för att bevara en datasets integritet; du kan istället referera till en datapunkt med dess kluster-ID, snarare än med mer avslöjande identifierbar data. Kan du tänka dig andra anledningar till varför du skulle referera till ett kluster-ID istället för andra element i klustret för att identifiera det?
+✅ När din data är organiserad i kluster tilldelar du den ett kluster-ID, och denna teknik kan vara användbar för att bevara datas integritet; du kan istället referera till en datapunkt med dess kluster-ID snarare än med mer avslöjande identifierbar data. Kan du komma på andra skäl till varför du skulle använda ett kluster-ID snarare än andra element i klustret för att identifiera det?
 
-Fördjupa din förståelse av klustringstekniker i denna [Learn-modul](https://docs.microsoft.com/learn/modules/train-evaluate-cluster-models?WT.mc_id=academic-77952-leestott)
+Fördjupa din förståelse om klustringstekniker i denna [Learn-modul](https://docs.microsoft.com/learn/modules/train-evaluate-cluster-models?WT.mc_id=academic-77952-leestott)
+## Komma igång med klustring
 
-## Kom igång med klustring
+[Scikit-learn erbjuder ett stort urval](https://scikit-learn.org/stable/modules/clustering.html) av metoder för att utföra klustring. Vilken typ du väljer beror på ditt användningsfall. Enligt dokumentationen har varje metod olika fördelar. Här är en förenklad tabell över metoderna som stöds av Scikit-learn och deras lämpliga användningsområden:
 
-[Scikit-learn erbjuder ett stort utbud](https://scikit-learn.org/stable/modules/clustering.html) av metoder för att utföra klustring. Vilken typ du väljer beror på ditt användningsområde. Enligt dokumentationen har varje metod olika fördelar. Här är en förenklad tabell över metoderna som stöds av Scikit-learn och deras lämpliga användningsområden:
+| Metodnamn                   | Användningsfall                                                      |
+| :-------------------------- | :------------------------------------------------------------------ |
+| K-Means                     | allmänt ändamål, induktiv                                           |
+| Affinity propagation        | många, ojämna kluster, induktiv                                     |
+| Mean-shift                  | många, ojämna kluster, induktiv                                     |
+| Spektral klustring          | få, jämna kluster, transduktiv                                      |
+| Ward hierarkisk klustring   | många, begränsade kluster, transduktiv                              |
+| Agglomerativ klustring      | många, begränsade, icke-Euklidiska avstånd, transduktiv            |
+| DBSCAN                      | icke-plan geometri, ojämna kluster, transduktiv                    |
+| OPTICS                      | icke-plan geometri, ojämna kluster med variabel densitet, transduktiv |
+| Gaussiska blandningar       | plan geometri, induktiv                                             |
+| BIRCH                       | stor dataset med uteliggare, induktiv                               |
 
-| Metodnamn                     | Användningsområde                                                    |
-| :---------------------------- | :------------------------------------------------------------------- |
-| K-Means                       | allmänt syfte, induktiv                                              |
-| Affinity propagation          | många, ojämna kluster, induktiv                                      |
-| Mean-shift                    | många, ojämna kluster, induktiv                                      |
-| Spectral clustering           | få, jämna kluster, transduktiv                                       |
-| Ward hierarchical clustering  | många, begränsade kluster, transduktiv                               |
-| Agglomerative clustering      | många, begränsade, icke-Euklidiska avstånd, transduktiv              |
-| DBSCAN                        | icke-platt geometri, ojämna kluster, transduktiv                     |
-| OPTICS                        | icke-platt geometri, ojämna kluster med variabel densitet, transduktiv |
-| Gaussian mixtures             | platt geometri, induktiv                                             |
-| BIRCH                         | stor dataset med avvikelser, induktiv                                |
-
-> 🎓 Hur vi skapar kluster har mycket att göra med hur vi samlar datapunkter i grupper. Låt oss packa upp lite terminologi:
+> 🎓 Hur vi skapar kluster har mycket att göra med hur vi samlar datapunkterna till grupper. Låt oss gå igenom lite terminologi:
 >
 > 🎓 ['Transduktiv' vs. 'induktiv'](https://wikipedia.org/wiki/Transduction_(machine_learning))
 > 
-> Transduktiv inferens härleds från observerade träningsfall som kartläggs till specifika testfall. Induktiv inferens härleds från träningsfall som kartläggs till generella regler som sedan tillämpas på testfall.
+> Transduktiv inferens härleds från observerade träningsfall som kartläggs till specifika testfall. Induktiv inferens härleds från träningsfall som kartläggs till generella regler som först därefter appliceras på testfall.
 > 
-> Ett exempel: Föreställ dig att du har en dataset som bara delvis är etiketterad. Vissa saker är 'skivor', vissa 'cd-skivor', och vissa är tomma. Din uppgift är att tilldela etiketter till de tomma. Om du väljer en induktiv metod skulle du träna en modell som letar efter 'skivor' och 'cd-skivor' och tillämpa dessa etiketter på din oetiketterade data. Denna metod kommer ha svårt att klassificera saker som faktiskt är 'kassetter'. En transduktiv metod, å andra sidan, hanterar denna okända data mer effektivt eftersom den arbetar för att gruppera liknande objekt och sedan tilldelar en etikett till en grupp. I detta fall kan kluster reflektera 'runda musikaliska saker' och 'fyrkantiga musikaliska saker'.
+> Exempel: Föreställ dig att du har en dataset som bara delvis är etiketterad. Några saker är 'skivor', några 'cd-skivor' och några är tomma. Din uppgift är att tilldela etiketter till de tomma. Om du väljer en induktiv metod skulle du träna en modell för att känna igen 'skivor' och 'cd-skivor' och applicera dessa etiketter på din oetiketterade data. Denna metod kommer att ha svårt att klassificera saker som faktiskt är 'kassetter'. En transduktiv metod hanterar däremot denna okända data mer effektivt då den arbetar för att gruppera liknande objekt tillsammans och därefter tilldela en etikett till gruppen. I detta fall kan kluster reflektera 'runda musiksaker' och 'fyrkantiga musiksaker'.
 > 
-> 🎓 ['Icke-platt' vs. 'platt' geometri](https://datascience.stackexchange.com/questions/52260/terminology-flat-geometry-in-the-context-of-clustering)
+> 🎓 ['Icke-plan' vs. 'plan' geometri](https://datascience.stackexchange.com/questions/52260/terminology-flat-geometry-in-the-context-of-clustering)
 > 
-> Härstammar från matematisk terminologi, icke-platt vs. platt geometri hänvisar till mätningen av avstånd mellan punkter antingen med 'platt' ([Euklidisk](https://wikipedia.org/wiki/Euclidean_geometry)) eller 'icke-platt' (icke-Euklidisk) geometriska metoder.
+> Härledd från matematisk terminologi, refererar icke-plan vs. plan geometri till mätning av avstånd mellan punkter med antingen 'plan' ([Euklidisk](https://wikipedia.org/wiki/Euclidean_geometry)) eller 'icke-plan' (icke-Euklidisk) geometriska metoder. 
 >
->'Platt' i detta sammanhang hänvisar till Euklidisk geometri (delar av vilken lärs ut som 'plan' geometri), och icke-platt hänvisar till icke-Euklidisk geometri. Vad har geometri med maskininlärning att göra? Som två fält som är rotade i matematik måste det finnas ett gemensamt sätt att mäta avstånd mellan punkter i kluster, och det kan göras på ett 'platt' eller 'icke-platt' sätt, beroende på datans natur. [Euklidiska avstånd](https://wikipedia.org/wiki/Euclidean_distance) mäts som längden på en linjesegment mellan två punkter. [Icke-Euklidiska avstånd](https://wikipedia.org/wiki/Non-Euclidean_geometry) mäts längs en kurva. Om din data, visualiserad, verkar inte existera på en plan, kan du behöva använda en specialiserad algoritm för att hantera den.
+> 'Plan' i detta sammanhang avser Euklidisk geometri (delar av vilken lärs ut som 'plan' geometri), och icke-plan avser icke-Euklidisk geometri. Vad har geometri med maskininlärning att göra? Jo, som två områden som är rotade i matematik måste det finnas ett gemensamt sätt att mäta avstånd mellan punkter i kluster, och det kan göras på ett 'plant' eller 'icke-plant' sätt beroende på datans natur. [Euklidiska avstånd](https://wikipedia.org/wiki/Euclidean_distance) mäts som längden på en linjesegment mellan två punkter. [Icke-Euklidiska avstånd](https://wikipedia.org/wiki/Non-Euclidean_geometry) mäts längs en kurva. Om din data, när den visualiseras, verkar inte existera på en plan yta kan du behöva använda en specialiserad algoritm för att hantera detta.
 >
-![Platt vs Icke-platt Geometri Infografik](../../../../5-Clustering/1-Visualize/images/flat-nonflat.png)
+![Flat vs Nonflat Geometry Infographic](../../../../translated_images/sv/flat-nonflat.d1c8c6e2a96110c1.webp)
 > Infografik av [Dasani Madipalli](https://twitter.com/dasani_decoded)
 > 
 > 🎓 ['Avstånd'](https://web.stanford.edu/class/cs345a/slides/12-clustering.pdf)
 > 
-> Kluster definieras av deras avståndsmatris, t.ex. avstånden mellan punkter. Detta avstånd kan mätas på några sätt. Euklidiska kluster definieras av genomsnittet av punktvärdena och innehåller en 'centroid' eller mittpunkt. Avstånd mäts således genom avståndet till den centroiden. Icke-Euklidiska avstånd hänvisar till 'clustroids', punkten närmast andra punkter. Clustroids kan i sin tur definieras på olika sätt.
+> Kluster definieras av deras avståndsmatris, t.ex. avstånden mellan punkterna. Detta avstånd kan mätas på några olika sätt. Euklidiska kluster definieras av medelvärdet av punktvärdena, och innehåller en 'centroid' eller central punkt. Avstånd mäts då som avståndet till den centroiden. Icke-Euklidiska avstånd refererar till 'klustroids', punkten närmast andra punkter. Klustroids kan i sin tur definieras på olika sätt.
 > 
 > 🎓 ['Begränsad'](https://wikipedia.org/wiki/Constrained_clustering)
 > 
-> [Begränsad klustring](https://web.cs.ucdavis.edu/~davidson/Publications/ICDMTutorial.pdf) introducerar 'semi-övervakad' inlärning i denna oövervakade metod. Relationerna mellan punkter flaggas som 'kan inte länka' eller 'måste länka' så vissa regler tvingas på datasetet.
+> [Begränsad klustring](https://web.cs.ucdavis.edu/~davidson/Publications/ICDMTutorial.pdf) introducerar 'semi-övervakad' inlärning i denna oövervakade metod. Relationerna mellan punkterna markeras som 'får inte länkas' eller 'måste länkas' så vissa regler tvingas på datasetet.
 >
->Ett exempel: Om en algoritm släpps fri på en samling oetiketterad eller semi-etiketterad data kan klustren den producerar vara av dålig kvalitet. I exemplet ovan kan klustren gruppera 'runda musikaliska saker' och 'fyrkantiga musikaliska saker' och 'triangulära saker' och 'kakor'. Om algoritmen ges vissa begränsningar, eller regler att följa ("objektet måste vara gjort av plast", "objektet måste kunna producera musik") kan detta hjälpa till att 'begränsa' algoritmen att göra bättre val.
+>Exempel: Om en algoritm släpps lös på en samling oetiketterad eller semi-etiketterad data, kan de kluster den producerar vara av låg kvalitet. I exemplet ovan kan klustren gruppera 'runda musiksaker', 'fyrkantiga musiksaker', 'triangulära saker' och 'kakor'. Om man ger vissa begränsningar eller regler att följa ("föremålet måste vara av plast", "föremålet måste kunna producera musik") kan detta hjälpa algoritmen att göra bättre val.
 > 
 > 🎓 'Densitet'
 > 
-> Data som är 'brusig' anses vara 'tät'. Avstånden mellan punkter i varje av dess kluster kan vid undersökning visa sig vara mer eller mindre täta, eller 'trånga', och denna data behöver analyseras med lämplig klustringsmetod. [Denna artikel](https://www.kdnuggets.com/2020/02/understanding-density-based-clustering.html) demonstrerar skillnaden mellan att använda K-Means klustring vs. HDBSCAN-algoritmer för att utforska en brusig dataset med ojämn klusterdensitet.
+> Data som är 'brusig' anses vara 'tät'. Avstånden mellan punkterna i varje kluster kan efter undersökning visa sig vara mer eller mindre täta, eller 'trånga' och därför behöver denna data analyseras med passande klustringsmetod. [Denna artikel](https://www.kdnuggets.com/2020/02/understanding-density-based-clustering.html) visar skillnaden mellan att använda K-Means klustring vs. HDBSCAN-algoritmer för att utforska en brusig dataset med ojämn klusterdensitet.
 
 ## Klustringsalgoritmer
 
-Det finns över 100 klustringsalgoritmer, och deras användning beror på datans natur. Låt oss diskutera några av de viktigaste:
+Det finns över 100 klustringsalgoritmer, och deras användning beror på datans natur. Låt oss diskutera några av de största:
 
-- **Hierarkisk klustring**. Om ett objekt klassificeras baserat på dess närhet till ett närliggande objekt, snarare än till ett längre bort, bildas kluster baserat på medlemmarnas avstånd till och från andra objekt. Scikit-learns agglomerativa klustring är hierarkisk.
+- **Hierarkisk klustring**. Om ett objekt klassificeras efter dess närhet till ett närliggande objekt, snarare än ett längre bort, bildas kluster baserat på medlemmarnas avstånd till och från andra objekt. Scikit-learns agglomerativa klustring är hierarkisk.
 
-   ![Hierarkisk klustring Infografik](../../../../5-Clustering/1-Visualize/images/hierarchical.png)
+   ![Hierarchical clustering Infographic](../../../../translated_images/sv/hierarchical.bf59403aa43c8c47.webp)
    > Infografik av [Dasani Madipalli](https://twitter.com/dasani_decoded)
 
-- **Centroid-klustring**. Denna populära algoritm kräver valet av 'k', eller antalet kluster som ska bildas, varefter algoritmen bestämmer mittpunkten för ett kluster och samlar data runt den punkten. [K-means klustring](https://wikipedia.org/wiki/K-means_clustering) är en populär version av centroid-klustring. Centroiden bestäms av det närmaste medelvärdet, därav namnet. Det kvadrerade avståndet från klustret minimeras.
+- **Centroidklustring**. Denna populära algoritm kräver val av 'k', alltså antalet kluster som ska bildas, varefter algoritmen bestämmer en klusters mittpunkt och samlar data runt denna punkt. [K-means klustring](https://wikipedia.org/wiki/K-means_clustering) är en populär variant av centroidklustring. Mittpunkten bestäms av närmsta medelvärde, därav namnet. Det kvadrerade avståndet från klustret minimeras.
 
-   ![Centroid-klustring Infografik](../../../../5-Clustering/1-Visualize/images/centroid.png)
+   ![Centroid clustering Infographic](../../../../translated_images/sv/centroid.097fde836cf6c918.webp)
    > Infografik av [Dasani Madipalli](https://twitter.com/dasani_decoded)
 
-- **Fördelningsbaserad klustring**. Baserad på statistisk modellering fokuserar fördelningsbaserad klustring på att bestämma sannolikheten att en datapunkt tillhör ett kluster och tilldelar den därefter. Gaussian mixture-metoder tillhör denna typ.
+- **Distributionsbaserad klustring**. Baserad på statistisk modellering fokuserar distributionsbaserad klustring på att avgöra sannolikheten för att en datapunkt tillhör ett kluster och tilldela den därefter. Gaussiska blandningsmetoder tillhör denna typ.
 
-- **Densitetsbaserad klustring**. Datapunkter tilldelas kluster baserat på deras densitet, eller deras gruppering runt varandra. Datapunkter långt från gruppen anses vara avvikelser eller brus. DBSCAN, Mean-shift och OPTICS tillhör denna typ av klustring.
+- **Densitetsbaserad klustring**. Datapunkter tilldelas kluster baserat på deras densitet, eller deras gruppering runt varandra. Datapunkter långt från gruppen betraktas som uteliggare eller brus. DBSCAN, Mean-shift och OPTICS tillhör denna typ av klustring.
 
-- **Rutbaserad klustring**. För multidimensionella datasets skapas ett rutnät och datan delas upp mellan rutnätets celler, vilket skapar kluster.
+- **Rutbaserad klustring**. För flerdimensionella dataset skapas ett rutnät och datan delas upp mellan rutnätets celler, vilket skapar kluster.
 
-## Övning - klustra din data
+## Övning – klustra din data
 
-Klustring som teknik underlättas mycket av korrekt visualisering, så låt oss börja med att visualisera vår musikdata. Denna övning kommer att hjälpa oss att avgöra vilken av klustringsmetoderna vi mest effektivt bör använda för datans natur.
+Klustring som teknik underlättas mycket av bra visualisering, så låt oss börja med att visualisera vår musikdata. Denna övning hjälper oss att avgöra vilken av klustringsmetoderna vi bör använda mest effektivt för denna datas natur.
 
 1. Öppna filen [_notebook.ipynb_](https://github.com/microsoft/ML-For-Beginners/blob/main/5-Clustering/1-Visualize/notebook.ipynb) i denna mapp.
 
-1. Importera paketet `Seaborn` för bra datavisualisering.
+1. Importera `Seaborn`-paketet för bra datavisualisering.
 
     ```python
     !pip install seaborn
     ```
 
-1. Lägg till musikdatan från [_nigerian-songs.csv_](https://github.com/microsoft/ML-For-Beginners/blob/main/5-Clustering/data/nigerian-songs.csv). Ladda upp en dataframe med lite data om låtarna. Förbered dig på att utforska denna data genom att importera biblioteken och dumpa ut datan:
+1. Lägg till låtdata från [_nigerian-songs.csv_](https://github.com/microsoft/ML-For-Beginners/blob/main/5-Clustering/data/nigerian-songs.csv). Ladda en dataframe med några data om låtarna. Gör dig redo att utforska denna data genom att importera biblioteken och skriva ut datan:
 
     ```python
     import matplotlib.pyplot as plt
@@ -120,17 +119,17 @@ Klustring som teknik underlättas mycket av korrekt visualisering, så låt oss 
     df.head()
     ```
 
-    Kontrollera de första raderna av data:
+    Kolla på de första raderna av data:
 
-    |     | namn                     | album                        | artist              | artist_top_genre | release_date | längd | popularitet | dansbarhet | akustiskhet | energi | instrumentellhet | livlighet | ljudstyrka | talighet | tempo   | taktart         |
-    | --- | ------------------------ | ---------------------------- | ------------------- | ---------------- | ------------ | ------ | ---------- | ---------- | ------------ | ------ | ---------------- | -------- | -------- | ----------- | ------- | -------------- |
-    | 0   | Sparky                   | Mandy & The Jungle           | Cruel Santino       | alternativ r&b   | 2019         | 144000 | 48         | 0.666      | 0.851        | 0.42   | 0.534            | 0.11     | -6.699   | 0.0829      | 133.015 | 5              |
-    | 1   | shuga rush               | EVERYTHING YOU HEARD IS TRUE | Odunsi (The Engine) | afropop          | 2020         | 89488  | 30         | 0.71       | 0.0822       | 0.683  | 0.000169         | 0.101    | -5.64    | 0.36        | 129.993 | 3              |
-| 2   | LITT!                    | LITT!                        | AYLØ                | indie r&b        | 2018         | 207758 | 40         | 0.836        | 0.272        | 0.564  | 0.000537         | 0.11     | -7.127   | 0.0424      | 130.005 | 4              |
-| 3   | Confident / Feeling Cool | Enjoy Your Life              | Lady Donli          | nigerian pop     | 2019         | 175135 | 14         | 0.894        | 0.798        | 0.611  | 0.000187         | 0.0964   | -4.961   | 0.113       | 111.087 | 4              |
-| 4   | wanted you               | rare.                        | Odunsi (The Engine) | afropop          | 2018         | 152049 | 25         | 0.702        | 0.116        | 0.833  | 0.91             | 0.348    | -6.044   | 0.0447      | 105.115 | 4              |
+    |     | name                     | album                        | artist              | artist_top_genre | release_date | length | popularity | danceability | acousticness | energy | instrumentalness | liveness | loudness | speechiness | tempo   | time_signature |
+    | --- | ------------------------ | ---------------------------- | ------------------- | ---------------- | ------------ | ------ | ---------- | ------------ | ------------ | ------ | ---------------- | -------- | -------- | ----------- | ------- | -------------- |
+    | 0   | Sparky                   | Mandy & The Jungle           | Cruel Santino       | alternative r&b  | 2019         | 144000 | 48         | 0.666        | 0.851        | 0.42   | 0.534            | 0.11     | -6.699   | 0.0829      | 133.015 | 5              |
+    | 1   | shuga rush               | EVERYTHING YOU HEARD IS TRUE | Odunsi (The Engine) | afropop          | 2020         | 89488  | 30         | 0.71         | 0.0822       | 0.683  | 0.000169         | 0.101    | -5.64    | 0.36        | 129.993 | 3              |
+    | 2   | LITT!                    | LITT!                        | AYLØ                | indie r&b        | 2018         | 207758 | 40         | 0.836        | 0.272        | 0.564  | 0.000537         | 0.11     | -7.127   | 0.0424      | 130.005 | 4              |
+    | 3   | Confident / Feeling Cool | Enjoy Your Life              | Lady Donli          | nigerian pop     | 2019         | 175135 | 14         | 0.894        | 0.798        | 0.611  | 0.000187         | 0.0964   | -4.961   | 0.113       | 111.087 | 4              |
+    | 4   | wanted you               | rare.                        | Odunsi (The Engine) | afropop          | 2018         | 152049 | 25         | 0.702        | 0.116        | 0.833  | 0.91             | 0.348    | -6.044   | 0.0447      | 105.115 | 4              |
 
-1. Få information om dataframe genom att kalla på `info()`:
+1. Få lite information om dataframe, genom att anropa `info()`:
 
     ```python
     df.info()
@@ -164,7 +163,7 @@ Klustring som teknik underlättas mycket av korrekt visualisering, så låt oss 
     memory usage: 66.4+ KB
     ```
 
-1. Kontrollera om det finns några null-värden genom att kalla på `isnull()` och verifiera att summan är 0:
+1. Dubbelkolla för null-värden genom att anropa `isnull()` och verifiera att summan är 0:
 
     ```python
     df.isnull().sum()
@@ -209,9 +208,9 @@ Klustring som teknik underlättas mycket av korrekt visualisering, så låt oss 
     | 75%   | 2017         | 242098.5    | 31         | 0.8295       | 0.403        | 0.87575  | 0.000234         | 0.164    | -3.331    | 0.177       | 125.03925  | 4              |
     | max   | 2020         | 511738      | 73         | 0.966        | 0.954        | 0.995    | 0.91             | 0.811    | 0.582     | 0.514       | 206.007    | 5              |
 
-> 🤔 Om vi arbetar med klustring, en osuperviserad metod som inte kräver etiketterad data, varför visar vi denna data med etiketter? Under datautforskningsfasen är de användbara, men de är inte nödvändiga för att klustringsalgoritmer ska fungera. Du kan lika gärna ta bort kolumnrubrikerna och hänvisa till datan med kolumnnummer.
+> 🤔 Om vi arbetar med klustring, en osuperviserad metod som inte kräver märkta data, varför visar vi då denna data med etiketter? I datautforskningsfasen är de användbara, men de är inte nödvändiga för att klustringsalgoritmer ska fungera. Du kan precis lika gärna ta bort kolumnrubrikerna och referera till datan via kolumnnummer.
 
-Titta på de generella värdena i datan. Notera att popularitet kan vara '0', vilket visar låtar som inte har någon ranking. Låt oss ta bort dessa snart.
+Titta på de allmänna värdena i datan. Notera att popularitet kan vara '0', vilket visar låtar som inte har någon ranking. Låt oss ta bort dessa strax.
 
 1. Använd ett stapeldiagram för att ta reda på de mest populära genrerna:
 
@@ -225,13 +224,13 @@ Titta på de generella värdena i datan. Notera att popularitet kan vara '0', vi
     plt.title('Top genres',color = 'blue')
     ```
 
-    ![mest populära](../../../../5-Clustering/1-Visualize/images/popular.png)
+    ![most popular](../../../../translated_images/sv/popular.9c48d84b3386705f.webp)
 
-✅ Om du vill se fler toppvärden, ändra topp `[:5]` till ett större värde, eller ta bort det för att se allt.
+✅ Om du vill se fler toppvärden, ändra top-`[:5]` till ett större värde, eller ta bort det för att se alla.
 
-Notera, när toppgenren beskrivs som 'Missing', betyder det att Spotify inte klassificerade den, så låt oss ta bort den.
+Observera, när toppgenren beskrivs som 'Missing', betyder det att Spotify inte klassificerade den, så låt oss ta bort den.
 
-1. Ta bort saknade data genom att filtrera bort dem
+1. Ta bort borttappade data genom att filtrera bort den
 
     ```python
     df = df[df['artist_top_genre'] != 'Missing']
@@ -244,9 +243,9 @@ Notera, när toppgenren beskrivs som 'Missing', betyder det att Spotify inte kla
 
     Kontrollera nu genrerna igen:
 
-    ![mest populära](../../../../5-Clustering/1-Visualize/images/all-genres.png)
+    ![most popular](../../../../translated_images/sv/all-genres.1d56ef06cefbfcd6.webp)
 
-1. De tre toppgenrerna dominerar datasetet. Låt oss koncentrera oss på `afro dancehall`, `afropop` och `nigerian pop`, och dessutom filtrera datasetet för att ta bort allt med ett popularitetsvärde på 0 (vilket betyder att det inte klassificerades med en popularitet i datasetet och kan betraktas som brus för våra syften):
+1. De tre överlägset största genrerna dominerar denna dataset. Låt oss koncentrera oss på `afro dancehall`, `afropop`, och `nigerian pop`, samt filtrera datasetet för att ta bort något med en popularitet på 0 (vilket betyder att det inte klassificerades med en popularitet i datasetet och kan betraktas som brus för våra syften):
 
     ```python
     df = df[(df['artist_top_genre'] == 'afro dancehall') | (df['artist_top_genre'] == 'afropop') | (df['artist_top_genre'] == 'nigerian pop')]
@@ -266,21 +265,21 @@ Notera, när toppgenren beskrivs som 'Missing', betyder det att Spotify inte kla
     sns.heatmap(corrmat, vmax=.8, square=True)
     ```
 
-    ![korrelationer](../../../../5-Clustering/1-Visualize/images/correlation.png)
+    ![correlations](../../../../translated_images/sv/correlation.a9356bb798f5eea5.webp)
 
-    Den enda starka korrelationen är mellan `energy` och `loudness`, vilket inte är särskilt förvånande, eftersom hög musik vanligtvis är ganska energisk. Annars är korrelationerna relativt svaga. Det kommer att bli intressant att se vad en klustringsalgoritm kan göra med denna data.
+    Den enda starka korrelationen är mellan `energy` och `loudness`, vilket inte är så förvånande, eftersom hög volym oftast är ganska energiskt. Annars är korrelationerna relativt svaga. Det blir intressant att se vad en klustringsalgoritm kan göra med denna data.
 
-    > 🎓 Notera att korrelation inte innebär kausalitet! Vi har bevis på korrelation men inget bevis på kausalitet. En [underhållande webbplats](https://tylervigen.com/spurious-correlations) har några visuella exempel som betonar denna punkt.
+    > 🎓 Notera att korrelation innebär inte orsakssamband! Vi har bevis på korrelation men inget bevis på orsakssamband. En [rolig webbplats](https://tylervigen.com/spurious-correlations) har några visualiseringar som betonar denna poäng.
 
-Finns det någon konvergens i detta dataset kring en låts upplevda popularitet och dansbarhet? En FacetGrid visar att det finns koncentriska cirklar som stämmer överens, oavsett genre. Kan det vara så att nigerianska smaker konvergerar vid en viss nivå av dansbarhet för denna genre?  
+Finns det någon konvergens i detta dataset kring en låts upplevda popularitet och dansbarhet? Ett FacetGrid visar att det finns koncentriska cirklar som ligger i linje, oavsett genre. Kan det vara så att Nigerianska smaker konvergerar vid en viss nivå av dansbarhet för denna genre?
 
-✅ Prova olika datapunkter (energy, loudness, speechiness) och fler eller olika musikgenrer. Vad kan du upptäcka? Titta på `df.describe()`-tabellen för att se den generella spridningen av datapunkterna.
+✅ Prova olika datapunkter (energy, loudness, speechiness) och fler eller andra musikgenrer. Vad kan du upptäcka? Ta en titt på tabellen `df.describe()` för att se den allmänna spridningen av datapunkterna.
 
-### Övning - dataspridning
+### Övning - datadistribution
 
 Är dessa tre genrer signifikant olika i uppfattningen av deras dansbarhet, baserat på deras popularitet?
 
-1. Undersök dataspridningen för våra tre toppgenrer för popularitet och dansbarhet längs en given x- och y-axel.
+1. Undersök våra tre toppgenrer med datadistribution för popularitet och dansbarhet längs givna x- och y-axlar.
 
     ```python
     sns.set_theme(style="ticks")
@@ -292,15 +291,15 @@ Finns det någon konvergens i detta dataset kring en låts upplevda popularitet 
     )
     ```
 
-    Du kan upptäcka koncentriska cirklar runt en generell konvergenspunkt, som visar spridningen av punkter.
+    Du kan upptäcka koncentriska cirklar runt en allmän konvergenspunkt som visar punkternas fördelning.
 
-    > 🎓 Notera att detta exempel använder ett KDE (Kernel Density Estimate)-diagram som representerar datan med en kontinuerlig sannolikhetstäthetskurva. Detta gör det möjligt att tolka data när man arbetar med flera distributioner.
+    > 🎓 Notera att detta exempel använder en KDE-graf (Kernel Density Estimate) som representerar datan med en kontinuerlig sannolikhetstäthetkurva. Detta gör det möjligt för oss att tolka data när vi arbetar med flera fördelningar.
 
-    Generellt sett är de tre genrerna löst anpassade när det gäller deras popularitet och dansbarhet. Att bestämma kluster i denna löst anpassade data kommer att vara en utmaning:
+    Generellt ligger de tre genrerna löst i linje med varandra vad gäller popularitet och dansbarhet. Att avgöra kluster i denna löst sammanfogade data blir en utmaning:
 
-    ![spridning](../../../../5-Clustering/1-Visualize/images/distribution.png)
+    ![distribution](../../../../translated_images/sv/distribution.9be11df42356ca95.webp)
 
-1. Skapa ett spridningsdiagram:
+1. Skapa ett scatterplot:
 
     ```python
     sns.FacetGrid(df, hue="artist_top_genre", height=5) \
@@ -308,31 +307,33 @@ Finns det någon konvergens i detta dataset kring en låts upplevda popularitet 
        .add_legend()
     ```
 
-    Ett spridningsdiagram av samma axlar visar ett liknande mönster av konvergens
+    Ett scatterplot med samma axlar visar ett liknande mönster av konvergens
 
-    ![Facetgrid](../../../../5-Clustering/1-Visualize/images/facetgrid.png)
+    ![Facetgrid](../../../../translated_images/sv/facetgrid.9b2e65ce707eba1f.webp)
 
-Generellt sett kan du använda spridningsdiagram för att visa kluster av data, så att bemästra denna typ av visualisering är mycket användbart. I nästa lektion kommer vi att ta denna filtrerade data och använda k-means-klustring för att upptäcka grupper i denna data som verkar överlappa på intressanta sätt.
+Generellt kan du för klustring använda scatterplots för att visa datakluster, så att behärska denna typ av visualisering är mycket användbart. I nästa lektion kommer vi ta denna filtrerade data och använda k-means klustring för att upptäcka grupper i denna data som verkar överlappa på intressanta sätt.
 
 ---
 
 ## 🚀Utmaning
 
-Som förberedelse inför nästa lektion, skapa ett diagram över de olika klustringsalgoritmer du kan upptäcka och använda i en produktionsmiljö. Vilka typer av problem försöker klustringen lösa?
+Som förberedelse för nästa lektion, gör ett diagram över de olika klustringsalgoritmer du kan upptäcka och använda i en produktionsmiljö. Vilka slags problem försöker klustringen lösa?
 
-## [Quiz efter föreläsningen](https://ff-quizzes.netlify.app/en/ml/)
+## [Post-lecture quiz](https://ff-quizzes.netlify.app/en/ml/)
 
 ## Granskning & Självstudier
 
-Innan du tillämpar klustringsalgoritmer, som vi har lärt oss, är det en bra idé att förstå naturen av ditt dataset. Läs mer om detta ämne [här](https://www.kdnuggets.com/2019/10/right-clustering-algorithm.html)
+Innan du tillämpar klustringsalgoritmer, som vi har lärt oss, är det en bra idé att förstå naturen hos ditt dataset. Läs mer om detta ämne [här](https://www.kdnuggets.com/2019/10/right-clustering-algorithm.html)
 
-[Denna hjälpsamma artikel](https://www.freecodecamp.org/news/8-clustering-algorithms-in-machine-learning-that-all-data-scientists-should-know/) går igenom de olika sätt som olika klustringsalgoritmer beter sig, givet olika datamönster.
+[Denna hjälpsamma artikel](https://www.freecodecamp.org/news/8-clustering-algorithms-in-machine-learning-that-all-data-scientists-should-know/) går igenom de olika sätt som olika klustringsalgoritmer beter sig, givet olika datatyper.
 
 ## Uppgift
 
-[Undersök andra visualiseringar för klustring](assignment.md)
+[Forska andra visualiseringar för klustring](assignment.md)
 
 ---
 
-**Ansvarsfriskrivning**:  
-Detta dokument har översatts med hjälp av AI-översättningstjänsten [Co-op Translator](https://github.com/Azure/co-op-translator). Även om vi strävar efter noggrannhet, vänligen notera att automatiska översättningar kan innehålla fel eller felaktigheter. Det ursprungliga dokumentet på dess originalspråk bör betraktas som den auktoritativa källan. För kritisk information rekommenderas professionell mänsklig översättning. Vi ansvarar inte för eventuella missförstånd eller feltolkningar som uppstår vid användning av denna översättning.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Ansvarsfriskrivning**:
+Detta dokument har översatts med hjälp av AI-översättningstjänsten [Co-op Translator](https://github.com/Azure/co-op-translator). Även om vi strävar efter noggrannhet, var vänlig notera att automatiska översättningar kan innehålla fel eller brister. Det ursprungliga dokumentet på dess modersmål bör betraktas som den auktoritativa källan. För kritisk information rekommenderas professionell mänsklig översättning. Vi ansvarar inte för några missförstånd eller feltolkningar som uppstår till följd av användningen av denna översättning.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->
