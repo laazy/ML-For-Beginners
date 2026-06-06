@@ -109,8 +109,8 @@ jobs:
 ```
 
 ### 追加リソース
-- [Azure Static Web Apps Documentation](https://learn.microsoft.com/azure/static-web-apps/getting-started)  
-- [GitHub Actions Documentation](https://docs.github.com/actions/use-cases-and-examples/deploying/deploying-to-azure-static-web-app)  
+- [Azure Static Web Apps を使用して静的サイトを初めて構築する](https://learn.microsoft.com/azure/static-web-apps/getting-started)  
+- [Azure 静的 Web アプリへのデプロイ](https://docs.github.com/actions/use-cases-and-examples/deploying/deploying-to-azure-static-web-app)  
 
 ---
 
