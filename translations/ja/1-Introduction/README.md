@@ -7,10 +7,10 @@
 
 ### レッスン
 
-1. [Introduction to machine learning](1-intro-to-ML/README.md)
-1. [The History of machine learning and AI](2-history-of-ML/README.md)
-1. [Fairness and machine learning](3-fairness/README.md)
-1. [Techniques of machine learning](4-techniques-of-ML/README.md)
+1. [機械学習の入門](1-intro-to-ML/README.md)
+1. [機械学習とAIの歴史](2-history-of-ML/README.md)
+1. [公平性と機械学習](3-fairness/README.md)
+1. [機械学習の技法](4-techniques-of-ML/README.md)
 ### クレジット
 
 「Introduction to Machine Learning」は、[Muhammad Sakib Khan Inan](https://twitter.com/Sakibinan)、[Ornella Altunyan](https://twitter.com/ornelladotcom)、[Jen Looper](https://twitter.com/jenlooper) を含むチームが♥️を込めて執筆しました。
