@@ -183,7 +183,7 @@ Darcy, as well as Elizabeth, really loved them; and they were
 
 ## 課題
 
-[Poetic license](assignment.md)
+[詩的表現の自由](assignment.md)
 
 ---
 
