@@ -101,7 +101,7 @@ Before training a machine learning model, it is important to conduct an impact a
 The following are areas of focus when conducting an impact assessment:
 
 * **Adverse impact on individuals**.  Being aware of any restriction or requirements, unsupported use or any known limitations hindering the system's performance is vital to ensure that the system is not used in a way that could cause harm to individuals.
-* **Data requirements**.  Gaining an understanding of how and where the system will use data enables reviewers to explore any data requirements you would need to be mindful of (e.g., GDPR or HIPPA data regulations).  In addition, examine whether the source or quantity of data is substantial for training.
+* **Data requirements**.  Gaining an understanding of how and where the system will use data enables reviewers to explore any data requirements you would need to be mindful of (e.g., GDPR or HIPAA data regulations).  In addition, examine whether the source or quantity of data is substantial for training.
 * **Summary of impact**.  Gather a list of potential harms that could  arise from using the system.  Throughout the ML lifecycle, review if the issues identified are mitigated or addressed.
 * **Applicable goals** for each of the six core principles.  Assess if the goals from each of the principles are met and if there are any gaps.
 
