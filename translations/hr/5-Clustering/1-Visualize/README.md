@@ -1,106 +1,105 @@
-# Uvod u klasteriranje
+# Uvod u grupiranje
 
-Klasteriranje je vrsta [Nenadziranog učenja](https://wikipedia.org/wiki/Unsupervised_learning) koja pretpostavlja da je skup podataka neoznačen ili da njegovi ulazi nisu povezani s unaprijed definiranim izlazima. Koristi razne algoritme za analizu neoznačenih podataka i pruža grupiranja prema obrascima koje prepoznaje u podacima.
+Grupiranje je vrsta [nenadzirnog učenja](https://wikipedia.org/wiki/Unsupervised_learning) koja pretpostavlja da je skup podataka neoznačen ili da njegovi ulazi nisu povezani s unaprijed definiranim izlazima. Koristi različite algoritme za sortiranje neoznačenih podataka i pruža grupiranja u skladu s obrascima koje prepoznaje u podacima.
 
-[![No One Like You by PSquare](https://img.youtube.com/vi/ty2advRiWJM/0.jpg)](https://youtu.be/ty2advRiWJM "No One Like You by PSquare")
+[![Ne postoji nitko poput tebe od PSquare](https://img.youtube.com/vi/ty2advRiWJM/0.jpg)](https://youtu.be/ty2advRiWJM "Ne postoji nitko poput tebe od PSquare")
 
-> 🎥 Kliknite na sliku iznad za video. Dok proučavate strojno učenje s klasteriranjem, uživajte u nigerijskim Dance Hall pjesmama - ovo je visoko ocijenjena pjesma iz 2014. od PSquare.
+> 🎥 Kliknite sliku iznad za video. Dok proučavate strojno učenje s grupiranjem, uživajte u nekim nigerijskim Dance Hall pjesmama - ovo je vrlo cijenjena pjesma iz 2014. godine od PSquare.
 
 ## [Kviz prije predavanja](https://ff-quizzes.netlify.app/en/ml/)
 
 ### Uvod
 
-[Klasteriranje](https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-30164-8_124) je vrlo korisno za istraživanje podataka. Pogledajmo može li pomoći u otkrivanju trendova i obrazaca u načinu na koji nigerijska publika konzumira glazbu.
+[Grupiranje](https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-30164-8_124) je vrlo korisno za istraživanje podataka. Pogledajmo može li pomoći u otkrivanju trendova i obrazaca u načinu na koji nigerijska publika konzumira glazbu.
 
-✅ Odvojite trenutak da razmislite o primjenama klasteriranja. U stvarnom životu, klasteriranje se događa kad imate hrpu rublja i trebate razvrstati odjeću članova obitelji 🧦👕👖🩲. U podatkovnoj znanosti, klasteriranje se događa kada pokušavate analizirati korisničke preferencije ili odrediti karakteristike bilo kojeg neoznačenog skupa podataka. Klasteriranje, na neki način, pomaže u stvaranju reda iz kaosa, poput ladice za čarape.
+✅ Odvojite minutu za razmišljanje o upotrebi grupiranja. U stvarnom životu, grupiranje se događa kad imate hrpu rublja i trebate razvrstati odjeću članova obitelji 🧦👕👖🩲. U data scienceu, grupiranje se događa pri pokušaju analize korisničkih preferencija ili određivanju značajki bilo kojeg neoznačenog skupa podataka. Grupiranje, na neki način, pomaže da se smisli kaos, poput ladice za čarape.
 
-[![Introduction to ML](https://img.youtube.com/vi/esmzYhuFnds/0.jpg)](https://youtu.be/esmzYhuFnds "Introduction to Clustering")
+[![Uvod u ML](https://img.youtube.com/vi/esmzYhuFnds/0.jpg)](https://youtu.be/esmzYhuFnds "Uvod u grupiranje")
 
-> 🎥 Kliknite na sliku iznad za video: John Guttag s MIT-a uvodi klasteriranje
+> 🎥 Kliknite sliku iznad za video: John Guttag s MIT-a predstavlja grupiranje
 
-U profesionalnom okruženju, klasteriranje se može koristiti za određivanje stvari poput segmentacije tržišta, utvrđivanja koje dobne skupine kupuju koje proizvode, na primjer. Druga primjena bila bi otkrivanje anomalija, možda za otkrivanje prijevara iz skupa podataka o transakcijama kreditnim karticama. Ili biste mogli koristiti klasteriranje za određivanje tumora u seriji medicinskih skenova.
+U profesionalnom okruženju, grupiranje se može koristiti za određivanje stvari poput segmentacije tržišta, određivanja koje dobne skupine kupuju koje proizvode, na primjer. Druga upotreba može biti otkrivanje anomalija, možda za prepoznavanje prijevara iz skupa podataka o transakcijama kreditnih kartica. Ili biste mogli koristiti grupiranje za određivanje tumora u skupu medicinskih snimaka.
 
-✅ Razmislite na trenutak o tome kako ste možda naišli na klasteriranje 'u divljini', u bankarstvu, e-trgovini ili poslovnom okruženju.
+✅ Razmislite minutu o tome kako ste se možda susreli s grupiranjem 'u prirodi', u bankarstvu, e-trgovini ili poslovnom okruženju.
 
-> 🎓 Zanimljivo je da analiza klastera potječe iz područja antropologije i psihologije 1930-ih. Možete li zamisliti kako se mogla koristiti?
+> 🎓 Zanimljivo, analiza skupina potječe iz područja antropologije i psihologije 1930-ih. Možete li zamisliti kako je možda bila korištena?
 
-Alternativno, mogli biste ga koristiti za grupiranje rezultata pretraživanja - prema poveznicama za kupovinu, slikama ili recenzijama, na primjer. Klasteriranje je korisno kada imate veliki skup podataka koji želite smanjiti i na kojem želite provesti detaljniju analizu, pa se tehnika može koristiti za upoznavanje podataka prije nego što se izgrade drugi modeli.
+Alternativno, mogli biste je koristiti za grupiranje rezultata pretraživanja - po poveznicama za kupovinu, slikama ili recenzijama, na primjer. Grupiranje je korisno kad imate veliki skup podataka koji želite smanjiti i na kojem želite izvršiti detaljniju analizu, pa se tehnika može upotrijebiti za učenje o podacima prije nego što se izgrade drugi modeli.
 
-✅ Kada su vaši podaci organizirani u klastere, dodjeljujete im ID klastera, a ova tehnika može biti korisna pri očuvanju privatnosti skupa podataka; umjesto toga možete se referirati na podatkovnu točku prema njenom ID-u klastera, umjesto prema otkrivanju identifikacijskih podataka. Možete li smisliti druge razloge zašto biste koristili ID klastera umjesto drugih elemenata klastera za identifikaciju?
+✅ Kad su vaši podaci organizirani u skupine, dodijelite im identifikacije skupina, i ova tehnika može biti korisna pri očuvanju privatnosti skupa podataka; umjesto toga možete se pozivati na podatkovnu točku prema identifikaciji skupine, a ne po više razotkrivajućim identificirajućim podacima. Možete li smisliti druge razloge zašto biste koristili identifikaciju skupine umjesto drugih elemenata skupine za njezino identificiranje?
 
-Produbite svoje razumijevanje tehnika klasteriranja u ovom [modulu za učenje](https://docs.microsoft.com/learn/modules/train-evaluate-cluster-models?WT.mc_id=academic-77952-leestott)
+Produbite svoje razumijevanje tehnika grupiranja u ovom [Learn modulu](https://docs.microsoft.com/learn/modules/train-evaluate-cluster-models?WT.mc_id=academic-77952-leestott)
+## Početak rada s grupiranjem
 
-## Početak rada s klasteriranjem
+[Scikit-learn nudi širok spektar](https://scikit-learn.org/stable/modules/clustering.html) metoda za izvođenje grupiranja. Vrsta koju odaberete ovisit će o vašem slučaju uporabe. Prema dokumentaciji, svaka metoda ima različite prednosti. Evo pojednostavljene tablice metoda podržanih od strane Scikit-learn i njihovih primjerenih slučajeva uporabe:
 
-[Scikit-learn nudi širok raspon](https://scikit-learn.org/stable/modules/clustering.html) metoda za izvođenje klasteriranja. Vrsta koju odaberete ovisit će o vašem slučaju upotrebe. Prema dokumentaciji, svaka metoda ima različite prednosti. Evo pojednostavljene tablice metoda koje podržava Scikit-learn i njihovih odgovarajućih slučajeva upotrebe:
+| Naziv metode               | Slučaj uporabe                                                      |
+| :------------------------- | :----------------------------------------------------------------- |
+| K-Means                    | opća namjena, induktivno                                           |
+| Affinity propagation       | mnogo, nejednake skupine, induktivno                               |
+| Mean-shift                 | mnogo, nejednake skupine, induktivno                               |
+| Spectral clustering        | malo, jednake skupine, transduktivno                               |
+| Ward hierarchical clustering | mnogo, ograničene skupine, transduktivno                         |
+| Agglomerative clustering   | mnogo, ograničene, ne Euklidske udaljenosti, transduktivno         |
+| DBSCAN                     | ne ravna geometrija, nejednake skupine, transduktivno             |
+| OPTICS                     | ne ravna geometrija, nejednake skupine s promjenjivom gustoćom, transduktivno |
+| Gaussian mixtures          | ravna geometrija, induktivno                                       |
+| BIRCH                      | veliki skup podataka s odmetnicima, induktivno                     |
 
-| Naziv metode                | Slučaj upotrebe                                                      |
-| :--------------------------- | :------------------------------------------------------------------ |
-| K-Means                      | opća namjena, induktivno                                            |
-| Affinity propagation         | mnogi, nejednaki klasteri, induktivno                              |
-| Mean-shift                   | mnogi, nejednaki klasteri, induktivno                              |
-| Spectral clustering          | malo, jednaki klasteri, transduktivno                              |
-| Ward hierarchical clustering | mnogi, ograničeni klasteri, transduktivno                          |
-| Agglomerative clustering     | mnogi, ograničeni, ne-Euklidske udaljenosti, transduktivno         |
-| DBSCAN                       | ne-ravna geometrija, nejednaki klasteri, transduktivno             |
-| OPTICS                       | ne-ravna geometrija, nejednaki klasteri s promjenjivom gustoćom, transduktivno |
-| Gaussian mixtures            | ravna geometrija, induktivno                                       |
-| BIRCH                        | veliki skup podataka s iznimkama, induktivno                       |
-
-> 🎓 Kako stvaramo klastere ima puno veze s načinom na koji grupiramo podatkovne točke u skupine. Razjasnimo neke pojmove:
+> 🎓 Kako stvaramo skupine jako ovisi o načinu na koji skupljamo podatkovne točke u grupe. Razjasnimo malo vokabular:
 >
 > 🎓 ['Transduktivno' vs. 'induktivno'](https://wikipedia.org/wiki/Transduction_(machine_learning))
 > 
-> Transduktivno zaključivanje proizlazi iz promatranih slučajeva treninga koji se mapiraju na specifične testne slučajeve. Induktivno zaključivanje proizlazi iz slučajeva treninga koji se mapiraju na opća pravila koja se tek tada primjenjuju na testne slučajeve. 
+> Transduktivno zaključivanje proizlazi iz promatranih primjera za treniranje koji se preslikavaju na određene test primjere. Induktivno zaključivanje se izvodi iz primjera za treniranje koji se preslikavaju na opća pravila koja se tek tada primjenjuju na test primjere.
 > 
-> Primjer: Zamislite da imate skup podataka koji je samo djelomično označen. Neke stvari su 'ploče', neke 'CD-i', a neke su prazne. Vaš zadatak je dodijeliti oznake praznima. Ako odaberete induktivni pristup, trenirali biste model tražeći 'ploče' i 'CD-e' i primijenili te oznake na neoznačene podatke. Ovaj pristup će imati problema s klasifikacijom stvari koje su zapravo 'kasete'. Transduktivni pristup, s druge strane, učinkovitije se nosi s ovim nepoznatim podacima jer radi na grupiranju sličnih stavki zajedno i zatim primjenjuje oznaku na grupu. U ovom slučaju, klasteri bi mogli odražavati 'okrugle glazbene stvari' i 'kvadratne glazbene stvari'. 
+> Primjer: Zamislite da imate skup podataka koji je samo djelomično označen. Neke stvari su 'vinili', neke 'CD-ovi', a neke su prazne. Vaš zadatak je dati oznake praznima. Ako koristite induktivni pristup, trenirali biste model koji traži 'vinile' i 'CD-ove' te te oznake primijenili na neoznačene podatke. Taj pristup će imati problema s klasificiranjem stvari koje su zapravo 'kazete'. Transduktivni pristup, s druge strane, učinkovitije rukuje nepoznatim podacima jer radi na grupiranju sličnih stvari i zatim primjenjuje oznaku na grupu. U ovom slučaju, skupine bi mogle odražavati 'okrugle glazbene stvari' i 'kockaste glazbene stvari'.
 > 
 > 🎓 ['Ne-ravna' vs. 'ravna' geometrija](https://datascience.stackexchange.com/questions/52260/terminology-flat-geometry-in-the-context-of-clustering)
 > 
-> Izvedeno iz matematičke terminologije, ne-ravna vs. ravna geometrija odnosi se na mjerenje udaljenosti između točaka bilo 'ravnim' ([Euklidskim](https://wikipedia.org/wiki/Euclidean_geometry)) ili 'ne-ravnim' (ne-Euklidskim) geometrijskim metodama. 
+> Izvedeno iz matematičke terminologije, ne-ravna vs. ravna geometrija odnosi se na mjerenje udaljenosti između točaka pomoću 'ravnih' ([Euklidskih](https://wikipedia.org/wiki/Euclidean_geometry)) ili 'ne-ravnih' (ne-Euklidskih) geometrijskih metoda.
 >
->'Ravna' u ovom kontekstu odnosi se na Euklidsku geometriju (dijelovi koje se uče kao 'ravninska' geometrija), a ne-ravna se odnosi na ne-Euklidsku geometriju. Što geometrija ima veze sa strojnim učenjem? Pa, kao dva područja koja su ukorijenjena u matematici, mora postojati zajednički način mjerenja udaljenosti između točaka u klasterima, a to se može učiniti na 'ravni' ili 'ne-ravni' način, ovisno o prirodi podataka. [Euklidske udaljenosti](https://wikipedia.org/wiki/Euclidean_distance) mjere se kao duljina segmenta linije između dvije točke. [Ne-Euklidske udaljenosti](https://wikipedia.org/wiki/Non-Euclidean_geometry) mjere se duž krivulje. Ako se vaši podaci, vizualizirani, čine da ne postoje na ravnini, možda ćete trebati koristiti specijalizirani algoritam za njihovu obradu.
+> 'Ravno' u ovom kontekstu odnosi se na Euklidsku geometriju (dijelovi koje se uče kao 'ravninska' geometrija), a ne-ravno na ne-Euklidsku geometriju. Što geometrija ima s učenjem stroja? Kao dva područja utemeljena u matematici, mora postojati zajednički način za mjerenje udaljenosti između točaka u skupinama, a to se može učiniti 'ravnim' ili 'ne-ravnim' načinom, ovisno o prirodi podataka. [Euklidske udaljenosti](https://wikipedia.org/wiki/Euclidean_distance) mjere se kao duljina duž segmenta između dvije točke. [Ne-Euklidske udaljenosti](https://wikipedia.org/wiki/Non-Euclidean_geometry) mjere se duž krivulje. Ako vaši podaci, vizualizirani, ne postoje na ravnini, možda ćete trebati koristiti specijalizirani algoritam za njihovo rukovanje.
 >
-![Infografika ravne vs. ne-ravne geometrije](../../../../5-Clustering/1-Visualize/images/flat-nonflat.png)
-> Infografika od [Dasani Madipalli](https://twitter.com/dasani_decoded)
+![Infografika ravna vs neravna geometrija](../../../../translated_images/hr/flat-nonflat.d1c8c6e2a96110c1.webp)
+> Infografika autora [Dasani Madipalli](https://twitter.com/dasani_decoded)
 > 
 > 🎓 ['Udaljenosti'](https://web.stanford.edu/class/cs345a/slides/12-clustering.pdf)
 > 
-> Klasteri su definirani njihovom matricom udaljenosti, npr. udaljenostima između točaka. Ova udaljenost može se mjeriti na nekoliko načina. Euklidski klasteri definirani su prosjekom vrijednosti točaka i sadrže 'centroid' ili središnju točku. Udaljenosti se stoga mjere udaljenosti do tog centroida. Ne-Euklidske udaljenosti odnose se na 'clustroid', točku najbližu drugim točkama. Clustroidi se pak mogu definirati na različite načine.
+> Skupine se definiraju njihovom matricom udaljenosti, tj. udaljenostima između točaka. Ta se udaljenost može mjeriti na nekoliko načina. Euklidske skupine definiraju se prosjekom vrijednosti točaka i sadrže 'centroid' ili središnju točku. Udaljenosti se tako mjere do tog centroida. Ne-euklidske udaljenosti odnose se na 'klustroide', točku najbližu drugim točkama. Klustroidi se pak mogu definirati na različite načine.
 > 
 > 🎓 ['Ograničeno'](https://wikipedia.org/wiki/Constrained_clustering)
 > 
-> [Ograničeno klasteriranje](https://web.cs.ucdavis.edu/~davidson/Publications/ICDMTutorial.pdf) uvodi 'polu-nadzirano' učenje u ovu nenadziranu metodu. Odnosi između točaka označeni su kao 'ne može se povezati' ili 'mora se povezati' pa se neka pravila nameću skupu podataka.
+> [Ograničeno grupiranje](https://web.cs.ucdavis.edu/~davidson/Publications/ICDMTutorial.pdf) uvodi 'polunadzirano' učenje u ovu nenadziranu metodu. Odnosi između točaka označavaju se kao 'ne može se povezati' ili 'mora se povezati', pa se na skup podataka nameću neka pravila.
 >
->Primjer: Ako se algoritam pusti na skup neoznačenih ili polu-označenih podataka, klasteri koje proizvede mogu biti loše kvalitete. U gore navedenom primjeru, klasteri bi mogli grupirati 'okrugle glazbene stvari' i 'kvadratne glazbene stvari' i 'trokutaste stvari' i 'kolačiće'. Ako se daju neka ograničenja ili pravila koja treba slijediti ("stavka mora biti izrađena od plastike", "stavka mora moći proizvoditi glazbu") to može pomoći 'ograničiti' algoritam da donosi bolje odluke.
+>Primjer: Ako se algoritam pusti slobodno na skup neoznačenih ili poluoznačenih podataka, skupine koje stvara mogu biti loše kvalitete. U prethodnom primjeru, skupine bi mogle objediniti 'okrugle glazbene stvari', 'kockaste glazbene stvari', 'trokutaste stvari' i 'kolačiće'. Ako se dodaju neka ograničenja ili pravila koje treba slijediti ("proizvod mora biti od plastike", "proizvod treba moći proizvoditi glazbu"), to može pomoći algoritmu da napravi bolje izbore.
 > 
 > 🎓 'Gustoća'
 > 
-> Podaci koji su 'bučni' smatraju se 'gustima'. Udaljenosti između točaka u svakom od njegovih klastera mogu se pokazati, pri ispitivanju, više ili manje gustima, ili 'zbijenima', pa se ti podaci moraju analizirati odgovarajućom metodom klasteriranja. [Ovaj članak](https://www.kdnuggets.com/2020/02/understanding-density-based-clustering.html) pokazuje razliku između korištenja K-Means klasteriranja i HDBSCAN algoritama za istraživanje bučnog skupa podataka s nejednakom gustoćom klastera.
+> Podaci koji su 'bučni' smatraju se 'gustom' skupinom. Udaljenosti između točaka u svakoj od njihovih skupina mogu se pokazati prilikom proučavanja kao više ili manje guste, ili 'zbijene', pa te podatke treba analizirati odgovarajućom metodom grupiranja. [Ovaj članak](https://www.kdnuggets.com/2020/02/understanding-density-based-clustering.html) prikazuje razliku između korištenja K-Means grupiranja i HDBSCAN algoritama za istraživanje bučnog skupa podataka s nejednakom gustoćom skupina.
 
-## Algoritmi klasteriranja
+## Algoritmi za grupiranje
 
-Postoji preko 100 algoritama klasteriranja, a njihova upotreba ovisi o prirodi podataka. Razgovarajmo o nekima od glavnih:
+Postoji preko 100 algoritama za grupiranje, a njihova upotreba ovisi o prirodi raspoloživih podataka. Razmotrimo neke od glavnih:
 
-- **Hijerarhijsko klasteriranje**. Ako se objekt klasificira prema njegovoj blizini obližnjem objektu, a ne onom udaljenijem, klasteri se formiraju na temelju udaljenosti članova od i prema drugim objektima. Scikit-learn-ovo aglomerativno klasteriranje je hijerarhijsko.
+- **Hijerarhijsko grupiranje**. Ako se objekt klasificira prema svojoj blizini bližem objektu, a ne onom udaljenijem, skupine se formiraju na temelju udaljenosti članova prema drugim objektima. Agglomerativno grupiranje u Scikit-learnu je hijerarhijsko.
 
-   ![Infografika hijerarhijskog klasteriranja](../../../../5-Clustering/1-Visualize/images/hierarchical.png)
-   > Infografika od [Dasani Madipalli](https://twitter.com/dasani_decoded)
+   ![Infografika hijerarhijsko grupiranje](../../../../translated_images/hr/hierarchical.bf59403aa43c8c47.webp)
+   > Infografika autora [Dasani Madipalli](https://twitter.com/dasani_decoded)
 
-- **Centroid klasteriranje**. Ovaj popularni algoritam zahtijeva odabir 'k', ili broja klastera koje treba formirati, nakon čega algoritam određuje središnju točku klastera i okuplja podatke oko te točke. [K-means klasteriranje](https://wikipedia.org/wiki/K-means_clustering) je popularna verzija centroid klasteriranja. Središte se određuje prema najbližem prosjeku, otuda i naziv. Kvadratna udaljenost od klastera se minimizira.
+- **Centroidno grupiranje**. Ovaj popularni algoritam zahtijeva odabir 'k', odnosno broja skupina za formiranje, nakon čega algoritam određuje središnju točku skupine i okuplja podatke oko te točke. [K-means grupiranje](https://wikipedia.org/wiki/K-means_clustering) je popularna verzija centroidnog grupiranja. Centar se određuje prema najbližem prosjeku, odakle i naziv. Kvadratna udaljenost od skupine se minimizira.
 
-   ![Infografika centroid klasteriranja](../../../../5-Clustering/1-Visualize/images/centroid.png)
-   > Infografika od [Dasani Madipalli](https://twitter.com/dasani_decoded)
+   ![Infografika centroidno grupiranje](../../../../translated_images/hr/centroid.097fde836cf6c918.webp)
+   > Infografika autora [Dasani Madipalli](https://twitter.com/dasani_decoded)
 
-- **Klasteriranje temeljeno na distribuciji**. Temeljeno na statističkom modeliranju, klasteriranje temeljeno na distribuciji usredotočuje se na određivanje vjerojatnosti da podatkovna točka pripada klasteru i dodjeljuje je u skladu s tim. Metode Gaussian mješavina pripadaju ovom tipu.
+- **Grupiranje temeljeno na distribuciji**. Temeljeno na statističkom modeliranju, grupiranje temeljeno na distribuciji fokusira se na određivanje vjerojatnosti da podatkovna točka pripada skupini i odgovarajuću joj dodjelu. Metode Gaussovih mješavina pripadaju ovoj vrsti.
 
-- **Klasteriranje temeljeno na gustoći**. Podatkovne točke dodjeljuju se klasterima na temelju njihove gustoće, odnosno njihovog grupiranja jedne oko drugih. Podatkovne točke udaljene od grupe smatraju se iznimkama ili šumom. DBSCAN, Mean-shift i OPTICS pripadaju ovom tipu klasteriranja.
+- **Grupiranje temeljeno na gustoći**. Podatkovnim točkama se dodjeljuju skupine prema njihovoj gustoći, odnosno oko njihove međusobne grupacije. Podatkovne točke udaljene od grupe smatraju se odmetnicima ili šumom. DBSCAN, Mean-shift i OPTICS pripadaju ovoj vrsti grupiranja.
 
-- **Klasteriranje temeljeno na mreži**. Za višedimenzionalne skupove podataka, stvara se mreža i podaci se dijele među ćelijama mreže, čime se stvaraju klasteri.
+- **Grupiranje temeljeno na mreži**. Za višedimenzionalne skupove podataka, stvara se mreža te se podaci dijele među ćelijama mreže, čime se stvaraju skupine.
 
-## Vježba - klasterirajte svoje podatke
+## Vježba - grupirajte svoje podatke
 
-Klasteriranje kao tehnika uvelike se olakšava pravilnom vizualizacijom, pa krenimo s vizualizacijom naših glazbenih podataka. Ova vježba pomoći će nam odlučiti koju od metoda klasteriranja najefikasnije koristiti za prirodu ovih podataka.
+Grupiranju kao tehnici znatno pomaže pravilna vizualizacija, pa započnimo vizualizacijom podataka o glazbi. Ova vježba pomoći će nam odlučiti koju od metoda grupiranja trebamo najefikasnije koristiti za prirodu ovih podataka.
 
 1. Otvorite datoteku [_notebook.ipynb_](https://github.com/microsoft/ML-For-Beginners/blob/main/5-Clustering/1-Visualize/notebook.ipynb) u ovoj mapi.
 
@@ -110,7 +109,7 @@ Klasteriranje kao tehnika uvelike se olakšava pravilnom vizualizacijom, pa kren
     !pip install seaborn
     ```
 
-1. Dodajte podatke o pjesmama iz [_nigerian-songs.csv_](https://github.com/microsoft/ML-For-Beginners/blob/main/5-Clustering/data/nigerian-songs.csv). Učitajte dataframe s nekim podacima o pjesmama. Pripremite se za istraživanje ovih podataka uvozom biblioteka i ispisivanjem podataka:
+1. Dodajte podatke o pjesmama iz [_nigerian-songs.csv_](https://github.com/microsoft/ML-For-Beginners/blob/main/5-Clustering/data/nigerian-songs.csv). Učitajte dataframe s nekim podacima o pjesmama. Pripremite se za istraživanje ovih podataka uvozom knjižnica i ispisivanjem podataka:
 
     ```python
     import matplotlib.pyplot as plt
@@ -120,17 +119,17 @@ Klasteriranje kao tehnika uvelike se olakšava pravilnom vizualizacijom, pa kren
     df.head()
     ```
 
-    Provjerite prvih nekoliko redaka podataka:
+    Provjerite prvih nekoliko redova podataka:
 
-    |     | naziv                    | album                        | izvođač             | glavni žanr izvođača | datum izlaska | duljina | popularnost | plesnost     | akustičnost | energija | instrumentalnost | živost   | glasnoća | govornost   | tempo   | vremenski potpis |
-    | --- | ------------------------ | ---------------------------- | ------------------- | -------------------- | ------------- | ------- | ----------- | ------------ | ----------- | -------- | ---------------- | -------- | -------- | ----------- | ------- | ---------------- |
-    | 0   | Sparky                   | Mandy & The Jungle           | Cruel Santino       | alternativni r&b     | 2019          | 144000  | 48          | 0.666        | 0.851       | 0.42     | 0.534            | 0.11     | -6.699   | 0.0829      | 133.015 | 5              |
-    | 1   | shuga rush               | EVERYTHING YOU HEARD IS TRUE | Odunsi (The Engine) | afropop              | 2020          | 89488   | 30          | 0.71         | 0.0822      | 0.683    | 0.000169         | 0.101    | -5.64    | 0.36        | 129.993 | 3              |
-| 2   | LITT!                    | LITT!                        | AYLØ                | indie r&b        | 2018         | 207758 | 40         | 0.836        | 0.272        | 0.564  | 0.000537         | 0.11     | -7.127   | 0.0424      | 130.005 | 4              |
-| 3   | Confident / Feeling Cool | Enjoy Your Life              | Lady Donli          | nigerian pop     | 2019         | 175135 | 14         | 0.894        | 0.798        | 0.611  | 0.000187         | 0.0964   | -4.961   | 0.113       | 111.087 | 4              |
-| 4   | wanted you               | rare.                        | Odunsi (The Engine) | afropop          | 2018         | 152049 | 25         | 0.702        | 0.116        | 0.833  | 0.91             | 0.348    | -6.044   | 0.0447      | 105.115 | 4              |
+    |     | name                     | album                        | artist              | artist_top_genre | release_date | length | popularity | danceability | acousticness | energy | instrumentalness | liveness | loudness | speechiness | tempo   | time_signature |
+    | --- | ------------------------ | ---------------------------- | ------------------- | ---------------- | ------------ | ------ | ---------- | ------------ | ------------ | ------ | ---------------- | -------- | -------- | ----------- | ------- | -------------- |
+    | 0   | Sparky                   | Mandy & The Jungle           | Cruel Santino       | alternative r&b  | 2019         | 144000 | 48         | 0.666        | 0.851        | 0.42   | 0.534            | 0.11     | -6.699   | 0.0829      | 133.015 | 5              |
+    | 1   | shuga rush               | EVERYTHING YOU HEARD IS TRUE | Odunsi (The Engine) | afropop          | 2020         | 89488  | 30         | 0.71         | 0.0822       | 0.683  | 0.000169         | 0.101    | -5.64    | 0.36        | 129.993 | 3              |
+    | 2   | LITT!                    | LITT!                        | AYLØ                | indie r&b        | 2018         | 207758 | 40         | 0.836        | 0.272        | 0.564  | 0.000537         | 0.11     | -7.127   | 0.0424      | 130.005 | 4              |
+    | 3   | Confident / Feeling Cool | Enjoy Your Life              | Lady Donli          | nigerian pop     | 2019         | 175135 | 14         | 0.894        | 0.798        | 0.611  | 0.000187         | 0.0964   | -4.961   | 0.113       | 111.087 | 4              |
+    | 4   | wanted you               | rare.                        | Odunsi (The Engine) | afropop          | 2018         | 152049 | 25         | 0.702        | 0.116        | 0.833  | 0.91             | 0.348    | -6.044   | 0.0447      | 105.115 | 4              |
 
-1. Dobijte informacije o dataframeu pozivajući `info()`:
+1. Dobite neke informacije o dataframeu, pozivom `info()`:
 
     ```python
     df.info()
@@ -164,7 +163,7 @@ Klasteriranje kao tehnika uvelike se olakšava pravilnom vizualizacijom, pa kren
     memory usage: 66.4+ KB
     ```
 
-1. Provjerite ima li null vrijednosti pozivajući `isnull()` i provjerite da je zbroj 0:
+1. Dvaput provjerite postoje li null vrijednosti, pozivanjem `isnull()` i provjerom da je suma 0:
 
     ```python
     df.isnull().sum()
@@ -209,11 +208,11 @@ Klasteriranje kao tehnika uvelike se olakšava pravilnom vizualizacijom, pa kren
     | 75%   | 2017         | 242098.5    | 31         | 0.8295       | 0.403        | 0.87575  | 0.000234         | 0.164    | -3.331    | 0.177       | 125.03925  | 4              |
     | max   | 2020         | 511738      | 73         | 0.966        | 0.954        | 0.995    | 0.91             | 0.811    | 0.582     | 0.514       | 206.007    | 5              |
 
-> 🤔 Ako radimo s klasteriranjem, nesuperviziranom metodom koja ne zahtijeva označene podatke, zašto prikazujemo ove podatke s oznakama? Tijekom faze istraživanja podataka, oznake su korisne, ali nisu nužne za rad algoritama klasteriranja. Mogli biste jednostavno ukloniti zaglavlja stupaca i referirati se na podatke prema broju stupca.
+> 🤔 Ako radimo sa klasteriranjem, ne-nadziranim metodom koja ne zahtijeva označene podatke, zašto prikazujemo ove podatke s oznakama? U fazi istraživanja podataka koristi su korisni, ali nisu potrebni za rad klaster algoritama. Mogli biste jednako tako ukloniti zaglavlja stupaca i referirati se na podatke preko broja stupca.
 
-Pogledajte opće vrijednosti podataka. Primijetite da popularnost može biti '0', što pokazuje pjesme koje nemaju rangiranje. Uskoro ćemo ih ukloniti.
+Pogledajte opće vrijednosti podataka. Napomena da popularnost može biti '0', što znači pjesme koje nemaju rangiranje. Uskoro ćemo ih ukloniti.
 
-1. Koristite barplot za otkrivanje najpopularnijih žanrova:
+1. Upotrijebite barplot da biste saznali najpopularnije žanrove:
 
     ```python
     import seaborn as sns
@@ -225,13 +224,13 @@ Pogledajte opće vrijednosti podataka. Primijetite da popularnost može biti '0'
     plt.title('Top genres',color = 'blue')
     ```
 
-    ![najpopularniji](../../../../5-Clustering/1-Visualize/images/popular.png)
+    ![most popular](../../../../translated_images/hr/popular.9c48d84b3386705f.webp)
 
-✅ Ako želite vidjeti više top vrijednosti, promijenite top `[:5]` na veću vrijednost ili ga uklonite da vidite sve.
+✅ Ako želite vidjeti više vrhunskih vrijednosti, promijenite top `[:5]` u veći broj, ili ga uklonite da vidite sve.
 
-Napomena: kada je top žanr opisan kao 'Missing', to znači da ga Spotify nije klasificirao, pa ga uklonimo.
+Napomena, kada je vrhunski žanr opisan kao 'Missing', to znači da ga Spotify nije klasificirao, pa ga se riješimo.
 
-1. Uklonite nedostajuće podatke filtriranjem:
+1. Uklonite nedostajuće podatke filtriranjem
 
     ```python
     df = df[df['artist_top_genre'] != 'Missing']
@@ -244,9 +243,9 @@ Napomena: kada je top žanr opisan kao 'Missing', to znači da ga Spotify nije k
 
     Sada ponovno provjerite žanrove:
 
-    ![svi žanrovi](../../../../5-Clustering/1-Visualize/images/all-genres.png)
+    ![most popular](../../../../translated_images/hr/all-genres.1d56ef06cefbfcd6.webp)
 
-1. Tri najpopularnija žanra dominiraju ovim skupom podataka. Usredotočimo se na `afro dancehall`, `afropop` i `nigerian pop`, dodatno filtrirajmo skup podataka kako bismo uklonili sve s vrijednošću popularnosti 0 (što znači da nije klasificirano s popularnošću u skupu podataka i može se smatrati šumom za naše svrhe):
+1. Daleko najdominantnija su tri žanra u ovom skupu podataka. Usredotočimo se na `afro dancehall`, `afropop` i `nigerian pop`, dodatno filtrirajte skup podataka da uklonite sve s vrijednošću popularnosti 0 (što znači da nije klasificiran s popularnošću u skupu podataka i može se smatrati bukom za naše svrhe):
 
     ```python
     df = df[(df['artist_top_genre'] == 'afro dancehall') | (df['artist_top_genre'] == 'afropop') | (df['artist_top_genre'] == 'nigerian pop')]
@@ -258,7 +257,7 @@ Napomena: kada je top žanr opisan kao 'Missing', to znači da ga Spotify nije k
     plt.title('Top genres',color = 'blue')
     ```
 
-1. Brzo testirajte koreliraju li podaci na neki posebno jak način:
+1. Napravite brzi test da vidite postoji li jaka korelacija među podatcima:
 
     ```python
     corrmat = df.corr(numeric_only=True)
@@ -266,21 +265,21 @@ Napomena: kada je top žanr opisan kao 'Missing', to znači da ga Spotify nije k
     sns.heatmap(corrmat, vmax=.8, square=True)
     ```
 
-    ![korelacije](../../../../5-Clustering/1-Visualize/images/correlation.png)
+    ![correlations](../../../../translated_images/hr/correlation.a9356bb798f5eea5.webp)
 
-    Jedina jaka korelacija je između `energy` i `loudness`, što nije previše iznenađujuće, s obzirom na to da je glasna glazba obično prilično energična. Inače, korelacije su relativno slabe. Bit će zanimljivo vidjeti što algoritam klasteriranja može napraviti s ovim podacima.
+    Jedina jaka korelacija je između `energy` i `loudness`, što nije iznenađujuće, s obzirom da je glasna glazba obično prilično energična. Inače, korelacije su relativno slabe. Bit će zanimljivo vidjeti što algoritam klasteriranja može izvući iz ovih podataka.
 
-    > 🎓 Napomena: korelacija ne implicira uzročnost! Imamo dokaz korelacije, ali ne i dokaz uzročnosti. [Zabavna web stranica](https://tylervigen.com/spurious-correlations) ima vizuale koji naglašavaju ovu točku.
+    > 🎓 Napomena da korelacija ne podrazumijeva uzročnost! Imamo dokaz korelacije, ali ne i dokaz uzročnosti. [Zabavna web stranica](https://tylervigen.com/spurious-correlations) ima neke vizuale koji naglašavaju ovu točku.
 
-Postoji li konvergencija u ovom skupu podataka oko percepcije popularnosti i plesnosti pjesme? FacetGrid pokazuje da postoje koncentrični krugovi koji se podudaraju, bez obzira na žanr. Može li biti da se nigerijski ukusi konvergiraju na određenoj razini plesnosti za ovaj žanr?
+Postoji li konvergencija u ovom skupu podataka oko percipirane popularnosti i plesnosti pjesme? FacetGrid pokazuje da postoje koncentrični krugovi koji se poklapaju, bez obzira na žanr. Može li biti da se nigerijski ukusi konvergiraju na određenoj razini plesnosti za ovaj žanr?
 
-✅ Isprobajte različite podatkovne točke (energy, loudness, speechiness) i više ili različite glazbene žanrove. Što možete otkriti? Pogledajte tablicu `df.describe()` kako biste vidjeli opći raspon podatkovnih točaka.
+✅ Isprobajte različite točke podataka (energija, glasnoća, govorljivost) i više ili različitih glazbenih žanrova. Što možete otkriti? Pogledajte tablicu `df.describe()` da vidite opći raspon podataka.
 
 ### Vježba - distribucija podataka
 
 Jesu li ova tri žanra značajno različita u percepciji njihove plesnosti, na temelju njihove popularnosti?
 
-1. Ispitajte distribuciju podataka za naša tri najbolja žanra za popularnost i plesnost duž zadane x i y osi.
+1. Ispitajte distribuciju podataka naših top tri žanra za popularnost i plesnost duž zadane x i y osi.
 
     ```python
     sns.set_theme(style="ticks")
@@ -292,13 +291,13 @@ Jesu li ova tri žanra značajno različita u percepciji njihove plesnosti, na t
     )
     ```
 
-    Možete otkriti koncentrične krugove oko opće točke konvergencije, pokazujući distribuciju točaka.
+    Možete otkriti koncentrične krugove oko opće točke konvergencije, što pokazuje raspodjelu točaka.
 
-    > 🎓 Napomena: ovaj primjer koristi KDE (Kernel Density Estimate) graf koji predstavlja podatke koristeći kontinuiranu krivulju gustoće vjerojatnosti. To nam omogućuje interpretaciju podataka pri radu s višestrukim distribucijama.
+    > 🎓 Napomena da ovaj primjer koristi KDE (Kernel Density Estimate) graf koji predstavlja podatke korištenjem kontinuirane krivulje gustoće vjerojatnosti. To nam omogućava interpretaciju podataka kada radimo s višestrukim distribucijama.
 
-    Općenito, tri žanra se labavo usklađuju u smislu njihove popularnosti i plesnosti. Određivanje klastera u ovim labavo usklađenim podacima bit će izazov:
+    Općenito, tri žanra se labavo poravnavaju u pogledu njihove popularnosti i plesnosti. Određivanje klastera u ovom labavo poravnanom skupu podataka bit će izazov:
 
-    ![distribucija](../../../../5-Clustering/1-Visualize/images/distribution.png)
+    ![distribution](../../../../translated_images/hr/distribution.9be11df42356ca95.webp)
 
 1. Napravite scatter plot:
 
@@ -308,31 +307,33 @@ Jesu li ova tri žanra značajno različita u percepciji njihove plesnosti, na t
        .add_legend()
     ```
 
-    Scatterplot istih osi pokazuje sličan obrazac konvergencije.
+    Scatterplot istih osi pokazuje sličan obrazac konvergencije
 
-    ![Facetgrid](../../../../5-Clustering/1-Visualize/images/facetgrid.png)
+    ![Facetgrid](../../../../translated_images/hr/facetgrid.9b2e65ce707eba1f.webp)
 
-Općenito, za klasteriranje možete koristiti scatterplotove za prikaz klastera podataka, pa je ovladavanje ovom vrstom vizualizacije vrlo korisno. U sljedećoj lekciji, uzet ćemo ove filtrirane podatke i koristiti k-means klasteriranje za otkrivanje grupa u ovim podacima koje se preklapaju na zanimljive načine.
+Općenito, za klasteriranje možete koristiti scatter plotove za prikaz klastera podataka, pa je ovladavanje ovom vrstom vizualizacije vrlo korisno. U sljedećem ćemo satu uzeti ove filtrirane podatke i koristiti k-means klasteriranje da otkrijemo skupine u ovim podacima koje se na zanimljiv način preklapaju.
 
 ---
 
 ## 🚀Izazov
 
-U pripremi za sljedeću lekciju, napravite grafikon o raznim algoritmima klasteriranja koje biste mogli otkriti i koristiti u produkcijskom okruženju. Koje vrste problema klasteriranje pokušava riješiti?
+U pripremi za sljedeći sat, napravite grafikon o različitim algoritmima klasteriranja koje biste mogli otkriti i koristiti u proizvodnom okruženju. Koje vrste problema klasteriranje pokušava riješiti?
 
-## [Post-lecture kviz](https://ff-quizzes.netlify.app/en/ml/)
+## [Kviz nakon predavanja](https://ff-quizzes.netlify.app/en/ml/)
 
 ## Pregled i samostalno učenje
 
-Prije nego što primijenite algoritme klasteriranja, kao što smo naučili, dobro je razumjeti prirodu vašeg skupa podataka. Pročitajte više o ovoj temi [ovdje](https://www.kdnuggets.com/2019/10/right-clustering-algorithm.html)
+Prije nego što primijenite algoritme klasteriranja, kao što smo naučili, dobra je ideja razumjeti prirodu vašeg skupa podataka. Više o ovoj temi pročitajte [ovdje](https://www.kdnuggets.com/2019/10/right-clustering-algorithm.html)
 
 [Ovaj koristan članak](https://www.freecodecamp.org/news/8-clustering-algorithms-in-machine-learning-that-all-data-scientists-should-know/) vodi vas kroz različite načine na koje se različiti algoritmi klasteriranja ponašaju, s obzirom na različite oblike podataka.
 
 ## Zadatak
 
-[Istrazite druge vizualizacije za klasteriranje](assignment.md)
+[Istražite druge vizualizacije za klasteriranje](assignment.md)
 
 ---
 
-**Odricanje od odgovornosti**:  
-Ovaj dokument je preveden pomoću AI usluge za prevođenje [Co-op Translator](https://github.com/Azure/co-op-translator). Iako nastojimo osigurati točnost, imajte na umu da automatski prijevodi mogu sadržavati pogreške ili netočnosti. Izvorni dokument na izvornom jeziku treba smatrati autoritativnim izvorom. Za ključne informacije preporučuje se profesionalni prijevod od strane ljudskog prevoditelja. Ne preuzimamo odgovornost za bilo kakve nesporazume ili pogrešne interpretacije koje proizlaze iz korištenja ovog prijevoda.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Napomena**:
+Ovaj dokument je preveden korištenjem AI prevoditeljskog servisa [Co-op Translator](https://github.com/Azure/co-op-translator). Iako težimo točnosti, imajte na umu da automatski prijevodi mogu sadržavati greške ili netočnosti. Izvorni dokument na izvornom jeziku treba smatrati autoritativnim izvorom. Za važne informacije preporuča se profesionalni ljudski prijevod. Nismo odgovorni za bilo kakva nesporazumevanja ili pogrešne interpretacije koje proizlaze iz korištenja ovog prijevoda.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

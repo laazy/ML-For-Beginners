@@ -1,76 +1,76 @@
-# Pengantar Pembelajaran Mesin
+# Pengenalan pembelajaran mesin
 
-## [Kuis Pra-Pelajaran](https://ff-quizzes.netlify.app/en/ml/)
+## [Kuis sebelum kuliah](https://ff-quizzes.netlify.app/en/ml/)
 
 ---
 
-[![ML untuk Pemula - Pengantar Pembelajaran Mesin untuk Pemula](https://img.youtube.com/vi/6mSx_KJxcHI/0.jpg)](https://youtu.be/6mSx_KJxcHI "ML untuk Pemula - Pengantar Pembelajaran Mesin untuk Pemula")
+[![ML untuk pemula - Pengenalan Pembelajaran Mesin untuk Pemula](https://img.youtube.com/vi/6mSx_KJxcHI/0.jpg)](https://youtu.be/6mSx_KJxcHI "ML untuk pemula - Pengenalan Pembelajaran Mesin untuk Pemula")
 
 > 🎥 Klik gambar di atas untuk video singkat yang membahas pelajaran ini.
 
-Selamat datang di kursus pembelajaran mesin klasik untuk pemula! Baik Anda benar-benar baru dalam topik ini, atau seorang praktisi ML berpengalaman yang ingin menyegarkan pengetahuan di area tertentu, kami senang Anda bergabung dengan kami! Kami ingin menciptakan tempat awal yang ramah untuk studi ML Anda dan akan senang mengevaluasi, merespons, dan mengintegrasikan [masukan Anda](https://github.com/microsoft/ML-For-Beginners/discussions).
+Selamat datang di kursus pembelajaran mesin klasik untuk pemula ini! Apakah Anda benar-benar baru dalam topik ini, atau seorang praktisi ML berpengalaman yang ingin menyegarkan pengetahuan di suatu bidang, kami senang Anda bergabung! Kami ingin menciptakan tempat awal yang ramah untuk studi ML Anda dan kami bersedia mengevaluasi, merespon, dan menggabungkan [masukan](https://github.com/microsoft/ML-For-Beginners/discussions) Anda.
 
-[![Pengantar ML](https://img.youtube.com/vi/h0e2HAPTGF4/0.jpg)](https://youtu.be/h0e2HAPTGF4 "Pengantar ML")
+[![Pengenalan ke ML](https://img.youtube.com/vi/h0e2HAPTGF4/0.jpg)](https://youtu.be/h0e2HAPTGF4 "Pengenalan ke ML")
 
 > 🎥 Klik gambar di atas untuk video: John Guttag dari MIT memperkenalkan pembelajaran mesin
 
 ---
-## Memulai dengan Pembelajaran Mesin
+## Memulai dengan pembelajaran mesin
 
-Sebelum memulai kurikulum ini, Anda perlu memastikan komputer Anda siap untuk menjalankan notebook secara lokal.
+Sebelum memulai kurikulum ini, Anda perlu menyiapkan komputer Anda agar siap menjalankan notebook secara lokal.
 
-- **Konfigurasikan komputer Anda dengan video ini**. Gunakan tautan berikut untuk mempelajari [cara menginstal Python](https://youtu.be/CXZYvNRIAKM) di sistem Anda dan [menyiapkan editor teks](https://youtu.be/EU8eayHWoZg) untuk pengembangan.
-- **Pelajari Python**. Disarankan juga untuk memiliki pemahaman dasar tentang [Python](https://docs.microsoft.com/learn/paths/python-language/?WT.mc_id=academic-77952-leestott), bahasa pemrograman yang berguna bagi ilmuwan data dan yang akan kita gunakan dalam kursus ini.
-- **Pelajari Node.js dan JavaScript**. Kami juga menggunakan JavaScript beberapa kali dalam kursus ini saat membangun aplikasi web, jadi Anda perlu menginstal [node](https://nodejs.org) dan [npm](https://www.npmjs.com/), serta memiliki [Visual Studio Code](https://code.visualstudio.com/) untuk pengembangan Python dan JavaScript.
-- **Buat akun GitHub**. Karena Anda menemukan kami di [GitHub](https://github.com), Anda mungkin sudah memiliki akun, tetapi jika belum, buatlah satu akun dan kemudian fork kurikulum ini untuk digunakan sendiri. (Jangan ragu untuk memberi kami bintang juga 😊)
-- **Jelajahi Scikit-learn**. Kenali [Scikit-learn](https://scikit-learn.org/stable/user_guide.html), kumpulan pustaka ML yang akan kita referensikan dalam pelajaran ini.
-
----
-## Apa itu Pembelajaran Mesin?
-
-Istilah 'pembelajaran mesin' adalah salah satu istilah yang paling populer dan sering digunakan saat ini. Ada kemungkinan besar Anda pernah mendengar istilah ini setidaknya sekali jika Anda memiliki sedikit keterkaitan dengan teknologi, tidak peduli di bidang apa Anda bekerja. Namun, mekanisme pembelajaran mesin adalah misteri bagi kebanyakan orang. Bagi pemula pembelajaran mesin, subjek ini kadang-kadang bisa terasa membingungkan. Oleh karena itu, penting untuk memahami apa sebenarnya pembelajaran mesin itu, dan mempelajarinya langkah demi langkah melalui contoh praktis.
+- **Konfigurasikan mesin Anda dengan video ini**. Gunakan tautan berikut untuk belajar [cara menginstal Python](https://youtu.be/CXZYvNRIAKM) di sistem Anda dan [menyiapkan editor teks](https://youtu.be/EU8eayHWoZg) untuk pengembangan.
+- **Belajar Python**. Disarankan juga untuk memiliki pemahaman dasar tentang [Python](https://docs.microsoft.com/learn/paths/python-language/?WT.mc_id=academic-77952-leestott), bahasa pemrograman yang berguna bagi ilmuwan data yang kami gunakan di kursus ini.
+- **Belajar Node.js dan JavaScript**. Kami juga menggunakan JavaScript beberapa kali dalam kursus ini saat membangun aplikasi web, jadi Anda perlu menginstal [node](https://nodejs.org) dan [npm](https://www.npmjs.com/), serta memiliki [Visual Studio Code](https://code.visualstudio.com/) untuk pengembangan baik Python maupun JavaScript.
+- **Buat akun GitHub**. Karena Anda menemukan kami di [GitHub](https://github.com), mungkin Anda sudah memiliki akun, tapi jika belum, buatlah dan kemudian fork kurikulum ini untuk digunakan sendiri. (Jangan lupa untuk memberi bintang juga ya 😊)
+- **Jelajahi Scikit-learn**. Biasakan diri Anda dengan [Scikit-learn](https://scikit-learn.org/stable/user_guide.html), kumpulan pustaka ML yang kami rujuk dalam pelajaran ini.
 
 ---
-## Kurva Hype
+## Apa itu pembelajaran mesin?
 
-![ml hype curve](../../../../1-Introduction/1-intro-to-ML/images/hype.png)
+Istilah 'pembelajaran mesin' adalah salah satu istilah paling populer dan sering digunakan saat ini. Ada kemungkinan besar Anda pernah mendengar istilah ini setidaknya sekali jika Anda memiliki sedikit pengetahuan tentang teknologi, tidak peduli di bidang apa Anda bekerja. Namun mekanisme pembelajaran mesin adalah misteri bagi kebanyakan orang. Bagi pemula pembelajaran mesin, subjek ini kadang bisa terasa menakutkan. Oleh karena itu, penting untuk memahami apa sebenarnya pembelajaran mesin itu, dan mempelajarinya langkah demi langkah melalui contoh praktis.
+
+---
+## Kurva hype
+
+![kurva hype ml](../../../../translated_images/id/hype.07183d711a17aafe.webp)
 
 > Google Trends menunjukkan 'kurva hype' terbaru dari istilah 'pembelajaran mesin'
 
 ---
-## Alam Semesta yang Misterius
+## Dunia yang penuh misteri
 
-Kita hidup di alam semesta yang penuh dengan misteri yang menakjubkan. Ilmuwan hebat seperti Stephen Hawking, Albert Einstein, dan banyak lainnya telah mendedikasikan hidup mereka untuk mencari informasi bermakna yang mengungkap misteri dunia di sekitar kita. Ini adalah kondisi manusia untuk belajar: seorang anak manusia belajar hal-hal baru dan mengungkap struktur dunia mereka tahun demi tahun saat mereka tumbuh dewasa.
-
----
-## Otak Anak
-
-Otak dan indra seorang anak merasakan fakta-fakta di sekitarnya dan secara bertahap mempelajari pola-pola tersembunyi dalam kehidupan yang membantu anak tersebut menyusun aturan logis untuk mengenali pola-pola yang telah dipelajari. Proses pembelajaran otak manusia membuat manusia menjadi makhluk hidup paling canggih di dunia ini. Belajar secara terus-menerus dengan menemukan pola-pola tersembunyi dan kemudian berinovasi berdasarkan pola-pola tersebut memungkinkan kita untuk menjadi lebih baik sepanjang hidup kita. Kapasitas belajar dan kemampuan berkembang ini terkait dengan konsep yang disebut [plastisitas otak](https://www.simplypsychology.org/brain-plasticity.html). Secara dangkal, kita dapat menarik beberapa kesamaan motivasi antara proses pembelajaran otak manusia dan konsep pembelajaran mesin.
+Kita hidup di alam semesta yang penuh misteri menarik. Ilmuwan hebat seperti Stephen Hawking, Albert Einstein, dan banyak lainnya telah mendedikasikan hidup mereka untuk mencari informasi bermakna yang mengungkap misteri dunia di sekitar kita. Ini adalah kondisi manusia dalam belajar: anak manusia mempelajari hal baru dan mengungkap struktur dunia mereka tahun demi tahun saat tumbuh menjadi dewasa.
 
 ---
-## Otak Manusia
+## Otak anak
 
-[Otak manusia](https://www.livescience.com/29365-human-brain.html) merasakan hal-hal dari dunia nyata, memproses informasi yang dirasakan, membuat keputusan rasional, dan melakukan tindakan tertentu berdasarkan keadaan. Inilah yang kita sebut berperilaku secara cerdas. Ketika kita memprogram tiruan dari proses perilaku cerdas ke sebuah mesin, itu disebut kecerdasan buatan (AI).
-
----
-## Beberapa Terminologi
-
-Meskipun istilah-istilah ini dapat membingungkan, pembelajaran mesin (ML) adalah subset penting dari kecerdasan buatan. **ML berkaitan dengan penggunaan algoritma khusus untuk menemukan informasi bermakna dan menemukan pola tersembunyi dari data yang dirasakan untuk mendukung proses pengambilan keputusan rasional**.
+Otak dan indra anak merasakan fakta lingkungan mereka dan secara bertahap mempelajari pola-pola tersembunyi kehidupan yang membantu anak membuat aturan logis untuk mengidentifikasi pola yang dipelajari. Proses belajar otak manusia menjadikan manusia makhluk hidup paling canggih di dunia ini. Belajar terus-menerus dengan menemukan pola tersembunyi kemudian berinovasi pada pola tersebut memungkinkan kita menjadi lebih baik sepanjang hidup kita. Kapasitas belajar dan kemampuan berkembang ini terkait dengan konsep yang disebut [plastisitas otak](https://www.simplypsychology.org/brain-plasticity.html). Secara kasat mata, kita bisa menarik beberapa kesamaan motivasi antara proses belajar otak manusia dan konsep pembelajaran mesin.
 
 ---
-## AI, ML, Pembelajaran Mendalam
+## Otak manusia
 
-![AI, ML, pembelajaran mendalam, ilmu data](../../../../1-Introduction/1-intro-to-ML/images/ai-ml-ds.png)
-
-> Diagram yang menunjukkan hubungan antara AI, ML, pembelajaran mendalam, dan ilmu data. Infografik oleh [Jen Looper](https://twitter.com/jenlooper) terinspirasi oleh [grafik ini](https://softwareengineering.stackexchange.com/questions/366996/distinction-between-ai-ml-neural-networks-deep-learning-and-data-mining)
+[Otak manusia](https://www.livescience.com/29365-human-brain.html) menangkap hal dari dunia nyata, memproses informasi yang diterima, membuat keputusan rasional, dan melakukan tindakan tertentu berdasarkan keadaan. Inilah yang kita sebut berperilaku secara cerdas. Ketika kita memprogram tiruan dari proses perilaku cerdas tersebut ke mesin, itu disebut kecerdasan buatan (AI).
 
 ---
-## Konsep yang Akan Dibahas
+## Beberapa istilah
 
-Dalam kurikulum ini, kita akan membahas hanya konsep inti pembelajaran mesin yang harus diketahui oleh pemula. Kita akan membahas apa yang kita sebut 'pembelajaran mesin klasik' terutama menggunakan Scikit-learn, pustaka yang sangat baik yang banyak digunakan oleh siswa untuk mempelajari dasar-dasarnya. Untuk memahami konsep yang lebih luas tentang kecerdasan buatan atau pembelajaran mendalam, pengetahuan dasar yang kuat tentang pembelajaran mesin sangat penting, dan kami ingin menyediakannya di sini.
+Meskipun istilahnya terkadang membingungkan, pembelajaran mesin (ML) adalah bagian penting dari kecerdasan buatan. **ML berhubungan dengan penggunaan algoritma khusus untuk menemukan informasi bermakna dan pola tersembunyi dari data yang diterima guna mendukung proses pengambilan keputusan rasional**.
 
 ---
-## Dalam Kursus Ini Anda Akan Belajar:
+## AI, ML, Deep Learning
+
+![AI, ML, deep learning, data science](../../../../translated_images/id/ai-ml-ds.537ea441b124ebf6.webp)
+
+> Diagram yang menunjukkan hubungan antara AI, ML, deep learning, dan data science. Infografis oleh [Jen Looper](https://twitter.com/jenlooper) terinspirasi dari [grafik ini](https://softwareengineering.stackexchange.com/questions/366996/distinction-between-ai-ml-neural-networks-deep-learning-and-data-mining)
+
+---
+## Konsep yang akan dibahas
+
+Dalam kurikulum ini, kami akan membahas hanya konsep inti pembelajaran mesin yang harus diketahui pemula. Kami membahas apa yang kami sebut 'pembelajaran mesin klasik' terutama menggunakan Scikit-learn, pustaka yang banyak digunakan pelajar untuk mempelajari dasar-dasarnya. Untuk memahami konsep kecerdasan buatan atau deep learning yang lebih luas, pengetahuan dasar pembelajaran mesin yang kuat sangat penting, dan karenanya kami ingin menyediakannya di sini.
+
+---
+## Dalam kursus ini Anda akan belajar:
 
 - konsep inti pembelajaran mesin
 - sejarah ML
@@ -81,63 +81,68 @@ Dalam kurikulum ini, kita akan membahas hanya konsep inti pembelajaran mesin yan
 - teknik pemrosesan bahasa alami ML
 - teknik peramalan deret waktu ML
 - pembelajaran penguatan
-- aplikasi dunia nyata untuk ML
+- aplikasi nyata ML
 
 ---
-## Apa yang Tidak Akan Dibahas
+## Yang tidak akan kami bahas
 
-- pembelajaran mendalam
+- deep learning
 - jaringan saraf
 - AI
 
-Untuk pengalaman belajar yang lebih baik, kami akan menghindari kompleksitas jaringan saraf, 'pembelajaran mendalam' - pembangunan model berlapis-lapis menggunakan jaringan saraf - dan AI, yang akan kita bahas dalam kurikulum yang berbeda. Kami juga akan menawarkan kurikulum ilmu data yang akan datang untuk fokus pada aspek tersebut dari bidang yang lebih besar ini.
+Untuk pengalaman belajar yang lebih baik, kami akan menghindari kompleksitas jaringan saraf, 'deep learning' - pembuatan model berlapis menggunakan jaringan saraf - dan AI, yang akan kami bahas dalam kurikulum berbeda. Kami juga akan menawarkan kurikulum ilmu data yang akan datang untuk fokus pada aspek tersebut dari bidang yang lebih luas ini.
 
 ---
-## Mengapa Mempelajari Pembelajaran Mesin?
+## Mengapa mempelajari pembelajaran mesin?
 
-Pembelajaran mesin, dari perspektif sistem, didefinisikan sebagai pembuatan sistem otomatis yang dapat mempelajari pola tersembunyi dari data untuk membantu dalam membuat keputusan yang cerdas.
+Pembelajaran mesin, dari perspektif sistem, didefinisikan sebagai pembuatan sistem otomatis yang dapat mempelajari pola tersembunyi dari data untuk membantu membuat keputusan cerdas.
 
-Motivasi ini secara longgar terinspirasi oleh bagaimana otak manusia mempelajari hal-hal tertentu berdasarkan data yang dirasakannya dari dunia luar.
+Motivasi ini secara longgar terinspirasi dari bagaimana otak manusia mempelajari hal tertentu berdasarkan data yang diterimanya dari dunia luar.
 
-✅ Pikirkan sejenak mengapa sebuah bisnis ingin mencoba menggunakan strategi pembelajaran mesin dibandingkan dengan membuat mesin berbasis aturan yang dikodekan secara manual.
-
----
-## Aplikasi Pembelajaran Mesin
-
-Aplikasi pembelajaran mesin sekarang hampir ada di mana-mana, dan sama melimpahnya dengan data yang mengalir di sekitar masyarakat kita, yang dihasilkan oleh ponsel pintar, perangkat yang terhubung, dan sistem lainnya. Mengingat potensi besar algoritma pembelajaran mesin mutakhir, para peneliti telah mengeksplorasi kemampuannya untuk menyelesaikan masalah kehidupan nyata yang multi-dimensi dan multi-disiplin dengan hasil yang sangat positif.
+✅ Pikirkan sejenak mengapa suatu bisnis ingin mencoba menggunakan strategi pembelajaran mesin dibandingkan membuat mesin berbasis aturan yang dikodekan keras.
 
 ---
-## Contoh Penerapan ML
+## Mengapa kualitas data penting
 
-**Anda dapat menggunakan pembelajaran mesin dalam berbagai cara**:
+Data berkualitas tinggi meningkatkan performa model. Data yang buruk atau berisik dapat menyebabkan prediksi tidak akurat, bahkan ketika menggunakan algoritma pembelajaran mesin canggih.
 
-- Untuk memprediksi kemungkinan penyakit dari riwayat medis atau laporan pasien.
-- Untuk memanfaatkan data cuaca guna memprediksi peristiwa cuaca.
-- Untuk memahami sentimen dari sebuah teks.
+---
+## Aplikasi pembelajaran mesin
+
+Aplikasi pembelajaran mesin sekarang hampir ada di mana-mana, dan sedemikian meluas seperti data yang mengalir di sekitar masyarakat kita, dihasilkan oleh ponsel pintar, perangkat terhubung, dan sistem lainnya. Mengingat potensi besar algoritma pembelajaran mesin mutakhir, para peneliti telah mengeksplorasi kemampuannya untuk menyelesaikan masalah nyata multidimensi dan multidisipliner dengan hasil positif yang besar.
+
+---
+## Contoh penerapan ML
+
+**Anda dapat menggunakan pembelajaran mesin dengan berbagai cara**:
+
+- Untuk memprediksi kemungkinan penyakit dari riwayat atau laporan medis pasien.
+- Untuk memanfaatkan data cuaca untuk memprediksi kejadian cuaca.
+- Untuk memahami sentimen sebuah teks.
 - Untuk mendeteksi berita palsu guna menghentikan penyebaran propaganda.
 
-Keuangan, ekonomi, ilmu bumi, eksplorasi luar angkasa, teknik biomedis, ilmu kognitif, dan bahkan bidang humaniora telah mengadaptasi pembelajaran mesin untuk menyelesaikan masalah berat yang melibatkan pemrosesan data di domain mereka.
+Bidang keuangan, ekonomi, ilmu bumi, eksplorasi luar angkasa, rekayasa biomedis, ilmu kognitif, dan bahkan bidang humaniora telah mengadopsi pembelajaran mesin untuk menyelesaikan masalah berat pemrosesan data dalam domain mereka.
 
 ---
 ## Kesimpulan
 
-Pembelajaran mesin mengotomatisasi proses penemuan pola dengan menemukan wawasan bermakna dari data dunia nyata atau data yang dihasilkan. Ini telah terbukti sangat berharga dalam aplikasi bisnis, kesehatan, dan keuangan, di antara lainnya.
+Pembelajaran mesin mengotomatisasi proses penemuan pola dengan menemukan wawasan bermakna dari data dunia nyata atau data yang dihasilkan. Ini terbukti sangat berharga dalam bisnis, kesehatan, dan aplikasi keuangan, antara lain.
 
-Di masa depan, memahami dasar-dasar pembelajaran mesin akan menjadi keharusan bagi orang-orang dari berbagai bidang karena adopsinya yang luas.
+Dalam waktu dekat, memahami dasar pembelajaran mesin akan menjadi keharusan bagi orang dari bidang apa pun karena adopsinya yang luas.
 
 ---
 # 🚀 Tantangan
 
-Gambarkan, di atas kertas atau menggunakan aplikasi online seperti [Excalidraw](https://excalidraw.com/), pemahaman Anda tentang perbedaan antara AI, ML, pembelajaran mendalam, dan ilmu data. Tambahkan beberapa ide tentang masalah yang baik untuk diselesaikan oleh masing-masing teknik ini.
+Gambarlah, di atas kertas atau menggunakan aplikasi online seperti [Excalidraw](https://excalidraw.com/), pemahaman Anda tentang perbedaan antara AI, ML, deep learning, dan data science. Tambahkan beberapa ide masalah yang setiap teknik ini cocok untuk diselesaikan.
 
-# [Kuis Pasca-Pelajaran](https://ff-quizzes.netlify.app/en/ml/)
+# [Kuis setelah kuliah](https://ff-quizzes.netlify.app/en/ml/)
 
 ---
-# Tinjauan & Studi Mandiri
+# Ulasan & Belajar Mandiri
 
-Untuk mempelajari lebih lanjut tentang bagaimana Anda dapat bekerja dengan algoritma ML di cloud, ikuti [Learning Path](https://docs.microsoft.com/learn/paths/create-no-code-predictive-models-azure-machine-learning/?WT.mc_id=academic-77952-leestott) ini.
+Untuk belajar lebih lanjut bagaimana Anda dapat bekerja dengan algoritma ML di cloud, ikuti [Jalur Pembelajaran](https://docs.microsoft.com/learn/paths/create-no-code-predictive-models-azure-machine-learning/?WT.mc_id=academic-77952-leestott).
 
-Ikuti [Learning Path](https://docs.microsoft.com/learn/modules/introduction-to-machine-learning/?WT.mc_id=academic-77952-leestott) tentang dasar-dasar ML.
+Ikuti [Jalur Pembelajaran](https://docs.microsoft.com/learn/modules/introduction-to-machine-learning/?WT.mc_id=academic-77952-leestott) tentang dasar-dasar ML.
 
 ---
 # Tugas
@@ -146,5 +151,7 @@ Ikuti [Learning Path](https://docs.microsoft.com/learn/modules/introduction-to-m
 
 ---
 
-**Penafian**:  
-Dokumen ini telah diterjemahkan menggunakan layanan penerjemahan AI [Co-op Translator](https://github.com/Azure/co-op-translator). Meskipun kami berusaha untuk memberikan hasil yang akurat, harap diketahui bahwa terjemahan otomatis mungkin mengandung kesalahan atau ketidakakuratan. Dokumen asli dalam bahasa aslinya harus dianggap sebagai sumber yang otoritatif. Untuk informasi yang bersifat kritis, disarankan menggunakan jasa penerjemahan profesional oleh manusia. Kami tidak bertanggung jawab atas kesalahpahaman atau penafsiran yang timbul dari penggunaan terjemahan ini.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Penafian**:
+Dokumen ini telah diterjemahkan menggunakan layanan terjemahan AI [Co-op Translator](https://github.com/Azure/co-op-translator). Meskipun kami berupaya untuk mencapai akurasi, harap diketahui bahwa terjemahan otomatis mungkin mengandung kesalahan atau ketidakakuratan. Dokumen asli dalam bahasa aslinya harus dianggap sebagai sumber yang sah. Untuk informasi penting, disarankan menggunakan terjemahan profesional oleh manusia. Kami tidak bertanggung jawab atas kesalahpahaman atau penafsiran yang keliru yang timbul dari penggunaan terjemahan ini.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

@@ -1,106 +1,105 @@
 # Pengenalan kepada pengelompokan
 
-Pengelompokan adalah sejenis [Pembelajaran Tanpa Pengawasan](https://wikipedia.org/wiki/Unsupervised_learning) yang mengandaikan bahawa dataset tidak berlabel atau inputnya tidak dipadankan dengan output yang telah ditentukan. Ia menggunakan pelbagai algoritma untuk menyusun data yang tidak berlabel dan menyediakan kumpulan berdasarkan corak yang dikenalpasti dalam data.
+Pengelompokan adalah satu jenis [Pembelajaran Tanpa Penyelia](https://wikipedia.org/wiki/Unsupervised_learning) yang menganggap bahawa set data tidak berlabel atau inputnya tidak dipadankan dengan output yang telah ditetapkan. Ia menggunakan pelbagai algoritma untuk menyusun data tanpa label dan memberikan pengelompokan mengikut corak yang dikesan dalam data tersebut.
 
 [![No One Like You oleh PSquare](https://img.youtube.com/vi/ty2advRiWJM/0.jpg)](https://youtu.be/ty2advRiWJM "No One Like You oleh PSquare")
 
-> 🎥 Klik imej di atas untuk video. Sambil anda belajar pembelajaran mesin dengan pengelompokan, nikmati beberapa lagu Dance Hall Nigeria - ini adalah lagu yang sangat popular dari tahun 2014 oleh PSquare.
+> 🎥 Klik imej di atas untuk video. Semasa anda belajar pembelajaran mesin dengan pengelompokan, nikmati beberapa trek Dance Hall Nigeria - ini adalah lagu yang sangat dinilai dari tahun 2014 oleh PSquare.
 
-## [Kuiz sebelum kuliah](https://ff-quizzes.netlify.app/en/ml/)
+## [Kuiz pra-ceramah](https://ff-quizzes.netlify.app/en/ml/)
 
 ### Pengenalan
 
-[Pengelompokan](https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-30164-8_124) sangat berguna untuk penerokaan data. Mari kita lihat jika ia boleh membantu mengenal pasti trend dan corak dalam cara penonton Nigeria menikmati muzik.
+[Pengelompokan](https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-30164-8_124) sangat berguna untuk penerokaan data. Mari kita lihat jika ia dapat membantu menemui tren dan corak dalam cara penonton Nigeria mengkonsumsi muzik.
 
-✅ Luangkan masa untuk memikirkan kegunaan pengelompokan. Dalam kehidupan sebenar, pengelompokan berlaku apabila anda mempunyai timbunan pakaian dan perlu menyusun pakaian ahli keluarga anda 🧦👕👖🩲. Dalam sains data, pengelompokan berlaku apabila cuba menganalisis pilihan pengguna, atau menentukan ciri-ciri dataset yang tidak berlabel. Pengelompokan, dalam satu cara, membantu memahami kekacauan, seperti laci stokin.
+✅ Luangkan masa sebentar untuk memikirkan kegunaan pengelompokan. Dalam kehidupan sebenar, pengelompokan berlaku setiap kali anda mempunyai timbunan pakaian kotor dan perlu menyusun pakaian ahli keluarga anda 🧦👕👖🩲. Dalam sains data, pengelompokan berlaku apabila cuba menganalisis keutamaan pengguna, atau menentukan ciri-ciri mana-mana set data tanpa label. Pengelompokan, secara tidak langsung, membantu memberi makna kepada kekacauan, seperti laci stoking.
 
 [![Pengenalan kepada ML](https://img.youtube.com/vi/esmzYhuFnds/0.jpg)](https://youtu.be/esmzYhuFnds "Pengenalan kepada Pengelompokan")
 
 > 🎥 Klik imej di atas untuk video: John Guttag dari MIT memperkenalkan pengelompokan
 
-Dalam persekitaran profesional, pengelompokan boleh digunakan untuk menentukan perkara seperti segmentasi pasaran, menentukan kumpulan umur yang membeli barangan tertentu, sebagai contoh. Kegunaan lain adalah pengesanan anomali, mungkin untuk mengesan penipuan daripada dataset transaksi kad kredit. Atau anda mungkin menggunakan pengelompokan untuk mengenal pasti tumor dalam sekumpulan imbasan perubatan.
+Dalam persekitaran profesional, pengelompokan boleh digunakan untuk menentukan perkara seperti segmentasi pasaran, menentukan kumpulan umur yang membeli barang apa, contohnya. Satu kegunaan lain adalah pengesanan anomali, contohnya untuk mengesan penipuan daripada set data transaksi kad kredit. Atau anda mungkin menggunakan pengelompokan untuk menentukan tumor dalam siri imbasan perubatan.
 
-✅ Luangkan masa untuk memikirkan bagaimana anda mungkin pernah menemui pengelompokan 'di alam nyata', dalam perbankan, e-dagang, atau perniagaan.
+✅ Fikirkan sebentar tentang bagaimana anda mungkin telah menemui pengelompokan 'di alam nyata', dalam persekitaran perbankan, e-dagang, atau perniagaan.
 
-> 🎓 Menariknya, analisis pengelompokan berasal dari bidang Antropologi dan Psikologi pada tahun 1930-an. Bolehkah anda bayangkan bagaimana ia mungkin digunakan?
+> 🎓 Menariknya, analisis kluster berasal daripada bidang Antropologi dan Psikologi pada tahun 1930-an. Bolehkah anda bayangkan bagaimana ia mungkin telah digunakan?
 
-Sebagai alternatif, anda boleh menggunakannya untuk mengelompokkan hasil carian - seperti pautan membeli-belah, imej, atau ulasan, sebagai contoh. Pengelompokan berguna apabila anda mempunyai dataset yang besar yang ingin anda kurangkan dan pada dataset tersebut anda ingin melakukan analisis yang lebih terperinci, jadi teknik ini boleh digunakan untuk mempelajari data sebelum model lain dibina.
+Sebagai alternatif, anda boleh menggunakannya untuk mengelompokkan hasil carian - mengikut pautan membeli-belah, imej, atau ulasan, misalnya. Pengelompokan berguna apabila anda mempunyai set data besar yang ingin anda kurangkan dan pada mana anda ingin melakukan analisis lebih terperinci, jadi teknik ini boleh digunakan untuk memahami data sebelum model lain dibina.
 
-✅ Setelah data anda diatur dalam kelompok, anda memberikan Id kelompok, dan teknik ini boleh berguna apabila ingin menjaga privasi dataset; anda boleh merujuk kepada titik data dengan Id kelompoknya, dan bukannya data yang lebih mendedahkan. Bolehkah anda memikirkan sebab lain mengapa anda merujuk kepada Id kelompok dan bukannya elemen lain dalam kelompok untuk mengenal pasti data?
+✅ Setelah data anda disusun dalam kluster, anda memberi ID kluster, dan teknik ini boleh berguna untuk menjaga privasi set data; anda boleh merujuk kepada titik data melalui ID kluster, bukan melalui data yang lebih mendedahkan yang boleh dikenal pasti. Bolehkah anda fikirkan sebab lain mengapa anda akan merujuk kepada ID kluster dan bukan elemen lain dalam kluster untuk mengenalinya?
 
-Perdalam pemahaman anda tentang teknik pengelompokan dalam [modul pembelajaran ini](https://docs.microsoft.com/learn/modules/train-evaluate-cluster-models?WT.mc_id=academic-77952-leestott)
+Perdalam pemahaman anda tentang teknik pengelompokan dalam [modul Pembelajaran](https://docs.microsoft.com/learn/modules/train-evaluate-cluster-models?WT.mc_id=academic-77952-leestott)
+## Memulakan dengan pengelompokan
 
-## Memulakan pengelompokan
-
-[Scikit-learn menawarkan pelbagai kaedah](https://scikit-learn.org/stable/modules/clustering.html) untuk melakukan pengelompokan. Jenis yang anda pilih akan bergantung pada kes penggunaan anda. Menurut dokumentasi, setiap kaedah mempunyai pelbagai manfaat. Berikut adalah jadual ringkas kaedah yang disokong oleh Scikit-learn dan kes penggunaan yang sesuai:
+[Scikit-learn menawarkan pelbagai jenis](https://scikit-learn.org/stable/modules/clustering.html) kaedah untuk melakukan pengelompokan. Jenis yang anda pilih bergantung pada kes penggunaan anda. Menurut dokumentasi, setiap kaedah mempunyai pelbagai faedah. Berikut adalah jadual ringkas kaedah-kaedah yang disokong oleh Scikit-learn dan kes penggunaan yang sesuai:
 
 | Nama kaedah                  | Kes penggunaan                                                        |
 | :--------------------------- | :-------------------------------------------------------------------- |
 | K-Means                      | tujuan umum, induktif                                                 |
-| Affinity propagation         | banyak, kelompok tidak sekata, induktif                              |
-| Mean-shift                   | banyak, kelompok tidak sekata, induktif                              |
-| Spectral clustering          | sedikit, kelompok sekata, transduktif                                |
-| Ward hierarchical clustering | banyak, kelompok terhad, transduktif                                 |
-| Agglomerative clustering     | banyak, terhad, jarak bukan Euclidean, transduktif                   |
-| DBSCAN                       | geometri tidak rata, kelompok tidak sekata, transduktif              |
-| OPTICS                       | geometri tidak rata, kelompok tidak sekata dengan ketumpatan berubah, transduktif |
-| Gaussian mixtures            | geometri rata, induktif                                              |
-| BIRCH                        | dataset besar dengan outlier, induktif                               |
+| Penyebaran keakraban          | banyak, kluster tidak sekata, induktif                                |
+| Mean-shift                   | banyak, kluster tidak sekata, induktif                                |
+| Pengelompokan spektral       | sedikit, kluster sekata, transduktif                                 |
+| Pengelompokan hierarki Ward  | banyak, kluster terhad, transduktif                                  |
+| Pengelompokan aglomeratif    | banyak, terhad, jarak bukan Euclidean, transduktif                   |
+| DBSCAN                       | geometri tidak rata, kluster tidak sekata, transduktif               |
+| OPTICS                       | geometri tidak rata, kluster tidak sekata dengan ketumpatan berubah-ubah, transduktif |
+| Campuran Gaussian            | geometri rata, induktif                                              |
+| BIRCH                        | set data besar dengan nilai luar, induktif                           |
 
-> 🎓 Cara kita mencipta kelompok banyak berkaitan dengan cara kita mengumpulkan titik data ke dalam kumpulan. Mari kita jelaskan beberapa istilah:
+> 🎓 Cara kita mencipta kluster banyak bergantung pada cara kita mengumpulkan titik data ke dalam kumpulan. Mari kita jelaskan beberapa istilah:
 >
-> 🎓 ['Transduktif' vs. 'Induktif'](https://wikipedia.org/wiki/Transduction_(machine_learning))
+> 🎓 ['Transduktif' vs. 'induktif'](https://wikipedia.org/wiki/Transduction_(machine_learning))
 > 
-> Inferens transduktif diperoleh daripada kes latihan yang diperhatikan yang memetakan kepada kes ujian tertentu. Inferens induktif diperoleh daripada kes latihan yang memetakan kepada peraturan umum yang hanya kemudian digunakan pada kes ujian.
+> Inferens transduktif diperoleh daripada kes latihan yang diperhatikan yang dipadankan dengan kes ujian tertentu. Inferens induktif diperoleh daripada kes latihan yang dipadankan dengan peraturan umum yang kemudiannya hanya digunakan untuk kes ujian.
 > 
-> Contoh: Bayangkan anda mempunyai dataset yang hanya sebahagiannya berlabel. Beberapa perkara adalah 'rekod', beberapa 'cd', dan beberapa kosong. Tugas anda adalah memberikan label untuk yang kosong. Jika anda memilih pendekatan induktif, anda akan melatih model mencari 'rekod' dan 'cd', dan menerapkan label tersebut pada data yang tidak berlabel. Pendekatan ini akan menghadapi kesukaran mengklasifikasikan perkara yang sebenarnya 'kaset'. Pendekatan transduktif, sebaliknya, menangani data yang tidak diketahui ini dengan lebih berkesan kerana ia berfungsi untuk mengelompokkan item serupa bersama-sama dan kemudian menerapkan label pada kumpulan. Dalam kes ini, kelompok mungkin mencerminkan 'benda muzik bulat' dan 'benda muzik segi empat'.
+> Contoh: Bayangkan anda mempunyai set data yang hanya sebahagiannya berlabel. Sesetengah perkara adalah 'rekod', sesetengah 'cd', dan sesetengah kosong. Tugas anda adalah memberi label kepada yang kosong. Jika anda memilih pendekatan induktif, anda akan melatih model mencari 'rekod' dan 'cd', dan menggunakan label itu pada data tanpa label anda. Pendekatan ini akan menghadapi kesukaran mengklasifikasikan perkara yang sebenarnya adalah 'kaset'. Pendekatan transduktif pula mengendalikan data tidak diketahui ini dengan lebih berkesan kerana ia berusaha mengelompokkan item yang serupa bersama dan kemudian menerapkan label pada kumpulan tersebut. Dalam kes ini, kluster mungkin mencerminkan 'benda muzik bulat' dan 'benda muzik segi empat'.
 > 
-> 🎓 ['Geometri tidak rata' vs. 'rata'](https://datascience.stackexchange.com/questions/52260/terminology-flat-geometry-in-the-context-of-clustering)
+> 🎓 ['Geometri bukan rata' vs. 'rata'](https://datascience.stackexchange.com/questions/52260/terminology-flat-geometry-in-the-context-of-clustering)
 > 
-> Berasal daripada istilah matematik, geometri tidak rata vs. rata merujuk kepada ukuran jarak antara titik dengan cara 'rata' ([Euclidean](https://wikipedia.org/wiki/Euclidean_geometry)) atau 'tidak rata' (bukan Euclidean).
+> Berasal dari istilah matematik, geometri bukan rata vs. rata merujuk kepada ukuran jarak antara titik sama ada dengan kaedah geometri 'rata' ([Euclidean](https://wikipedia.org/wiki/Euclidean_geometry)) atau 'bukan rata' (bukan Euclidean).
 >
->'Rata' dalam konteks ini merujuk kepada geometri Euclidean (bahagian daripadanya diajar sebagai geometri 'dataran'), dan tidak rata merujuk kepada geometri bukan Euclidean. Apa kaitan geometri dengan pembelajaran mesin? Nah, sebagai dua bidang yang berakar dalam matematik, mesti ada cara umum untuk mengukur jarak antara titik dalam kelompok, dan itu boleh dilakukan dengan cara 'rata' atau 'tidak rata', bergantung pada sifat data. [Jarak Euclidean](https://wikipedia.org/wiki/Euclidean_distance) diukur sebagai panjang segmen garis antara dua titik. [Jarak bukan Euclidean](https://wikipedia.org/wiki/Non-Euclidean_geometry) diukur sepanjang lengkung. Jika data anda, yang divisualisasikan, nampaknya tidak wujud pada dataran, anda mungkin perlu menggunakan algoritma khusus untuk menanganinya.
+> 'Rata' dalam konteks ini merujuk kepada geometri Euclidean (bahagian daripadanya diajar sebagai geometri 'datar'), dan bukan rata merujuk kepada geometri bukan Euclidean. Apa kaitan geometri dengan pembelajaran mesin? Sebagai dua bidang yang berakar dalam matematik, mesti ada cara umum untuk mengukur jarak antara titik dalam kluster, dan itu boleh dilakukan secara 'rata' atau 'bukan rata', bergantung pada sifat data. [Jarak Euclidean](https://wikipedia.org/wiki/Euclidean_distance) diukur sebagai panjang segmen garis antara dua titik. [Jarak bukan Euclidean](https://wikipedia.org/wiki/Non-Euclidean_geometry) diukur sepanjang lengkungan. Jika data anda, apabila divisualisasikan, nampak seolah-olah tidak wujud pada satah, anda mungkin perlu menggunakan algoritma khas untuk mengendalikannya.
 >
-![Infografik Geometri Rata vs Tidak Rata](../../../../5-Clustering/1-Visualize/images/flat-nonflat.png)
+![Infografik Geometri Rata vs Bukan Rata](../../../../translated_images/ms/flat-nonflat.d1c8c6e2a96110c1.webp)
 > Infografik oleh [Dasani Madipalli](https://twitter.com/dasani_decoded)
 > 
 > 🎓 ['Jarak'](https://web.stanford.edu/class/cs345a/slides/12-clustering.pdf)
 > 
-> Kelompok ditentukan oleh matriks jaraknya, contohnya jarak antara titik. Jarak ini boleh diukur dengan beberapa cara. Kelompok Euclidean ditentukan oleh purata nilai titik, dan mengandungi 'centroid' atau titik tengah. Jarak diukur dengan jarak ke centroid tersebut. Jarak bukan Euclidean merujuk kepada 'clustroid', titik yang paling dekat dengan titik lain. Clustroid pula boleh ditentukan dengan pelbagai cara.
+> Kluster ditakrifkan oleh matriks jarak mereka, contohnya jarak antara titik. Jarak ini boleh diukur dalam beberapa cara. Kluster Euclidean ditakrifkan oleh purata nilai titik, dan mengandungi 'pusat' atau titik tengah. Jarak diukur dengan jarak ke pusat itu. Jarak Non-Euclidean merujuk kepada 'klustroid', titik yang paling dekat dengan titik-titik lain. Klustroid pula boleh ditakrifkan dalam pelbagai cara.
 > 
-> 🎓 ['Terhad'](https://wikipedia.org/wiki/Constrained_clustering)
+> 🎓 ['Berkekangan'](https://wikipedia.org/wiki/Constrained_clustering)
 > 
-> [Pengelompokan Terhad](https://web.cs.ucdavis.edu/~davidson/Publications/ICDMTutorial.pdf) memperkenalkan pembelajaran 'semi-supervised' ke dalam kaedah tanpa pengawasan ini. Hubungan antara titik ditandai sebagai 'tidak boleh dihubungkan' atau 'mesti dihubungkan' jadi beberapa peraturan dipaksa pada dataset.
+> [Pengelompokan Berkekangan](https://web.cs.ucdavis.edu/~davidson/Publications/ICDMTutorial.pdf) memperkenalkan pembelajaran 'semi-terawas' ke dalam kaedah tanpa penyelia ini. Hubungan antara titik ditandakan sebagai 'tidak boleh pautkan' atau 'mesti pautkan' supaya beberapa peraturan dipaksa ke atas set data.
 >
->Contoh: Jika algoritma dilepaskan pada sekumpulan data yang tidak berlabel atau separa berlabel, kelompok yang dihasilkannya mungkin berkualiti rendah. Dalam contoh di atas, kelompok mungkin mengelompokkan 'benda muzik bulat' dan 'benda muzik segi empat' dan 'benda segi tiga' dan 'kuih'. Jika diberikan beberapa kekangan, atau peraturan untuk diikuti ("item mesti diperbuat daripada plastik", "item perlu dapat menghasilkan muzik") ini boleh membantu 'mengekang' algoritma untuk membuat pilihan yang lebih baik.
+> Contoh: Jika algoritma dibebaskan pada set data tanpa label atau setengah berlabel, kluster yang dihasilkannya mungkin berkualiti rendah. Dalam contoh di atas, kluster mungkin mengelompokkan 'benda muzik bulat', 'benda muzik segi empat', 'benda segitiga' dan 'biskut'. Jika diberikan beberapa kekangan, atau peraturan untuk diikuti ("barang mesti diperbuat daripada plastik", "barang mesti boleh menghasilkan muzik") ini boleh membantu 'mengkekang' algoritma supaya membuat pilihan yang lebih baik.
 > 
 > 🎓 'Ketumpatan'
 > 
-> Data yang 'berisik' dianggap 'padat'. Jarak antara titik dalam setiap kelompoknya mungkin terbukti, pada pemeriksaan, lebih atau kurang padat, atau 'sesak' dan oleh itu data ini perlu dianalisis dengan kaedah pengelompokan yang sesuai. [Artikel ini](https://www.kdnuggets.com/2020/02/understanding-density-based-clustering.html) menunjukkan perbezaan antara menggunakan pengelompokan K-Means vs. algoritma HDBSCAN untuk meneroka dataset berisik dengan ketumpatan kelompok yang tidak sekata.
+> Data yang 'berbunyi bising' dianggap 'padat'. Jarak antara titik dalam setiap kluster mungkin, selepas pemeriksaan, lebih atau kurang padat, atau 'sesak' dan data ini perlu dianalisis dengan kaedah pengelompokan yang sesuai. [Artikel ini](https://www.kdnuggets.com/2020/02/understanding-density-based-clustering.html) menunjukkan perbezaan antara menggunakan pengelompokan K-Means vs. algoritma HDBSCAN untuk meneroka set data bising dengan ketumpatan kluster yang tidak sekata.
 
 ## Algoritma pengelompokan
 
 Terdapat lebih daripada 100 algoritma pengelompokan, dan penggunaannya bergantung pada sifat data yang ada. Mari kita bincangkan beberapa yang utama:
 
-- **Pengelompokan hierarki**. Jika objek diklasifikasikan berdasarkan jaraknya dengan objek berdekatan, dan bukannya dengan objek yang lebih jauh, kelompok dibentuk berdasarkan jarak anggotanya ke dan dari objek lain. Pengelompokan agglomeratif Scikit-learn adalah hierarki.
+- **Pengelompokan hierarki**. Jika objek diklasifikasikan berdasarkan kedekatannya dengan objek berhampiran, bukan dengan yang lebih jauh, kluster dibentuk berdasarkan jarak ahli kepada dan daripada objek lain. Pengelompokan aglomeratif Scikit-learn adalah hierarki.
 
-   ![Infografik Pengelompokan Hierarki](../../../../5-Clustering/1-Visualize/images/hierarchical.png)
+   ![Infografik pengelompokan hierarki](../../../../translated_images/ms/hierarchical.bf59403aa43c8c47.webp)
    > Infografik oleh [Dasani Madipalli](https://twitter.com/dasani_decoded)
 
-- **Pengelompokan centroid**. Algoritma popular ini memerlukan pilihan 'k', atau bilangan kelompok untuk dibentuk, selepas itu algoritma menentukan titik tengah kelompok dan mengumpulkan data di sekitar titik tersebut. [Pengelompokan K-means](https://wikipedia.org/wiki/K-means_clustering) adalah versi pengelompokan centroid yang popular. Pusat ditentukan oleh purata terdekat, maka namanya. Jarak kuadrat dari kelompok diminimumkan.
+- **Pengelompokan pusat**. Algoritma popular ini memerlukan pemilihan 'k', atau bilangan kluster untuk dibentuk, selepas itu algoritma menentukan titik pusat kluster dan mengumpul data di sekeliling titik itu. [Pengelompokan K-means](https://wikipedia.org/wiki/K-means_clustering) adalah versi popular pengelompokan pusat. Pusat ditentukan oleh min paling dekat, maka namanya. Jarak kuasa dua daripada kluster diminimumkan.
 
-   ![Infografik Pengelompokan Centroid](../../../../5-Clustering/1-Visualize/images/centroid.png)
+   ![Infografik pengelompokan pusat](../../../../translated_images/ms/centroid.097fde836cf6c918.webp)
    > Infografik oleh [Dasani Madipalli](https://twitter.com/dasani_decoded)
 
-- **Pengelompokan berdasarkan pengedaran**. Berdasarkan pemodelan statistik, pengelompokan berdasarkan pengedaran berpusat pada menentukan kebarangkalian bahawa titik data tergolong dalam kelompok, dan menetapkannya dengan sewajarnya. Kaedah campuran Gaussian tergolong dalam jenis ini.
+- **Pengelompokan berdasarkan taburan**. Berasaskan pemodelan statistik, pengelompokan berdasarkan taburan menumpukan pada menentukan kebarangkalian bahawa titik data tergolong dalam kluster, dan menetapkannya mengikut itu. Kaedah campuran Gaussian tergolong dalam jenis ini.
 
-- **Pengelompokan berdasarkan ketumpatan**. Titik data ditetapkan kepada kelompok berdasarkan ketumpatannya, atau pengelompokan di sekeliling satu sama lain. Titik data yang jauh dari kumpulan dianggap sebagai outlier atau bunyi. DBSCAN, Mean-shift dan OPTICS tergolong dalam jenis pengelompokan ini.
+- **Pengelompokan berdasarkan ketumpatan**. Titik data ditetapkan ke kluster berdasarkan ketumpatan mereka, atau pengelompokan mereka di sekitar satu sama lain. Titik data yang jauh dari kumpulan dianggap sebagai nilai luar atau bunyi bising. DBSCAN, Mean-shift dan OPTICS tergolong dalam jenis pengelompokan ini.
 
-- **Pengelompokan berdasarkan grid**. Untuk dataset multi-dimensi, grid dibuat dan data dibahagikan di antara sel grid, dengan itu mencipta kelompok.
+- **Pengelompokan berasaskan grid**. Untuk set data berbilang dimensi, grid dicipta dan data dibahagikan di antara sel-sel grid, lalu mencipta kluster.
 
-## Latihan - kelompokkan data anda
+## Latihan - kelompokan data anda
 
-Pengelompokan sebagai teknik sangat dibantu oleh visualisasi yang baik, jadi mari kita mulakan dengan memvisualisasikan data muzik kita. Latihan ini akan membantu kita memutuskan kaedah pengelompokan mana yang paling berkesan digunakan untuk sifat data ini.
+Pengelompokan sebagai teknik sangat dibantu oleh visualisasi yang betul, jadi mari kita mula dengan memvisualisasikan data muzik kita. Latihan ini akan membantu kita memutuskan kaedah pengelompokan mana yang paling sesuai digunakan untuk sifat data ini.
 
 1. Buka fail [_notebook.ipynb_](https://github.com/microsoft/ML-For-Beginners/blob/main/5-Clustering/1-Visualize/notebook.ipynb) dalam folder ini.
 
@@ -110,7 +109,7 @@ Pengelompokan sebagai teknik sangat dibantu oleh visualisasi yang baik, jadi mar
     !pip install seaborn
     ```
 
-1. Tambahkan data lagu dari [_nigerian-songs.csv_](https://github.com/microsoft/ML-For-Beginners/blob/main/5-Clustering/data/nigerian-songs.csv). Muatkan dataframe dengan beberapa data tentang lagu-lagu tersebut. Bersiaplah untuk meneroka data ini dengan mengimport perpustakaan dan memaparkan data:
+1. Lampirkan data lagu dari [_nigerian-songs.csv_](https://github.com/microsoft/ML-For-Beginners/blob/main/5-Clustering/data/nigerian-songs.csv). Muatkan dataframe dengan beberapa data tentang lagu-lagu tersebut. Bersedia untuk meneroka data ini dengan mengimport perpustakaan dan memaparkan data:
 
     ```python
     import matplotlib.pyplot as plt
@@ -120,17 +119,17 @@ Pengelompokan sebagai teknik sangat dibantu oleh visualisasi yang baik, jadi mar
     df.head()
     ```
 
-    Periksa beberapa baris pertama data:
+    Semak beberapa baris pertama data:
 
-    |     | nama                     | album                        | artis               | genre_teratas_artis | tarikh_keluar | panjang | populariti | keboleh_menari | keakustikan | tenaga | instrumentalness | keliveness | kekuatan | keboleh_bersuara | tempo   | tanda_masa     |
-    | --- | ------------------------ | ---------------------------- | ------------------- | ------------------- | ------------- | ------- | ---------- | -------------- | ----------- | ------ | ---------------- | ---------- | -------- | ---------------- | ------- | -------------- |
-    | 0   | Sparky                   | Mandy & The Jungle           | Cruel Santino       | alternative r&b     | 2019          | 144000  | 48         | 0.666          | 0.851       | 0.42   | 0.534            | 0.11       | -6.699   | 0.0829           | 133.015 | 5              |
-    | 1   | shuga rush               | EVERYTHING YOU HEARD IS TRUE | Odunsi (The Engine) | afropop             | 2020          | 89488   | 30         | 0.71           | 0.0822      | 0.683  | 0.000169         | 0.101      | -5.64    | 0.36             | 129.993 | 3              |
-| 2   | LITT!                    | LITT!                        | AYLØ                | indie r&b        | 2018         | 207758 | 40         | 0.836        | 0.272        | 0.564  | 0.000537         | 0.11     | -7.127   | 0.0424      | 130.005 | 4              |
-| 3   | Confident / Feeling Cool | Enjoy Your Life              | Lady Donli          | nigerian pop     | 2019         | 175135 | 14         | 0.894        | 0.798        | 0.611  | 0.000187         | 0.0964   | -4.961   | 0.113       | 111.087 | 4              |
-| 4   | wanted you               | rare.                        | Odunsi (The Engine) | afropop          | 2018         | 152049 | 25         | 0.702        | 0.116        | 0.833  | 0.91             | 0.348    | -6.044   | 0.0447      | 105.115 | 4              |
+    |     | name                     | album                        | artist              | artist_top_genre | release_date | length | popularity | danceability | acousticness | energy | instrumentalness | liveness | loudness | speechiness | tempo   | time_signature |
+    | --- | ------------------------ | ---------------------------- | ------------------- | ---------------- | ------------ | ------ | ---------- | ------------ | ------------ | ------ | ---------------- | -------- | -------- | ----------- | ------- | -------------- |
+    | 0   | Sparky                   | Mandy & The Jungle           | Cruel Santino       | alternative r&b  | 2019         | 144000 | 48         | 0.666        | 0.851        | 0.42   | 0.534            | 0.11     | -6.699   | 0.0829      | 133.015 | 5              |
+    | 1   | shuga rush               | EVERYTHING YOU HEARD IS TRUE | Odunsi (The Engine) | afropop          | 2020         | 89488  | 30         | 0.71         | 0.0822       | 0.683  | 0.000169         | 0.101    | -5.64    | 0.36        | 129.993 | 3              |
+    | 2   | LITT!                    | LITT!                        | AYLØ                | indie r&b        | 2018         | 207758 | 40         | 0.836        | 0.272        | 0.564  | 0.000537         | 0.11     | -7.127   | 0.0424      | 130.005 | 4              |
+    | 3   | Confident / Feeling Cool | Enjoy Your Life              | Lady Donli          | nigerian pop     | 2019         | 175135 | 14         | 0.894        | 0.798        | 0.611  | 0.000187         | 0.0964   | -4.961   | 0.113       | 111.087 | 4              |
+    | 4   | wanted you               | rare.                        | Odunsi (The Engine) | afropop          | 2018         | 152049 | 25         | 0.702        | 0.116        | 0.833  | 0.91             | 0.348    | -6.044   | 0.0447      | 105.115 | 4              |
 
-1. Dapatkan maklumat tentang dataframe dengan memanggil `info()`:
+1. Dapatkan sedikit maklumat mengenai dataframe, dengan memanggil `info()`:
 
     ```python
     df.info()
@@ -164,13 +163,13 @@ Pengelompokan sebagai teknik sangat dibantu oleh visualisasi yang baik, jadi mar
     memory usage: 66.4+ KB
     ```
 
-1. Periksa semula nilai null dengan memanggil `isnull()` dan pastikan jumlahnya adalah 0:
+1. Semak semula untuk nilai null, dengan memanggil `isnull()` dan mengesahkan jumlahnya adalah 0:
 
     ```python
     df.isnull().sum()
     ```
 
-    Nampak baik:
+    Nampak bagus:
 
     ```output
     name                0
@@ -192,7 +191,7 @@ Pengelompokan sebagai teknik sangat dibantu oleh visualisasi yang baik, jadi mar
     dtype: int64
     ```
 
-1. Huraikan data:
+1. Huraikan data tersebut:
 
     ```python
     df.describe()
@@ -209,9 +208,9 @@ Pengelompokan sebagai teknik sangat dibantu oleh visualisasi yang baik, jadi mar
     | 75%   | 2017         | 242098.5    | 31         | 0.8295       | 0.403        | 0.87575  | 0.000234         | 0.164    | -3.331    | 0.177       | 125.03925  | 4              |
     | max   | 2020         | 511738      | 73         | 0.966        | 0.954        | 0.995    | 0.91             | 0.811    | 0.582     | 0.514       | 206.007    | 5              |
 
-> 🤔 Jika kita bekerja dengan pengelompokan, kaedah tanpa pengawasan yang tidak memerlukan data berlabel, mengapa kita menunjukkan data ini dengan label? Dalam fasa penerokaan data, ia berguna, tetapi ia tidak diperlukan untuk algoritma pengelompokan berfungsi. Anda juga boleh membuang tajuk lajur dan merujuk data mengikut nombor lajur.
+> 🤔 Jika kita bekerja dengan pengelompokan, sebuah kaedah tanpa penyeliaan yang tidak memerlukan data berlabel, mengapa kita menunjukkan data ini dengan label? Dalam fasa penerokaan data, ia sangat membantu, tetapi tidak perlu untuk algoritma pengelompokan berfungsi. Anda juga boleh mengeluarkan tajuk lajur dan merujuk kepada data mengikut nombor lajur.
 
-Lihat nilai umum data. Perhatikan bahawa populariti boleh menjadi '0', yang menunjukkan lagu-lagu yang tidak mempunyai ranking. Mari kita buang nilai-nilai tersebut sebentar lagi.
+Lihat nilai umum data. Perhatikan bahawa populariti boleh menjadi '0', yang menunjukkan lagu yang tiada kedudukan. Mari kita keluarkan yang tersebut sebentar lagi.
 
 1. Gunakan barplot untuk mengetahui genre yang paling popular:
 
@@ -225,11 +224,11 @@ Lihat nilai umum data. Perhatikan bahawa populariti boleh menjadi '0', yang menu
     plt.title('Top genres',color = 'blue')
     ```
 
-    ![most popular](../../../../5-Clustering/1-Visualize/images/popular.png)
+    ![most popular](../../../../translated_images/ms/popular.9c48d84b3386705f.webp)
 
-✅ Jika anda ingin melihat lebih banyak nilai teratas, ubah top `[:5]` kepada nilai yang lebih besar, atau buang untuk melihat semuanya.
+✅ Jika anda ingin melihat lebih banyak nilai teratas, ubah top `[:5]` ke nilai yang lebih besar, atau keluarkan ia untuk melihat semua.
 
-Perhatikan, apabila genre teratas digambarkan sebagai 'Missing', itu bermaksud Spotify tidak mengklasifikasikannya, jadi mari kita buang data tersebut.
+Perhatikan, apabila genre teratas digambarkan sebagai 'Missing', itu bermaksud Spotify tidak mengklasifikasikannya, jadi mari kita buang ia.
 
 1. Buang data yang hilang dengan menapisnya keluar
 
@@ -242,11 +241,11 @@ Perhatikan, apabila genre teratas digambarkan sebagai 'Missing', itu bermaksud S
     plt.title('Top genres',color = 'blue')
     ```
 
-    Sekarang periksa semula genre:
+    Sekarang semak semula genre:
 
-    ![most popular](../../../../5-Clustering/1-Visualize/images/all-genres.png)
+    ![most popular](../../../../translated_images/ms/all-genres.1d56ef06cefbfcd6.webp)
 
-1. Tiga genre teratas jelas mendominasi dataset ini. Mari kita fokus pada `afro dancehall`, `afropop`, dan `nigerian pop`, serta tapis dataset untuk membuang apa-apa dengan nilai populariti 0 (bermaksud ia tidak diklasifikasikan dengan populariti dalam dataset dan boleh dianggap sebagai gangguan untuk tujuan kita):
+1. Setakat ini, tiga genre teratas menguasai dataset ini. Mari kita fokus pada `afro dancehall`, `afropop`, dan `nigerian pop`, tambahan pula tapis dataset untuk mengeluarkan apa-apa dengan nilai populariti 0 (bermaksud ia tidak diklasifikasikan dengan populariti dalam dataset dan boleh dianggap sebagai gangguan untuk tujuan kita):
 
     ```python
     df = df[(df['artist_top_genre'] == 'afro dancehall') | (df['artist_top_genre'] == 'afropop') | (df['artist_top_genre'] == 'nigerian pop')]
@@ -258,7 +257,7 @@ Perhatikan, apabila genre teratas digambarkan sebagai 'Missing', itu bermaksud S
     plt.title('Top genres',color = 'blue')
     ```
 
-1. Lakukan ujian pantas untuk melihat jika data berkorelasi dengan cara yang sangat kuat:
+1. Lakukan ujian pantas untuk melihat jika data berkorelasi dalam cara yang sangat kuat:
 
     ```python
     corrmat = df.corr(numeric_only=True)
@@ -266,21 +265,21 @@ Perhatikan, apabila genre teratas digambarkan sebagai 'Missing', itu bermaksud S
     sns.heatmap(corrmat, vmax=.8, square=True)
     ```
 
-    ![correlations](../../../../5-Clustering/1-Visualize/images/correlation.png)
+    ![correlations](../../../../translated_images/ms/correlation.a9356bb798f5eea5.webp)
 
-    Satu-satunya korelasi kuat adalah antara `energy` dan `loudness`, yang tidak terlalu mengejutkan, memandangkan muzik yang kuat biasanya cukup bertenaga. Selain itu, korelasi agak lemah. Ia akan menarik untuk melihat apa yang algoritma pengelompokan dapat buat dengan data ini.
+    Satu-satunya korelasi kuat adalah antara `energy` dan `loudness`, yang tidak menghairankan, memandangkan muzik kuat biasanya cukup bertenaga. Selain itu, korelasi agak lemah. Menarik untuk melihat apa yang boleh algoritma pengelompokan buat dengan data ini.
 
-    > 🎓 Perhatikan bahawa korelasi tidak bermaksud sebab-akibat! Kita mempunyai bukti korelasi tetapi tiada bukti sebab-akibat. [Laman web yang menghiburkan](https://tylervigen.com/spurious-correlations) mempunyai beberapa visual yang menekankan perkara ini.
+    > 🎓 Perhatikan bahawa korelasi tidak bermaksud kausaliti! Kita mempunyai bukti korelasi tetapi tiada bukti kausaliti. Sebuah [laman web yang menghiburkan](https://tylervigen.com/spurious-correlations) mempunyai beberapa visual yang menekankan perkara ini.
 
-Adakah terdapat penumpuan dalam dataset ini sekitar populariti lagu dan kebolehmenariannya? Grid Facet menunjukkan terdapat lingkaran sepusat yang sejajar, tanpa mengira genre. Mungkinkah citarasa Nigeria berkumpul pada tahap kebolehmenarian tertentu untuk genre ini?
+Adakah terdapat sebarang konvergensi dalam dataset ini mengenai populariti yang dirasai oleh lagu dan tarian? FacetGrid menunjukkan terdapat bulatan berserenjang yang sejajar, tanpa mengira genre. Adakah mungkin citarasa Nigeria bertemu pada tahap tarian tertentu untuk genre ini?
 
-✅ Cuba titik data yang berbeza (energy, loudness, speechiness) dan lebih banyak atau genre muzik yang berbeza. Apa yang boleh anda temui? Lihat jadual `df.describe()` untuk melihat penyebaran umum titik data.
+✅ Cuba titik data berbeza (energy, loudness, speechiness) dan lebih banyak atau berbeza genre muzik. Apa yang anda boleh temui? Lihat jadual `df.describe()` untuk melihat taburan umum titik data.
 
-### Latihan - pengedaran data
+### Latihan - taburan data
 
-Adakah tiga genre ini berbeza secara signifikan dalam persepsi kebolehmenarian mereka, berdasarkan populariti?
+Adakah ketiga-tiga genre ini berbeza dengan ketara dalam persepsi tarian mereka berdasarkan populariti?
 
-1. Periksa pengedaran data tiga genre teratas kita untuk populariti dan kebolehmenarian di sepanjang paksi x dan y yang diberikan.
+1. Periksa taburan data untuk ketiga-tiga genre teratas bagi populariti dan tarian sepanjang paksi x dan y yang diberikan.
 
     ```python
     sns.set_theme(style="ticks")
@@ -292,13 +291,13 @@ Adakah tiga genre ini berbeza secara signifikan dalam persepsi kebolehmenarian m
     )
     ```
 
-    Anda boleh menemui lingkaran sepusat di sekitar titik penumpuan umum, menunjukkan pengedaran titik.
+    Anda boleh menemui bulatan berserenjang di sekitar titik konvergensi umum, menunjukkan taburan titik.
 
-    > 🎓 Perhatikan bahawa contoh ini menggunakan graf KDE (Kernel Density Estimate) yang mewakili data menggunakan lengkung ketumpatan kebarangkalian berterusan. Ini membolehkan kita mentafsir data apabila bekerja dengan pelbagai pengedaran.
+    > 🎓 Perhatikan bahawa contoh ini menggunakan graf KDE (Kernel Density Estimate) yang mewakili data menggunakan lengkung ketumpatan kebarangkalian berterusan. Ini membolehkan kita mentafsir data apabila bekerja dengan taburan berganda.
 
-    Secara umum, tiga genre ini sejajar secara longgar dari segi populariti dan kebolehmenarian. Menentukan kelompok dalam data yang sejajar secara longgar ini akan menjadi cabaran:
+    Secara amnya, ketiga-tiga genre tersebut selari secara longgar dari segi populariti dan tarian. Menentukan kluster dalam data yang selaras secara longgar ini akan menjadi cabaran:
 
-    ![distribution](../../../../5-Clustering/1-Visualize/images/distribution.png)
+    ![distribution](../../../../translated_images/ms/distribution.9be11df42356ca95.webp)
 
 1. Buat plot taburan:
 
@@ -308,31 +307,33 @@ Adakah tiga genre ini berbeza secara signifikan dalam persepsi kebolehmenarian m
        .add_legend()
     ```
 
-    Plot taburan paksi yang sama menunjukkan corak penumpuan yang serupa
+    Scatterplot bagi paksi yang sama menunjukkan corak konvergensi yang serupa
 
-    ![Facetgrid](../../../../5-Clustering/1-Visualize/images/facetgrid.png)
+    ![Facetgrid](../../../../translated_images/ms/facetgrid.9b2e65ce707eba1f.webp)
 
-Secara umum, untuk pengelompokan, anda boleh menggunakan plot taburan untuk menunjukkan kelompok data, jadi menguasai jenis visualisasi ini sangat berguna. Dalam pelajaran seterusnya, kita akan mengambil data yang telah ditapis ini dan menggunakan pengelompokan k-means untuk menemui kelompok dalam data ini yang kelihatan bertindih dengan cara yang menarik.
+Secara umum, untuk pengelompokan, anda boleh menggunakan scatterplots untuk menunjukkan kluster data, jadi menguasai jenis visualisasi ini sangat berguna. Dalam pelajaran seterusnya, kita akan menggunakan data yang telah ditapis ini dan menggunakan pengelompokan k-means untuk menemui kumpulan dalam data ini yang nampaknya bertindih dengan cara yang menarik.
 
 ---
 
 ## 🚀Cabaran
 
-Sebagai persediaan untuk pelajaran seterusnya, buat carta tentang pelbagai algoritma pengelompokan yang mungkin anda temui dan gunakan dalam persekitaran pengeluaran. Masalah jenis apa yang cuba diselesaikan oleh pengelompokan?
+Sebagai persiapan untuk pelajaran seterusnya, buat carta tentang pelbagai algoritma pengelompokan yang mungkin anda temui dan gunakan dalam persekitaran produksi. Apakah jenis masalah yang cuba diselesaikan oleh pengelompokan?
 
 ## [Kuiz selepas kuliah](https://ff-quizzes.netlify.app/en/ml/)
 
-## Kajian & Pembelajaran Kendiri
+## Ulasan & Pembelajaran Sendiri
 
-Sebelum anda menggunakan algoritma pengelompokan, seperti yang telah kita pelajari, adalah idea yang baik untuk memahami sifat dataset anda. Baca lebih lanjut tentang topik ini [di sini](https://www.kdnuggets.com/2019/10/right-clustering-algorithm.html)
+Sebelum anda menerapkan algoritma pengelompokan, seperti yang telah kita pelajari, adalah idea yang baik untuk memahami sifat dataset anda. Baca lebih lanjut tentang topik ini [di sini](https://www.kdnuggets.com/2019/10/right-clustering-algorithm.html)
 
-[Artikel yang berguna ini](https://www.freecodecamp.org/news/8-clustering-algorithms-in-machine-learning-that-all-data-scientists-should-know/) menerangkan cara pelbagai algoritma pengelompokan berfungsi, berdasarkan bentuk data yang berbeza.
+[Artikel yang berguna ini](https://www.freecodecamp.org/news/8-clustering-algorithms-in-machine-learning-that-all-data-scientists-should-know/) membimbing anda melalui pelbagai cara bagaimana algoritma pengelompokan berkelakuan, mengikut bentuk data yang berbeza.
 
 ## Tugasan
 
-[Selidik visualisasi lain untuk pengelompokan](assignment.md)
+[Penyelidikan visualisasi lain untuk pengelompokan](assignment.md)
 
 ---
 
-**Penafian**:  
-Dokumen ini telah diterjemahkan menggunakan perkhidmatan terjemahan AI [Co-op Translator](https://github.com/Azure/co-op-translator). Walaupun kami berusaha untuk memastikan ketepatan, sila ambil perhatian bahawa terjemahan automatik mungkin mengandungi kesilapan atau ketidaktepatan. Dokumen asal dalam bahasa asalnya harus dianggap sebagai sumber yang berwibawa. Untuk maklumat yang kritikal, terjemahan manusia profesional adalah disyorkan. Kami tidak bertanggungjawab atas sebarang salah faham atau salah tafsir yang timbul daripada penggunaan terjemahan ini.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Penafian**:
+Dokumen ini telah diterjemahkan menggunakan perkhidmatan terjemahan AI [Co-op Translator](https://github.com/Azure/co-op-translator). Walaupun kami berusaha untuk ketepatan, sila ambil maklum bahawa terjemahan automatik mungkin mengandungi kesilapan atau ketidaktepatan. Dokumen asal dalam bahasa asalnya harus dianggap sebagai sumber yang sahih. Untuk maklumat penting, terjemahan oleh manusia profesional adalah disyorkan. Kami tidak bertanggungjawab terhadap sebarang salah faham atau salah tafsir yang timbul daripada penggunaan terjemahan ini.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

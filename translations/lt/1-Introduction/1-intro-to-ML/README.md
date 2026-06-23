@@ -1,150 +1,157 @@
 # Įvadas į mašininį mokymąsi
 
-## [Prieš paskaitos testas](https://ff-quizzes.netlify.app/en/ml/)
+## [Priešpaskaitinė viktorina](https://ff-quizzes.netlify.app/en/ml/)
 
 ---
 
-[![ML pradedantiesiems - Įvadas į mašininį mokymąsi pradedantiesiems](https://img.youtube.com/vi/6mSx_KJxcHI/0.jpg)](https://youtu.be/6mSx_KJxcHI "ML pradedantiesiems - Įvadas į mašininį mokymąsi pradedantiesiems")
+[![ML for beginners - Introduction to Machine Learning for Beginners](https://img.youtube.com/vi/6mSx_KJxcHI/0.jpg)](https://youtu.be/6mSx_KJxcHI "ML for beginners - Introduction to Machine Learning for Beginners")
 
-> 🎥 Spustelėkite paveikslėlį aukščiau, kad peržiūrėtumėte trumpą vaizdo įrašą apie šią pamoką.
+> 🎥 Spustelėkite aukščiau esantį vaizdą, kad pamatytumėte trumpą vaizdo įrašą, apžvelgiantį šią pamoką.
 
-Sveiki atvykę į šį kursą apie klasikinį mašininį mokymąsi pradedantiesiems! Nesvarbu, ar esate visiškai naujas šioje srityje, ar patyręs ML specialistas, norintis atnaujinti žinias, džiaugiamės, kad prisijungėte! Norime sukurti draugišką starto vietą jūsų ML studijoms ir mielai įvertinsime, atsakysime bei įtrauksime jūsų [atsiliepimus](https://github.com/microsoft/ML-For-Beginners/discussions).
+Sveiki atvykę į šį klasikinių mašininio mokymosi kursą pradedantiesiems! Nesvarbu, ar jūs visiškai naujas šioje srityje, ar patyręs ML praktikas, norintis pasipraktikuoti tam tikrą sritį, mes džiaugiamės, kad prisijungėte! Mes norime sukurti draugišką starto vietą jūsų ML studijoms ir būtų malonu įvertinti, atsakyti į ir įtraukti jūsų [atsiliepimus](https://github.com/microsoft/ML-For-Beginners/discussions).
 
-[![Įvadas į ML](https://img.youtube.com/vi/h0e2HAPTGF4/0.jpg)](https://youtu.be/h0e2HAPTGF4 "Įvadas į ML")
+[![Introduction to ML](https://img.youtube.com/vi/h0e2HAPTGF4/0.jpg)](https://youtu.be/h0e2HAPTGF4 "Introduction to ML")
 
-> 🎥 Spustelėkite paveikslėlį aukščiau, kad peržiūrėtumėte vaizdo įrašą: MIT profesorius John Guttag pristato mašininį mokymąsi.
+> 🎥 Spustelėkite aukščiau esantį vaizdą, kad pamatytumėte vaizdo įrašą: MIT's John Guttag pristato mašininį mokymąsi
 
 ---
 ## Pradžia su mašininiu mokymusi
 
-Prieš pradėdami šį mokymo planą, turite paruošti savo kompiuterį darbui su vietiniais užrašais.
+Prieš pradedant šią programą, reikia turėti paruoštą kompiuterį, kuris galėtų vykdyti užrašų knygeles vietoje.
 
-- **Konfigūruokite savo kompiuterį naudodamiesi šiais vaizdo įrašais**. Naudokite šias nuorodas, kad sužinotumėte, [kaip įdiegti Python](https://youtu.be/CXZYvNRIAKM) savo sistemoje ir [nustatyti teksto redaktorių](https://youtu.be/EU8eayHWoZg) programavimui.
-- **Išmokite Python**. Taip pat rekomenduojama turėti pagrindines [Python](https://docs.microsoft.com/learn/paths/python-language/?WT.mc_id=academic-77952-leestott) žinias – tai programavimo kalba, naudinga duomenų mokslininkams, kurią naudosime šiame kurse.
-- **Išmokite Node.js ir JavaScript**. Šiame kurse kelis kartus naudosime JavaScript kuriant interneto programas, todėl jums reikės turėti [node](https://nodejs.org) ir [npm](https://www.npmjs.com/) įdiegtus, taip pat [Visual Studio Code](https://code.visualstudio.com/) Python ir JavaScript programavimui.
-- **Sukurkite GitHub paskyrą**. Kadangi mus radote čia, [GitHub](https://github.com), galbūt jau turite paskyrą, bet jei ne, sukurkite ją ir tada nukopijuokite šį mokymo planą, kad galėtumėte naudoti jį savarankiškai. (Taip pat galite mums suteikti žvaigždutę 😊)
-- **Susipažinkite su Scikit-learn**. Susipažinkite su [Scikit-learn](https://scikit-learn.org/stable/user_guide.html), ML bibliotekų rinkiniu, kurį naudosime šiose pamokose.
+- **Sužinokite, kaip sukonfigūruoti savo mašiną pagal šiuos vaizdo įrašus.** Naudokite šias nuorodas, norėdami sužinoti [kaip įdiegti Python](https://youtu.be/CXZYvNRIAKM) sistemoje ir [kaip nustatyti teksto redaktorių](https://youtu.be/EU8eayHWoZg) kūrimui.
+- **Išmokite Python.** Taip pat rekomenduojama turėti pagrindines žinias apie [Python](https://docs.microsoft.com/learn/paths/python-language/?WT.mc_id=academic-77952-leestott), tai programavimo kalba, naudinga duomenų mokslininkams ir kurią naudodami dirbsime šiame kurse.
+- **Išmokite Node.js ir JavaScript.** Šiame kurse taip pat keletą kartų naudosime JavaScript, kuriant žiniatinklio programas, todėl reikės turėti įdiegtus [node](https://nodejs.org) ir [npm](https://www.npmjs.com/), taip pat [Visual Studio Code](https://code.visualstudio.com/), skirtą Python ir JavaScript kūrimui.
+- **Sukurkite GitHub paskyrą.** Kadangi radote mus čia, [GitHub](https://github.com), galbūt jau turite paskyrą, bet jei ne, sukurkite ją ir tada susikurkite šios programos forką naudoti savo tikslams. (Taip pat galite mums uždegti žvaigždutę 😊)
+- **Susipažinkite su Scikit-learn.** Pažinkite [Scikit-learn](https://scikit-learn.org/stable/user_guide.html), ML bibliotekų rinkinį, kurį naudosime šioms pamokoms.
 
 ---
 ## Kas yra mašininis mokymasis?
 
-Terminas „mašininis mokymasis“ yra vienas populiariausių ir dažniausiai vartojamų šiandien. Yra nemaža tikimybė, kad bent kartą girdėjote šį terminą, jei turite kokį nors ryšį su technologijomis, nesvarbu, kokioje srityje dirbate. Tačiau mašininio mokymosi mechanika daugeliui žmonių yra paslaptis. Pradedančiajam mašininio mokymosi tema kartais gali atrodyti bauginanti. Todėl svarbu suprasti, kas iš tikrųjų yra mašininis mokymasis, ir mokytis apie jį žingsnis po žingsnio, naudojant praktinius pavyzdžius.
+Terminas „mašininis mokymasis“ yra vienas iš populiariausių ir dažniausiai naudojamų šiandien. Neabejotinai yra didelė tikimybė, kad šį terminą bent kartą esate girdėjęs, jei turite tam tikrą pažinimą apie technologijas, nesvarbu, kurioje srityje dirbate. Tačiau mašininio mokymosi mechanizmai daugumai žmonių yra paslaptis. Mašininio mokymosi pradedančiajam šis dalykas kartais gali pasirodyti pribloškiantis. Todėl svarbu suprasti, kas iš tikrųjų yra mašininis mokymasis, ir mokytis po žingsnelį, praktiškai.
 
 ---
 ## Populiarumo kreivė
 
-![ml populiarumo kreivė](../../../../1-Introduction/1-intro-to-ML/images/hype.png)
+![ml hype curve](../../../../translated_images/lt/hype.07183d711a17aafe.webp)
 
-> Google Trends rodo naujausią termino „mašininis mokymasis“ populiarumo kreivę.
+> Google Trends rodo neseną termino „mašininis mokymasis“ „populiarumo kreivę“
 
 ---
 ## Paslaptinga visata
 
-Mes gyvename visatoje, pilnoje įdomių paslapčių. Didieji mokslininkai, tokie kaip Stephenas Hawkingas, Albertas Einšteinas ir daugelis kitų, paskyrė savo gyvenimus ieškodami prasmingos informacijos, kuri atskleistų pasaulio aplink mus paslaptis. Tai yra žmogaus mokymosi būklė: žmogaus vaikas mokosi naujų dalykų ir kasmet, augdamas iki pilnametystės, atskleidžia savo pasaulio struktūrą.
+Mes gyvename visatoje, kupinoje įdomių paslapčių. Didieji mokslininkai, tokie kaip Stephen Hawking, Albert Einstein ir daugelis kitų, skyrė savo gyvenimus reikšmingos informacijos paieškai, atveriančiai mus supančio pasaulio paslaptis. Tai yra žmogaus mokymosi sąlyga: žmogaus vaikas mokosi naujų dalykų ir metų metais atranda savo pasaulio struktūrą, kol subręsta.
 
 ---
 ## Vaiko smegenys
 
-Vaiko smegenys ir pojūčiai suvokia aplinkos faktus ir palaipsniui išmoksta paslėptus gyvenimo modelius, kurie padeda vaikui sukurti logines taisykles, leidžiančias atpažinti išmoktus modelius. Žmogaus smegenų mokymosi procesas daro žmones pačiais sudėtingiausiais gyvais padarais šiame pasaulyje. Nuolatinis mokymasis, atrandant paslėptus modelius ir vėliau juos tobulinant, leidžia mums visą gyvenimą tobulėti. Šis mokymosi gebėjimas ir evoliucinis pajėgumas yra susijęs su sąvoka, vadinama [smegenų plastiškumu](https://www.simplypsychology.org/brain-plasticity.html). Paviršutiniškai galime rasti motyvacinių panašumų tarp žmogaus smegenų mokymosi proceso ir mašininio mokymosi koncepcijų.
+Vaiko smegenys ir jutimai suvokia aplinkos faktus ir palaipsniui įsisavina gyvenimo paslėptas taisykles, kurios padeda vaikui sukurti loginius dėsnius, identifikuojančius išmoktas taisykles. Žmogaus smegenų mokymosi procesas daro žmogų šio pasaulio sudėtingiausiu gyvuoju padaru. Nuolatinis mokymasis atrandant paslėptas taisykles ir jas tobulinant leidžia mums vis gerėti visą gyvenimą. Šis mokymosi gebėjimas ir evoliucinis potencialas susijęs su sąvoka, vadinama [smegenų plastika](https://www.simplypsychology.org/brain-plasticity.html). Paviršutiniškai galima rasti keletą motyvacinių panašumų tarp žmogaus smegenų mokymosi proceso ir mašininio mokymosi koncepcijų.
 
 ---
 ## Žmogaus smegenys
 
-[Žmogaus smegenys](https://www.livescience.com/29365-human-brain.html) suvokia dalykus iš realaus pasaulio, apdoroja suvoktą informaciją, priima racionalius sprendimus ir atlieka tam tikrus veiksmus pagal aplinkybes. Tai vadiname protingu elgesiu. Kai programuojame mašiną, kad ji imituotų protingo elgesio procesą, tai vadinama dirbtiniu intelektu (AI).
+[Žmogaus smegenys](https://www.livescience.com/29365-human-brain.html) suvokia dalykus iš realaus pasaulio, apdoroja gautą informaciją, priima racionalius sprendimus ir atlieka tam tikrus veiksmus, atsižvelgdamos į aplinkybes. Tai vadiname protingu elgesiu. Kai mes programuojame imituoti šį protingą elgesio procesą mašinoje, tai vadinama dirbtiniu intelektu (AI).
 
 ---
-## Kai kurie terminai
+## Terminai
 
-Nors terminai gali būti painūs, mašininis mokymasis (ML) yra svarbi dirbtinio intelekto dalis. **ML susijęs su specializuotų algoritmų naudojimu, siekiant atskleisti prasmingą informaciją ir rasti paslėptus modelius iš suvoktų duomenų, kad būtų patvirtintas racionalaus sprendimų priėmimo procesas**.
-
----
-## AI, ML, gilus mokymasis
-
-![AI, ML, gilus mokymasis, duomenų mokslas](../../../../1-Introduction/1-intro-to-ML/images/ai-ml-ds.png)
-
-> Diagrama, rodanti AI, ML, gilaus mokymosi ir duomenų mokslo ryšius. Infografiką sukūrė [Jen Looper](https://twitter.com/jenlooper), įkvėpta [šios grafikos](https://softwareengineering.stackexchange.com/questions/366996/distinction-between-ai-ml-neural-networks-deep-learning-and-data-mining).
+Nors terminai kartais painiojami, mašininis mokymasis (ML) yra svarbi dirbtinio intelekto dalis. **ML susijęs su specialių algoritmų naudojimu siekiant atrasti reikšmingą informaciją ir paslėptas taisykles iš duomenų, patvirtinančių racionalaus sprendimų priėmimo procesą**.
 
 ---
-## Temos, kurias aptarsime
+## AI, ML, gilusis mokymasis
 
-Šiame mokymo plane aptarsime tik pagrindines mašininio mokymosi koncepcijas, kurias pradedantysis turi žinoti. Daugiausia dėmesio skirsime „klasikiniam mašininiam mokymuisi“, naudodami Scikit-learn – puikią biblioteką, kurią daugelis studentų naudoja mokydamiesi pagrindų. Norint suprasti platesnes dirbtinio intelekto ar gilaus mokymosi koncepcijas, būtina turėti stiprias mašininio mokymosi pagrindines žinias, kurias norime pasiūlyti čia.
+![AI, ML, deep learning, data science](../../../../translated_images/lt/ai-ml-ds.537ea441b124ebf6.webp)
+
+> Diagrama, rodanti AI, ML, giliojo mokymosi ir duomenų mokslo ryšius. Infografiką sukūrė [Jen Looper](https://twitter.com/jenlooper), įkvėpta [šios grafikos](https://softwareengineering.stackexchange.com/questions/366996/distinction-between-ai-ml-neural-networks-deep-learning-and-data-mining)
+
+---
+## Sąvokos, kurias aptarsime
+
+Šiame programoje mes aprėpsime tik pagrindines mašininio mokymosi sąvokas, kurių pradedantiesiems būtina išmokti. Mes daugiausia kalbėsime apie „klasikinį mašininį mokymąsi“, naudodamiesi puikia biblioteka Scikit-learn, kurią daugelis studentų naudoja mokydamiesi pagrindų. Norint suprasti platesnes dirbtinio intelekto ar giliojo mokymosi koncepcijas, būtinos tvirtos mašininio mokymosi žinios, kurias mes norime čia suteikti.
 
 ---
 ## Šiame kurse išmoksite:
 
-- pagrindines mašininio mokymosi koncepcijas
+- pagrindines mašininio mokymosi sąvokas
 - ML istoriją
-- ML ir sąžiningumą
-- regresijos ML technikas
-- klasifikacijos ML technikas
-- klasterizacijos ML technikas
-- natūralios kalbos apdorojimo ML technikas
-- laiko eilučių prognozavimo ML technikas
-- pastiprinimo mokymąsi
-- realaus pasaulio ML taikymus
+- ML ir sąžiningumo aspektus
+- regresijos ML metodus
+- klasifikacijos ML metodus
+- klasterizacijos ML metodus
+- natūralios kalbos apdorojimo ML metodus
+- laiko eilučių prognozavimo ML metodus
+- stiprinamąjį mokymąsi
+- praktines ML taikymo sritis
 
 ---
 ## Ko neaptarsime
 
-- gilus mokymasis
-- neuroniniai tinklai
+- giliojo mokymosi
+- dirbtinių neuroninių tinklų
 - AI
 
-Siekiant geresnės mokymosi patirties, vengsime neuroninių tinklų sudėtingumo, „gilaus mokymosi“ – daugiapakopio modelių kūrimo naudojant neuroninius tinklus – ir AI, kurį aptarsime kitame mokymo plane. Taip pat pasiūlysime būsimą duomenų mokslo mokymo planą, skirtą šiam platesnės srities aspektui.
+Gerinti mokymosi patirtį vengsime neuroninių tinklų kompleksų, „giliojo mokymosi“ – daugiasluoksnio modelių kūrimo naudojant neuroninius tinklus – bei AI temų, kurios bus aptariamos kitoje programoje. Taip pat artimiausiu metu pasiūlysime duomenų mokslo programą, skirtą šiai sričiai.
 
 ---
 ## Kodėl verta studijuoti mašininį mokymąsi?
 
-Mašininis mokymasis, iš sistemų perspektyvos, apibrėžiamas kaip automatizuotų sistemų kūrimas, kurios gali išmokti paslėptus modelius iš duomenų, kad padėtų priimti protingus sprendimus.
+Mašininis mokymasis, žiūrint iš sistemų perspektyvos, apibrėžiamas kaip automatizuotų sistemų kūrimas, kurios gali išmokti paslėptas taisykles iš duomenų, padėdamos priimti protingus sprendimus.
 
-Ši motyvacija laisvai įkvėpta to, kaip žmogaus smegenys mokosi tam tikrų dalykų, remdamiesi duomenimis, kuriuos suvokia iš išorinio pasaulio.
+Ši motyvacija yra laisvai įkvėpta žmogaus smegenų mokymosi principo, kai smegenys mokosi dalykų iš išorinio pasaulio suvoktos informacijos.
 
-✅ Pagalvokite minutę, kodėl verslas norėtų naudoti mašininio mokymosi strategijas, o ne kurti griežtai užkoduotą taisyklių sistemą.
-
----
-## Mašininio mokymosi taikymas
-
-Mašininio mokymosi taikymas dabar yra beveik visur ir toks pat paplitęs kaip duomenys, kurie cirkuliuoja mūsų visuomenėse, generuojami mūsų išmaniųjų telefonų, prijungtų įrenginių ir kitų sistemų. Atsižvelgiant į pažangiausių mašininio mokymosi algoritmų potencialą, mokslininkai tyrinėja jų gebėjimą spręsti daugiadimensines ir daugiadisciplinines realaus gyvenimo problemas su puikiais rezultatais.
+✅ Pagalvokite akimirką, kodėl verslas norėtų naudoti mašininio mokymosi strategijas, o ne kurti taisyklių variklį pagal iš anksto apibrėžtas taisykles.
 
 ---
-## Taikomo ML pavyzdžiai
+## Kodėl svarbi duomenų kokybė
+
+Aukštos kokybės duomenys gerina modelio našumą. Prasti arba triukšmingi duomenys gali sukelti netikslius prognozes net naudojant pažangiausius mašininio mokymosi algoritmus.
+
+---
+## Mašininio mokymosi taikymai
+
+Mašininio mokymosi taikymai dabar yra beveik visur ir yra tokie įprasti, kaip duomenys, kurie plaukia mūsų visuomenėse, generuojami mūsų išmaniuosiuose telefonuose, prijungtuose įrenginiuose ir kituose sistemose. Atsižvelgiant į pažangių mašininio mokymosi algoritmų didžiulį potencialą, mokslininkai tyrinėja jų galimybes spręsti daugiasluoksnes ir daugdisciplinines realaus gyvenimo problemas su puikiais teigiamais rezultatais.
+
+---
+## Mašininio mokymosi taikymo pavyzdžiai
 
 **Mašininį mokymąsi galite naudoti įvairiais būdais**:
 
-- Prognozuoti ligos tikimybę pagal paciento medicininę istoriją ar ataskaitas.
-- Naudoti orų duomenis, kad prognozuotumėte orų įvykius.
+- Nuspėti ligos tikimybę iš paciento medicininės istorijos ar įrašų.
+- Naudotis orų duomenimis orų įvykiams prognozuoti.
 - Suprasti teksto nuotaiką.
-- Aptikti netikras naujienas, kad sustabdytumėte propagandos plitimą.
+- Aptikti netikras žinias ir sustabdyti propagandos plitimą.
 
-Finansai, ekonomika, žemės mokslai, kosmoso tyrimai, biomedicinos inžinerija, kognityviniai mokslai ir net humanitariniai mokslai pritaikė mašininį mokymąsi, kad išspręstų sudėtingas, duomenų apdorojimo reikalaujančias savo srities problemas.
+Finansai, ekonomika, žemės moksla, kosmoso tyrimai, biomedicinos inžinerija, pažinimo mokslas ir net humanitariniai mokslai pritaikė mašininį mokymąsi spręsti sudėtingas, duomenų apdorojimo reikalaujančias savo srities problemas.
 
 ---
 ## Išvada
 
-Mašininis mokymasis automatizuoja modelių atradimo procesą, surandant prasmingas įžvalgas iš realaus pasaulio ar generuotų duomenų. Jis pasirodė esąs labai vertingas verslo, sveikatos ir finansų srityse, be kitų.
+Mašininis mokymasis automatizuoja modelių atradimo procesą, ieškodamas prasmingų įžvalgų iš realių ar generuotų duomenų. Jis pasitvirtino esąs itin vertingas verslo, sveikatos ir finansų taikymuose bei kituose.
 
-Artimiausioje ateityje mašininio mokymosi pagrindų supratimas taps būtinybe žmonėms iš bet kurios srities dėl jo plačiai paplitusio pritaikymo.
+Artimoje ateityje pagrindinių mašininio mokymosi žinių supratimas bus būtinas bet kurios srities žmonėms dėl plačiai paplitusio taikymo.
 
 ---
 # 🚀 Iššūkis
 
-Nupieškite, popieriuje arba naudodamiesi internetine programa, pvz., [Excalidraw](https://excalidraw.com/), savo supratimą apie AI, ML, gilaus mokymosi ir duomenų mokslo skirtumus. Pridėkite idėjų apie problemas, kurias kiekviena iš šių technikų gerai sprendžia.
+Nupieškite ant popieriaus arba naudodamiesi internetine programa, pvz., [Excalidraw](https://excalidraw.com/), kaip suprantate skirtumus tarp AI, ML, giliojo mokymosi ir duomenų mokslo. Pridėkite idėjų, kokias problemas kiekviena iš šių technikų gerai sprendžia.
 
-# [Po paskaitos testas](https://ff-quizzes.netlify.app/en/ml/)
+# [Po paskaitos viktorina](https://ff-quizzes.netlify.app/en/ml/)
 
 ---
-# Apžvalga ir savarankiškas mokymasis
+# Peržiūra ir savarankiškas mokymasis
 
-Norėdami sužinoti daugiau apie tai, kaip galite dirbti su ML algoritmais debesyje, sekite šį [mokymosi kelią](https://docs.microsoft.com/learn/paths/create-no-code-predictive-models-azure-machine-learning/?WT.mc_id=academic-77952-leestott).
+Norėdami sužinoti daugiau apie tai, kaip dirbti su ML algoritmais debesyje, sekite šią [mokymosi programą](https://docs.microsoft.com/learn/paths/create-no-code-predictive-models-azure-machine-learning/?WT.mc_id=academic-77952-leestott).
 
-Paimkite [mokymosi kelią](https://docs.microsoft.com/learn/modules/introduction-to-machine-learning/?WT.mc_id=academic-77952-leestott) apie ML pagrindus.
+Išmokite pagrindus naudodamiesi šia [mokymosi programa](https://docs.microsoft.com/learn/modules/introduction-to-machine-learning/?WT.mc_id=academic-77952-leestott).
 
 ---
 # Užduotis
 
-[Pradėkite darbą](assignment.md)
+[Pradėkite ir paleiskite](assignment.md)
 
 ---
 
-**Atsakomybės atsisakymas**:  
-Šis dokumentas buvo išverstas naudojant AI vertimo paslaugą [Co-op Translator](https://github.com/Azure/co-op-translator). Nors siekiame tikslumo, prašome atkreipti dėmesį, kad automatiniai vertimai gali turėti klaidų ar netikslumų. Originalus dokumentas jo gimtąja kalba turėtų būti laikomas autoritetingu šaltiniu. Kritinei informacijai rekomenduojama profesionali žmogaus vertimo paslauga. Mes neprisiimame atsakomybės už nesusipratimus ar klaidingus interpretavimus, atsiradusius naudojant šį vertimą.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Atsakomybės apribojimas**:
+Šis dokumentas buvo išverstas naudojant dirbtinio intelekto vertimo paslaugą [Co-op Translator](https://github.com/Azure/co-op-translator). Nors siekiame tikslumo, prašome atkreipti dėmesį, kad automatiniai vertimai gali turėti klaidų ar netikslumų. Originalus dokumentas jo gimtąja kalba laikomas autoritetingu šaltiniu. Svarbiai informacijai rekomenduojama naudoti profesionalų žmogiškąjį vertimą. Mes neatsakome už jokius nesusipratimus ar neteisingą interpretaciją, kilusią naudojantis šiuo vertimu.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

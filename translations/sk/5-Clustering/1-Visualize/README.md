@@ -1,106 +1,105 @@
 # Úvod do zhlukovania
 
-Zhlukovanie je typ [neučenej metódy](https://wikipedia.org/wiki/Unsupervised_learning), ktorá predpokladá, že dataset nie je označený alebo že jeho vstupy nie sú spojené s preddefinovanými výstupmi. Používa rôzne algoritmy na triedenie neoznačených dát a poskytuje skupiny na základe vzorov, ktoré rozpozná v dátach.
+Zhlukovanie je typ [neurčeného učenia](https://wikipedia.org/wiki/Unsupervised_learning), ktorý predpokladá, že dátová množina nie je označená alebo že jej vstupy nie sú spárované s preddefinovanými výstupmi. Používa rôzne algoritmy na pretriedenie neoznačených dát a poskytuje zoskupenia podľa vzorov, ktoré v dátach rozpozná.
 
-[![No One Like You od PSquare](https://img.youtube.com/vi/ty2advRiWJM/0.jpg)](https://youtu.be/ty2advRiWJM "No One Like You od PSquare")
+[![No One Like You by PSquare](https://img.youtube.com/vi/ty2advRiWJM/0.jpg)](https://youtu.be/ty2advRiWJM "No One Like You by PSquare")
 
-> 🎥 Kliknite na obrázok vyššie pre video. Kým študujete strojové učenie so zhlukovaním, užite si niektoré nigerijské Dance Hall skladby - toto je vysoko hodnotená skladba z roku 2014 od PSquare.
+> 🎥 Kliknite na obrázok vyššie pre video. Kým študujete strojové učenie so zhlukovaním, vychutnajte si nigerijské tanečné skladby - toto je veľmi hodnotená pieseň z roku 2014 od PSquare.
 
-## [Kvíz pred prednáškou](https://ff-quizzes.netlify.app/en/ml/)
+## [Prednáškový kvíz](https://ff-quizzes.netlify.app/en/ml/)
 
 ### Úvod
 
-[Zhlukovanie](https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-30164-8_124) je veľmi užitočné pre prieskum dát. Pozrime sa, či nám môže pomôcť objaviť trendy a vzory v tom, ako nigerijské publikum konzumuje hudbu.
+[Zhlukovanie](https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-30164-8_124) je veľmi užitočné pri prieskume dát. Pozrime sa, či môže pomôcť objaviť trendy a vzory v spôsobe, akým nigerijské publikum konzumuje hudbu.
 
-✅ Zamyslite sa na chvíľu nad využitím zhlukovania. V reálnom živote sa zhlukovanie deje vždy, keď máte hromadu bielizne a potrebujete roztriediť oblečenie členov rodiny 🧦👕👖🩲. V dátovej vede sa zhlukovanie deje pri analýze preferencií používateľov alebo pri určovaní charakteristík akéhokoľvek neoznačeného datasetu. Zhlukovanie, do istej miery, pomáha urobiť poriadok z chaosu, ako napríklad zásuvka na ponožky.
+✅ Venujte minútu zamysleniu sa nad použitím zhlukovania. V reálnom živote k zhlukovaniu dochádza, keď máte hromadu bielizne a potrebujete roztriediť oblečenie členov rodiny 🧦👕👖🩲. V dátovej vede k zhlukovaniu dochádza pri analýze preferencií používateľa alebo pri určovaní charakteristík akejkoľvek neoznačenej množiny dát. Zhlukovanie akoby pomáha dávať zmysel chaosu, ako zásuvka na ponožky.
 
 [![Úvod do ML](https://img.youtube.com/vi/esmzYhuFnds/0.jpg)](https://youtu.be/esmzYhuFnds "Úvod do zhlukovania")
 
-> 🎥 Kliknite na obrázok vyššie pre video: John Guttag z MIT predstavuje zhlukovanie.
+> 🎥 Kliknite na obrázok vyššie pre video: John Guttag z MIT predstavuje zhlukovanie
 
-V profesionálnom prostredí môže byť zhlukovanie použité na určenie vecí, ako je segmentácia trhu, napríklad na určenie, ktoré vekové skupiny kupujú aké položky. Ďalším využitím by mohlo byť odhaľovanie anomálií, napríklad na detekciu podvodov z datasetu transakcií kreditných kariet. Alebo by ste mohli použiť zhlukovanie na určenie nádorov v dávke medicínskych skenov.
+V profesionálnom prostredí sa zhlukovanie môže použiť na určovanie vecí ako segmentácia trhu, napríklad určenie, ktoré vekové skupiny kupujú ktoré produkty. Ďalším použitím môže byť detekcia anomálií, napríklad na odhalenie podvodov v množine dát o kreditných kartách. Alebo môžete použiť zhlukovanie na určenie nádorov v sérii lekárskych snímok.
 
-✅ Zamyslite sa na chvíľu nad tým, ako ste sa mohli stretnúť so zhlukovaním „v divočine“, v bankovníctve, e-commerce alebo obchodnom prostredí.
+✅ Zamyslite sa minútu nad tým, ako ste sa mohli stretnúť so zhlukovaním „v divočine“, v bankovníctve, e-commerce alebo biznisovom prostredí.
 
-> 🎓 Zaujímavosť: Analýza zhlukov vznikla v oblasti antropológie a psychológie v 30. rokoch 20. storočia. Dokážete si predstaviť, ako mohla byť použitá?
+> 🎓 Zaujímavosťou je, že analýza zhlukov vznikla v oblastiach antropológie a psychológie v 30. rokoch 20. storočia. Viete si predstaviť, ako mohla byť používaná?
 
-Alternatívne by ste ju mohli použiť na zoskupenie výsledkov vyhľadávania - napríklad podľa nákupných odkazov, obrázkov alebo recenzií. Zhlukovanie je užitočné, keď máte veľký dataset, ktorý chcete zredukovať a na ktorom chcete vykonať podrobnejšiu analýzu, takže táto technika môže byť použitá na získanie informácií o dátach pred vytvorením iných modelov.
+Alternatívne by ste ju mohli použiť na zoskupovanie výsledkov vyhľadávania - napríklad podľa nákupných odkazov, obrázkov alebo recenzií. Zhlukovanie je užitočné, keď máte veľkú množinu dát, ktorú chcete zredukovať a na ktorej chcete vykonať podrobnejšiu analýzu, takže technika sa dá použiť na spoznanie dát predtým, než sa vybudujú iné modely.
 
-✅ Keď sú vaše dáta organizované do zhlukov, priradíte im identifikátor zhluku, a táto technika môže byť užitočná pri zachovaní súkromia datasetu; namiesto odkazovania na konkrétne údaje môžete odkazovať na identifikátor zhluku. Dokážete si predstaviť ďalšie dôvody, prečo by ste odkazovali na identifikátor zhluku namiesto iných prvkov zhluku na jeho identifikáciu?
+✅ Akonáhle sú vaše dáta zorganizované do zhlukov, priradíte im ID zhluku a táto technika môže byť užitočná pri zachovaní súkromia množiny dát; môžete namiesto identifikácie dátového bodu podľa odhalujúcich identifikovateľných údajov použiť jeho ID zhluku. Viete si predstaviť iné dôvody, prečo by ste radšej odkazovali na ID zhluku ako na iné prvky zhluku na jeho identifikáciu?
 
-Prehĺbte svoje pochopenie techník zhlukovania v tomto [učebnom module](https://docs.microsoft.com/learn/modules/train-evaluate-cluster-models?WT.mc_id=academic-77952-leestott).
-
+Prehĺbte svoje znalosti o technikách zhlukovania v tomto [moduly Learn](https://docs.microsoft.com/learn/modules/train-evaluate-cluster-models?WT.mc_id=academic-77952-leestott)
 ## Začíname so zhlukovaním
 
-[Scikit-learn ponúka širokú škálu](https://scikit-learn.org/stable/modules/clustering.html) metód na vykonávanie zhlukovania. Typ, ktorý si vyberiete, bude závisieť od vášho prípadu použitia. Podľa dokumentácie má každá metóda rôzne výhody. Tu je zjednodušená tabuľka metód podporovaných Scikit-learn a ich vhodné prípady použitia:
+[Scikit-learn ponúka veľkú škálu](https://scikit-learn.org/stable/modules/clustering.html) metód na zhlukovanie. Typ, ktorý si zvolíte, bude závisieť od vášho použitia. Podľa dokumentácie má každá metóda rôzne výhody. Tu je zjednodušená tabuľka metód podporovaných Scikit-learn a ich vhodných prípadov použitia:
 
-| Názov metódy                 | Prípad použitia                                                      |
+| Názov metódy                | Prípad použitia                                                       |
 | :--------------------------- | :------------------------------------------------------------------- |
-| K-Means                      | všeobecné použitie, induktívne                                       |
-| Affinity propagation         | mnoho, nerovnomerné zhluky, induktívne                              |
-| Mean-shift                   | mnoho, nerovnomerné zhluky, induktívne                              |
-| Spectral clustering          | málo, rovnomerné zhluky, transduktívne                              |
-| Ward hierarchical clustering | mnoho, obmedzené zhluky, transduktívne                              |
-| Agglomerative clustering     | mnoho, obmedzené, ne-Euklidovské vzdialenosti, transduktívne        |
-| DBSCAN                       | neplochá geometria, nerovnomerné zhluky, transduktívne              |
-| OPTICS                       | neplochá geometria, nerovnomerné zhluky s variabilnou hustotou, transduktívne |
-| Gaussian mixtures            | plochá geometria, induktívne                                        |
-| BIRCH                        | veľký dataset s odľahlými bodmi, induktívne                         |
+| K-Means                      | všeobecné použitie, induktívne                                      |
+| Affinity propagation         | veľa, nerovnomerných zhlukov, induktívne                            |
+| Mean-shift                   | veľa, nerovnomerných zhlukov, induktívne                            |
+| Spektrálne zhlukovanie       | málo, rovnomerných zhlukov, transduktívne                           |
+| Ward hierarchické zhlukovanie | veľa, obmedzených zhlukov, transduktívne                           |
+| Agglomeratívne zhlukovanie  | veľa, obmedzených, ne-euklidovských vzdialeností, transduktívne    |
+| DBSCAN                       | neplochá geometria, nerovnomerné zhluky, transduktívne             |
+| OPTICS                       | neplochá geometria, nerovnomerné zhluky s premenlivou hustotou, transduktívne |
+| Gaussovské zmesi            | plochá geometria, induktívne                                        |
+| BIRCH                        | veľká množina dát s odľahlými hodnotami, induktívne                 |
 
-> 🎓 Ako vytvárame zhluky, má veľa spoločného s tým, ako zhromažďujeme dátové body do skupín. Poďme si rozobrať niektoré pojmy:
+> 🎓 Ako vytvárame zhluky veľmi súvisí s tým, ako zhromažďujeme dátové body do skupín. Pozrime sa na niektorú slovnú zásobu:
 >
-> 🎓 ['Transduktívne' vs. 'induktívne'](https://wikipedia.org/wiki/Transduction_(machine_learning))
+> 🎓 ['Transduktívne' verzus 'induktívne'](https://wikipedia.org/wiki/Transduction_(machine_learning))
 > 
-> Transduktívna inferencia je odvodená z pozorovaných tréningových prípadov, ktoré sa mapujú na konkrétne testovacie prípady. Induktívna inferencia je odvodená z tréningových prípadov, ktoré sa mapujú na všeobecné pravidlá, ktoré sa potom aplikujú na testovacie prípady.
+> Transduktívny záver sa vyvodzuje z pozorovaných trénovacích prípadov, ktoré mapujú konkrétne testovacie prípady. Induktívny záver sa odvodzuje z trénovacích prípadov, ktoré mapujú všeobecné pravidlá, ktoré sa až potom aplikujú na testovacie prípady.
 > 
-> Príklad: Predstavte si, že máte dataset, ktorý je len čiastočne označený. Niektoré veci sú „platne“, niektoré „CD“ a niektoré sú prázdne. Vašou úlohou je poskytnúť označenia pre prázdne miesta. Ak si vyberiete induktívny prístup, trénovali by ste model hľadajúci „platne“ a „CD“ a aplikovali tieto označenia na vaše neoznačené dáta. Tento prístup bude mať problémy s klasifikáciou vecí, ktoré sú vlastne „kazety“. Transduktívny prístup, na druhej strane, efektívnejšie spracováva tieto neznáme dáta, pretože pracuje na zoskupení podobných položiek a potom aplikuje označenie na skupinu. V tomto prípade by zhluky mohli odrážať „okrúhle hudobné veci“ a „štvorcové hudobné veci“.
+> Príklad: Predstavte si, že máte dataset, ktorý je len čiastočne označený. Niektoré veci sú 'platne', niektoré 'cdčka' a niektoré sú prázdne. Vašou úlohou je priradiť štítky prázdnym záznamom. Ak zvolíte induktívny prístup, vytrénujete model na hľadanie 'platní' a 'cdčiek' a použijete tieto štítky na neoznačené dáta. Tento prístup bude mať problém s klasifikáciou vecí, ktoré sú v skutočnosti 'kazety'. Transduktívny prístup, na druhej strane, lepšie spracováva tieto neznáme dáta, pretože pracuje na zoskupení podobných položiek a potom priradí štítok skupine. V tomto prípade by zhluky mohli odrážať "guľaté hudobné veci" a "štvorcové hudobné veci."
 > 
-> 🎓 ['Neplochá' vs. 'plochá' geometria](https://datascience.stackexchange.com/questions/52260/terminology-flat-geometry-in-the-context-of-clustering)
+> 🎓 ['Neplochá' verzus 'plochá' geometria](https://datascience.stackexchange.com/questions/52260/terminology-flat-geometry-in-the-context-of-clustering)
 > 
-> Odvodené z matematickej terminológie, neplochá vs. plochá geometria sa týka merania vzdialeností medzi bodmi buď „plochými“ ([Euklidovskými](https://wikipedia.org/wiki/Euclidean_geometry)) alebo „neplochými“ (ne-Euklidovskými) geometrickými metódami.
+> Vychádzajúc z matematickej terminológie, neplochá verzus plochá geometria sa vzťahuje na meranie vzdialeností medzi bodmi pomocou buď 'plochej' ([euklidovskej](https://wikipedia.org/wiki/Euclidean_geometry)) alebo 'neplochej' (ne-euklidovskej) geometrickej metódy.
 >
->'Plochá' v tomto kontexte odkazuje na Euklidovskú geometriu (časti ktorej sa učia ako „rovinná“ geometria), a neplochá odkazuje na ne-Euklidovskú geometriu. Čo má geometria spoločné so strojovým učením? Ako dve oblasti, ktoré sú zakorenené v matematike, musí existovať spoločný spôsob merania vzdialeností medzi bodmi v zhlukoch, a to môže byť vykonané „plochým“ alebo „neplochým“ spôsobom, v závislosti od povahy dát. [Euklidovské vzdialenosti](https://wikipedia.org/wiki/Euclidean_distance) sa merajú ako dĺžka úsečky medzi dvoma bodmi. [Ne-Euklidovské vzdialenosti](https://wikipedia.org/wiki/Non-Euclidean_geometry) sa merajú pozdĺž krivky. Ak vaše dáta, vizualizované, neexistujú na rovine, možno budete potrebovať použiť špecializovaný algoritmus na ich spracovanie.
+> 'Plochá' v tomto kontexte odkazuje na euklidovskú geometriu (jej časť sa učí ako 'rovinná' geometria), a neplochá na ne-euklidovskú geometriu. Čo má geometria spoločné so strojovým učením? No, ako dva odbory založené na matematike, musí existovať spoločný spôsob, ako merať vzdialenosti medzi bodmi v zhlukoch, a to sa môže robiť plochým alebo neplochým spôsobom v závislosti od povahy dát. [Euklidovské vzdialenosti](https://wikipedia.org/wiki/Euclidean_distance) sa merajú ako dĺžka úseku medzi dvoma bodmi. [Ne-euklidovské vzdialenosti](https://wikipedia.org/wiki/Non-Euclidean_geometry) sa merajú pozdĺž krivky. Ak vaše dáta, zobrazené vizuálne, vyzerajú, že neexistujú na rovine, možno budete potrebovať použiť špecializovaný algoritmus na ich spracovanie.
 >
-![Infografika plochá vs. neplochá geometria](../../../../5-Clustering/1-Visualize/images/flat-nonflat.png)
+![Infografika plochá verzus neplochá geometria](../../../../translated_images/sk/flat-nonflat.d1c8c6e2a96110c1.webp)
 > Infografika od [Dasani Madipalli](https://twitter.com/dasani_decoded)
 > 
 > 🎓 ['Vzdialenosti'](https://web.stanford.edu/class/cs345a/slides/12-clustering.pdf)
 > 
-> Zhluky sú definované ich maticou vzdialeností, napr. vzdialenosti medzi bodmi. Táto vzdialenosť môže byť meraná niekoľkými spôsobmi. Euklidovské zhluky sú definované priemerom hodnôt bodov a obsahujú „centroid“ alebo stredový bod. Vzdialenosti sú teda merané vzdialenosťou k tomuto centroidu. Ne-Euklidovské vzdialenosti odkazujú na „clustroidy“, bod najbližší k ostatným bodom. Clustroidy môžu byť definované rôznymi spôsobmi.
+> Zhluky sú definované ich maticou vzdialeností, napríklad vzdialenosťami medzi bodmi. Táto vzdialenosť sa môže merať niekoľkými spôsobmi. Euklidovské zhluky sú definované priemerom hodnôt bodov a obsahujú 'centroid' alebo stredový bod. Vzdialenosti sa teda merajú podľa vzdialenosti k tomuto centriodu. Ne-euklidovské vzdialenosti sa týkajú 'clustroidov', bodu najbližšieho k iným bodom. Clustroidy môžu byť definované rôznymi spôsobmi.
 > 
 > 🎓 ['Obmedzené'](https://wikipedia.org/wiki/Constrained_clustering)
 > 
-> [Obmedzené zhlukovanie](https://web.cs.ucdavis.edu/~davidson/Publications/ICDMTutorial.pdf) zavádza „semi-učené“ učenie do tejto neučenej metódy. Vzťahy medzi bodmi sú označené ako „nemôže byť prepojené“ alebo „musí byť prepojené“, takže na dataset sú aplikované určité pravidlá.
+> [Obmedzené zhlukovanie](https://web.cs.ucdavis.edu/~davidson/Publications/ICDMTutorial.pdf) zavádza do metódy nesupervidovaného učenia prvky semi-supervidovaného učenia. Vzťahy medzi bodmi sú označené ako 'nemôže byť spojené' alebo 'musí byť spojené', takže na množinu dát sú vynútené niektoré pravidlá.
 >
->Príklad: Ak je algoritmus voľne spustený na dávke neoznačených alebo semi-označených dát, zhluky, ktoré vytvorí, môžu byť nekvalitné. V príklade vyššie by zhluky mohli zoskupovať „okrúhle hudobné veci“ a „štvorcové hudobné veci“ a „trojuholníkové veci“ a „sušienky“. Ak sú dané nejaké obmedzenia alebo pravidlá, ktoré treba dodržiavať („položka musí byť vyrobená z plastu“, „položka musí byť schopná produkovať hudbu“), môže to pomôcť „obmedziť“ algoritmus, aby robil lepšie rozhodnutia.
+>Príklad: Ak algoritmus necháme voľne pracovať na množine neoznačených alebo čiastočne označených dát, zhluky, ktoré vytvorí, môžu byť nekvalitné. V predchádzajúcom príklade by zhluky mohli zoskupiť „guľaté hudobné veci“, „štvorcové hudobné veci“, „trojuholníkové veci“ a „keksíky“. Ak mu zadáme niektoré obmedzenia alebo pravidlá ("položka musí byť z plastu", "položka musí vedieť produkovať hudbu"), môže to pomôcť algoritmu robiť lepšie rozhodnutia.
 > 
 > 🎓 'Hustota'
 > 
-> Dáta, ktoré sú „hlučné“, sa považujú za „husté“. Vzdialenosti medzi bodmi v každom z jeho zhlukov môžu byť pri skúmaní viac alebo menej husté, alebo „preplnené“, a preto tieto dáta potrebujú byť analyzované vhodnou metódou zhlukovania. [Tento článok](https://www.kdnuggets.com/2020/02/understanding-density-based-clustering.html) demonštruje rozdiel medzi použitím K-Means zhlukovania vs. HDBSCAN algoritmov na preskúmanie hlučného datasetu s nerovnomernou hustotou zhlukov.
+> Dáta, ktoré sú 'šumové', sa považujú za 'husté'. Vzdialenosti medzi bodmi v jednotlivých zhlukoch môžu byť po preskúmaní viac alebo menej husté, alebo 'preplnené', a preto tieto dáta treba analyzovať vhodnou metódou zhlukovania. [Tento článok](https://www.kdnuggets.com/2020/02/understanding-density-based-clustering.html) ukazuje rozdiel medzi použitím K-Means a HDBSCAN algoritmov na skúmanie šumovej množiny dát s nerovnomernou hustotou zhlukov.
 
 ## Algoritmy zhlukovania
 
-Existuje viac ako 100 algoritmov zhlukovania a ich použitie závisí od povahy dostupných dát. Poďme diskutovať o niektorých hlavných:
+Existuje viac ako 100 algoritmov na zhlukovanie a ich použitie závisí od povahy spracovávaných dát. Pozrime sa na niektoré hlavné:
 
-- **Hierarchické zhlukovanie**. Ak je objekt klasifikovaný podľa jeho blízkosti k blízkemu objektu, namiesto vzdialeného, zhluky sú tvorené na základe vzdialenosti členov od ostatných objektov. Agglomeratívne zhlukovanie v Scikit-learn je hierarchické.
+- **Hierarchické zhlukovanie**. Ak je objekt klasifikovaný podľa svojej blízkosti k susednému objektu, namiesto k vzdialenejšiemu, vytvárajú sa zhluky na základe vzdialenosti členov k iným objektom. Agglomeratívne zhlukovanie v Scikit-learn je hierarchické.
 
-   ![Infografika hierarchického zhlukovania](../../../../5-Clustering/1-Visualize/images/hierarchical.png)
+   ![Infografika hierarchického zhlukovania](../../../../translated_images/sk/hierarchical.bf59403aa43c8c47.webp)
    > Infografika od [Dasani Madipalli](https://twitter.com/dasani_decoded)
 
-- **Zhlukovanie podľa centroidu**. Tento populárny algoritmus vyžaduje výber 'k', alebo počet zhlukov, ktoré sa majú vytvoriť, po ktorom algoritmus určí stredový bod zhluku a zhromaždí dáta okolo tohto bodu. [K-means zhlukovanie](https://wikipedia.org/wiki/K-means_clustering) je populárna verzia zhlukovania podľa centroidu. Stred je určený najbližším priemerom, odtiaľ názov. Štvorcová vzdialenosť od zhluku je minimalizovaná.
+- **Centroidové zhlukovanie**. Tento obľúbený algoritmus vyžaduje zvoliť počet „k“ zhlukov, ktoré sa majú vytvoriť, potom algoritmus určí stredový bod zhluku a zhromaždí údaje okolo neho. [K-means zhlukovanie](https://wikipedia.org/wiki/K-means_clustering) je populárna verzia centroidového zhlukovania. Stred je určený najbližším priemerom, odtiaľ názov. Štvorcová vzdialenosť od zhluku je minimalizovaná.
 
-   ![Infografika zhlukovania podľa centroidu](../../../../5-Clustering/1-Visualize/images/centroid.png)
+   ![Infografika centroidového zhlukovania](../../../../translated_images/sk/centroid.097fde836cf6c918.webp)
    > Infografika od [Dasani Madipalli](https://twitter.com/dasani_decoded)
 
-- **Distribučné zhlukovanie**. Založené na štatistickom modelovaní, distribučné zhlukovanie sa zameriava na určenie pravdepodobnosti, že dátový bod patrí do zhluku, a jeho priradenie. Metódy Gaussovských zmesí patria do tohto typu.
+- **Distribučné zhlukovanie**. Založené na štatistickom modelovaní, distribučné zhlukovanie sa zameriava na určenie pravdepodobnosti, že dátový bod patrí do zhluku, a podľa toho ho priraďuje. Metódy gaussovských zmesí patria do tohto typu.
 
-- **Zhlukovanie podľa hustoty**. Dátové body sú priradené do zhlukov na základe ich hustoty, alebo ich zoskupenia okolo seba. Dátové body vzdialené od skupiny sú považované za odľahlé body alebo šum. DBSCAN, Mean-shift a OPTICS patria do tohto typu zhlukovania.
+- **Hustotné zhlukovanie**. Dátové body sa priraďujú ku zhlukom na základe ich hustoty alebo ich zoskupenia okolo seba. Dátové body vzdialené od skupiny sa považujú za odľahlé hodnoty alebo šum. DBSCAN, Mean-shift a OPTICS patria do tohto typu zhlukovania.
 
-- **Zhlukovanie podľa mriežky**. Pre multidimenzionálne datasety sa vytvorí mriežka a dáta sa rozdelia medzi bunky mriežky, čím sa vytvoria zhluky.
+- **Mriežkové zhlukovanie**. Pre viacrozmerné dáta sa vytvára mriežka a dáta sa rozdeľujú medzi bunky mriežky, čím vznikajú zhluky.
 
 ## Cvičenie - zhlukujte svoje dáta
 
-Zhlukovanie ako technika je výrazne podporené správnou vizualizáciou, takže začnime vizualizáciou našich hudobných dát. Toto cvičenie nám pomôže rozhodnúť, ktorú z metód zhlukovania by sme mali najefektívnejšie použiť pre povahu týchto dát.
+Zhlukovanie ako technika je výrazne podporované správnou vizualizáciou, takže začnime vizualizáciou našich hudobných dát. Toto cvičenie nám pomôže rozhodnúť, ktorú z metód zhlukovania by sme mali najefektívnejšie použiť pre povahu týchto dát.
 
 1. Otvorte súbor [_notebook.ipynb_](https://github.com/microsoft/ML-For-Beginners/blob/main/5-Clustering/1-Visualize/notebook.ipynb) v tomto priečinku.
 
@@ -110,7 +109,7 @@ Zhlukovanie ako technika je výrazne podporené správnou vizualizáciou, takže
     !pip install seaborn
     ```
 
-1. Pripojte hudobné dáta zo súboru [_nigerian-songs.csv_](https://github.com/microsoft/ML-For-Beginners/blob/main/5-Clustering/data/nigerian-songs.csv). Načítajte dataframe s niektorými dátami o skladbách. Pripravte sa na preskúmanie týchto dát importovaním knižníc a vypísaním dát:
+1. Pridajte dáta piesní zo súboru [_nigerian-songs.csv_](https://github.com/microsoft/ML-For-Beginners/blob/main/5-Clustering/data/nigerian-songs.csv). Načítajte dataframe s niektorými informáciami o piesňach. Pripravte sa na prieskum týchto dát importom knižníc a vyvedením dát:
 
     ```python
     import matplotlib.pyplot as plt
@@ -120,17 +119,17 @@ Zhlukovanie ako technika je výrazne podporené správnou vizualizáciou, takže
     df.head()
     ```
 
-    Skontrolujte prvých pár riadkov dát:
+    Skontrolujte prvé riadky dát:
 
-    |     | názov                   | album                        | umelec              | hlavný žáner umelca | dátum vydania | dĺžka | popularita | tanečnosť    | akustickosť  | energia | inštrumentálnosť | živosť   | hlasitosť | rečovosť    | tempo   | takt           |
-    | --- | ----------------------- | ---------------------------- | ------------------- | ------------------- | ------------- | ------ | ---------- | ------------ | ------------ | ------ | ---------------- | -------- | -------- | ----------- | ------- | -------------- |
-    | 0   | Sparky                  | Mandy & The Jungle           | Cruel Santino       | alternatívne r&b    | 2019          | 144000 | 48         | 0.666        | 0.851        | 0.42   | 0.534            | 0.11     | -6.699   | 0.0829      | 133.015 | 5              |
-    | 1   | shuga rush              | EVERYTHING YOU HEARD IS TRUE | Odunsi (The Engine) | afropop             | 2020          | 89488  | 30         | 0.71         | 0.0822       | 0.683  | 0.000169         | 0.101    | -5.64    | 0.36        | 129.993 | 3              |
-| 2   | LITT!                    | LITT!                        | AYLØ                | indie r&b        | 2018         | 207758 | 40         | 0.836        | 0.272        | 0.564  | 0.000537         | 0.11     | -7.127   | 0.0424      | 130.005 | 4              |
-| 3   | Confident / Feeling Cool | Enjoy Your Life              | Lady Donli          | nigerian pop     | 2019         | 175135 | 14         | 0.894        | 0.798        | 0.611  | 0.000187         | 0.0964   | -4.961   | 0.113       | 111.087 | 4              |
-| 4   | wanted you               | rare.                        | Odunsi (The Engine) | afropop          | 2018         | 152049 | 25         | 0.702        | 0.116        | 0.833  | 0.91             | 0.348    | -6.044   | 0.0447      | 105.115 | 4              |
+    |     | name                     | album                        | artist              | artist_top_genre | release_date | length | popularity | danceability | acousticness | energy | instrumentalness | liveness | loudness | speechiness | tempo   | time_signature |
+    | --- | ------------------------ | ---------------------------- | ------------------- | ---------------- | ------------ | ------ | ---------- | ------------ | ------------ | ------ | ---------------- | -------- | -------- | ----------- | ------- | -------------- |
+    | 0   | Sparky                   | Mandy & The Jungle           | Cruel Santino       | alternative r&b  | 2019         | 144000 | 48         | 0.666        | 0.851        | 0.42   | 0.534            | 0.11     | -6.699   | 0.0829      | 133.015 | 5              |
+    | 1   | shuga rush               | EVERYTHING YOU HEARD IS TRUE | Odunsi (The Engine) | afropop          | 2020         | 89488  | 30         | 0.71         | 0.0822       | 0.683  | 0.000169         | 0.101    | -5.64    | 0.36        | 129.993 | 3              |
+    | 2   | LITT!                    | LITT!                        | AYLØ                | indie r&b        | 2018         | 207758 | 40         | 0.836        | 0.272        | 0.564  | 0.000537         | 0.11     | -7.127   | 0.0424      | 130.005 | 4              |
+    | 3   | Confident / Feeling Cool | Enjoy Your Life              | Lady Donli          | nigerian pop     | 2019         | 175135 | 14         | 0.894        | 0.798        | 0.611  | 0.000187         | 0.0964   | -4.961   | 0.113       | 111.087 | 4              |
+    | 4   | wanted you               | rare.                        | Odunsi (The Engine) | afropop          | 2018         | 152049 | 25         | 0.702        | 0.116        | 0.833  | 0.91             | 0.348    | -6.044   | 0.0447      | 105.115 | 4              |
 
-1. Získajte niektoré informácie o dátovom rámci, zavolaním `info()`:
+1. Získajte niektoré informácie o dátovom rámci zavolaním `info()`:
 
     ```python
     df.info()
@@ -164,7 +163,7 @@ Zhlukovanie ako technika je výrazne podporené správnou vizualizáciou, takže
     memory usage: 66.4+ KB
     ```
 
-1. Skontrolujte, či neobsahuje nulové hodnoty, zavolaním `isnull()` a overením, že súčet je 0:
+1. Dvakrát si overte null hodnoty zavolaním `isnull()` a overením, že súčet je 0:
 
     ```python
     df.isnull().sum()
@@ -192,7 +191,7 @@ Zhlukovanie ako technika je výrazne podporené správnou vizualizáciou, takže
     dtype: int64
     ```
 
-1. Popíšte údaje:
+1. Popíšte dáta:
 
     ```python
     df.describe()
@@ -209,11 +208,11 @@ Zhlukovanie ako technika je výrazne podporené správnou vizualizáciou, takže
     | 75%   | 2017         | 242098.5    | 31         | 0.8295       | 0.403        | 0.87575  | 0.000234         | 0.164    | -3.331    | 0.177       | 125.03925  | 4              |
     | max   | 2020         | 511738      | 73         | 0.966        | 0.954        | 0.995    | 0.91             | 0.811    | 0.582     | 0.514       | 206.007    | 5              |
 
-> 🤔 Ak pracujeme s klastrovaním, nesupervidovanou metódou, ktorá nevyžaduje označené údaje, prečo zobrazujeme tieto údaje s označeniami? Počas fázy skúmania údajov sú užitočné, ale pre fungovanie algoritmov klastrovania nie sú potrebné. Mohli by ste rovnako odstrániť hlavičky stĺpcov a odkazovať na údaje podľa čísla stĺpca.
+> 🤔 Ak pracujeme so zhlukovaním, nepozorovanou metódou, ktorá nevyžaduje označené dáta, prečo tento údaj zobrazujeme s označeniami? V fáze prieskumu dát sú užitočné, no pre zhlukovacie algoritmy nie sú nevyhnutné. Môžete rovno odstrániť názvy stĺpcov a odkazovať sa na dáta podľa čísel stĺpcov. 
 
-Pozrite sa na všeobecné hodnoty údajov. Všimnite si, že popularita môže byť '0', čo ukazuje piesne, ktoré nemajú žiadne hodnotenie. Tieto odstránime čoskoro.
+Pozrite sa na všeobecné hodnoty dát. Všimnite si, že popularita môže byť '0', čo ukazuje skladby bez rebríčkovania. Tie čoskoro odstránime.
 
-1. Použite stĺpcový graf na zistenie najpopulárnejších žánrov:
+1. Použite barplot, aby ste zistili najpopulárnejšie žánre:
 
     ```python
     import seaborn as sns
@@ -225,13 +224,13 @@ Pozrite sa na všeobecné hodnoty údajov. Všimnite si, že popularita môže b
     plt.title('Top genres',color = 'blue')
     ```
 
-    ![najpopulárnejšie](../../../../5-Clustering/1-Visualize/images/popular.png)
+    ![most popular](../../../../translated_images/sk/popular.9c48d84b3386705f.webp)
 
-✅ Ak chcete vidieť viac najlepších hodnôt, zmeňte top `[:5]` na väčšiu hodnotu alebo ho odstráňte, aby ste videli všetky.
+✅ Ak si chcete pozrieť viac top hodnôt, zmeňte horný limit `[:5]` na vyššiu hodnotu alebo ho odstráňte a zobrazíte všetko.
 
-Všimnite si, že keď je najlepší žáner opísaný ako 'Missing', znamená to, že Spotify ho neklasifikoval, takže ho odstránime.
+Dávajte pozor, keď je top žáner popísaný ako 'Missing', znamená to, že ho Spotify neklasifikovalo, preto ho odstránime.
 
-1. Odstráňte chýbajúce údaje ich filtrovaním
+1. Odstráňte chýbajúce dáta ich filtrovaním
 
     ```python
     df = df[df['artist_top_genre'] != 'Missing']
@@ -242,11 +241,11 @@ Všimnite si, že keď je najlepší žáner opísaný ako 'Missing', znamená t
     plt.title('Top genres',color = 'blue')
     ```
 
-    Teraz znova skontrolujte žánre:
+    Teraz opätovne skontrolujte žánre:
 
-    ![všetky žánre](../../../../5-Clustering/1-Visualize/images/all-genres.png)
+    ![most popular](../../../../translated_images/sk/all-genres.1d56ef06cefbfcd6.webp)
 
-1. Tri najlepšie žánre jednoznačne dominujú tejto množine údajov. Zamerajme sa na `afro dancehall`, `afropop` a `nigerian pop`, a navyše filtrovaním odstráňme všetko s hodnotou popularity 0 (čo znamená, že nebolo klasifikované s popularitou v množine údajov a môže byť považované za šum pre naše účely):
+1. Zďaleka najdominantnejšie v tomto datasete sú tri žánre. Zamerajme sa na `afro dancehall`, `afropop` a `nigerian pop` a zároveň filtrovať dataset, aby sa odstránilo všetko s hodnotou popularity 0 (čo znamená, že v datasete nebolo zaradené do rebríčka a môže to byť považované za šum):
 
     ```python
     df = df[(df['artist_top_genre'] == 'afro dancehall') | (df['artist_top_genre'] == 'afropop') | (df['artist_top_genre'] == 'nigerian pop')]
@@ -258,7 +257,7 @@ Všimnite si, že keď je najlepší žáner opísaný ako 'Missing', znamená t
     plt.title('Top genres',color = 'blue')
     ```
 
-1. Rýchlo otestujte, či údaje korelujú nejakým výrazným spôsobom:
+1. Vykonajte rýchly test, či je v dátach nejaká silná korelácia:
 
     ```python
     corrmat = df.corr(numeric_only=True)
@@ -266,21 +265,21 @@ Všimnite si, že keď je najlepší žáner opísaný ako 'Missing', znamená t
     sns.heatmap(corrmat, vmax=.8, square=True)
     ```
 
-    ![korelácie](../../../../5-Clustering/1-Visualize/images/correlation.png)
+    ![correlations](../../../../translated_images/sk/correlation.a9356bb798f5eea5.webp)
 
-    Jediná silná korelácia je medzi `energy` a `loudness`, čo nie je príliš prekvapujúce, keďže hlasná hudba je zvyčajne dosť energická. Inak sú korelácie relatívne slabé. Bude zaujímavé vidieť, čo s týmito údajmi dokáže algoritmus klastrovania.
+    Jediná silná korelácia je medzi `energy` a `loudness`, čo nie je prekvapujúce, pretože hlasitá hudba je zvyčajne dosť energická. Inak sú korelácie relatívne slabé. Bude zaujímavé vidieť, čo s týmito dátami dokáže urobiť zhlukovací algoritmus.
 
-    > 🎓 Všimnite si, že korelácia neimplikuje kauzalitu! Máme dôkaz o korelácii, ale žiadny dôkaz o kauzalite. [Zábavná webová stránka](https://tylervigen.com/spurious-correlations) obsahuje niekoľko vizuálov, ktoré zdôrazňujú tento bod.
+    > 🎓 Upozorňujeme, že korelácia neimplikuje príčinnosť! Máme dôkaz korelácie, ale nie dôkaz príčiny. [Zábavná webová stránka](https://tylervigen.com/spurious-correlations) obsahuje vizuály zdôrazňujúce túto tému.
 
-Existuje nejaká konvergencia v tejto množine údajov okolo vnímania popularity a tanečnosti piesne? FacetGrid ukazuje, že existujú sústredné kruhy, ktoré sa zhodujú, bez ohľadu na žáner. Mohlo by to byť tak, že nigérijské chute sa zhodujú na určitej úrovni tanečnosti pre tento žáner?  
+Existuje nejaká konvergencia v tomto datasete okolo vnímania popularity a tanečnosti skladby? FacetGrid ukazuje, že existujú sústredné kružnice, ktoré sa zhodujú bez ohľadu na žáner. Mohlo by to znamenať, že nigerijské chute sa zbiehajú pri určitej úrovni tanečnosti pre tento žáner?  
 
-✅ Vyskúšajte rôzne dátové body (energy, loudness, speechiness) a viac alebo iné hudobné žánre. Čo môžete objaviť? Pozrite sa na tabuľku `df.describe()`, aby ste videli všeobecné rozloženie dátových bodov.
+✅ Vyskúšajte rôzne údaje (energy, loudness, speechiness) a viac alebo iné hudobné žánre. Čo môžete objaviť? Pozrite si tabuľku `df.describe()` a všimnite si všeobecné rozloženie dát.
 
-### Cvičenie - rozloženie údajov
+### Cvičenie – distribúcia dát
 
-Sú tieto tri žánre významne odlišné vo vnímaní ich tanečnosti na základe ich popularity?
+Sú tieto tri žánre výrazne odlišné vnímaním ich tanečnosti na základe popularity?
 
-1. Preskúmajte rozloženie údajov našich troch najlepších žánrov pre popularitu a tanečnosť pozdĺž danej osi x a y.
+1. Preskúmajte rozdelenie dát top troch žánrov podľa popularity a tanečnosti na osi x a y.
 
     ```python
     sns.set_theme(style="ticks")
@@ -292,15 +291,15 @@ Sú tieto tri žánre významne odlišné vo vnímaní ich tanečnosti na zákla
     )
     ```
 
-    Môžete objaviť sústredné kruhy okolo všeobecného bodu konvergencie, ktoré ukazujú rozloženie bodov.
+    Môžete objaviť sústredné kružnice okolo všeobecného bodu zbiehania, ktoré ukazujú rozloženie bodov.
 
-    > 🎓 Tento príklad používa graf KDE (Kernel Density Estimate), ktorý reprezentuje údaje pomocou spojitej krivky hustoty pravdepodobnosti. To nám umožňuje interpretovať údaje pri práci s viacerými rozloženiami.
+    > 🎓 Upozorňujeme, že tento príklad používa KDE (odhad hustoty jadra), ktorý reprezentuje dáta pomocou spojitej krivky pravdepodobnosti. To nám umožňuje interpretovať dáta pri práci s viacerými distribúciami.
 
-    Vo všeobecnosti sa tri žánre voľne zhodujú, pokiaľ ide o ich popularitu a tanečnosť. Určenie klastrov v týchto voľne zarovnaných údajoch bude výzvou:
+    Všeobecne sa tri žánre voľne zhodujú v popularite a tanečnosti. Určiť klastry v týchto voľne usporiadaných dátach bude výzvou:
 
-    ![rozloženie](../../../../5-Clustering/1-Visualize/images/distribution.png)
+    ![distribution](../../../../translated_images/sk/distribution.9be11df42356ca95.webp)
 
-1. Vytvorte bodový graf:
+1. Vytvorte scatter plot:
 
     ```python
     sns.FacetGrid(df, hue="artist_top_genre", height=5) \
@@ -308,31 +307,33 @@ Sú tieto tri žánre významne odlišné vo vnímaní ich tanečnosti na zákla
        .add_legend()
     ```
 
-    Bodový graf rovnakých osí ukazuje podobný vzor konvergencie
+    Scatterplot pre rovnaké osi ukazuje podobný vzor zbiehania
 
-    ![Facetgrid](../../../../5-Clustering/1-Visualize/images/facetgrid.png)
+    ![Facetgrid](../../../../translated_images/sk/facetgrid.9b2e65ce707eba1f.webp)
 
-Vo všeobecnosti môžete pre klastrovanie použiť bodové grafy na zobrazenie klastrov údajov, takže zvládnutie tohto typu vizualizácie je veľmi užitočné. V ďalšej lekcii použijeme tieto filtrované údaje a použijeme klastrovanie k-means na objavenie skupín v týchto údajoch, ktoré sa zaujímavo prekrývajú.
+Všeobecne, pre zhlukovanie môžete použiť scatterploty na znázornenie klastrov dát, takže ovládanie tohto typu vizualizácie je veľmi užitočné. V ďalšej lekcii použijeme tieto filtrované dáta a k-means zhlukovanie na objavenie skupín, ktoré sa zdajú priťahovať zaujímavým spôsobom.
 
 ---
 
 ## 🚀Výzva
 
-V rámci prípravy na ďalšiu lekciu vytvorte graf o rôznych algoritmoch klastrovania, ktoré by ste mohli objaviť a použiť v produkčnom prostredí. Aké problémy sa klastrovanie snaží riešiť?
+Na prípravu na ďalšiu lekciu vytvorte graf o rôznych zhlukovacích algoritmoch, ktoré môžete objaviť a použiť v produkčnom prostredí. Aké problémy sa zhlukovanie snaží riešiť?
 
 ## [Kvíz po prednáške](https://ff-quizzes.netlify.app/en/ml/)
 
-## Prehľad a samoštúdium
+## Prehľad a samostatné štúdium
 
-Pred aplikáciou algoritmov klastrovania, ako sme sa naučili, je dobré pochopiť povahu vašej množiny údajov. Prečítajte si viac na túto tému [tu](https://www.kdnuggets.com/2019/10/right-clustering-algorithm.html)
+Pred použitím zhlukovacích algoritmov, ako sme sa naučili, je dobré porozumieť povahy vášho datasetu. Viac o tejto téme si prečítajte [tu](https://www.kdnuggets.com/2019/10/right-clustering-algorithm.html)
 
-[Tento užitočný článok](https://www.freecodecamp.org/news/8-clustering-algorithms-in-machine-learning-that-all-data-scientists-should-know/) vás prevedie rôznymi spôsobmi, ako sa rôzne algoritmy klastrovania správajú pri rôznych tvaroch údajov.
+[Tento užitočný článok](https://www.freecodecamp.org/news/8-clustering-algorithms-in-machine-learning-that-all-data-scientists-should-know/) vás prevedie rôznymi spôsobmi správania sa zhlukovacích algoritmov vzhľadom na rôzne tvary dát.
 
 ## Zadanie
 
-[Preskúmajte ďalšie vizualizácie pre klastrovanie](assignment.md)
+[Preskúmajte ďalšie vizualizácie pre zhlukovanie](assignment.md)
 
 ---
 
-**Upozornenie**:  
-Tento dokument bol preložený pomocou služby AI prekladu [Co-op Translator](https://github.com/Azure/co-op-translator). Aj keď sa snažíme o presnosť, prosím, berte na vedomie, že automatizované preklady môžu obsahovať chyby alebo nepresnosti. Pôvodný dokument v jeho pôvodnom jazyku by mal byť považovaný za autoritatívny zdroj. Pre kritické informácie sa odporúča profesionálny ľudský preklad. Nie sme zodpovední za akékoľvek nedorozumenia alebo nesprávne interpretácie vyplývajúce z použitia tohto prekladu.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Vyhlásenie o zodpovednosti**:
+Tento dokument bol preložený pomocou AI prekladateľskej služby [Co-op Translator](https://github.com/Azure/co-op-translator). Hoci sa snažíme o presnosť, vezmite prosím na vedomie, že automatické preklady môžu obsahovať chyby alebo nepresnosti. Pôvodný dokument v jeho natívnom jazyku by mal byť považovaný za autoritatívny zdroj. Pre kritické informácie sa odporúča profesionálny ľudský preklad. Nie sme zodpovední za žiadne nedorozumenia alebo nesprávne interpretácie vyplývajúce z použitia tohto prekladu.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->
