@@ -71,7 +71,7 @@
 
    3. `Average_Score` を独自に計算したスコアに置き換える
 
-   ```python
+  ```python
   # Drop `Additional_Number_of_Scoring`
   df.drop(["Additional_Number_of_Scoring"], axis = 1, inplace=True)
   # Replace `Total_Number_of_Reviews` and `Average_Score` with our own calculated values
