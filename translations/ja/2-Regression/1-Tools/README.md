@@ -80,7 +80,7 @@
 
 ## Scikit-learnの準備
 
-Pythonがローカル環境にセットアップされ、Jupyterノートブックに慣れたら、次はScikit-learnに慣れる番です（`sci`は`science`のように発音します）。Scikit-learnは、MLタスクを実行するための[広範なAPI](https://scikit-learn.org/stable/modules/classes.html#api-ref)を提供します。
+Pythonがローカル環境にセットアップされ、Jupyter Notebookに慣れたら、次はScikit-learnに慣れる番です（`sci`は`science`のように発音します）。Scikit-learnは、MLタスクを実行するための[広範なAPI](https://scikit-learn.org/stable/modules/classes.html#api-ref)を提供します。
 
 [公式サイト](https://scikit-learn.org/stable/getting_started.html)によると、「Scikit-learnは、教師あり学習と教師なし学習をサポートするオープンソースの機械学習ライブラリです。また、モデルのフィッティング、データの前処理、モデル選択と評価、その他多くのユーティリティを提供します。」
 
