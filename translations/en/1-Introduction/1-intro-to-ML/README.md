@@ -1,4 +1,4 @@
-# Introduction to Machine Learning
+# Introduction to machine learning
 
 ## [Pre-lecture quiz](https://ff-quizzes.netlify.app/en/ml/)
 
@@ -6,138 +6,143 @@
 
 [![ML for beginners - Introduction to Machine Learning for Beginners](https://img.youtube.com/vi/6mSx_KJxcHI/0.jpg)](https://youtu.be/6mSx_KJxcHI "ML for beginners - Introduction to Machine Learning for Beginners")
 
-> 🎥 Click the image above for a short video that walks you through this lesson.
+> 🎥 Click the image above for a short video working through this lesson.
 
-Welcome to this course on classical machine learning for beginners! Whether you're completely new to the topic or an experienced ML practitioner looking to refresh your knowledge, we're glad to have you here! We aim to create a welcoming starting point for your ML journey and would love to hear your [feedback](https://github.com/microsoft/ML-For-Beginners/discussions) to improve this course.
+Welcome to this course on classical machine learning for beginners! Whether you're completely new to this topic, or an experienced ML practitioner looking to brush up on an area, we're happy to have you join us! We want to create a friendly launching spot for your ML study and would be happy to evaluate, respond to, and incorporate your [feedback](https://github.com/microsoft/ML-For-Beginners/discussions).
 
 [![Introduction to ML](https://img.youtube.com/vi/h0e2HAPTGF4/0.jpg)](https://youtu.be/h0e2HAPTGF4 "Introduction to ML")
 
-> 🎥 Click the image above for a video: MIT's John Guttag introduces machine learning.
+> 🎥 Click the image above for a video: MIT's John Guttag introduces machine learning
 
 ---
-## Getting Started with Machine Learning
+## Getting started with machine learning
 
-Before diving into this curriculum, make sure your computer is set up to run notebooks locally.
+Before starting with this curriculum, you need to have your computer set up and ready to run notebooks locally.
 
-- **Set up your machine with these videos**. Use the following links to learn [how to install Python](https://youtu.be/CXZYvNRIAKM) on your system and [set up a text editor](https://youtu.be/EU8eayHWoZg) for development.
-- **Learn Python**. It's recommended to have a basic understanding of [Python](https://docs.microsoft.com/learn/paths/python-language/?WT.mc_id=academic-77952-leestott), a programming language widely used by data scientists and utilized in this course.
-- **Learn Node.js and JavaScript**. We occasionally use JavaScript in this course for building web apps, so you'll need [Node.js](https://nodejs.org) and [npm](https://www.npmjs.com/) installed, along with [Visual Studio Code](https://code.visualstudio.com/) for both Python and JavaScript development.
-- **Create a GitHub account**. If you found us on [GitHub](https://github.com), you might already have an account. If not, create one and fork this curriculum to use on your own. (Feel free to give us a star, too 😊)
-- **Explore Scikit-learn**. Familiarize yourself with [Scikit-learn](https://scikit-learn.org/stable/user_guide.html), a set of ML libraries referenced throughout these lessons.
-
----
-## What is Machine Learning?
-
-The term "machine learning" is one of the most popular and widely used buzzwords today. If you have any familiarity with technology, you've likely heard it at least once, regardless of your field. However, the mechanics of machine learning remain a mystery to many. For beginners, the subject can sometimes feel overwhelming. That's why it's important to understand what machine learning truly is and learn about it step by step through practical examples.
+- **Configure your machine with these videos**. Use the following links to learn [how to install Python](https://youtu.be/CXZYvNRIAKM) in your system and [setup a text editor](https://youtu.be/EU8eayHWoZg) for development.
+- **Learn Python**. It's also recommended to have a basic understanding of [Python](https://docs.microsoft.com/learn/paths/python-language/?WT.mc_id=academic-77952-leestott), a programming language useful for data scientists that we use in this course.
+- **Learn Node.js and JavaScript**. We also use JavaScript a few times in this course when building web apps, so you will need to have [node](https://nodejs.org) and [npm](https://www.npmjs.com/) installed, as well as [Visual Studio Code](https://code.visualstudio.com/) available for both Python and JavaScript development.
+- **Create a GitHub account**. Since you found us here on [GitHub](https://github.com), you might already have an account, but if not, create one and then fork this curriculum to use on your own. (Feel free to give us a star, too 😊)
+- **Explore Scikit-learn**. Familiarize yourself with [Scikit-learn](https://scikit-learn.org/stable/user_guide.html), a set of ML libraries that we reference in these lessons.
 
 ---
-## The Hype Curve
+## What is machine learning?
 
-![ml hype curve](../../../../1-Introduction/1-intro-to-ML/images/hype.png)
-
-> Google Trends shows the recent "hype curve" of the term "machine learning."
+The term 'machine learning' is one of the most popular and frequently used terms of today. There is a nontrivial possibility that you have heard this term at least once if you have some sort of familiarity with technology, no matter what domain you work in. The mechanics of machine learning, however, are a mystery to most people. For a machine learning beginner, the subject can sometimes feel overwhelming. Therefore, it is important to understand what machine learning actually is, and to learn about it step by step, through practical examples.
 
 ---
-## A Mysterious Universe
+## The hype curve
 
-We live in a universe filled with fascinating mysteries. Great scientists like Stephen Hawking, Albert Einstein, and many others have dedicated their lives to uncovering meaningful information about the world around us. This quest for knowledge is part of the human condition: as children, we learn new things and gradually understand the structure of our world as we grow.
+![ml hype curve](../../../../translated_images/en/hype.07183d711a17aafe.webp)
 
----
-## The Child's Brain
-
-A child's brain and senses perceive their surroundings and gradually learn hidden patterns of life. These patterns help the child develop logical rules to identify and understand what they've learned. This learning process makes humans the most advanced living beings on Earth. By continuously discovering hidden patterns and innovating upon them, we improve ourselves throughout our lives. This ability to learn and adapt is linked to a concept called [brain plasticity](https://www.simplypsychology.org/brain-plasticity.html). On a surface level, we can draw motivational parallels between the human brain's learning process and the principles of machine learning.
+> Google Trends shows the recent 'hype curve' of the term 'machine learning'
 
 ---
-## The Human Brain
+## A mysterious universe
 
-The [human brain](https://www.livescience.com/29365-human-brain.html) perceives information from the real world, processes it, makes rational decisions, and takes actions based on circumstances. This is what we call intelligent behavior. When we program a machine to mimic this intelligent behavior, we call it artificial intelligence (AI).
+We live in a universe full of fascinating mysteries. Great scientists such as Stephen Hawking, Albert Einstein, and many more have devoted their lives to searching for meaningful information that uncovers the mysteries of the world around us. This is the human condition of learning: a human child learns new things and uncovers the structure of their world year by year as they grow to adulthood.
 
 ---
-## Some Terminology
+## The child's brain
 
-Although the terms are often confused, machine learning (ML) is a significant subset of artificial intelligence. **ML focuses on using specialized algorithms to uncover meaningful insights and hidden patterns from data, supporting rational decision-making processes.**
+A child's brain and senses perceive the facts of their surroundings and gradually learn the hidden patterns of life which help the child to craft logical rules to identify learned patterns. The learning process of the human brain makes humans the most sophisticated living creature of this world. Learning continuously by discovering hidden patterns and then innovating on those patterns enables us to make ourselves better and better throughout our lifetime. This learning capacity and evolving capability is related to a concept called [brain plasticity](https://www.simplypsychology.org/brain-plasticity.html). Superficially, we can draw some motivational similarities between the learning process of the human brain and the concepts of machine learning.
+
+---
+## The human brain
+
+The [human brain](https://www.livescience.com/29365-human-brain.html) perceives things from the real world, processes the perceived information, makes rational decisions, and performs certain actions based on circumstances. This is what we called behaving intelligently. When we program a facsimile of the intelligent behavioral process to a machine, it is called artificial intelligence (AI).
+
+---
+## Some terminology
+
+Although the terms can be confused, machine learning (ML) is an important subset of artificial intelligence. **ML is concerned with using specialized algorithms to uncover meaningful information and find hidden patterns from perceived data to corroborate the rational decision-making process**.
 
 ---
 ## AI, ML, Deep Learning
 
-![AI, ML, deep learning, data science](../../../../1-Introduction/1-intro-to-ML/images/ai-ml-ds.png)
+![AI, ML, deep learning, data science](../../../../translated_images/en/ai-ml-ds.537ea441b124ebf6.webp)
 
-> A diagram showing the relationships between AI, ML, deep learning, and data science. Infographic by [Jen Looper](https://twitter.com/jenlooper) inspired by [this graphic](https://softwareengineering.stackexchange.com/questions/366996/distinction-between-ai-ml-neural-networks-deep-learning-and-data-mining).
-
----
-## Concepts to Cover
-
-In this curriculum, we will focus on the core concepts of machine learning that every beginner should know. We will explore "classical machine learning," primarily using Scikit-learn, a popular library for learning the basics. A solid understanding of machine learning is essential for grasping broader concepts in artificial intelligence or deep learning, and we aim to provide that foundation here.
+> A diagram showing the relationships between AI, ML, deep learning, and data science. Infographic by [Jen Looper](https://twitter.com/jenlooper) inspired by [this graphic](https://softwareengineering.stackexchange.com/questions/366996/distinction-between-ai-ml-neural-networks-deep-learning-and-data-mining)
 
 ---
-## In This Course, You Will Learn:
+## Concepts to cover
 
-- Core concepts of machine learning
-- The history of ML
+In this curriculum, we are going to cover only the core concepts of machine learning that a beginner must know. We cover what we call 'classical machine learning' primarily using Scikit-learn, an excellent library many students use to learn the basics.  To understand broader concepts of artificial intelligence or deep learning, a strong fundamental knowledge of machine learning is indispensable, and so we would like to offer it here.
+
+---
+## In this course you will learn:
+
+- core concepts of machine learning
+- the history of ML
 - ML and fairness
-- Regression ML techniques
-- Classification ML techniques
-- Clustering ML techniques
-- Natural language processing ML techniques
-- Time series forecasting ML techniques
-- Reinforcement learning
-- Real-world applications of ML
+- regression ML techniques
+- classification ML techniques
+- clustering ML techniques
+- natural language processing ML techniques
+- time series forecasting ML techniques
+- reinforcement learning
+- real-world applications for ML
 
 ---
-## What We Will Not Cover
+## What we will not cover
 
-- Deep learning
-- Neural networks
+- deep learning
+- neural networks
 - AI
 
-To keep the learning experience manageable, we will avoid the complexities of neural networks, "deep learning" (which involves building multi-layered models using neural networks), and AI. These topics will be covered in a separate curriculum. Additionally, we plan to offer a data science curriculum in the future to focus on that aspect of this broader field.
+To make for a better learning experience, we will avoid the complexities of neural networks, 'deep learning' - many-layered model-building using neural networks - and AI, which we will discuss in a different curriculum. We also will offer a forthcoming data science curriculum to focus on that aspect of this larger field.
 
 ---
-## Why Study Machine Learning?
+## Why study machine learning?
 
-From a systems perspective, machine learning is the creation of automated systems that can learn hidden patterns from data to make intelligent decisions.
+Machine learning, from a systems perspective, is defined as the creation of automated systems that can learn hidden patterns from data to aid in making intelligent decisions.
 
-This concept is loosely inspired by how the human brain learns from the data it perceives in the world.
+This motivation is loosely inspired by how the human brain learns certain things based on the data it perceives from the outside world.
 
-✅ Take a moment to think about why a business might prefer using machine learning strategies over creating a hard-coded, rules-based system.
-
----
-## Applications of Machine Learning
-
-Machine learning applications are everywhere, as ubiquitous as the data generated by our smartphones, connected devices, and other systems. Given the immense potential of state-of-the-art ML algorithms, researchers are exploring their ability to solve complex, real-world problems across multiple disciplines, often with remarkable results.
+✅ Think for a minute why a business would want to try to use machine learning strategies vs. creating a hard-coded rules-based engine.
 
 ---
-## Examples of Applied ML
+## Why data quality matters
 
-**Machine learning can be used in many ways**:
+High-quality data improves model performance. Poor or noisy data can lead to inaccurate predictions, even when using advanced machine learning algorithms.
 
-- Predicting the likelihood of disease based on a patient's medical history or reports.
-- Using weather data to forecast weather events.
-- Analyzing text to understand sentiment.
-- Detecting fake news to prevent the spread of misinformation.
+---
+## Applications of machine learning
 
-Fields like finance, economics, earth science, space exploration, biomedical engineering, cognitive science, and even the humanities have adopted machine learning to tackle data-intensive challenges in their domains.
+Applications of machine learning are now almost everywhere, and are as ubiquitous as the data that is flowing around our societies, generated by our smart phones, connected devices, and other systems. Considering the immense potential of state-of-the-art machine learning algorithms, researchers have been exploring their capability to solve multi-dimensional and multi-disciplinary real-life problems with great positive outcomes.
+
+---
+## Examples of applied ML
+
+**You can use machine learning in many ways**:
+
+- To predict the likelihood of disease from a patient's medical history or reports.
+- To leverage weather data to predict weather events.
+- To understand the sentiment of a text.
+- To detect fake news to stop the spread of propaganda.
+
+Finance, economics, earth science, space exploration, biomedical engineering, cognitive science, and even fields in the humanities have adapted machine learning to solve the arduous, data-processing heavy problems of their domain.
 
 ---
 ## Conclusion
 
-Machine learning automates the discovery of patterns by extracting meaningful insights from real-world or generated data. It has proven to be highly valuable in business, healthcare, finance, and other fields.
+Machine learning automates the process of pattern-discovery by finding meaningful insights from real-world or generated data. It has proven itself to be highly valuable in business, health, and financial applications, among others.
 
-In the near future, understanding the basics of machine learning will become essential for people in any domain due to its widespread adoption.
+In the near future, understanding the basics of machine learning is going to be a must for people from any domain due to its widespread adoption.
 
 ---
 # 🚀 Challenge
 
-Sketch, on paper or using an online app like [Excalidraw](https://excalidraw.com/), your understanding of the differences between AI, ML, deep learning, and data science. Include examples of problems that each technique is well-suited to solve.
+Sketch, on paper or using an online app like [Excalidraw](https://excalidraw.com/), your understanding of the differences between AI, ML, deep learning, and data science. Add some ideas of problems that each of these techniques are good at solving.
 
 # [Post-lecture quiz](https://ff-quizzes.netlify.app/en/ml/)
 
 ---
-# Review & Self-Study
+# Review & Self Study
 
-To learn more about working with ML algorithms in the cloud, follow this [Learning Path](https://docs.microsoft.com/learn/paths/create-no-code-predictive-models-azure-machine-learning/?WT.mc_id=academic-77952-leestott).
+To learn more about how you can work with ML algorithms in the cloud, follow this [Learning Path](https://docs.microsoft.com/learn/paths/create-no-code-predictive-models-azure-machine-learning/?WT.mc_id=academic-77952-leestott).
 
-Take a [Learning Path](https://docs.microsoft.com/learn/modules/introduction-to-machine-learning/?WT.mc_id=academic-77952-leestott) to explore the basics of ML.
+Take a [Learning Path](https://docs.microsoft.com/learn/modules/introduction-to-machine-learning/?WT.mc_id=academic-77952-leestott) about the basics of ML.
 
 ---
 # Assignment
@@ -146,5 +151,7 @@ Take a [Learning Path](https://docs.microsoft.com/learn/modules/introduction-to-
 
 ---
 
-**Disclaimer**:  
-This document has been translated using the AI translation service [Co-op Translator](https://github.com/Azure/co-op-translator). While we aim for accuracy, please note that automated translations may include errors or inaccuracies. The original document in its native language should be regarded as the authoritative source. For critical information, professional human translation is advised. We are not responsible for any misunderstandings or misinterpretations resulting from the use of this translation.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Disclaimer**:
+This document has been translated using AI translation service [Co-op Translator](https://github.com/Azure/co-op-translator). While we strive for accuracy, please be aware that automated translations may contain errors or inaccuracies. The original document in its native language should be considered the authoritative source. For critical information, professional human translation is recommended. We are not liable for any misunderstandings or misinterpretations arising from the use of this translation.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->
