@@ -15,7 +15,7 @@
 このレッスンで学ぶ内容:
 
 - ローカルで機械学習タスクを実行するためのコンピュータの設定方法
-- Jupyterノートブックの使い方
+- Jupyter Notebookの使い方
 - Scikit-learnのインストールと使用方法
 - 線形回帰を実際に体験する演習
 
@@ -47,7 +47,7 @@
 
 ノートブックは、コードを記述するだけでなく、コードに関するメモやドキュメントを追加することができるインタラクティブな環境です。これは実験的または研究指向のプロジェクトに非常に役立ちます。
 
-[![初心者向け機械学習 - 回帰モデルを構築するためのJupyterノートブックのセットアップ](https://img.youtube.com/vi/7E-jC8FLA2E/0.jpg)](https://youtu.be/7E-jC8FLA2E "初心者向け機械学習 - 回帰モデルを構築するためのJupyterノートブックのセットアップ")
+[![初心者向け機械学習 - 回帰モデルを構築するためのJupyter Notebookのセットアップ](https://img.youtube.com/vi/7E-jC8FLA2E/0.jpg)](https://youtu.be/7E-jC8FLA2E "初心者向け機械学習 - 回帰モデルを構築するためのJupyter Notebookのセットアップ")
 
 > 🎥 上の画像をクリックすると、この演習を進める短い動画が再生されます。
 
@@ -80,7 +80,7 @@
 
 ## Scikit-learnの準備
 
-Pythonがローカル環境にセットアップされ、Jupyterノートブックに慣れたら、次はScikit-learnに慣れる番です（`sci`は`science`のように発音します）。Scikit-learnは、MLタスクを実行するための[広範なAPI](https://scikit-learn.org/stable/modules/classes.html#api-ref)を提供します。
+Pythonがローカル環境にセットアップされ、Jupyter Notebookに慣れたら、次はScikit-learnに慣れる番です（`sci`は`science`のように発音します）。Scikit-learnは、MLタスクを実行するための[広範なAPI](https://scikit-learn.org/stable/modules/classes.html#api-ref)を提供します。
 
 [公式サイト](https://scikit-learn.org/stable/getting_started.html)によると、「Scikit-learnは、教師あり学習と教師なし学習をサポートするオープンソースの機械学習ライブラリです。また、モデルのフィッティング、データの前処理、モデル選択と評価、その他多くのユーティリティを提供します。」
 
