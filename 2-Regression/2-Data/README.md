@@ -199,7 +199,7 @@ To get charts to display useful data, you usually need to group the data somehow
 
 Matplotlib is powerful, but it can take a lot of code to produce a polished chart. [Seaborn](https://seaborn.pydata.org/) is a library built _on top of_ Matplotlib that is designed for statistical data visualization. It works directly with Pandas dataframes, applies attractive default styles, and lets you create informative plots with far less code. Because Seaborn returns Matplotlib objects, you can still use everything you already know about Matplotlib to fine-tune the result.
 
-> Seaborn is already included if you installed the packages in the previous lesson. If not, install it with `pip install seaborn`.
+> If you don't already have Seaborn installed, install it with `pip install seaborn`.
 
 1. Import Seaborn at the top of the notebook, under the other imports. It is conventionally imported as `sns`:
 
@@ -258,7 +258,7 @@ Scatter plots compare two variables at a time. When you have several numeric col
 
     ![A Seaborn heatmap showing correlations between the numeric columns](./images/heatmap.png)
 
-    Values close to `1` (or `-1`) mean the columns are strongly correlated. Notice how `Low Price` and `High Price` are almost perfectly correlated, while `Month` has very little correlation with price. ✅ What does that tell you about which columns are useful for predicting price?
+    Values close to `1` (or `-1`) mean the columns are strongly _linearly_ correlated. Notice how `Low Price` and `High Price` are almost perfectly correlated. `Month`, on the other hand, shows only a weak linear correlation with price — even though the bar chart above revealed a clear seasonal peak in September and October. That's an important lesson: the correlation coefficient only measures _straight-line_ relationships, so it can miss seasonal or otherwise non-linear patterns. ✅ Why is it useful to look at both a heatmap *and* charts like the bar chart before deciding which columns to use?
 
 ### Matplotlib or Seaborn?
 
