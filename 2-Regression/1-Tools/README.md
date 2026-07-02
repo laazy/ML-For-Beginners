@@ -15,7 +15,7 @@ In these four lessons, you will discover how to build regression models. We will
 In this lesson, you will learn how to:
 
 - Configure your computer for local machine learning tasks.
-- Work with Jupyter notebooks.
+- Work with Jupyter Notebooks.
 - Use Scikit-learn, including installation.
 - Explore linear regression with a hands-on exercise.
 
@@ -80,7 +80,7 @@ You can interleaf your code with comments to self-document the notebook.
 
 ## Up and running with Scikit-learn
 
-Now that Python is set up in your local environment, and you are comfortable with Jupyter notebooks, let's get equally comfortable with Scikit-learn (pronounce it `sci` as in `science`). Scikit-learn provides an [extensive API](https://scikit-learn.org/stable/modules/classes.html#api-ref) to help you perform ML tasks.
+Now that Python is set up in your local environment, and you are comfortable with Jupyter Notebooks, let's get equally comfortable with Scikit-learn (pronounce it `sci` as in `science`). Scikit-learn provides an [extensive API](https://scikit-learn.org/stable/modules/classes.html#api-ref) to help you perform ML tasks.
 
 According to their [website](https://scikit-learn.org/stable/getting_started.html), "Scikit-learn is an open source machine learning library that supports supervised and unsupervised learning. It also provides various tools for model fitting, data preprocessing, model selection and evaluation, and many other utilities."
 
