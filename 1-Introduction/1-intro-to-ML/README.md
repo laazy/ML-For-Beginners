@@ -140,9 +140,9 @@ Sketch, on paper or using an online app like [Excalidraw](https://excalidraw.com
 ---
 # Review & Self Study
 
-To learn more about how you can work with ML algorithms in the cloud, follow this [Learning Path](https://learn.microsoft.com/learn/paths/create-no-code-predictive-models-azure-machine-learning/?WT.mc_id=academic-77952-leestott).
+To learn more about how you can work with ML algorithms in the cloud, follow this [Learning Path](https://docs.microsoft.com/learn/paths/create-no-code-predictive-models-azure-machine-learning/?WT.mc_id=academic-77952-leestott).
 
-Take a [Learning Path](https://learn.microsoft.com/learn/modules/introduction-to-machine-learning/?WT.mc_id=academic-77952-leestott) about the basics of ML.
+Take a [Learning Path](https://docs.microsoft.com/learn/modules/introduction-to-machine-learning/?WT.mc_id=academic-77952-leestott) about the basics of ML.
 
 ---
 # Assignment
